@@ -1,0 +1,21 @@
+import 'package:all_in_one/src/core/network/endpoints.dart';
+import 'package:all_in_one/src/core/network/rest_client.dart';
+
+class InterviewsRepository {
+  Future<dynamic> fetchAllInterviews() async {
+    final res = await RestClient.dev().get(
+      APIType.PROTECTED,
+      API.viewInterviewUrl,
+    );
+    return res.data;
+  }
+
+  Future<dynamic> submitInterviewFeedback(Map<String, dynamic> data) async {
+    final res = await RestClient.dev().post(
+      APIType.PROTECTED,
+      API.storeInterviewerFeedbackUrl,
+      data,
+    );
+    return res.data;
+  }
+}
