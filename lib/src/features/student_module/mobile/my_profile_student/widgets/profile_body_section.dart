@@ -20,6 +20,24 @@ class ProfileBodySection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const TextWidget(
+          text: 'Skills:',
+          color: CommonColor.greyColor4,
+          maxLine: 1,
+          fontFamily: AppStrings.aeonikTRIAL,
+          fontWeight: FontWeight.w400,
+          fontSize: 20,
+        ),
+        TextWidget(
+          text: List<String>.generate(userModel.userSkill!.length,
+              (int index) => userModel.userSkill![index]).toString(),
+          color: CommonColor.greyColor4,
+          maxLine: 4,
+          fontFamily: AppStrings.aeonikTRIAL,
+          fontWeight: FontWeight.w400,
+          fontSize: 14,
+        ),
+        const SizedBox(height: 10),
+        const TextWidget(
           text: 'Address:',
           color: CommonColor.greyColor4,
           maxLine: 1,

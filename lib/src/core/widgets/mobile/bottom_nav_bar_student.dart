@@ -17,7 +17,7 @@ import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controlle
 import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_with_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/view/list_and_search_job_mobile.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/view/my_profile_mobile_student.dart';
+import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/view/profile_page.dart';
 import 'package:all_in_one/src/features/student_module/root/widget/home_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,7 +37,7 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
   final List<Widget> _children = <Widget>[
     const CategoryWithCoursePage(),
     const ListAndSearchJobStudentMobile(),
-    MyProfileStudentMobile(),
+    ProfilePage(),
   ];
 
   static const double _borderRadius = 20;

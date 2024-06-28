@@ -67,6 +67,7 @@ class UserModel {
   String? image;
   DateTime? createdAt;
   DateTime? updatedAt;
+  List<String>? userSkill;
 
   UserModel({
     this.id,
@@ -79,19 +80,25 @@ class UserModel {
     this.image,
     this.createdAt,
     this.updatedAt,
+    this.userSkill,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         id: json["id"],
         name: json["name"],
         userId: json["user_id"],
-        phone: json["phone"],
-        resume: json["resume"],
-        address: json["address"],
-        description: json["description"],
-        image: json["image"],
+        phone: json["phone"] == '' ? 'N/A' : json["phone"],
+        resume: json["resume"] == '' ? null : json["description"],
+        address: json["address"] == '' ? 'N/A' : json["address"],
+        description: json["description"] == '' ? 'N/A' : json["description"],
+        image: json["image"] == ''
+            ? 'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg'
+            : json["image"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
+        userSkill: json["user_skill"] == null
+            ? []
+            : List<String>.from(json["user_skill"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -105,6 +112,7 @@ class UserModel {
         "image": image,
         "createdAt": createdAt!.toIso8601String(),
         "updatedAt": updatedAt!.toIso8601String(),
+        "user_skill": List<dynamic>.from(userSkill!.map((x) => x)),
       };
 }
 

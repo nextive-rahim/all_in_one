@@ -36,7 +36,7 @@ class ProfileHeader extends StatelessWidget {
                               .copyWith(color: AppColors.white),
                         ),
                         Text(
-                          userModel.name ?? '',
+                          userModel.name ?? 'N/A',
                           style: AppTextStyle.bold16
                               .copyWith(color: AppColors.white),
                         ),
@@ -51,7 +51,7 @@ class ProfileHeader extends StatelessWidget {
                               .copyWith(color: AppColors.white),
                         ),
                         Text(
-                          userModel.phone ?? '',
+                          userModel.phone ?? 'N/A',
                           style: AppTextStyle.bold16
                               .copyWith(color: AppColors.white),
                         ),
@@ -91,7 +91,8 @@ class ProfileHeader extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Image.network(
-                    userModel.image ?? '',
+                    userModel.image ??
+                        'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg',
                   ),
                 ),
               ),
