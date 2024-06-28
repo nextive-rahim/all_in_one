@@ -59,7 +59,7 @@ class SkillBuilderState extends State<SkillBuilder> {
           .remove(course.id);
       Get.find<RegistrationViewController>()
           .selectedSkillNameList
-          .add(course.skill!);
+          .remove(course.skill!);
       setState(() {});
     }
   }

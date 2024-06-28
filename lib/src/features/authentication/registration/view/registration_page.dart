@@ -148,20 +148,25 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.only(left: 20),
-                                    child: Obx(() => controller
-                                            .selectedSkillIdList.isEmpty
-                                        ? const Text(
-                                            'Select Skills',
-                                            style: TextStyle(
-                                                color:
-                                                    CommonColor.hintTextColor),
-                                          )
-                                        : Text(List<String>.generate(
-                                            controller
-                                                .selectedSkillNameList.length,
-                                            (int index) => controller
-                                                    .selectedSkillNameList[
-                                                index]).toString())),
+                                    child: Obx(
+                                      () =>
+                                          controller.selectedSkillIdList.isEmpty
+                                              ? const Text(
+                                                  'Select Skills',
+                                                  style: TextStyle(
+                                                      color: CommonColor
+                                                          .hintTextColor),
+                                                )
+                                              : Text(
+                                                  List<String>.generate(
+                                                      controller
+                                                          .selectedSkillNameList
+                                                          .length,
+                                                      (int index) => controller
+                                                              .selectedSkillNameList[
+                                                          index]).toString(),
+                                                ),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -817,6 +822,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   void onTap() {
     controller.registration(_formKey, Get.arguments).then((value) {
+      if (controller.selectedSkillIdList.isEmpty) {
+        Get.snackbar(
+          'Waring',
+          'Please selecte skill',
+        );
+        return;
+      }
+
       if (controller.signupModel!.success == false) {
         Get.snackbar(
           AppStrings.failed,

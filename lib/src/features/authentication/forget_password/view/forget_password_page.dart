@@ -91,22 +91,26 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                             hintText: AppStrings.password,
                             validator: InputFieldValidator.password(),
                             isPasswordField: true,
+                            onChanged: (v) {
+                              if (v.isEmpty || v.length >= 6) {
+                                setState(() {});
+                              }
+                            },
                           ),
                           OutlinedInputField(
                             labelText: AppStrings.confirmPassword,
                             controller: controller.comfirmPasswordController,
                             hintText: AppStrings.confirmPassword,
                             isPasswordField: true,
-                            validator: (val) {
-                              if (val!.isEmpty) {
-                                return 'Empty';
+                            validator: InputFieldValidator.confirmPassword(
+                              password: controller.passwordController.text,
+                              optional:
+                                  controller.passwordController.text.isEmpty,
+                            ),
+                            onChanged: (v) {
+                              if (v.isEmpty || v.length >= 6) {
+                                setState(() {});
                               }
-
-                              if (val != controller.passwordController.text) {
-                                return 'Not Match';
-                              }
-
-                              return null;
                             },
                           ),
                           10.sh,
