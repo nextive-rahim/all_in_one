@@ -1,4 +1,3 @@
-import 'package:all_in_one/src/features/authentication/registration/controller/registration_view_controller.dart';
 import 'package:all_in_one/src/features/skill/controller/skill_controller.dart';
 import 'package:all_in_one/src/features/skill/model/skills_model.dart';
 import 'package:all_in_one/src/features/skill/widget/skill_item.dart';
@@ -8,8 +7,11 @@ import 'package:get/get.dart';
 class SkillBuilder extends StatefulWidget {
   const SkillBuilder({
     super.key,
+    required this.selectedSkillIdList,
+    required this.selectedSkillNameList,
   });
-
+  final RxList<int> selectedSkillIdList;
+  final RxList<String> selectedSkillNameList;
   @override
   State<SkillBuilder> createState() => SkillBuilderState();
 }
@@ -32,8 +34,7 @@ class SkillBuilderState extends State<SkillBuilder> {
               selectedsID(controller.skillsList[index]);
             },
             course: controller.skillsList[index],
-            isSelectItem: Get.find<RegistrationViewController>()
-                .selectedSkillIdList
+            isSelectItem: widget.selectedSkillIdList
                 .contains(controller.skillsList[index].id),
           );
         },
@@ -42,24 +43,14 @@ class SkillBuilderState extends State<SkillBuilder> {
   }
 
   selectedsID(SkillsModel course) {
-    if (!Get.find<RegistrationViewController>()
-        .selectedSkillIdList
-        .contains(course.id)) {
-      Get.find<RegistrationViewController>()
-          .selectedSkillIdList
-          .add(course.id!);
-      Get.find<RegistrationViewController>()
-          .selectedSkillNameList
-          .add(course.skill!);
+    if (!widget.selectedSkillIdList.contains(course.id)) {
+      widget.selectedSkillIdList.add(course.id!);
+      widget.selectedSkillNameList.add(course.skill!);
 
       setState(() {});
     } else {
-      Get.find<RegistrationViewController>()
-          .selectedSkillIdList
-          .remove(course.id);
-      Get.find<RegistrationViewController>()
-          .selectedSkillNameList
-          .remove(course.skill!);
+      widget.selectedSkillIdList.remove(course.id);
+      widget.selectedSkillNameList.remove(course.skill!);
       setState(() {});
     }
   }

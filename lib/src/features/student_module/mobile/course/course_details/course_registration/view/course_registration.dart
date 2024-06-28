@@ -134,6 +134,7 @@ class CourseRegistrationSection
                                   .coursePriceReponseData[0].courseReteId
                                   .toString())
                           .then((value) {
+                        Get.find<ProfileController>().profile();
                         courseRegistrationSuccessfulBottomSheet(
                                 controller.registration.message, context)
                             .then((value) {

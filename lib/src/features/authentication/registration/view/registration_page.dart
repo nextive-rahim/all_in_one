@@ -38,7 +38,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final skillController = Get.find<SkillViewController>();
   @override
   void initState() {
-    skillController.getSkills();
+   // skillController.getSkills();
     super.initState();
   }
 
@@ -120,7 +120,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       InkWell(
                         onTap: () {
-                          _showError(const SkillBuilder(),
+                          _showError(
+                              SkillBuilder(
+                                selectedSkillIdList:
+                                    controller.selectedSkillIdList,
+                                selectedSkillNameList:
+                                    controller.selectedSkillNameList,
+                              ),
                               title: "Selecte Skills");
                         },
                         child: Column(

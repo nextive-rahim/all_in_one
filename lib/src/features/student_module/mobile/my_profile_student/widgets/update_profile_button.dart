@@ -16,16 +16,15 @@ class UpdateProfileButton extends GetView<UpdateProfileiewController> {
         onTap: () async {
           await controller.updateProfile().then((value) {
             if (value.success == true) {
-              controller.clearTextFields();
               Get.snackbar(
                 'Successfully',
-                'Update ProfileSuccessfully',
+                'Update Profile Successfully',
               );
               Get.find<ProfileController>().profile();
-              Get.back();
+              // Get.back();
             }
           });
-        }, 
+        },
         child: Container(
           decoration: BoxDecoration(
               color: AppColors.deepBlue,

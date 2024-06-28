@@ -1,7 +1,6 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/formated_date_time.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
-import 'package:all_in_one/src/core/widgets/cached_network_image.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/comment/controller/view_reply_view_controller.dart';

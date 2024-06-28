@@ -67,7 +67,6 @@ class UserModel {
   String? image;
   DateTime? createdAt;
   DateTime? updatedAt;
-  List<String>? userSkill;
 
   UserModel({
     this.id,
@@ -80,7 +79,6 @@ class UserModel {
     this.image,
     this.createdAt,
     this.updatedAt,
-    this.userSkill,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -96,9 +94,6 @@ class UserModel {
             : json["image"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
-        userSkill: json["user_skill"] == null
-            ? []
-            : List<String>.from(json["user_skill"].map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -112,7 +107,6 @@ class UserModel {
         "image": image,
         "createdAt": createdAt!.toIso8601String(),
         "updatedAt": updatedAt!.toIso8601String(),
-        "user_skill": List<dynamic>.from(userSkill!.map((x) => x)),
       };
 }
 
@@ -170,6 +164,7 @@ class UserSkill {
   int? userId;
   DateTime? createdAt;
   DateTime? updatedAt;
+  String? skill;
 
   UserSkill({
     this.id,
@@ -177,6 +172,7 @@ class UserSkill {
     this.userId,
     this.createdAt,
     this.updatedAt,
+    this.skill,
   });
 
   factory UserSkill.fromJson(Map<String, dynamic> json) => UserSkill(
@@ -185,6 +181,7 @@ class UserSkill {
         userId: json["user_id"],
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
+        skill: json["skill"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -193,5 +190,6 @@ class UserSkill {
         "user_id": userId,
         "createdAt": createdAt!.toIso8601String(),
         "updatedAt": updatedAt!.toIso8601String(),
+        "skill": skill,
       };
 }

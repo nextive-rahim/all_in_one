@@ -16,6 +16,8 @@ class UpdateProfileiewController extends GetxController {
   late RegistrationResponseModel signupModel;
   final RxString imagelink = ''.obs;
   final formKey = GlobalKey<FormState>();
+  RxList<int> selectedSkillIdList = <int>[].obs;
+  RxList<String> selectedSkillNameList = <String>[].obs;
   Future<RegistrationResponseModel> updateProfile() async {
     // if (!formKey.currentState!.validate()) {
     //   return;
@@ -31,13 +33,13 @@ class UpdateProfileiewController extends GetxController {
       "description": employeeDescriptionController.text,
       if (uploadResumeController.text.isNotEmpty) "image": imageController.text,
       "address": addressController.text,
-      // "skill": skillsController.text,
+      "skill": selectedSkillIdList,
       "time": '',
     };
 
     try {
       final res = await _repository.updateProfile(body);
-      print(res['success']);
+
       signupModel = RegistrationResponseModel.fromJson(res);
       _pageStateController(PageState.success);
       return signupModel;
@@ -85,7 +87,7 @@ class UpdateProfileiewController extends GetxController {
   TextEditingController uploadResumeController = TextEditingController();
   TextEditingController employeeDescriptionController = TextEditingController();
   TextEditingController addressController = TextEditingController();
-  // TextEditingController skillsController = TextEditingController();
+  TextEditingController skillsController = TextEditingController();
   TextEditingController timeController = TextEditingController();
   void profileDataPopulate(UserModel user) {
     nameController.text = user.name ?? '';
@@ -94,15 +96,15 @@ class UpdateProfileiewController extends GetxController {
     addressController.text = user.address ?? '';
   }
 
-  void clearTextFields() {
-    // employeeController.clear();
-    nameController.clear();
-    contactsNumberController.clear();
-    uploadResumeController.clear();
-    employeeDescriptionController.clear();
-    timeController.clear();
-    imageController.clear();
-    addressController.clear();
-    // skillsController.clear();
-  }
+  // void clearTextFields() {
+  //   // employeeController.clear();
+  //   nameController.clear();
+  //   contactsNumberController.clear();
+  //   uploadResumeController.clear();
+  //   employeeDescriptionController.clear();
+  //   timeController.clear();
+  //   imageController.clear();
+  //   addressController.clear();
+  //   // skillsController.clear();
+  // }
 }

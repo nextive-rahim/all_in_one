@@ -13,6 +13,11 @@ class SkillViewController extends GetxController {
   get pageState => _pageStateController.value;
 
   RxList<SkillsModel> skillsList = <SkillsModel>[].obs;
+  @override
+  void onInit() {
+    getSkills();
+    super.onInit();
+  }
 
   Future<void> getSkills() async {
     _pageStateController(PageState.loading);

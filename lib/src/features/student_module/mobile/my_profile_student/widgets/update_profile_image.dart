@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:all_in_one/src/core/service/file/file_service.dart';
-import 'package:all_in_one/src/core/widgets/cached_network_image.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_update_view_controller.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
 import 'package:flutter/material.dart';

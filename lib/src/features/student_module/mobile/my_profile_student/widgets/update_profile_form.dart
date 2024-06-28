@@ -1,8 +1,10 @@
+import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/service/file/file_service.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_update_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/widgets/skill_update_section.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,22 +20,6 @@ class UpdateProfileForm extends GetView<UpdateProfileiewController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // labelText('Employee Id*'),
-          // TextFormFieldWidget(
-          //   isEmailField: true,
-          //   controller: controller.employeeController,
-          //   valtext: AppStrings.commonTextVal,
-          //   height: 45,
-          //   hintText: '123456',
-          //   readOnly: false,
-          //   maxLine: 1,
-          //   keyType: TextInputType.text,
-          //   wordLimit: 100,
-          //   fontFamily: AppStrings.inter,
-          //   fontSize: 16,
-          //   fontWeight: FontWeight.w400,
-          //   onChanged: (value) {},
-          // ),
           labelText('Name'),
           TextFormFieldWidget(
             isEmailField: true,
@@ -98,22 +84,8 @@ class UpdateProfileForm extends GetView<UpdateProfileiewController> {
             fontWeight: FontWeight.w400,
             onChanged: (value) {},
           ),
-          // labelText('Skills'),
-          // TextFormFieldWidget(
-          //   isEmailField: true,
-          //   controller: controller.skillsController,
-          //   valtext: AppStrings.commonTextVal,
-          //   height: 45,
-          //   hintText: 'Updated skills',
-          //   readOnly: false,
-          //   maxLine: 1,
-          //   keyType: TextInputType.text,
-          //   wordLimit: 100,
-          //   fontFamily: AppStrings.inter,
-          //   fontSize: 16,
-          //   fontWeight: FontWeight.w400,
-          //   onChanged: (value) {},
-          // ),
+          20.sh,
+          SkillUpdateSection(),
           labelText('Upload Resume'),
           TextFormFieldWidget(
             isEmailField: true,

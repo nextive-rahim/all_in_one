@@ -4,6 +4,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/profile/model/profile_response_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,8 +29,17 @@ class ProfileBodySection extends StatelessWidget {
           fontSize: 20,
         ),
         TextWidget(
-          text: List<String>.generate(userModel.userSkill!.length,
-              (int index) => userModel.userSkill![index]).toString(),
+          text: List<String>.generate(
+              Get.find<ProfileController>()
+                  .profileResponseModel
+                  .userSkill!
+                  .length,
+              (int index) =>
+                  Get.find<ProfileController>()
+                      .profileResponseModel
+                      .userSkill![index]
+                      .skill ??
+                  '').toString(),
           color: CommonColor.greyColor4,
           maxLine: 4,
           fontFamily: AppStrings.aeonikTRIAL,
@@ -92,7 +102,6 @@ class ProfileBodySection extends StatelessWidget {
           elevation: 5,
           child: InkWell(
             onTap: () {
-              print(userModel.resume);
               Get.toNamed(Routes.resume, arguments: userModel.resume);
             },
             child: SizedBox(
