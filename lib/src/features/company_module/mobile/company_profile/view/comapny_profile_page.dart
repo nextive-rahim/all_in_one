@@ -4,7 +4,6 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
-import 'package:all_in_one/src/core/widgets/cached_network_image.dart';
 import 'package:all_in_one/src/core/widgets/mobile/student_app_bar.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -44,10 +43,13 @@ class CompanyProfilePage extends GetView<ProfileController> {
                           width: 150,
                           color: AppColors.white,
                           child: Center(
-                            child: AppCachedNetworkImage(
-                              imageUrl: controller.userModel?.image,
-                            ),
-                          ),
+                              child: Image.network(controller
+                                      .userModel!.image ??
+                                  'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg')
+                              //  AppCachedNetworkImage(
+                              //   imageUrl: controller.userModel?.image,
+                              // ),
+                              ),
                         ),
                         const SizedBox(height: 20),
                         Row(

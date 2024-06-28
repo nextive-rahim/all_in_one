@@ -72,14 +72,19 @@ class InputFieldValidator {
     String? Function()? callBack,
     String feedback = "Required",
     bool optional = false,
-    String? password,
+    String password = 'password',
   }) {
     return (value) {
       if (value == null || value.isEmpty) {
         return optional ? null : feedback;
       } else if (value.length < 6) {
         return "Must be more than 6 character";
+      } else if (value == password) {
+        print("Password $password");
+        return null;
       } else if (value != password) {
+        print(value);
+        print("Password $password");
         return "Password must match";
       }
 

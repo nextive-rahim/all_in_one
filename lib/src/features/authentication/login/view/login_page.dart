@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget _forMobile(BuildContext context) {
     return Scaffold(
       backgroundColor: CommonColor.whiteColor,
-      body: SafeArea(
+      body: Center(
         child: SingleChildScrollView(
             child: Padding(
           padding: const EdgeInsets.all(16.0),

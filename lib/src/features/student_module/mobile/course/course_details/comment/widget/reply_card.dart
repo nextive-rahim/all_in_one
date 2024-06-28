@@ -37,13 +37,15 @@ class _ReplyCardState extends State<ReplyCard> {
             width: 50,
             height: 50,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: AppCachedNetworkImage(
-                imageUrl: profileController.userModel?.image,
-                cachedHeight: 131,
-                cachedWidth: 131,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(50),
+                child: Image.network(profileController.userModel?.image ?? '')
+
+                //  AppCachedNetworkImage(
+                //   imageUrl: profileController.userModel?.image,
+                //   cachedHeight: 131,
+                //   cachedWidth: 131,
+                // ),
+                ),
           ),
           const SizedBox(width: 15),
           Column(

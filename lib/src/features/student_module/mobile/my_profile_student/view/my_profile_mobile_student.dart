@@ -52,9 +52,7 @@ class MyProfileStudentMobile extends GetView<ProfileController> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ProfileHeader(
-                              userModel: controller.userModel!,
-                            ),
+                            ProfileHeader(userModel: controller.userModel!),
                             const SizedBox(height: 21),
                             Padding(
                               padding: const EdgeInsets.only(

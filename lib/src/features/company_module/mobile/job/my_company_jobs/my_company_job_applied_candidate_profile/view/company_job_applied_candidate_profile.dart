@@ -100,14 +100,20 @@ class _CompanyJobAppliedCandidateProfileState
                                 shape: CircleBorder(),
                               ),
                               child: ClipRRect(
-                                borderRadius: BorderRadius.circular(50),
-                                child: const AppCachedNetworkImage(
-                                  imageUrl:
-                                      'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg',
-                                  cachedHeight: 129,
-                                  cachedWidth: 199,
-                                ),
-                              ),
+                                  borderRadius: BorderRadius.circular(50),
+                                  child: Image.network(
+                                    'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg',
+                                    cacheHeight: 129,
+                                    cacheWidth: 199,
+                                  )
+
+                                  // const AppCachedNetworkImage(
+                                  //   imageUrl:
+                                  //       'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg',
+                                  //   cachedHeight: 129,
+                                  //   cachedWidth: 199,
+                                  // ),
+                                  ),
                             ),
                             const SizedBox(
                               height: 15,

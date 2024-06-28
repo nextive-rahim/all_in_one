@@ -57,13 +57,14 @@ class _ViewCommentCardState extends State<ViewCommentCard> {
             height: 50,
             decoration: const BoxDecoration(),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(50),
-              child: AppCachedNetworkImage(
-                imageUrl: profileController.userModel?.image,
-                cachedHeight: 131,
-                cachedWidth: 131,
-              ),
-            ),
+                borderRadius: BorderRadius.circular(50),
+                child: Image.network(profileController.userModel?.image ?? '')
+                //  AppCachedNetworkImage(
+                //   imageUrl: profileController.userModel?.image,
+                //   cachedHeight: 131,
+                //   cachedWidth: 131,
+                // ),
+                ),
           ),
           const SizedBox(width: 15),
           Expanded(

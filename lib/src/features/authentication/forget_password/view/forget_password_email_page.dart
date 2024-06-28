@@ -542,7 +542,6 @@ class _ForgetPasswordEmailPageState extends State<ForgetPasswordEmailPage> {
         Get.snackbar(
           AppStrings.success,
           controller.loginModel.message.toString(),
-          borderColor: CommonColor.redColors,
           borderWidth: 1,
         );
         Get.toNamed(Routes.otpVerification);

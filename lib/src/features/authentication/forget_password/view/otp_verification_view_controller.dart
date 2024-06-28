@@ -541,7 +541,6 @@ class OTPverificationPageState extends State<OTPverificationPage> {
         Get.snackbar(
           AppStrings.success,
           controller.loginModel.message.toString(),
-          borderColor: CommonColor.redColors,
           borderWidth: 1,
         );
         Get.toNamed(Routes.forgotPassword);

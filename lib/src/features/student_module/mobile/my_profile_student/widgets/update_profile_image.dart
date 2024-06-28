@@ -49,12 +49,18 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
                           : SizedBox(
                               height: 140,
                               width: 140,
-                              child: AppCachedNetworkImage(
-                                imageUrl: profileController.userModel?.image,
-                                cachedHeight: 367,
-                                cachedWidth: 367,
+                              child: Image.network(
+                                profileController.userModel?.image ?? '',
+                                cacheHeight: 367,
+                                cacheWidth: 367,
+                              )
+
+                              // AppCachedNetworkImage(
+                              //   imageUrl: profileController.userModel?.image,
+                              //   cachedHeight: 367,
+                              //   cachedWidth: 367,
+                              // ),
                               ),
-                            ),
                       Positioned(
                         bottom: 0,
                         right: 0,

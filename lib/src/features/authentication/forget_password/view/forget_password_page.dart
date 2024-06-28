@@ -38,6 +38,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   final SizeConfig _sizeConfig = SizeConfig();
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return MediaQuery.of(context).size.width < 1000
         ? _forMobile(context)
         : _forWeb(context);
@@ -84,20 +85,29 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           OutlinedInputField(
+                            autofocus: true,
                             labelText: AppStrings.password,
                             controller: controller.passwordController,
                             hintText: AppStrings.password,
                             validator: InputFieldValidator.password(),
+                            isPasswordField: true,
                           ),
                           OutlinedInputField(
                             labelText: AppStrings.confirmPassword,
                             controller: controller.comfirmPasswordController,
                             hintText: AppStrings.confirmPassword,
-                            validator: InputFieldValidator.confirmPassword(
-                              password: controller.passwordController.text,
-                              // optional: controller
-                              //     .comfirmPasswordController.text.isEmpty,
-                            ),
+                            isPasswordField: true,
+                            validator: (val) {
+                              if (val!.isEmpty) {
+                                return 'Empty';
+                              }
+
+                              if (val != controller.passwordController.text) {
+                                return 'Not Match';
+                              }
+
+                              return null;
+                            },
                           ),
                           10.sh,
                           const SizedBox(height: 30),
@@ -554,9 +564,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
             fontFamily: AppStrings.aeonikTRIAL,
             fontWeight: FontWeight.w700,
             fontSize: 28),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         // const TextWidget(
         //     text: AppStrings.heyWelcomeback,
         //     color: CommonColor.headingTextColor1,
@@ -584,7 +592,6 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         Get.snackbar(
           AppStrings.success,
           controller.loginModel.message.toString(),
-          borderColor: CommonColor.redColors,
           borderWidth: 1,
         );
         Get.offNamed(Routes.login);
