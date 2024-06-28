@@ -26,8 +26,9 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
           child: GestureDetector(
             onTap: () async {
               await FileService().pickAFile().then((value) {
-                controller.imagelink.value = value!.path;
-                controller.uploadFile(value.path);
+                controller.uploadFile(value!.file).then((value2) {
+                  controller.imagelink.value = value2;
+                });
                 return;
               });
             },

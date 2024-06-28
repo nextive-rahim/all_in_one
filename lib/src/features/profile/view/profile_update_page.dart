@@ -1,9 +1,9 @@
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_update_view_controller.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/widgets/update_profile_button.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/widgets/update_profile_form.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/widgets/update_profile_image.dart';
+import 'package:all_in_one/src/features/profile/widgets/update_profile_button.dart';
+import 'package:all_in_one/src/features/profile/widgets/update_profile_form.dart';
+import 'package:all_in_one/src/features/profile/widgets/update_profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

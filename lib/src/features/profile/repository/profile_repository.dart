@@ -22,7 +22,7 @@ class ProfileRepository {
   }
 
   Future<dynamic> uploadFile(Map<String, dynamic> data) async {
-    final res = await RestClient().post(
+    final res = await RestClient().postFormData(
       APIType.PROTECTED,
       UrlConstant.fileUpload,
       data,

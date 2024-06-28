@@ -8,8 +8,8 @@ import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/widgets/profile_body_section.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/widgets/profile_header.dart';
+import 'package:all_in_one/src/features/profile/widgets/profile_body_section.dart';
+import 'package:all_in_one/src/features/profile/widgets/profile_header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -6,7 +6,7 @@ import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controlle
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/view/interviewer_payment_home_page_mobile.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/root/view/interviewer_home_page_mobile.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/view/profile_page.dart';
+import 'package:all_in_one/src/features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/student_module/root/widget/home_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -35,11 +35,11 @@ import 'package:all_in_one/src/features/student_module/mobile/course/home_course
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/binding/job_list_binding.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/binding/profile_binding.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/view/change_password_page.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/view/profile_update_page.dart';
+import 'package:all_in_one/src/features/profile/binding/profile_binding.dart';
+import 'package:all_in_one/src/features/profile/view/change_password_page.dart';
+import 'package:all_in_one/src/features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_student.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/view/resume_view_page.dart';
+import 'package:all_in_one/src/features/profile/view/resume_view_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/notification/view/notification_view_page.dart';
 import 'package:all_in_one/src/features/student_module/web/register/dashboard_reg_fist_time_web_large.dart';
 import 'package:all_in_one/src/features/student_module/web/root/view/responsive_layout_course_detail_form_reg.dart';

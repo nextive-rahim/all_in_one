@@ -9,20 +9,24 @@ String registrationResponseModelToJson(RegistrationResponseModel data) =>
 class RegistrationResponseModel {
   bool? success;
   String? message;
+  String? data;
 
   RegistrationResponseModel({
     this.success,
     this.message,
+    this.data,
   });
 
   factory RegistrationResponseModel.fromJson(Map<String, dynamic> json) =>
       RegistrationResponseModel(
         success: json["success"],
         message: json["message"],
+        data: json["data"],
       );
 
   Map<String, dynamic> toJson() => {
         "success": success,
         "message": message,
+        "data": data,
       };
 }

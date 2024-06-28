@@ -77,9 +77,16 @@ class SkillUpdateSection extends GetView<UpdateProfileiewController> {
                             .profileResponseModel
                             .userSkill!
                             .isEmpty
-                        ? const Text(
-                            'Select Skills',
-                            style: TextStyle(color: CommonColor.hintTextColor),
+                        ? Text(
+                            controller.selectedSkillNameList.isEmpty
+                                ? 'Select Skills'
+                                : List<String>.generate(
+                                        controller.selectedSkillNameList.length,
+                                        (int index) => controller
+                                            .selectedSkillNameList[index])
+                                    .toString(),
+                            style: const TextStyle(
+                                color: CommonColor.hintTextColor),
                           )
                         : controller.selectedSkillNameList.isNotEmpty
                             ? Text(

@@ -4,7 +4,7 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/features/profile/controller/profile_update_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/widgets/skill_update_section.dart';
+import 'package:all_in_one/src/features/profile/widgets/skill_update_section.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

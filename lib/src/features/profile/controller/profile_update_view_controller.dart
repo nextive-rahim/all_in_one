@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:all_in_one/src/features/authentication/registration/model/registration_response_model.dart';
 import 'package:all_in_one/src/features/profile/model/profile_response_model.dart';
 import 'package:all_in_one/src/features/profile/repository/profile_repository.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' as getx;
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class UpdateProfileiewController extends GetxController {
   final ProfileRepository _repository = ProfileRepository();
@@ -31,9 +36,9 @@ class UpdateProfileiewController extends GetxController {
       if (uploadResumeController.text.isNotEmpty)
         "resume": uploadResumeController,
       "description": employeeDescriptionController.text,
-      if (uploadResumeController.text.isNotEmpty) "image": imageController.text,
+      if (imagelink.value != '') "image": imagelink.value,
       "address": addressController.text,
-      "skill": selectedSkillIdList,
+      if (selectedSkillIdList.isNotEmpty) "skill": selectedSkillIdList,
       "time": '',
     };
 
@@ -54,11 +59,15 @@ class UpdateProfileiewController extends GetxController {
 
   late RegistrationResponseModel profileResponseModel;
 
-  Future<void> uploadFile(String fileLink) async {
+  Future<String> uploadFile(File file) async {
     _pageStateController(PageState.loading);
+    String fileName = file.path.split('/').last;
 
     Map<String, dynamic> requestBody = {
-      'avatar': fileLink,
+      "avatar": await MultipartFile.fromFile(
+        file.path,
+        filename: fileName,
+      ),
     };
 
     Log.debug(requestBody.toString());
@@ -70,12 +79,12 @@ class UpdateProfileiewController extends GetxController {
 
       _pageStateController(PageState.success);
 
-      return;
+      return profileResponseModel.data ?? '';
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       _pageStateController(PageState.error);
-      return;
+      return profileResponseModel.data ?? '';
     }
   }
 
