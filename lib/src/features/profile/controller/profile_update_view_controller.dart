@@ -20,6 +20,8 @@ class UpdateProfileiewController extends GetxController {
   get pageState => _pageStateController.value;
   late RegistrationResponseModel signupModel;
   final RxString imagelink = ''.obs;
+  final RxString fileImagelink = ''.obs;
+  final RxString resumeLink = ''.obs;
   final formKey = GlobalKey<FormState>();
   RxList<int> selectedSkillIdList = <int>[].obs;
   RxList<String> selectedSkillNameList = <String>[].obs;
@@ -33,8 +35,7 @@ class UpdateProfileiewController extends GetxController {
     Map<String, dynamic> body = {
       "name": nameController.text,
       "phone": contactsNumberController.text,
-      if (uploadResumeController.text.isNotEmpty)
-        "resume": uploadResumeController,
+      if (resumeLink.value != '') "resume": resumeLink.value,
       "description": employeeDescriptionController.text,
       if (imagelink.value != '') "image": imagelink.value,
       "address": addressController.text,

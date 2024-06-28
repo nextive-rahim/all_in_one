@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:all_in_one/src/core/service/file/file_service.dart';
@@ -26,7 +27,8 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
           child: GestureDetector(
             onTap: () async {
               await FileService().pickAFile().then((value) {
-                controller.uploadFile(value!.file).then((value2) {
+                controller.fileImagelink.value = value!.path;
+                controller.uploadFile(value.file).then((value2) {
                   controller.imagelink.value = value2;
                 });
                 return;
@@ -37,12 +39,12 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
                 Obx(
                   () => Stack(
                     children: [
-                      controller.imagelink.value != ''
+                      controller.fileImagelink.value != ''
                           ? SizedBox(
                               height: 140,
                               width: 140,
                               child: Image.file(
-                                File(controller.imagelink.value),
+                                File(controller.fileImagelink.value),
                                 fit: BoxFit.cover,
                               ),
                             )

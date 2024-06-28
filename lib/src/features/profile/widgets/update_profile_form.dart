@@ -103,8 +103,12 @@ class UpdateProfileForm extends GetView<UpdateProfileiewController> {
             onChanged: (value) {},
             suffixIcon: IconButton(
               onPressed: () async {
-                FileModel? file = await FileService().pickAFile(pdfOnly: true);
-                controller.imagelink.value = file!.path;
+                await FileService().pickAFile(pdfOnly: true).then((value) {
+                  controller.uploadFile(value!.file).then((value2) {
+                    controller.resumeLink.value = value2;
+                  });
+                  return;
+                });
               },
               icon: const Icon(Icons.upload),
             ),

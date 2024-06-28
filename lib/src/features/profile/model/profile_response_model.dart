@@ -86,7 +86,7 @@ class UserModel {
         name: json["name"],
         userId: json["user_id"],
         phone: json["phone"] == '' ? 'N/A' : json["phone"],
-        resume: json["resume"] == '' ? null : json["description"],
+        resume: json["resume"] == '' ? null : json["resume"],
         address: json["address"] == '' ? 'N/A' : json["address"],
         description: json["description"] == '' ? 'N/A' : json["description"],
         image: json["image"] == ''
