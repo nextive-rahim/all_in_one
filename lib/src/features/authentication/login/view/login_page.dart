@@ -782,13 +782,11 @@ class _LoginPageState extends State<LoginPage> {
         if (controller.loginModel.success == false &&
             controller.loginModel.message ==
                 'User is not active. Please check your email to verify your account.') {
-          Get.snackbar(
-            'Send OTP',
-            controller.loginModel.message.toString(),
-            borderColor: CommonColor.redColors,
-            borderWidth: 1,
+          _showDailogBox(
+            'please check your email and verify your account',
+            title: 'Do you want to verify account?',
           );
-          controller.resentOtpForVerifyMail();
+
           return;
         }
         if (controller.loginModel.success == false) {
@@ -826,6 +824,42 @@ class _LoginPageState extends State<LoginPage> {
             Get.offNamed(Routes.bottomNavBarInterview);
           }
         }
+      },
+    );
+  }
+
+  void _showDailogBox(String message, {String? title}) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(title ?? 'Something went wrong'),
+          content: SingleChildScrollView(
+            child: SelectableText(message),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Cencle'),
+            ),
+            TextButton(
+              onPressed: () {
+                controller.resentOtpForVerifyMail().then((value) {
+                  Get.snackbar(
+                    'Send OTP',
+                    controller.loginModel.message.toString(),
+                    borderColor: CommonColor.redColors,
+                    borderWidth: 1,
+                  );
+                });
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            )
+          ],
+        );
       },
     );
   }
