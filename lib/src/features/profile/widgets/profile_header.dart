@@ -93,6 +93,8 @@ class ProfileHeader extends StatelessWidget {
                   child: Image.network(
                     userModel.image ??
                         'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg',
+                    width: double.infinity,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),

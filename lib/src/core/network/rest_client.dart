@@ -290,11 +290,11 @@ class RestClient {
               getx.Get.offAllNamed(Routes.login);
               break;
             case 401:
-              Get.snackbar(
-                'Failed',
-                error.toString(),
-                snackPosition: SnackPosition.TOP,
-              );
+              // Get.snackbar(
+              //   'Failed',
+              //   error.toString(),
+              //   snackPosition: SnackPosition.TOP,
+              // );
               CacheService().dispose();
               getx.Get.offAllNamed(Routes.login);
               break;

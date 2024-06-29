@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/apply_candidate_list.dart';
@@ -57,6 +58,7 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                     isFromCompanyJob
                         ? const Offstage()
                         : SaveJobButtonFromJobDetails(job: viewJobResponseData),
+                    20.sh,
                     JobDescription(job: viewJobResponseData),
                     //  const JobShareButton(),
                     isFromCompanyJob

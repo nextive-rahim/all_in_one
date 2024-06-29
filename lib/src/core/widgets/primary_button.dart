@@ -21,14 +21,14 @@ class PrimaryButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: backgroundColor ?? CommonColor.purpleColor1,
-        gradient: const LinearGradient(
-          colors: [
-            CommonColor.purpleColor1,
-            CommonColor.purpleColor1,
-          ],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
+        // gradient: const LinearGradient(
+        //   colors: [
+        //     CommonColor.purpleColor1,
+        //     CommonColor.purpleColor1,
+        //   ],
+        //   begin: Alignment.centerLeft,
+        //   end: Alignment.centerRight,
+        // ),
       ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(

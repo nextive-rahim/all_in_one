@@ -47,60 +47,62 @@ class JobCard extends StatelessWidget {
                   arguments: [job, false],
                 );
               },
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  TextWidget(
-                    textAlign: TextAlign.center,
-                    text: job.jobRole ?? '',
-                    color: CommonColor.greyColor4,
-                    maxLine: 1,
-                    fontFamily: AppStrings.sfProDisplay,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18,
-                  ),
-                  const SizedBox(height: 7),
-                  TextWidget(
-                    textAlign: TextAlign.center,
-                    text: job.workLocation ?? '',
-                    color: CommonColor.greyColor12,
-                    maxLine: 1,
-                    fontFamily: AppStrings.sfProDisplay,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                  ),
-                  const SizedBox(height: 18),
-                  Row(
-                    children: [
-                      Image.asset(
-                        ImageConstant.dollarCircle,
-                        color: CommonColor.blackColor1,
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      TextWidget(
-                          textAlign: TextAlign.center,
-                          text: "${job.paysalary ?? ''}/yr.",
-                          color: CommonColor.greyColor4,
-                          maxLine: 1,
-                          fontFamily: AppStrings.sfProDisplay,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12),
-                    ],
-                  ),
-                  const SizedBox(height: 6),
-                  const SizedBox(height: 18),
-                  TextWidget(
-                    textAlign: TextAlign.start,
-                    text: job.jobDescription ?? '',
-                    color: CommonColor.greyColor12,
-                    maxLine: 2,
-                    fontFamily: AppStrings.sfProDisplay,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                  ),
-                ],
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextWidget(
+                      textAlign: TextAlign.center,
+                      text: job.jobRole ?? '',
+                      color: CommonColor.greyColor4,
+                      maxLine: 1,
+                      fontFamily: AppStrings.sfProDisplay,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    ),
+                    const SizedBox(height: 7),
+                    TextWidget(
+                      textAlign: TextAlign.center,
+                      text: job.workLocation ?? '',
+                      color: CommonColor.greyColor12,
+                      maxLine: 1,
+                      fontFamily: AppStrings.sfProDisplay,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                    ),
+                    const SizedBox(height: 18),
+                    Row(
+                      children: [
+                        Image.asset(
+                          ImageConstant.dollarCircle,
+                          color: CommonColor.blackColor1,
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        TextWidget(
+                            textAlign: TextAlign.center,
+                            text: "${job.paysalary ?? ''}/yr.",
+                            color: CommonColor.greyColor4,
+                            maxLine: 1,
+                            fontFamily: AppStrings.sfProDisplay,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12),
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    const SizedBox(height: 18),
+                    TextWidget(
+                      textAlign: TextAlign.start,
+                      text: job.jobDescription ?? '',
+                      color: CommonColor.greyColor12,
+                      maxLine: 2,
+                      fontFamily: AppStrings.sfProDisplay,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 20),
