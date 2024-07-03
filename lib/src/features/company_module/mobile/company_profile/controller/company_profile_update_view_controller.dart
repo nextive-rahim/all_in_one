@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:all_in_one/src/features/authentication/registration/model/registration_response_model.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/repository/company_profile_update_repository.dart';
 import 'package:all_in_one/src/features/profile/model/profile_response_model.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:get/get.dart' as getx;
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class CompanyProfileUpdateViewController extends GetxController {
   final CompanyProfileUpdate _repository = CompanyProfileUpdate();
@@ -15,6 +20,9 @@ class CompanyProfileUpdateViewController extends GetxController {
   get pageState => _pageStateController.value;
   late RegistrationResponseModel signupModel;
   final RxString imagelink = ''.obs;
+  final RxString fileImagelink = ''.obs;
+  final RxString resumeLink = ''.obs;
+  late RegistrationResponseModel profileResponseModel;
   final formKey = GlobalKey<FormState>();
   Future<RegistrationResponseModel> companyProfileUpdate() async {
     // if (!formKey.currentState!.validate()) {
@@ -25,9 +33,10 @@ class CompanyProfileUpdateViewController extends GetxController {
 
     Map<String, dynamic> body = {
       "name": nameController.text,
-      "email": emailController.text,
       "phone": contactsNumberController.text,
-      "descripton": employeeDescriptionController.text,
+      "description": employeeDescriptionController.text,
+      if (imagelink.value != '') "image": imagelink.value,
+      "address": addressController.text,
       "time": '',
     };
 
@@ -46,6 +55,35 @@ class CompanyProfileUpdateViewController extends GetxController {
     return signupModel;
   }
 
+  Future<String> uploadFile(File file) async {
+    _pageStateController(PageState.loading);
+    String fileName = file.path.split('/').last;
+
+    Map<String, dynamic> requestBody = {
+      "avatar": await MultipartFile.fromFile(
+        file.path,
+        filename: fileName,
+      ),
+    };
+
+    Log.debug(requestBody.toString());
+
+    try {
+      final res = await _repository.uploadFile(requestBody);
+
+      profileResponseModel = RegistrationResponseModel.fromJson(res);
+
+      _pageStateController(PageState.success);
+
+      return profileResponseModel.data ?? '';
+    } catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      _pageStateController(PageState.error);
+      return profileResponseModel.data ?? '';
+    }
+  }
+
   void profileDataPopulate(UserModel user) {
     nameController.text = user.name ?? '';
     contactsNumberController.text = user.phone ?? '';
@@ -54,8 +92,7 @@ class CompanyProfileUpdateViewController extends GetxController {
 
   /// Text Editing Controllers
   TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController addressController = TextEditingController();
   TextEditingController contactsNumberController = TextEditingController();
   TextEditingController employeeDescriptionController = TextEditingController();
-  TextEditingController timeController = TextEditingController();
 }

@@ -23,8 +23,15 @@ class CompanyLogoUpdateSection
         ),
         child: GestureDetector(
           onTap: () async {
-            FileModel? file = await FileService().pickAFile();
-            controller.imagelink.value = file!.path;
+            await FileService().pickAFile().then((value) {
+              controller.fileImagelink.value = value!.path;
+              controller.uploadFile(value.file).then((value2) {
+                controller.imagelink.value = value2;
+              });
+              return;
+            });
+            // FileModel? file = await FileService().pickAFile();
+            // controller.imagelink.value = file!.path;
           },
           child: Column(
             children: [

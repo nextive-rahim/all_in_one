@@ -41,9 +41,8 @@ class _LoginPageState extends State<LoginPage> {
   final SizeConfig _sizeConfig = SizeConfig();
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.of(context).size.width < 1000
-        ? _forMobile(context)
-        : _forWeb(context);
+    return _forMobile(context);
+    //   : _forWeb(context);
   }
 
   Widget _forMobile(BuildContext context) {
@@ -806,7 +805,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         } else if (controller.loginModel.data?.userType == 2) {
           if (kIsWeb) {
-            Get.offNamed(Routes.responsiveLayoutDashboardInterview);
+            Get.offNamed(Routes.bottomNavBarEmployee);
           } else {
             Get.offNamed(Routes.bottomNavBarEmployee);
           }

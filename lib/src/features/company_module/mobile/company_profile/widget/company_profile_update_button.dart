@@ -22,7 +22,6 @@ class CompanyProfileUpdateButton
                 'Employee Added Successfully',
               );
               Get.find<ProfileController>().profile();
-              Get.back();
             }
           });
         },

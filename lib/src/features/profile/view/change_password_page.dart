@@ -85,12 +85,14 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           OutlinedInputField(
+                            isPasswordField: true,
                             labelText: AppStrings.oldPassword,
                             controller: controller.oldPasswordController,
                             hintText: AppStrings.oldPassword,
                             validator: InputFieldValidator.password(),
                           ),
                           OutlinedInputField(
+                            isPasswordField: true,
                             labelText: AppStrings.newPassword,
                             controller: controller.newPasswordController,
                             hintText: AppStrings.newPassword,

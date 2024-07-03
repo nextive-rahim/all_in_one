@@ -1,16 +1,3 @@
-// import 'dart:io';
-// import 'package:all_in_one/src/core/theme/colors.dart';
-// import 'package:all_in_one/src/core/utils/image_constant.dart';
-// import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
-// import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
-// import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_with_course_page.dart';
-// import 'package:all_in_one/src/features/student_module/mobile/job/jobs/view/list_and_search_job_mobile.dart';
-// import 'package:all_in_one/src/features/student_module/mobile/my_profile_student/view/my_profile_mobile_student.dart';
-// import 'package:flutter/material.dart';
-// import 'package:get/get_core/src/get_main.dart';
-// import 'package:get/get_instance/get_instance.dart';
-// import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';

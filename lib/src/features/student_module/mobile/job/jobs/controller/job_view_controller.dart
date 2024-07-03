@@ -26,7 +26,7 @@ class JobsViewController extends GetxController {
   }
 
   Future<void> getjobList() async {
-    // _pageStateController(PageState.loading);
+    _pageStateController(PageState.loading);
 
     Map<String, dynamic> requestBody = {
       //"course_id": courseId,
@@ -38,7 +38,7 @@ class JobsViewController extends GetxController {
       final res = await _repository.fetchJobList(requestBody);
       JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
       myJobList.value = jobListResponse.data ?? [];
-      // _pageStateController(PageState.success);
+      _pageStateController(PageState.success);
 
       return;
     } catch (e, stackTrace) {

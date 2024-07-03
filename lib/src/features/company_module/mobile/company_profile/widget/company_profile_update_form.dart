@@ -32,10 +32,10 @@ class CompanyProfileUpdateFormField
             fontWeight: FontWeight.w400,
             onChanged: (value) {},
           ),
-          labelText('Email address'),
+          labelText('Address'),
           TextFormFieldWidget(
             isEmailField: true,
-            controller: controller.emailController,
+            controller: controller.addressController,
             valtext: AppStrings.commonTextVal,
             height: 45,
             hintText: 'example@gmail.com',
