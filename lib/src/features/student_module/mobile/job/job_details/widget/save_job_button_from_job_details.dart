@@ -23,11 +23,12 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
       builder: (BuildContext context, bool value, child) {
         return Obx(
           () => PrimaryButton(
-            backgroundColor: job.isApplied == 1 || value
+            backgroundColor: job.isSaved == 1 || value
                 ? AppColors.grey
                 : CommonColor.purpleColor1,
             isLoading: controller.pageState == PageState.loading,
             onTap: () {
+              print(job.isSaved == 1);
               if (job.isSaved == 1 || isSavedJob.value) {
                 Get.snackbar(
                   'Warning',

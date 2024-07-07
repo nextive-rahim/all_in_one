@@ -12,6 +12,13 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/vie
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+enum JobIsFrom {
+  all,
+  applied,
+  saved,
+  company,
+}
+
 class JobDetailsPageMobile extends StatefulWidget {
   const JobDetailsPageMobile({super.key});
 
@@ -25,6 +32,10 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
   final savecontroller = Get.lazyPut(() => JobsViewController(), fenix: true);
   final JobModel viewJobResponseData = Get.arguments[0];
   final isFromCompanyJob = Get.arguments[1] ?? false;
+  final bool isFromAppliedJob =
+      Get.arguments[2] == JobIsFrom.applied ? true : false;
+  final bool isFromSaveddJob =
+      Get.arguments[2] == JobIsFrom.saved ? true : false;
   @override
   void initState() {
     super.initState();
@@ -52,10 +63,10 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                   children: [
                     JobDetailsHeader(job: viewJobResponseData),
                     JobSummaryCard(job: viewJobResponseData),
-                    isFromCompanyJob
+                    isFromCompanyJob || isFromAppliedJob
                         ? const Offstage()
                         : ApplyJobButton(job: viewJobResponseData),
-                    isFromCompanyJob
+                    isFromCompanyJob || isFromSaveddJob
                         ? const Offstage()
                         : SaveJobButtonFromJobDetails(job: viewJobResponseData),
                     20.sh,

@@ -21,17 +21,8 @@ class ContentTileBuilder extends StatelessWidget {
           itemCount: contentList.length, //AppStrings.courseContentList.length,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index1) {
-            return ExpansionTile(
-              initiallyExpanded: true,
-              title: TextWidget(
-                textAlign: TextAlign.start,
-                text: contentList[index1].name ?? '',
-                color: CommonColor.blackColor2,
-                maxLine: 2,
-                fontFamily: AppStrings.sfProDisplay,
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-              ),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               // subtitle: TextWidget(
               //     text:
               //         '1 / 3  |  ${controller.viewCourseContentData[index1].duration}',
@@ -41,6 +32,18 @@ class ContentTileBuilder extends StatelessWidget {
               //     fontWeight: FontWeight.w400,
               //     fontSize: 12),
               children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: TextWidget(
+                    textAlign: TextAlign.start,
+                    text: contentList[index1].name ?? '',
+                    color: CommonColor.blackColor2,
+                    maxLine: 2,
+                    fontFamily: AppStrings.sfProDisplay,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
+                ),
                 ContentVideoBuilder(
                   index: index1,
                   contentVideoList: contentList[index1].courseContent ?? [],

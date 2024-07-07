@@ -1,4 +1,6 @@
+import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/widgets/empty_screen.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/job_card.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +30,16 @@ class SavedJobsTab extends GetView<JobsViewController> {
                   itemBuilder: (context, index) {
                     return JobCard(
                       isFromSaveJob: true,
-                      // onTap: () {
-                      //   Get.toNamed(Routes.jobDetails);
-                      // },
+                      onTap: () {
+                        Get.toNamed(
+                          Routes.jobDetails,
+                          arguments: [
+                            controller.savedJobList[index],
+                            false,
+                            JobIsFrom.saved
+                          ],
+                        );
+                      },
                       job: controller.savedJobList[index],
                     );
                   },

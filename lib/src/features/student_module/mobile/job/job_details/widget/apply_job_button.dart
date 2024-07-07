@@ -31,6 +31,7 @@ class ApplyJobButton extends GetView<AppliedJobsViewController> {
                   : CommonColor.purpleColor1,
               isLoading: controller.pageState == PageState.loading,
               onTap: () {
+                print(job.isApplied == 1);
                 if (job.isApplied == 1 || isAppliedJob.value) {
                   Get.snackbar(
                     'Warning',

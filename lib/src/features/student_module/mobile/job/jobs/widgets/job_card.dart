@@ -4,6 +4,7 @@ import 'package:all_in_one/src/core/utils/formated_date_time.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/deleted_saved_job_button.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/save_job_button_from_job_card.dart';
@@ -14,12 +15,14 @@ class JobCard extends StatelessWidget {
   const JobCard({
     super.key,
     required this.job,
-    // required this.onTap,
+    required this.onTap,
     this.isFromSaveJob = false,
+    this.isFromAppliedJob = false,
   });
   final bool isFromSaveJob;
+  final bool isFromAppliedJob;
   final JobModel job;
-  // final void Function()? onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +44,7 @@ class JobCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             GestureDetector(
-              onTap: () {
-                Get.toNamed(
-                  Routes.jobDetails,
-                  arguments: [job, false],
-                );
-              },
+              onTap: onTap,
               child: Container(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -121,7 +119,9 @@ class JobCard extends StatelessWidget {
                 ),
                 isFromSaveJob
                     ? DeletedSaveJobButtonFromJobCard(job: job)
-                    : SaveJobButtonFromJobCard(job: job)
+                    : isFromAppliedJob
+                        ? const Offstage()
+                        : SaveJobButtonFromJobCard(job: job)
               ],
             )
           ],

@@ -35,6 +35,7 @@ class CourseRegistrationSection
     if (userType == 2) {
       controller.appearInTest.value = true;
     }
+    print(controller.isWatchAllVideoList.contains(true));
     return Column(
       children: [
         Obx(
@@ -49,11 +50,10 @@ class CourseRegistrationSection
               );
             }
             return controller.appearInTest.value ||
-                    profileController.profileResponseModel.isSubscribed == 1 ||
-                    controller.isWatchAllVideoList.contains(false)
+                    profileController.profileResponseModel.isSubscribed == 1
                 ? GestureDetector(
                     onTap: () {
-                      if (controller.isCourseVideoWatched.value) {
+                      if (controller.isWatchAllVideoList.contains(false)) {
                         // userCourseAvailabilityViewController
                         //     .checkUserCourseAvailability()
                         //     .then(
@@ -136,6 +136,8 @@ class CourseRegistrationSection
                                   .toString())
                           .then((value) {
                         Get.find<ProfileController>().profile();
+                        controller.appearInTest.value = true;
+                        controller.courseRegistered.value = true;
                         courseRegistrationSuccessfulBottomSheet(
                                 controller.registration.message, context)
                             .then((value) {

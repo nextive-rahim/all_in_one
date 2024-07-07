@@ -50,13 +50,13 @@ class JobsViewController extends GetxController {
   }
 
   Future<void> savedjobList() async {
-    _pageStateController(PageState.loading);
+    //_pageStateController(PageState.loading);
 
     try {
       final res = await _repository.fetchSavedJobs();
       JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
       savedJobList.value = jobListResponse.data ?? [];
-      _pageStateController(PageState.success);
+      // _pageStateController(PageState.success);
 
       return;
     } catch (e, stackTrace) {
@@ -68,7 +68,7 @@ class JobsViewController extends GetxController {
   }
 
   Future<RegistrationResponseModel> saveJob(int id) async {
-    _pageStateController(PageState.loading);
+    // _pageStateController(PageState.loading);
 
     Map<String, dynamic> body = {
       "job_id": id,
@@ -78,7 +78,7 @@ class JobsViewController extends GetxController {
       final res = await _repository.saveJob(body);
 
       signupModel = RegistrationResponseModel.fromJson(res);
-      _pageStateController(PageState.success);
+      // _pageStateController(PageState.success);
       // savedJobList.add();
       // savedjobList();
       return signupModel;

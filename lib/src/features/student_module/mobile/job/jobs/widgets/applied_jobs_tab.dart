@@ -1,5 +1,7 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/widgets/empty_screen.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/applied_jobs_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/job-card_loading.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/job_card.dart';
@@ -34,10 +36,17 @@ class AppliedTab extends GetView<AppliedJobsViewController> {
                     },
                     itemBuilder: (context, index) {
                       return JobCard(
-                        // onTap: () {
-                        //   Get.toNamed(Routes.jobDetails,
-                        //       arguments: controller.appiedJobList[index]);
-                        // },
+                        onTap: () {
+                          Get.toNamed(
+                            Routes.jobDetails,
+                            arguments: [
+                              controller.appiedJobList[index],
+                              false,
+                              JobIsFrom.applied
+                            ],
+                          );
+                        },
+                        isFromAppliedJob: true,
                         job: controller.appiedJobList[index],
                       );
                     },
