@@ -59,4 +59,8 @@ class API {
 
   ///Skill
   static const String skill = 'get-skill';
+
+  /// Notification
+  static const String sendNotification = 'send-notification';
+  static const String viewNotification = 'view-notification';
 }

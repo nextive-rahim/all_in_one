@@ -339,7 +339,7 @@ class AppPages {
 
     GetPage(
       name: Routes.notification,
-      page: () => const NotificationViewPage(),
+      page: () => NotificationViewPage(),
       transition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 300),
     ),
