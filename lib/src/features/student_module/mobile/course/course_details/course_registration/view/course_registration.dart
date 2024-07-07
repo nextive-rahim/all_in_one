@@ -49,7 +49,8 @@ class CourseRegistrationSection
               );
             }
             return controller.appearInTest.value ||
-                    profileController.profileResponseModel.isSubscribed == 1
+                    profileController.profileResponseModel.isSubscribed == 1 ||
+                    controller.isWatchAllVideoList.contains(false)
                 ? GestureDetector(
                     onTap: () {
                       if (controller.isCourseVideoWatched.value) {
@@ -70,7 +71,7 @@ class CourseRegistrationSection
                       } else {
                         Util.displayToast(
                             context,
-                            "Please watch the course first",
+                            "Please watch the all videos first",
                             CommonColor.redColors);
                       }
                     },
@@ -138,10 +139,10 @@ class CourseRegistrationSection
                         courseRegistrationSuccessfulBottomSheet(
                                 controller.registration.message, context)
                             .then((value) {
-                          if (true) {
-                            controller.appearInTest.value = true;
-                            controller.courseRegistered.value = true;
-                          }
+                          //if (true) {
+                          controller.appearInTest.value = true;
+                          controller.courseRegistered.value = true;
+                          // }
                         });
                       });
                     },

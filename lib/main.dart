@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
       navigatorObservers: [RouteObserver<ModalRoute<void>>()],
       getPages: AppPages.pages,
       theme: themeData,
-      // home:
+      // home:bo
       //     //BottomNavBarStudent()
       //     //BottomNavBarEmployee()
       //     // BottomNavBarInterviewer()

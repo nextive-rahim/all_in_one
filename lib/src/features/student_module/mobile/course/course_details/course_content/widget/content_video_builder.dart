@@ -32,7 +32,7 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
   final videoController = Get.find<IsWatchVideoViewController>();
   final courseRegistratoinController =
       Get.find<CourseRegistrationViewController>();
-  List<bool> dataList = [];
+
   // bool isShownVideo = false;
   @override
   void initState() {
@@ -40,12 +40,12 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
 
     for (int i = 0; i < widget.contentVideoList.length; i++) {
       if (widget.contentVideoList[i].isWatch == 1) {
-        dataList.add(true);
+        courseRegistratoinController.isWatchAllVideoList.add(true);
       } else {
-        dataList.add(false);
+        courseRegistratoinController.isWatchAllVideoList.add(false);
       }
     }
-    if (!dataList.contains(false)) {
+    if (!courseRegistratoinController.isWatchAllVideoList.contains(false)) {
       courseRegistratoinController.isCourseVideoWatched.value = true;
     }
   }
@@ -60,8 +60,8 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index2) {
         return CheckboxListTile(
-          value:
-              widget.contentVideoList[index2].isWatch == 1 || dataList[index2],
+          value: widget.contentVideoList[index2].isWatch == 1 ||
+              courseRegistratoinController.isWatchAllVideoList[index2],
           title: GestureDetector(
               onTap: () {
                 if (userType == 1 &&
@@ -77,7 +77,8 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
                 videoController.videolink.value =
                     // 'https://www.youtube.com/watch?v=B5i-MSifHvY';
                     widget.contentVideoList[index2].videoLink ?? '';
-                if (!dataList.contains(false)) {
+                if (!courseRegistratoinController.isWatchAllVideoList
+                    .contains(false)) {
                   courseRegistratoinController.isCourseVideoWatched.value =
                       true;
                 }
@@ -89,7 +90,8 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
                   );
                 }
                 setState(() {
-                  dataList[index2] = true;
+                  courseRegistratoinController.isWatchAllVideoList[index2] =
+                      true;
                 });
                 //  print(dataList.map((e) => e));
               },
