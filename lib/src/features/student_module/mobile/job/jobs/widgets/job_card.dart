@@ -1,15 +1,12 @@
-import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/formated_date_time.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/deleted_saved_job_button.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/save_job_button_from_job_card.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class JobCard extends StatelessWidget {
   const JobCard({

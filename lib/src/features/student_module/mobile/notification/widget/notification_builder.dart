@@ -1,6 +1,5 @@
 import 'package:all_in_one/src/features/student_module/mobile/notification/model/notification_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/notification/widget/notification_card.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 
 class NotificationBuilder extends StatelessWidget {
