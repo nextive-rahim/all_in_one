@@ -3,6 +3,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
+import 'package:all_in_one/src/core/validators/input_form_validators.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/controller/student_interview_request_view_controller.dart';
@@ -98,38 +99,21 @@ class _SubmitPortfolioLinkSectionState
           ],
         ),
         const SizedBox(height: 20),
-        TextFormFieldWidget(
+        OutlinedInputField(
           controller: controller.submitExamLinkController,
-          valtext: AppStrings.commonTextVal,
-          height: 40,
           hintText: "www.github.io/myportfolio",
-          readOnly: false,
-          maxLine: 1,
-          keyType: TextInputType.text,
-          wordLimit: 100,
-          fontFamily: AppStrings.inter,
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-          onChanged: (value) {
-            controller.submitExamLinkController.text = value;
-            setState(() {});
-          },
-          prefixIcon: Image.asset(
+          validator: InputFieldValidator.name(),
+          prefix: Image.asset(
             ImageConstant.link1,
             color: CommonColor.hintTextColor,
           ),
-          suffixIcon: const Icon(
+          suffix: const Icon(
             Icons.help_outline,
             color: CommonColor.greyColor19,
             size: 18,
           ),
-          onSuffixTap: () {
-            /// hintUsernameHelperText = !hintUsernameHelperText;
-          },
         ),
-        const SizedBox(
-          height: 8,
-        ),
+        const SizedBox(height: 8),
         const TextWidget(
           text: AppStrings.pleaseEnterValidGithubURLProceed,
           color: CommonColor.greyColor20,
@@ -162,6 +146,7 @@ class _SubmitPortfolioLinkSectionState
                   .activeRequistForInterview
                   .value = true;
             }
+            FocusManager.instance.primaryFocus?.unfocus();
           },
           child: Container(
             width: 109,

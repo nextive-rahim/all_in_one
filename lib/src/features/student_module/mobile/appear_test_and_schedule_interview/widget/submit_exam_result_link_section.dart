@@ -2,6 +2,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
+import 'package:all_in_one/src/core/validators/input_form_validators.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/controller/sunmit_result_link_view_controller.dart';
@@ -29,21 +30,11 @@ class SubmitExamResultLinkSection
             fontWeight: FontWeight.w400,
             fontSize: 16),
         const SizedBox(height: 12),
-        TextFormFieldWidget(
+        OutlinedInputField(
           controller: controller.submitExamLinkController,
-          valtext: AppStrings.commonTextVal,
-          height: 40,
           hintText: AppStrings.pasteYourLinkHere,
-          hintTextColor: CommonColor.blackColor1,
-          readOnly: false,
-          maxLine: 1,
-          keyType: TextInputType.text,
-          wordLimit: 100,
-          fontFamily: AppStrings.inter,
-          fontSize: 16,
-          fontWeight: FontWeight.w400,
-          onChanged: (value) {},
-          prefixIcon: Image.asset(ImageConstant.link1),
+          validator: InputFieldValidator.name(),
+          prefix: Image.asset(ImageConstant.link1),
         ),
         const SizedBox(height: 8),
         const TextWidget(
@@ -93,7 +84,7 @@ class SubmitExamResultLinkSection
               } else {
                 Util.displayToast(
                   context,
-                  'Please enter exan result link',
+                  'Please enter exam result link',
                   Colors.red,
                 );
               }

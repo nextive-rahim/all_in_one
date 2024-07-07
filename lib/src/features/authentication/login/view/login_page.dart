@@ -841,7 +841,7 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Cencle'),
+              child: const Text('Cencel'),
             ),
             TextButton(
               onPressed: () {

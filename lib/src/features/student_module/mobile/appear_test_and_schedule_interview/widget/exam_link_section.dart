@@ -17,14 +17,6 @@ class ExamLinkSection extends GetView<ExamLinkViewController> {
       () {
         return Column(
           children: [
-            // const TextWidget(
-            //   text: AppStrings.testYourSkills,
-            //   color: CommonColor.blackColor1,
-            //   maxLine: 1,
-            //   fontFamily: AppStrings.aeonikTRIAL,
-            //   fontWeight: FontWeight.w400,
-            //   fontSize: 26,
-            // ),
             const SizedBox(height: 15),
             Container(
               width: SizeConfig.screenWidth,

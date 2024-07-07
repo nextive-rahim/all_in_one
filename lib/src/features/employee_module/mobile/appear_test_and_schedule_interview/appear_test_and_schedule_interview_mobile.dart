@@ -30,47 +30,10 @@ class _AppearTestAndScheduleInterviewEmployeeMobilePageState
 
   String? editorResult = '', _pastlink2Text = '';
 
-  //YoutubePlayerController? _controller;
   String dropdownValue = AppStrings.courseLevelDropdown.first;
   @override
   void initState() {
-    //  _fetchDummyData();
-
     super.initState();
-    // if (!Platform.isWindows) {
-    //   _controller = YoutubePlayerController(
-    //     params: const YoutubePlayerParams(
-    //       showControls: true,
-    //       mute: false,
-    //       showFullscreenButton: true,
-    //       loop: false,
-    //     ),
-    //   );
-
-    //   _controller!.setFullScreenListener(
-    //     (isFullScreen) {
-    //       // Navigator.push(
-    //       //   context,
-    //       //   MaterialPageRoute(
-    //       //       builder: (context) => const YoutubePlayerFullscreen(
-    //       //             videoId: 'lNQJNImBsKY',
-    //       //           )),
-    //       // );
-    //       PersistentNavBarNavigator.pushNewScreen(
-    //         context,
-    //         screen: const YoutubePlayerFullscreen(
-    //           videoId: 'lNQJNImBsKY',
-    //         ),
-    //         withNavBar: false, // OPTIONAL VALUE. True by default.
-    //         pageTransitionAnimation: PageTransitionAnimation.cupertino,
-    //       );
-
-    //       log('${isFullScreen ? 'Entered' : 'Exited'} Fullscreen.');
-    //     },
-    //   );
-
-    //   _controller!.loadVideoById(videoId: 'lNQJNImBsKY');
-    // }
   }
 
   @override
@@ -99,21 +62,24 @@ class _AppearTestAndScheduleInterviewEmployeeMobilePageState
           ),
         ),
         body: Padding(
-          padding:
-              const EdgeInsets.only(top: 0, right: 17, left: 20, bottom: 0),
+          padding: const EdgeInsets.only(
+            top: 0,
+            right: 17,
+            left: 20,
+            bottom: 0,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TextWidget(
-                  text: AppStrings.testYourSkills,
-                  color: CommonColor.blackColor1,
-                  maxLine: 1,
-                  fontFamily: AppStrings.aeonikTRIAL,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 26),
-              const SizedBox(
-                height: 15,
+                text: AppStrings.testYourSkills,
+                color: CommonColor.blackColor1,
+                maxLine: 1,
+                fontFamily: AppStrings.aeonikTRIAL,
+                fontWeight: FontWeight.w400,
+                fontSize: 26,
               ),
+              const SizedBox(height: 15),
               Container(
                 width: SizeConfig.screenWidth,
                 height: 1,
@@ -124,9 +90,7 @@ class _AppearTestAndScheduleInterviewEmployeeMobilePageState
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(
-                      height: 15,
-                    ),
+                    const SizedBox(height: 15),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -150,45 +114,40 @@ class _AppearTestAndScheduleInterviewEmployeeMobilePageState
                               ),
                               child: Image.asset(ImageConstant.link3),
                             ),
-                            const SizedBox(
-                              height: 8,
-                            ),
+                            const SizedBox(height: 8),
                             const TextWidget(
-                                text: "01",
-                                color: CommonColor.greyColor11,
-                                maxLine: 1,
-                                fontFamily: AppStrings.sfProDisplay,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16),
+                              text: "01",
+                              color: CommonColor.greyColor11,
+                              maxLine: 1,
+                              fontFamily: AppStrings.sfProDisplay,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
                           ],
                         ),
-                        const SizedBox(
-                          width: 16,
-                        ),
+                        const SizedBox(width: 16),
                         const Expanded(
                             child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             TextWidget(
-                                text: AppStrings.step01,
-                                color: CommonColor.greyColor12,
-                                maxLine: 1,
-                                fontFamily: AppStrings.sfProDisplay,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 16),
-                            SizedBox(
-                              height: 7,
+                              text: AppStrings.step01,
+                              color: CommonColor.greyColor12,
+                              maxLine: 1,
+                              fontFamily: AppStrings.sfProDisplay,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
                             ),
+                            SizedBox(height: 7),
                             TextWidget(
-                                text: AppStrings.openYourTestLinkBrowser,
-                                color: CommonColor.blackColor1,
-                                maxLine: 2,
-                                fontFamily: AppStrings.sfProDisplay,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 18),
-                            SizedBox(
-                              height: 7,
+                              text: AppStrings.openYourTestLinkBrowser,
+                              color: CommonColor.blackColor1,
+                              maxLine: 2,
+                              fontFamily: AppStrings.sfProDisplay,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 18,
                             ),
+                            SizedBox(height: 7),
                             Row(
                               children: [
                                 Icon(
@@ -224,7 +183,11 @@ class _AppearTestAndScheduleInterviewEmployeeMobilePageState
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(
-                            left: 16, right: 16, top: 7, bottom: 5),
+                          left: 16,
+                          right: 16,
+                          top: 7,
+                          bottom: 5,
+                        ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -595,8 +558,8 @@ class _AppearTestAndScheduleInterviewEmployeeMobilePageState
                     GestureDetector(
                       onTap: () {
                         //if (_activeRequistForInterview) {
-                          requestForInterviewBottomSheet();
-                       // }
+                        requestForInterviewBottomSheet();
+                        // }
                       },
                       child: Container(
                         width: SizeConfig.screenWidth,
