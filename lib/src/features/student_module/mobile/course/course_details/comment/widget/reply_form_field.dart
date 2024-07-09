@@ -3,7 +3,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
-import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/comment/controller/view_reply_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/comment/controller/write_reply_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/comment/model/student_view_comment_model.dart';

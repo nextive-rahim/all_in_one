@@ -2,9 +2,9 @@ import 'dart:io';
 
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
-import 'package:all_in_one/src/features/authentication/registration/model/registration_response_model.dart';
+import 'package:all_in_one/src/features/common_features/authentication/registration/model/registration_response_model.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/repository/company_profile_update_repository.dart';
-import 'package:all_in_one/src/features/profile/model/profile_response_model.dart';
+import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as getx;

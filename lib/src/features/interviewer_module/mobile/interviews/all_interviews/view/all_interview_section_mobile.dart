@@ -21,17 +21,10 @@ class AllInterviewsSection extends GetView<AllInterviewsViewController> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const StudentAppBarMobile(
-          titel1: AppStrings.interviews,
-          title2: AppStrings.findAndanageYourInterviews,
-          isBack: false,
-          searchHintText: '',
-          //  onSearchListener: (value) {},
-        ),
         //  const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.only(
-            top: 20,
+            top: 10,
             left: 15,
             right: 15,
             bottom: 80,
@@ -39,12 +32,6 @@ class AllInterviewsSection extends GetView<AllInterviewsViewController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                width: SizeConfig.screenWidth,
-                height: 1,
-                color: CommonColor.greyColor18,
-              ),
-              const SizedBox(height: 10),
               CommonTabSection(
                 firstTabViewItems: [
                   Obx(() {

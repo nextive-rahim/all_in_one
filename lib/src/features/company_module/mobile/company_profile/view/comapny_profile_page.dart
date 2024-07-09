@@ -5,7 +5,7 @@ import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/mobile/student_app_bar.dart';
-import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

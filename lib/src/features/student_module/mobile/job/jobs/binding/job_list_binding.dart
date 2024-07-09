@@ -1,4 +1,4 @@
-import 'package:all_in_one/src/features/profile/controller/profile_view_controller.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/applied_jobs_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:get/get_core/src/get_main.dart';

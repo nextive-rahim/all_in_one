@@ -1,6 +1,6 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
-import 'package:all_in_one/src/features/authentication/registration/model/registration_response_model.dart';
+import 'package:all_in_one/src/features/common_features/authentication/registration/model/registration_response_model.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/repository/added_new_employee_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -36,8 +36,8 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 10),
-                (interviewTestRequestController.isInterviewerApproved.value ||
-                        isInterviewerApproved == true)
+                (!interviewTestRequestController.isInterviewerApproved.value ||
+                        !isInterviewerApproved == true)
                     ? AllInterviewsSection()
                     : const InterviewerTestRequestSection()
               ],
