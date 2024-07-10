@@ -25,7 +25,7 @@ import 'package:all_in_one/src/features/company_module/web/my_company_jobs/my_co
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/binding/interviews_binding.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/binding/interviewer_test_request_binding.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/binding/confirm_interview_request_binding.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/view/selected_interview_details_page.dart';
+import 'package:all_in_one/src/features/common_features/user_details/view/selected_interview_details_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/binding/appear_test_binding.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
