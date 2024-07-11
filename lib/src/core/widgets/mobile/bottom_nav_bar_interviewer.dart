@@ -4,7 +4,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/view/interviewer_payment_home_page_mobile.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/root/view/interviewer_home_page_mobile.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/view/interviewer_home_page_mobile.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/student_module/root/widget/home_appbar.dart';

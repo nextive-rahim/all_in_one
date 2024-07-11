@@ -15,6 +15,7 @@ class ProfileResponseModel {
   List<UserSkill>? userSkill;
   dynamic isSubscribed;
   int? countSubscribedUser;
+  TestRequest? testRequest;
 
   ProfileResponseModel({
     this.success,
@@ -25,6 +26,7 @@ class ProfileResponseModel {
     this.userSkill,
     this.isSubscribed,
     this.countSubscribedUser,
+    this.testRequest,
   });
 
   factory ProfileResponseModel.fromJson(Map<String, dynamic> json) =>
@@ -42,6 +44,9 @@ class ProfileResponseModel {
             ? []
             : List<UserSkill>.from(
                 json["user_skill"].map((x) => UserSkill.fromJson(x))),
+        testRequest: json["test_request"] == null
+            ? null
+            : TestRequest.fromJson(json["test_request"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -53,6 +58,7 @@ class ProfileResponseModel {
         "is_subscribed": isSubscribed,
         "count_subscribed_user": countSubscribedUser,
         "user_skill": List<dynamic>.from(userSkill!.map((x) => x.toJson())),
+        "test_request": testRequest!.toJson(),
       };
 }
 
@@ -191,5 +197,61 @@ class UserSkill {
         "createdAt": createdAt!.toIso8601String(),
         "updatedAt": updatedAt!.toIso8601String(),
         "skill": skill,
+      };
+}
+
+class TestRequest {
+  int? id;
+  int? userId;
+  int? courseId;
+  DateTime? date;
+  String? timeSlotA;
+  String? timeSlotB;
+  dynamic approvedSlotA;
+  dynamic approvedSlotB;
+  int? status;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+
+  TestRequest({
+    this.id,
+    this.userId,
+    this.courseId,
+    this.date,
+    this.timeSlotA,
+    this.timeSlotB,
+    this.approvedSlotA,
+    this.approvedSlotB,
+    this.status,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  factory TestRequest.fromJson(Map<String, dynamic> json) => TestRequest(
+        id: json["id"],
+        userId: json["user_id"],
+        courseId: json["course_id"],
+        date: DateTime.parse(json["date"]),
+        timeSlotA: json["time_slot_a"],
+        timeSlotB: json["time_slot_b"],
+        approvedSlotA: json["approved_slot_a"],
+        approvedSlotB: json["approved_slot_b"],
+        status: json["status"],
+        createdAt: DateTime.parse(json["createdAt"]),
+        updatedAt: DateTime.parse(json["updatedAt"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "user_id": userId,
+        "course_id": courseId,
+        "date": date!.toIso8601String(),
+        "time_slot_a": timeSlotA,
+        "time_slot_b": timeSlotB,
+        "approved_slot_a": approvedSlotA,
+        "approved_slot_b": approvedSlotB,
+        "status": status,
+        "createdAt": createdAt!.toIso8601String(),
+        "updatedAt": updatedAt!.toIso8601String(),
       };
 }
