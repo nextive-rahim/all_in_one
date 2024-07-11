@@ -8,9 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class RegistrationCompletedPage extends StatefulWidget {
-  const RegistrationCompletedPage({
-    super.key,
-  });
+  const RegistrationCompletedPage({super.key});
 
   @override
   State<RegistrationCompletedPage> createState() =>
@@ -19,15 +17,12 @@ class RegistrationCompletedPage extends StatefulWidget {
 
 class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       backgroundColor: CommonColor.whiteColor,
+      appBar: AppBar(
+        title: const Text('Complete Registration'),
+      ),
       body: Padding(
         padding: const EdgeInsets.only(
           left: 16,
@@ -43,46 +38,35 @@ class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
                 ),
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 92,
-                    ),
+                    const SizedBox(height: 92),
                     Image.asset(
                       ImageConstant.regComplete,
                       width: 252,
                       height: 245,
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    const SizedBox(height: 30),
                     const TextWidget(
-                        text: AppStrings.registrationCompleted,
-                        color: CommonColor.headingTextColor1,
-                        maxLine: 1,
-                        fontFamily: AppStrings.aeonikTRIAL,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 20),
-                    const SizedBox(
-                      height: 12,
+                      text: AppStrings.registrationCompleted,
+                      color: CommonColor.headingTextColor1,
+                      maxLine: 1,
+                      fontFamily: AppStrings.aeonikTRIAL,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 20,
                     ),
+                    const SizedBox(height: 12),
                     const TextWidget(
-                        text: AppStrings.welcomeMsgRegComplete,
-                        color: CommonColor.headingTextColor1,
-                        maxLine: 2,
-                        textAlign: TextAlign.center,
-                        fontFamily: AppStrings.aeonikTRIAL,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14),
-                    const SizedBox(
-                      height: 45,
+                      text: AppStrings.welcomeMsgRegComplete,
+                      color: CommonColor.headingTextColor1,
+                      maxLine: 2,
+                      textAlign: TextAlign.center,
+                      fontFamily: AppStrings.aeonikTRIAL,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
                     ),
+                    const SizedBox(height: 45),
                     GestureDetector(
                       onTap: () {
                         Get.offNamed(Routes.login);
-                        // Navigator.pushAndRemoveUntil(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (context) => const LoginPage()),
-                        //     (Route<dynamic> route) => false);
                       },
                       child: Container(
                         height: 60,
@@ -97,23 +81,20 @@ class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
                               Icons.arrow_circle_right_outlined,
                               color: CommonColor.whiteColor,
                             ),
-                            SizedBox(
-                              width: 12,
-                            ),
+                            SizedBox(width: 12),
                             TextWidget(
-                                text: AppStrings.visitDashboard,
-                                color: CommonColor.whiteColor,
-                                maxLine: 1,
-                                fontFamily: AppStrings.inter,
-                                fontWeight: FontWeight.w500,
-                                fontSize: 18),
+                              text: AppStrings.visitDashboard,
+                              color: CommonColor.whiteColor,
+                              maxLine: 1,
+                              fontFamily: AppStrings.inter,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                            ),
                           ],
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 95,
-                    ),
+                    const SizedBox(height: 95),
                   ],
                 ),
               ),
@@ -122,9 +103,7 @@ class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
                 height: 1,
                 color: CommonColor.backgroundColor2,
               ),
-              const SizedBox(
-                height: 21,
-              ),
+              const SizedBox(height: 21),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -138,16 +117,15 @@ class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
                           color: CommonColor.headingTextColor1,
                         ),
                       ),
-                      const SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       const TextWidget(
-                          text: AppStrings.termsOfUse,
-                          color: CommonColor.headingTextColor1,
-                          maxLine: 1,
-                          fontFamily: AppStrings.aeonikTRIAL,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10),
+                        text: AppStrings.termsOfUse,
+                        color: CommonColor.headingTextColor1,
+                        maxLine: 1,
+                        fontFamily: AppStrings.aeonikTRIAL,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
                     ],
                   ),
                   Row(
@@ -160,16 +138,15 @@ class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
                           color: CommonColor.headingTextColor1,
                         ),
                       ),
-                      const SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       const TextWidget(
-                          text: AppStrings.dataCollectionRights,
-                          color: CommonColor.headingTextColor1,
-                          maxLine: 1,
-                          fontFamily: AppStrings.aeonikTRIAL,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10),
+                        text: AppStrings.dataCollectionRights,
+                        color: CommonColor.headingTextColor1,
+                        maxLine: 1,
+                        fontFamily: AppStrings.aeonikTRIAL,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
                     ],
                   ),
                   Row(
@@ -182,37 +159,33 @@ class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
                           color: CommonColor.headingTextColor1,
                         ),
                       ),
-                      const SizedBox(
-                        width: 8,
-                      ),
+                      const SizedBox(width: 8),
                       const TextWidget(
-                          text: AppStrings.privacyAndPolicy,
-                          color: CommonColor.headingTextColor1,
-                          maxLine: 1,
-                          fontFamily: AppStrings.aeonikTRIAL,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10),
+                        text: AppStrings.privacyAndPolicy,
+                        color: CommonColor.headingTextColor1,
+                        maxLine: 1,
+                        fontFamily: AppStrings.aeonikTRIAL,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 10,
+                      ),
                     ],
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              const SizedBox(height: 10),
               const TextWidget(
-                  text: AppStrings.appVersion,
-                  color: CommonColor.lightGreyForText1,
-                  maxLine: 1,
-                  fontFamily: AppStrings.aeonikTRIAL,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 10),
-              const SizedBox(
-                height: 22,
+                text: AppStrings.appVersion,
+                color: CommonColor.lightGreyForText1,
+                maxLine: 1,
+                fontFamily: AppStrings.aeonikTRIAL,
+                fontWeight: FontWeight.w400,
+                fontSize: 10,
               ),
+              const SizedBox(height: 22),
             ],
           ),
         ),
       ),
-    ));
+    );
   }
 }

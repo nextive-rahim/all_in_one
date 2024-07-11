@@ -134,13 +134,14 @@ class _LoginPageState extends State<LoginPage> {
                                   Get.toNamed(Routes.engagement);
                                 },
                                 child: const TextWidget(
-                                    text: AppStrings.registerNow,
-                                    underline: TextDecoration.underline,
-                                    color: CommonColor.headingTextColor1,
-                                    maxLine: 2,
-                                    fontFamily: AppStrings.inter,
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: 18),
+                                  text: AppStrings.registerNow,
+                                  underline: TextDecoration.underline,
+                                  color: CommonColor.headingTextColor1,
+                                  maxLine: 2,
+                                  fontFamily: AppStrings.inter,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 18,
+                                ),
                               ),
                             ],
                           ),
@@ -296,11 +297,10 @@ class _LoginPageState extends State<LoginPage> {
         }
         if (controller.loginModel.success == false) {
           Get.snackbar(
-            AppStrings.failed,
-            controller.loginModel.message.toString(),
-            borderColor: CommonColor.redColors,
-            borderWidth: 1,
-          );
+              AppStrings.failed, controller.loginModel.message.toString(),
+              borderColor: CommonColor.redColors,
+              borderWidth: 1,
+              snackPosition: SnackPosition.BOTTOM);
           return;
         }
         if (controller.loginModel.data?.userType == 1) {

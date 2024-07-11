@@ -87,7 +87,7 @@ class _OutlinedInputFieldState extends State<OutlinedInputField> {
               valueListenable: errorMessage,
               builder: (BuildContext context, String? value, child) {
                 return TextFormField(
-                  autofocus: widget.autofocus ?? false,
+                  autofocus: false,
                   // autofillHints: <String>[widget.autofilled ?? ''],
                   readOnly: widget.readOnly!,
                   textAlign: TextAlign.left,
