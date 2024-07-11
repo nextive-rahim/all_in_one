@@ -43,9 +43,9 @@ class _InterviewConfarmationButtonState
           // } else {
 
           Get.snackbar(
-            'Failed',
+            'Successfully',
             'Interview  Confirmed Successfully',
-            snackPosition: SnackPosition.TOP,
+            snackPosition: SnackPosition.BOTTOM,
           );
           interviewConfirmedBottomSheet(
             date: widget.selectedDate,
@@ -60,7 +60,7 @@ class _InterviewConfarmationButtonState
         alignment: Alignment.center,
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
-          color: CommonColor.whiteColor,
+          color: CommonColor.purpleColor1,
           shape: RoundedRectangleBorder(
             side: const BorderSide(width: 0.50, color: CommonColor.greyColor5),
             borderRadius: BorderRadius.circular(8),
@@ -76,7 +76,7 @@ class _InterviewConfarmationButtonState
         ),
         child: const TextWidget(
           text: AppStrings.confirmTimeslot,
-          color: CommonColor.blackColor,
+          color: CommonColor.whiteColor,
           maxLine: 1,
           fontFamily: AppStrings.inter,
           fontWeight: FontWeight.w500,

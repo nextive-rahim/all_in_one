@@ -29,6 +29,7 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
   Widget build(BuildContext context) {
     // final isInterviewerApproved =
     //     CacheService.boxAuth.read(CacheKeys.interviewApproval);
+    print(interviewTestRequestController.verificationPending.value);
     return Scaffold(
       backgroundColor: CommonColor.greyColor1,
       body: Obx(
@@ -36,25 +37,26 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
           if (profileController.pageState == PageState.loading) {
             return const Center(child: CircularProgressIndicator());
           }
-          return SingleChildScrollView(
+          return const SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 10),
-                profileController.profileResponseModel.testRequest == null
-                    ? InterviewerTestRequestCard(
-                        profileController: profileController)
-                    : profileController
-                                .profileResponseModel.testRequest?.status ==
-                            1
-                        ? const InterviewerTestResultPendingCard()
-                        : (interviewTestRequestController
-                                    .isInterviewerApproved.value ||
-                                profileController.profileResponseModel
-                                        .testRequest?.status ==
-                                    2)
-                            ? const AllInterviewsSection()
-                            : const Offstage()
+                SizedBox(height: 10),
+                // profileController.profileResponseModel.testRequest?.status ==
+                //             1 ||
+                //         interviewTestRequestController.verificationPending.value
+                //     ? const InterviewerTestResultPendingCard()
+                //     : profileController.profileResponseModel.testRequest == null
+                //         ? InterviewerTestRequestCard(
+                //             profileController: profileController)
+                //         : (interviewTestRequestController
+                //                     .isInterviewerApproved.value ||
+                //                 profileController.profileResponseModel
+                //                         .testRequest?.status ==
+                //                     2)
+                //             ?
+                AllInterviewsSection()
+                // : const Offstage()
               ],
             ),
           );

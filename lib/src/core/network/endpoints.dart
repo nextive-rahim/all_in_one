@@ -39,6 +39,7 @@ class API {
   static const String viewInterviewUrl = 'view-interview';
   static const String confirmInterviewUrl = 'confirm-interview';
   static const String interviewFeedbackUrl = 'interview-feedback';
+  static const String userDetails = 'view-selected-canditate';
 
   /// Company
 

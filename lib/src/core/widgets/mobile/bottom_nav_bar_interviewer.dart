@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
@@ -22,9 +23,13 @@ class BottomNavBarInterviewer extends StatefulWidget {
 class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
   final controller = Get.put(DashboardViewController());
   final profilecontroller = Get.put(ProfileController());
-  final List<Widget> _children = <Widget>[
+  final List<Widget> _isApprovedchildren = <Widget>[
     const InterviewerHomePageMobile(),
     const InterviewerPaymentHomePageMobile(),
+    ProfilePage()
+  ];
+  final List<Widget> _isNotApprovedchildren = <Widget>[
+    const InterviewerHomePageMobile(),
     ProfilePage()
   ];
 
@@ -38,12 +43,21 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
       appBar: HomeAppBar(),
       body: Obx(
         () {
+          if (profilecontroller.pageState == PageState.loading) {
+            return const Center(child: CircularProgressIndicator());
+          }
           return WillPopScope(
             onWillPop: _onWillPop,
             child: Scaffold(
               body: IndexedStack(
                 index: controller.currentIndex,
-                children: _children,
+                children: profilecontroller.profileResponseModel.testRequest ==
+                            null ||
+                        profilecontroller
+                                .profileResponseModel.testRequest?.status !=
+                            2
+                    ? _isNotApprovedchildren
+                    : _isApprovedchildren,
               ),
               bottomNavigationBar: Obx(
                 () {
@@ -69,26 +83,51 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                           topLeft: Radius.circular(_borderRadius),
                           topRight: Radius.circular(_borderRadius),
                         ),
-                        child: BottomNavigationBar(
-                          type: BottomNavigationBarType.fixed,
-                          items: <BottomNavigationBarItem>[
-                            BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.bookOpenLogo, 0),
-                              label: 'Home',
-                            ),
-                            BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.dollarCircle, 1),
-                              label: 'Payment',
-                            ),
-                            BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.users, 2),
-                              label: 'Profile',
-                            ),
-                          ],
-                          currentIndex: controller.currentIndex,
-                          selectedItemColor: AppColors.selectedNavItem,
-                          onTap: controller.updateIndex,
-                        ),
+                        child: profilecontroller
+                                        .profileResponseModel.testRequest ==
+                                    null ||
+                                profilecontroller.profileResponseModel
+                                        .testRequest?.status !=
+                                    2
+                            ? BottomNavigationBar(
+                                type: BottomNavigationBarType.fixed,
+                                items: <BottomNavigationBarItem>[
+                                  BottomNavigationBarItem(
+                                    icon: _buildIcon(
+                                        ImageConstant.bookOpenLogo, 0),
+                                    label: 'Home',
+                                  ),
+                                  BottomNavigationBarItem(
+                                    icon: _buildIcon(ImageConstant.users, 2),
+                                    label: 'Profile',
+                                  ),
+                                ],
+                                currentIndex: controller.currentIndex,
+                                selectedItemColor: AppColors.selectedNavItem,
+                                onTap: controller.updateIndex,
+                              )
+                            : BottomNavigationBar(
+                                type: BottomNavigationBarType.fixed,
+                                items: <BottomNavigationBarItem>[
+                                  BottomNavigationBarItem(
+                                    icon: _buildIcon(
+                                        ImageConstant.bookOpenLogo, 0),
+                                    label: 'Home',
+                                  ),
+                                  BottomNavigationBarItem(
+                                    icon: _buildIcon(
+                                        ImageConstant.dollarCircle, 1),
+                                    label: 'Payment',
+                                  ),
+                                  BottomNavigationBarItem(
+                                    icon: _buildIcon(ImageConstant.users, 2),
+                                    label: 'Profile',
+                                  ),
+                                ],
+                                currentIndex: controller.currentIndex,
+                                selectedItemColor: AppColors.selectedNavItem,
+                                onTap: controller.updateIndex,
+                              ),
                       ),
                     ),
                   );

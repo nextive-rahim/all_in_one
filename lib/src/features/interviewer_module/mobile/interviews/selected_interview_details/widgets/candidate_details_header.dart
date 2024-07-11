@@ -2,6 +2,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,8 +12,10 @@ class InterviewDetailsHeader extends StatelessWidget {
   const InterviewDetailsHeader({
     super.key,
     required this.interview,
+    required this.user,
   });
   final ViewInterviewResponseData interview;
+  final UserModel? user;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +26,7 @@ class InterviewDetailsHeader extends StatelessWidget {
           TextSpan(
             children: [
               const TextSpan(
-                text: "${AppStrings.courseName}: ",
+                text: "Name : ",
                 style: TextStyle(
                   color: CommonColor.blackColor1,
                   fontSize: 20,
@@ -32,7 +35,7 @@ class InterviewDetailsHeader extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: interview.title ?? '', //' Introduction to Java',
+                text: user?.name ?? '', //' Introduction to Java',
                 style: const TextStyle(
                   color: CommonColor.blackColor1,
                   fontSize: 20,
@@ -43,24 +46,12 @@ class InterviewDetailsHeader extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 20),
-        const TextWidget(
-          text: AppStrings.candidateProfile,
-          color: CommonColor.greyColor4,
-          maxLine: 1,
-          underline: TextDecoration.underline,
-          fontFamily: AppStrings.sfProDisplay,
-          fontWeight: FontWeight.w600,
-          fontSize: 16,
-        ),
-        const SizedBox(
-          height: 25,
-        ),
+        const SizedBox(height: 10),
         Text.rich(
           TextSpan(
             children: [
               const TextSpan(
-                text: "${AppStrings.name}: ",
+                text: "${AppStrings.courseName} : ",
                 style: TextStyle(
                   color: CommonColor.blackColor1,
                   fontSize: 16,
@@ -69,7 +60,7 @@ class InterviewDetailsHeader extends StatelessWidget {
                 ),
               ),
               TextSpan(
-                text: interview.username,
+                text: interview.title,
                 style: const TextStyle(
                   color: CommonColor.blackColor1,
                   fontSize: 16,
@@ -86,7 +77,7 @@ class InterviewDetailsHeader extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () async {
-                await launch("https://www.google.com/");
+                await launchUrl(Uri.parse("https://www.google.com/"));
               },
               child: Row(
                 children: [
@@ -106,30 +97,30 @@ class InterviewDetailsHeader extends StatelessWidget {
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () async {
-                await launch("https://www.google.com/");
-              },
-              child: Row(
-                children: [
-                  const TextWidget(
-                    text: AppStrings.testResultLink,
-                    color: CommonColor.blueColor1,
-                    maxLine: 1,
-                    fontFamily: AppStrings.inter,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16,
-                  ),
-                  const SizedBox(
-                    width: 8,
-                  ),
-                  Image.asset(
-                    ImageConstant.link2,
-                    color: CommonColor.blueColor1,
-                  )
-                ],
-              ),
-            ),
+            // GestureDetector(
+            //   onTap: () async {
+            //     await launch("https://www.google.com/");
+            //   },
+            //   child: Row(
+            //     children: [
+            //       const TextWidget(
+            //         text: AppStrings.testResultLink,
+            //         color: CommonColor.blueColor1,
+            //         maxLine: 1,
+            //         fontFamily: AppStrings.inter,
+            //         fontWeight: FontWeight.w500,
+            //         fontSize: 16,
+            //       ),
+            //       const SizedBox(
+            //         width: 8,
+            //       ),
+            //       Image.asset(
+            //         ImageConstant.link2,
+            //         color: CommonColor.blueColor1,
+            //       )
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ],
