@@ -87,12 +87,14 @@ class AppStrings {
 
   static const chooseEngagementContetTitles = [
     'Student \$10/month',
-    'Interviewer \$20/month',
+    '',
     'Company \$80/month',
+    'Interviewer \$20/month',
   ];
 
   static const chooseEngagementContents = [
     'Includes up to 10 users, 20GB indiviual data and access to all features.',
+    '',
     'Includes up to 20 users, 40GB indiviual data and access to all features.',
     'Unlimited users, unlimited individual data and access to all features.'
   ];
