@@ -5,6 +5,7 @@ import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/controller/confirm_interview_request_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/notification/controller/send_notification_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -44,11 +45,14 @@ class _InterviewConfarmationButtonState
           controller.interviewLInk.clear();
           // final FocusScopeNode focusScope = FocusScope.of(context);
           // focusScope.unfocus();
-          Get.snackbar(
-            'Successfully',
-            'Interview  Confirmed Successfully',
-            snackPosition: SnackPosition.BOTTOM,
-          );
+          // Get.snackbar(
+          //   'Successfully',
+          //   'Interview  Confirmed Successfully',
+          //   snackPosition: SnackPosition.BOTTOM,
+          // );
+          Get.put(SendNotificationViewController()).sendNotification(
+              userId: widget.interview.userId,
+              text: controller.interviewLInk.text);
           interviewConfirmedBottomSheet(
             date: widget.selectedDate,
             time: widget.selectedTime,
