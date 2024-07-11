@@ -2,8 +2,7 @@ import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:all_in_one/src/features/common_features/skill/model/skills_model.dart';
 import 'package:all_in_one/src/features/common_features/skill/repository/skill_repository.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 
 class SkillViewController extends GetxController {
   final SkillRepository _repository = SkillRepository();

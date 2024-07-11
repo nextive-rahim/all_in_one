@@ -9,9 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class UpdateProfileForm extends GetView<UpdateProfileiewController> {
-  const UpdateProfileForm({
-    super.key,
-  });
+  const UpdateProfileForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -100,18 +98,27 @@ class UpdateProfileForm extends GetView<UpdateProfileiewController> {
             fontFamily: AppStrings.inter,
             fontSize: 16,
             fontWeight: FontWeight.w400,
-            onChanged: (value) {},
-            suffixIcon: IconButton(
-              onPressed: () async {
-                await FileService().pickAFile(pdfOnly: true).then((value) {
-                  controller.uploadFile(value!.file).then((value2) {
-                    controller.resumeLink.value = value2;
-                  });
-                  return;
-                });
-              },
-              icon: const Icon(Icons.upload),
-            ),
+            onChanged: (value) {
+              String link = value.split('/').last;
+              controller.uploadResumeController.text = link;
+            },
+            suffixIcon: Obx(() => IconButton(
+                  onPressed: () async {
+                    await FileService().pickAFile(pdfOnly: true).then((value) {
+                      controller.isUploadFile.value = true;
+                      controller.uploadFile(value!.file).then((value2) {
+                        controller.resumeLink.value = value2;
+                        controller.uploadResumeController.text =
+                            controller.resumeLink.value;
+                      });
+                      controller.isUploadFile.value = false;
+                      return;
+                    });
+                  },
+                  icon: controller.isUploadFile.value
+                      ? const CircularProgressIndicator()
+                      : const Icon(Icons.upload),
+                )),
           ),
           labelText(' Description'),
           TextFormFieldWidget(

@@ -20,6 +20,7 @@ class UpdateProfileiewController extends GetxController {
   get pageState => _pageStateController.value;
   late RegistrationResponseModel signupModel;
   final RxString imagelink = ''.obs;
+  final RxBool isUploadFile = false.obs;
   final RxString fileImagelink = ''.obs;
   final RxString resumeLink = ''.obs;
   final formKey = GlobalKey<FormState>();
@@ -39,7 +40,7 @@ class UpdateProfileiewController extends GetxController {
       "description": employeeDescriptionController.text,
       if (imagelink.value != '') "image": imagelink.value,
       "address": addressController.text,
-      if (selectedSkillIdList.isNotEmpty) "skill": selectedSkillIdList,
+      "skill": selectedSkillIdList,
       "time": '',
     };
 

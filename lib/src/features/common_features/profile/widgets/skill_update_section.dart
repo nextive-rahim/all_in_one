@@ -35,7 +35,7 @@ class SkillUpdateSection extends GetView<UpdateProfileiewController> {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  child: const Text('Cencle'),
+                  child: const Text('Cancel'),
                 ),
                 TextButton(
                   onPressed: () {
@@ -101,13 +101,13 @@ class SkillUpdateSection extends GetView<UpdateProfileiewController> {
                                     Get.find<ProfileController>()
                                         .profileResponseModel
                                         .userSkill!
-                                        .length,
-                                    (int index) =>
-                                        Get.find<ProfileController>()
-                                            .profileResponseModel
-                                            .userSkill![index]
-                                            .skill ??
-                                        '').toString(),
+                                        .length, (int index) {
+                                  return Get.find<ProfileController>()
+                                          .profileResponseModel
+                                          .userSkill![index]
+                                          .skill ??
+                                      '';
+                                }).toString(),
                               ),
                   ),
                 ),

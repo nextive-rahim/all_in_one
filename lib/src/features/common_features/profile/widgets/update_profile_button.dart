@@ -16,10 +16,8 @@ class UpdateProfileButton extends GetView<UpdateProfileiewController> {
         onTap: () async {
           await controller.updateProfile().then((value) {
             if (value.success == true) {
-              Get.snackbar(
-                'Successfully',
-                'Update Profile Successfully',
-              );
+              Get.snackbar('Successfully', 'Update Profile Successfully',
+                  snackPosition: SnackPosition.BOTTOM);
               Get.find<ProfileController>().profile();
               // Get.back();
             }

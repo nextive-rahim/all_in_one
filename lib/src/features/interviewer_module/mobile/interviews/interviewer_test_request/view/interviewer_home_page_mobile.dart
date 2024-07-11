@@ -3,8 +3,6 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/view/all_interview_section_mobile.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/controller/interviewer_test_request_view_controller.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/widgets/interviewer_test_request_card.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/widgets/interviewer_test_result_pending_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

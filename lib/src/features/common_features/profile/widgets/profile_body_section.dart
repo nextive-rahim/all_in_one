@@ -102,7 +102,10 @@ class ProfileBodySection extends StatelessWidget {
           elevation: 5,
           child: InkWell(
             onTap: () {
-              Get.toNamed(Routes.resume, arguments: userModel.resume);
+              Get.toNamed(
+                Routes.resume,
+                arguments: userModel.resume ?? '',
+              );
             },
             child: SizedBox(
               width: 142,
