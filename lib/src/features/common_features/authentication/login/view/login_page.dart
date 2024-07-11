@@ -17,9 +17,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({
-    super.key,
-  });
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -29,709 +27,219 @@ class _LoginPageState extends State<LoginPage> {
   final controller = Get.find<LoginViewController>();
   final _formKey = GlobalKey<FormState>();
 
-  bool hintUsernameHelperText = false,
-      hintPasswordHelperText = false,
-      _isRememberMeChecked = false;
   @override
   void initState() {
-    // _getData();
     super.initState();
   }
 
-  final SizeConfig _sizeConfig = SizeConfig();
   @override
   Widget build(BuildContext context) {
-    return _forMobile(context);
-    //   : _forWeb(context);
-  }
-
-  Widget _forMobile(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Login'),
+      ),
       backgroundColor: CommonColor.whiteColor,
       body: Center(
         child: SingleChildScrollView(
-            child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Form(
-            key: _formKey,
-            child: Column(children: [
-              MediaQuery.of(context).viewInsets.bottom > 0
-                  ? _headerIsMounted()
-                  : _headerNotMounted(),
-              const SizedBox(
-                height: 30,
-              ),
-              Container(
-                width: SizeConfig.screenWidth,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: CommonColor.whiteColor,
-                  boxShadow: const [
-                    BoxShadow(
-                      color: CommonColor.greyColor,
-                      blurRadius: 0.5,
-                      spreadRadius: 0.1,
-                      offset: Offset(
-                        0.0, // Move to right 7.0 horizontally
-                        0.0, // Move to bottom 8.0 Vertically
-                      ),
-                    )
-                  ],
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(21.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      OutlinedInputField(
-                        labelText: AppStrings.username,
-                        controller: controller.userNameController,
-                        hintText: AppStrings.hitTextUsername,
-                        validator: InputFieldValidator.email(),
-                      ),
-                      OutlinedInputField(
-                        labelText: AppStrings.password,
-                        controller: controller.passwordController,
-                        hintText: AppStrings.password,
-                        isPasswordField: true,
-                        validator: InputFieldValidator.password(),
-                      ),
-                      10.sh,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  _headerNotMounted(),
+                  const SizedBox(height: 30),
+                  Container(
+                    width: SizeConfig.screenWidth,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: CommonColor.whiteColor,
+                      boxShadow: const [
+                        BoxShadow(
+                          color: CommonColor.greyColor,
+                          blurRadius: 0.5,
+                          spreadRadius: 0.1,
+                          offset: Offset(
+                            0.0, // Move to right 7.0 horizontally
+                            0.0, // Move to bottom 8.0 Vertically
+                          ),
+                        )
+                      ],
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(21.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // Row(
-                          //   children: [
-                          //     SizedBox(
-                          //       height: 16,
-                          //       width: 16,
-                          //       child: Checkbox(
-                          //         activeColor: CommonColor.headingTextColor1,
-                          //         value: _isRememberMeChecked,
-                          //         onChanged: (newValue) {
-                          //           setState(() {
-                          //             _isRememberMeChecked = newValue ?? false;
-                          //           });
-                          //         },
-                          //       ),
-                          //     ),
-                          //     const SizedBox(
-                          //       width: 10,
-                          //     ),
-                          //     const TextWidget(
-                          //         text: AppStrings.rememberMeAsk,
-                          //         color: CommonColor.headingTextColor1,
-                          //         maxLine: 1,
-                          //         fontFamily: AppStrings.inter,
-                          //         fontWeight: FontWeight.w500,
-                          //         fontSize: 14),
-                          //   ],
-                          // ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(Routes.forgetPasswordEmailPage);
-                            },
-                            child: const TextWidget(
-                              text: AppStrings.forgotPassword,
-                              underline: TextDecoration.underline,
-                              color: CommonColor.headingTextColor1,
-                              maxLine: 1,
-                              fontFamily: AppStrings.inter,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
+                          OutlinedInputField(
+                            labelText: AppStrings.username,
+                            controller: controller.userNameController,
+                            hintText: AppStrings.hitTextUsername,
+                            validator: InputFieldValidator.email(),
+                          ),
+                          OutlinedInputField(
+                            labelText: AppStrings.password,
+                            controller: controller.passwordController,
+                            hintText: AppStrings.password,
+                            isPasswordField: true,
+                            validator: InputFieldValidator.password(),
+                          ),
+                          10.sh,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed(Routes.forgetPasswordEmailPage);
+                                },
+                                child: const TextWidget(
+                                  text: AppStrings.forgotPassword,
+                                  underline: TextDecoration.underline,
+                                  color: CommonColor.headingTextColor1,
+                                  maxLine: 1,
+                                  fontFamily: AppStrings.inter,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 30),
+                          Obx(
+                            () => PrimaryButton(
+                              isLoading:
+                                  controller.pageState == PageState.loading,
+                              onTap: onTap,
+                              widget: const Text(AppStrings.loginToMyAccount)
+                                  .fontSize(16)
+                                  .bold(FontWeight.w600)
+                                  .color(AppColors.white),
                             ),
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: 30),
-                      Obx(
-                        () => PrimaryButton(
-                          isLoading: controller.pageState == PageState.loading,
-                          onTap: onTap,
-                          widget: const Text(AppStrings.loginToMyAccount)
-                              .fontSize(16)
-                              .bold(FontWeight.w600)
-                              .color(AppColors.white),
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const TextWidget(
-                              text: AppStrings.dontHaveAnyAccount,
-                              color: CommonColor.headingTextColor1,
-                              maxLine: 2,
-                              fontFamily: AppStrings.inter,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14),
-                          const SizedBox(width: 10),
-                          GestureDetector(
-                            onTap: () {
-                              Get.toNamed(Routes.engagement);
-                            },
-                            child: const TextWidget(
-                                text: AppStrings.registerNow,
-                                underline: TextDecoration.underline,
-                                color: CommonColor.headingTextColor1,
-                                maxLine: 2,
-                                fontFamily: AppStrings.inter,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 18),
+                          const SizedBox(height: 30),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const TextWidget(
+                                  text: AppStrings.dontHaveAnyAccount,
+                                  color: CommonColor.headingTextColor1,
+                                  maxLine: 2,
+                                  fontFamily: AppStrings.inter,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14),
+                              const SizedBox(width: 10),
+                              GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(Routes.engagement);
+                                },
+                                child: const TextWidget(
+                                    text: AppStrings.registerNow,
+                                    underline: TextDecoration.underline,
+                                    color: CommonColor.headingTextColor1,
+                                    maxLine: 2,
+                                    fontFamily: AppStrings.inter,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18),
+                              ),
+                            ],
                           ),
+                          const SizedBox(height: 47),
                         ],
                       ),
-                      const SizedBox(height: 47),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(height: 41),
-              Container(
-                width: SizeConfig.screenWidth,
-                height: 1,
-                color: CommonColor.backgroundColor2,
-              ),
-              const SizedBox(height: 21),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                  const SizedBox(height: 41),
+                  Container(
+                    width: SizeConfig.screenWidth,
+                    height: 1,
+                    color: CommonColor.backgroundColor2,
+                  ),
+                  const SizedBox(height: 21),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Container(
-                        width: 3,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: CommonColor.headingTextColor1,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const TextWidget(
-                        text: AppStrings.termsOfUse,
-                        color: CommonColor.headingTextColor1,
-                        maxLine: 1,
-                        fontFamily: AppStrings.aeonikTRIAL,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 10,
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 3,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: CommonColor.headingTextColor1,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const TextWidget(
-                          text: AppStrings.dataCollectionRights,
-                          color: CommonColor.headingTextColor1,
-                          maxLine: 1,
-                          fontFamily: AppStrings.aeonikTRIAL,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 10),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        width: 3,
-                        height: 3,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: CommonColor.headingTextColor1,
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      const TextWidget(
-                        text: AppStrings.privacyAndPolicy,
-                        color: CommonColor.headingTextColor1,
-                        maxLine: 1,
-                        fontFamily: AppStrings.aeonikTRIAL,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 10,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              const TextWidget(
-                text: AppStrings.appVersion,
-                color: CommonColor.lightGreyForText1,
-                maxLine: 1,
-                fontFamily: AppStrings.aeonikTRIAL,
-                fontWeight: FontWeight.w400,
-                fontSize: 10,
-              ),
-              const SizedBox(height: 22),
-            ]),
-          ),
-        )),
-      ),
-    );
-  }
-
-  Widget _forWeb(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CommonColor.whiteColor,
-      body: SafeArea(
-        child: Row(
-          children: [
-            SizedBox(
-              width: _sizeConfig.width * 0.56,
-              height: _sizeConfig.height,
-              child: SingleChildScrollView(
-                  child: Padding(
-                padding: EdgeInsets.only(
-                    left: _sizeConfig.getSize(80),
-                    right: _sizeConfig.getSize(108),
-                    top: _sizeConfig.getSize(74),
-                    bottom: _sizeConfig.getSize(28)),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Image.asset(
-                          ImageConstant.appLogo,
-                          height: _sizeConfig.getSize(195),
-                          width: _sizeConfig.getSize(202),
-                          fit: BoxFit.fill,
-                        ),
-                        SizedBox(
-                          height: _sizeConfig.getSize(22),
-                        ),
-                        TextWidget(
-                            text: AppStrings.loginToYourAccount,
+                      Row(
+                        children: [
+                          Container(
+                            width: 3,
+                            height: 3,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: CommonColor.headingTextColor1,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          const TextWidget(
+                            text: AppStrings.termsOfUse,
                             color: CommonColor.headingTextColor1,
                             maxLine: 1,
                             fontFamily: AppStrings.aeonikTRIAL,
                             fontWeight: FontWeight.w400,
-                            fontSize: _sizeConfig.getFontSize(60)),
-                        SizedBox(
-                          height: _sizeConfig.getSize(10),
-                        ),
-                        TextWidget(
-                            text: AppStrings.heyWelcomeback,
+                            fontSize: 10,
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 3,
+                            height: 3,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: CommonColor.headingTextColor1,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          const TextWidget(
+                            text: AppStrings.dataCollectionRights,
                             color: CommonColor.headingTextColor1,
                             maxLine: 1,
-                            fontFamily: AppStrings.sfProDisplay,
+                            fontFamily: AppStrings.aeonikTRIAL,
                             fontWeight: FontWeight.w400,
-                            fontSize: _sizeConfig.getFontSize(30)),
-                        SizedBox(
-                          height: _sizeConfig.getSize(43),
-                        ),
-                        Container(
-                          width: _sizeConfig.getSize(618),
-                          // height: _sizeConfig.getSize(455),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: CommonColor.whiteColor,
-                            boxShadow: const [
-                              BoxShadow(
-                                color: CommonColor.greyColor,
-                                blurRadius: 0.5,
-                                spreadRadius: 0.1,
-                                offset: Offset(
-                                  0.0, // Move to right 7.0 horizontally
-                                  0.0, // Move to bottom 8.0 Vertically
-                                ),
-                              )
-                            ],
+                            fontSize: 10,
                           ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(21.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const TextWidget(
-                                    text: AppStrings.username,
-                                    color: CommonColor.headingTextColor2,
-                                    maxLine: 1,
-                                    fontFamily: AppStrings.inter,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                TextFormFieldWidget(
-                                  isEmailField: true,
-                                  controller: controller.userNameController,
-                                  valtext: AppStrings.commonTextVal,
-                                  height: 45,
-                                  hintText: AppStrings.hitTextUsername,
-                                  readOnly: false,
-                                  maxLine: 1,
-                                  keyType: TextInputType.text,
-                                  wordLimit: 100,
-                                  fontFamily: AppStrings.inter,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  onChanged: (value) {},
-                                  suffixIcon: const Icon(
-                                    Icons.help_outline,
-                                    color: Colors.grey,
-                                    size: 16,
-                                  ),
-                                  onSuffixTap: () {
-                                    setState(() {
-                                      hintUsernameHelperText =
-                                          !hintUsernameHelperText;
-                                    });
-                                  },
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Visibility(
-                                  visible: hintUsernameHelperText,
-                                  child: const TextWidget(
-                                      text: AppStrings.hintTextToHelpUser,
-                                      color: CommonColor.hintTextColor,
-                                      maxLine: 1,
-                                      fontFamily: AppStrings.inter,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14),
-                                ),
-                                const SizedBox(
-                                  height: 23,
-                                ),
-                                const TextWidget(
-                                    text: AppStrings.password,
-                                    color: CommonColor.headingTextColor2,
-                                    maxLine: 1,
-                                    fontFamily: AppStrings.inter,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                TextFormFieldWidget(
-                                  controller: controller.passwordController,
-                                  valtext: AppStrings.commonTextVal,
-                                  obscureText: true,
-                                  height: 45,
-                                  hintText: AppStrings.passHintText,
-                                  readOnly: false,
-                                  maxLine: 1,
-                                  keyType: TextInputType.visiblePassword,
-                                  wordLimit: 100,
-                                  fontFamily: AppStrings.inter,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  onChanged: (value) {},
-                                  suffixIcon: const Icon(
-                                    Icons.help_outline,
-                                    color: Colors.grey,
-                                    size: 16,
-                                  ),
-                                  onSuffixTap: () {
-                                    setState(() {
-                                      hintPasswordHelperText =
-                                          !hintPasswordHelperText;
-                                    });
-                                  },
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Visibility(
-                                  visible: hintPasswordHelperText,
-                                  child: const TextWidget(
-                                      text: AppStrings.hintTextToHelpUser,
-                                      color: CommonColor.hintTextColor,
-                                      maxLine: 1,
-                                      fontFamily: AppStrings.inter,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 14),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          height: 16,
-                                          width: 16,
-                                          child: Checkbox(
-                                            activeColor:
-                                                CommonColor.headingTextColor1,
-                                            value: _isRememberMeChecked,
-                                            onChanged: (newValue) {
-                                              setState(() {
-                                                _isRememberMeChecked =
-                                                    newValue ?? false;
-                                              });
-                                            },
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        const TextWidget(
-                                            text: AppStrings.rememberMeAsk,
-                                            color:
-                                                CommonColor.headingTextColor1,
-                                            maxLine: 1,
-                                            fontFamily: AppStrings.inter,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14),
-                                      ],
-                                    ),
-                                    InkWell(
-                                      onTap: () {
-                                        Get.toNamed(Routes.forgotPassword);
-                                      },
-                                      child: const TextWidget(
-                                          text: AppStrings.forgotPassword,
-                                          underline: TextDecoration.underline,
-                                          color: CommonColor.headingTextColor1,
-                                          maxLine: 1,
-                                          fontFamily: AppStrings.inter,
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 12),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                GestureDetector(
-                                  onTap: onTap,
-                                  child: Container(
-                                    width: 267,
-                                    height: 60,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: CommonColor.headingTextColor1),
-                                    child: const Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        TextWidget(
-                                            text: AppStrings.loginToMyAccount,
-                                            color: CommonColor.whiteColor,
-                                            maxLine: 1,
-                                            fontFamily: AppStrings.inter,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 18),
-                                        SizedBox(
-                                          width: 13,
-                                        ),
-                                        Icon(
-                                          Icons.check_circle_outline_outlined,
-                                          size: 22,
-                                          color: CommonColor.whiteColor,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    const TextWidget(
-                                        text: AppStrings.dontHaveAnyAccount,
-                                        color: CommonColor.headingTextColor1,
-                                        maxLine: 1,
-                                        fontFamily: AppStrings.inter,
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14),
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        Get.toNamed(Routes.engagement);
-                                      },
-                                      child: const TextWidget(
-                                          text: AppStrings.registerNow,
-                                          underline: TextDecoration.underline,
-                                          color: CommonColor.headingTextColor1,
-                                          maxLine: 1,
-                                          fontFamily: AppStrings.inter,
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 47,
-                                ),
-                              ],
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 3,
+                            height: 3,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: CommonColor.headingTextColor1,
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          height: _sizeConfig.getSize(67),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Row(
-                              children: [
-                                Container(
-                                  width: 3,
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: CommonColor.headingTextColor1,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                TextWidget(
-                                    text: AppStrings.termsOfUse,
-                                    color: CommonColor.headingTextColor1,
-                                    maxLine: 1,
-                                    fontFamily: AppStrings.aeonikTRIAL,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: _sizeConfig.getFontSize(12)),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 3,
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: CommonColor.headingTextColor1,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                TextWidget(
-                                    text: AppStrings.dataCollectionRights,
-                                    color: CommonColor.headingTextColor1,
-                                    maxLine: 1,
-                                    fontFamily: AppStrings.aeonikTRIAL,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: _sizeConfig.getFontSize(12)),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 3,
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: CommonColor.headingTextColor1,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                TextWidget(
-                                    text: AppStrings.privacyAndPolicy,
-                                    color: CommonColor.headingTextColor1,
-                                    maxLine: 1,
-                                    fontFamily: AppStrings.aeonikTRIAL,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: _sizeConfig.getFontSize(12)),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  width: 3,
-                                  height: 3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50),
-                                    color: CommonColor.headingTextColor1,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                TextWidget(
-                                    text: AppStrings.customerSupport,
-                                    color: CommonColor.headingTextColor1,
-                                    maxLine: 1,
-                                    fontFamily: AppStrings.aeonikTRIAL,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: _sizeConfig.getFontSize(12)),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: _sizeConfig.getSize(22),
-                        ),
-                      ]),
-                ),
-              )),
-            ),
-            Expanded(
-                child: Container(
-              color: CommonColor.lightGreyForText1,
-              child: Image.asset(
-                ImageConstant.loginWebExpended,
-                fit: BoxFit.fill,
-                height: SizeConfig.screenHeight,
-                width: SizeConfig.screenWidth,
+                          const SizedBox(width: 8),
+                          const TextWidget(
+                            text: AppStrings.privacyAndPolicy,
+                            color: CommonColor.headingTextColor1,
+                            maxLine: 1,
+                            fontFamily: AppStrings.aeonikTRIAL,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  const TextWidget(
+                    text: AppStrings.appVersion,
+                    color: CommonColor.lightGreyForText1,
+                    maxLine: 1,
+                    fontFamily: AppStrings.aeonikTRIAL,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 10,
+                  ),
+                  const SizedBox(height: 22),
+                ],
               ),
-            ))
-          ],
+            ),
+          ),
         ),
       ),
-    );
-  }
-
-  Widget _headerIsMounted() {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Image.asset(
-          ImageConstant.appLogo,
-          height: 50,
-          width: 50,
-          fit: BoxFit.fill,
-        ),
-        const SizedBox(
-          width: 18,
-        ),
-        const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextWidget(
-                text: AppStrings.loginToYourAccount,
-                color: CommonColor.headingTextColor1,
-                maxLine: 1,
-                fontFamily: AppStrings.aeonikTRIAL,
-                fontWeight: FontWeight.w700,
-                fontSize: 20),
-            SizedBox(
-              height: 10,
-            ),
-            TextWidget(
-                text: AppStrings.heyWelcomeback,
-                color: CommonColor.headingTextColor1,
-                maxLine: 1,
-                fontFamily: AppStrings.sfProDisplay,
-                fontWeight: FontWeight.w400,
-                fontSize: 14),
-          ],
-        )
-      ],
     );
   }
 
@@ -748,26 +256,24 @@ class _LoginPageState extends State<LoginPage> {
             fit: BoxFit.fill,
           ),
         ),
-        const SizedBox(
-          height: 7,
-        ),
+        const SizedBox(height: 7),
         const TextWidget(
-            text: AppStrings.loginToYourAccount,
-            color: CommonColor.headingTextColor1,
-            maxLine: 1,
-            fontFamily: AppStrings.aeonikTRIAL,
-            fontWeight: FontWeight.w700,
-            fontSize: 28),
-        const SizedBox(
-          height: 10,
+          text: AppStrings.loginToYourAccount,
+          color: CommonColor.headingTextColor1,
+          maxLine: 1,
+          fontFamily: AppStrings.aeonikTRIAL,
+          fontWeight: FontWeight.w700,
+          fontSize: 28,
         ),
+        const SizedBox(height: 10),
         const TextWidget(
-            text: AppStrings.heyWelcomeback,
-            color: CommonColor.headingTextColor1,
-            maxLine: 1,
-            fontFamily: AppStrings.sfProDisplay,
-            fontWeight: FontWeight.w400,
-            fontSize: 18),
+          text: AppStrings.heyWelcomeback,
+          color: CommonColor.headingTextColor1,
+          maxLine: 1,
+          fontFamily: AppStrings.sfProDisplay,
+          fontWeight: FontWeight.w400,
+          fontSize: 18,
+        ),
       ],
     );
   }
@@ -841,18 +347,20 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('Cencel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
-                controller.resentOtpForVerifyMail().then((value) {
-                  Get.snackbar(
-                    'Send OTP',
-                    controller.loginModel.message.toString(),
-                    borderColor: CommonColor.redColors,
-                    borderWidth: 1,
-                  );
-                });
+                controller.resentOtpForVerifyMail().then(
+                  (value) {
+                    Get.snackbar(
+                      'Send OTP',
+                      controller.loginModel.message.toString(),
+                      borderColor: CommonColor.redColors,
+                      borderWidth: 1,
+                    );
+                  },
+                );
                 Navigator.of(context).pop();
               },
               child: const Text('OK'),
