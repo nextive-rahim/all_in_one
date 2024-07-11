@@ -2,10 +2,14 @@ import 'package:all_in_one/src/core/extension/string_extension.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/controller/confirm_interview_request_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/widgets/interview_confirmation_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class InterviewTimeSelectedSection extends StatefulWidget {
   const InterviewTimeSelectedSection({
@@ -20,6 +24,7 @@ class InterviewTimeSelectedSection extends StatefulWidget {
 
 class _InterviewTimeSelectedSectionState
     extends State<InterviewTimeSelectedSection> {
+  final controller = Get.put(ConfirmInterviewREquestViewController());
   final ValueNotifier<String> selectedTime = ValueNotifier<String>('');
   final ValueNotifier<bool> selectSlotA = ValueNotifier<bool>(false);
   final ValueNotifier<bool> selectSlotB = ValueNotifier<bool>(false);
@@ -36,7 +41,7 @@ class _InterviewTimeSelectedSectionState
             valueListenable: selectSlotB,
             builder: (BuildContext context, bool timeSlotB, child) {
               return SizedBox(
-                height: timeSlotA || timeSlotB ? 250 : 195,
+                //   height: timeSlotA || timeSlotB ? 250 : 195,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -185,6 +190,18 @@ class _InterviewTimeSelectedSectionState
                       const SizedBox(height: 8),
                       Visibility(
                         visible: (selectSlotA.value || selectSlotB.value),
+                        child: OutlinedInputField(
+                          controller: controller.interviewLInk,
+                          hintText: 'Enter interview Link',
+                          onChanged: (p0) {
+                            controller.interviewLInk.text = p0;
+
+                            setState(() {});
+                          },
+                        ),
+                      ),
+                      Visibility(
+                        visible: controller.interviewLInk.text.isNotEmpty,
                         child: InterviewConfarmationButton(
                           selectedDate:
                               getFormattedDate(widget.interview.date) ?? '',

@@ -26,7 +26,7 @@ class InterviewConfarmationButton extends StatefulWidget {
 
 class _InterviewConfarmationButtonState
     extends State<InterviewConfarmationButton> {
-  final controller = Get.find<ConfirmInterviewREquestViewController>();
+  final controller = Get.put(ConfirmInterviewREquestViewController());
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -41,7 +41,9 @@ class _InterviewConfarmationButtonState
           //     borderWidth: 1,
           //   );
           // } else {
-
+          controller.interviewLInk.clear();
+          // final FocusScopeNode focusScope = FocusScope.of(context);
+          // focusScope.unfocus();
           Get.snackbar(
             'Successfully',
             'Interview  Confirmed Successfully',
@@ -213,6 +215,7 @@ class _InterviewConfarmationButtonState
                             const SizedBox(height: 60),
                             GestureDetector(
                               onTap: () {
+                                Navigator.pop(context, true);
                                 Navigator.pop(context, true);
                               },
                               child: Container(

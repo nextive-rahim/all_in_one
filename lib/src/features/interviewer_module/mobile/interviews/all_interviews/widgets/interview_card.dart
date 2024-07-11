@@ -77,7 +77,8 @@ class _InterViewCardState extends State<InterViewCard> {
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Text(widget.interview.timeSlotA ?? '9.30 PM'),
+                      Text(
+                          '(${widget.interview.timeSlotA ?? ''} , ${widget.interview.timeSlotB})'),
                       const SizedBox(width: 10),
                       Text(getFormattedDate(widget.interview.date) ?? ''),
                     ],

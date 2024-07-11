@@ -10,7 +10,6 @@ class ConfirmInterviewsBuilder extends StatelessWidget {
   final List<ViewInterviewResponseData> interviews;
   @override
   Widget build(BuildContext context) {
-    print('ffffffffffff${interviews.length}');
     return ListView.separated(
       itemCount: interviews.length,
       shrinkWrap: true,
