@@ -94,68 +94,75 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           controller: controller.phoneNumberController,
                           hintText: AppStrings.phoneNumberHint,
                         ),
-                        InkWell(
-                          onTap: () {
-                            _showError(
-                                SkillBuilder(
-                                  selectedSkillIdList:
-                                      controller.selectedSkillIdList,
-                                  selectedSkillNameList:
-                                      controller.selectedSkillNameList,
-                                ),
-                                title: "Selecte Skills");
-                          },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Select Skills',
-                                style: AppTextStyle.medium14
-                                    .copyWith(color: AppColors.black),
-                              ),
-                              const SizedBox(height: 6),
-                              Container(
-                                height: 50,
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    width: .5,
-                                    color: AppColors.lightBlack40,
-                                  ),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(left: 20),
-                                      child: Obx(
-                                        () => controller
-                                                .selectedSkillIdList.isEmpty
-                                            ? const Text(
-                                                'Select Skills',
-                                                style: TextStyle(
-                                                    color: CommonColor
-                                                        .hintTextColor),
-                                              )
-                                            : Text(
-                                                List<String>.generate(
-                                                    controller
-                                                        .selectedSkillNameList
-                                                        .length,
-                                                    (int index) => controller
-                                                            .selectedSkillNameList[
-                                                        index]).toString(),
-                                              ),
+                        Get.arguments == 3
+                            ? const Offstage()
+                            : InkWell(
+                                onTap: () {
+                                  _showError(
+                                      SkillBuilder(
+                                        selectedSkillIdList:
+                                            controller.selectedSkillIdList,
+                                        selectedSkillNameList:
+                                            controller.selectedSkillNameList,
                                       ),
+                                      title: "Selecte Skills");
+                                },
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Select Skills',
+                                      style: AppTextStyle.medium14
+                                          .copyWith(color: AppColors.black),
                                     ),
+                                    const SizedBox(height: 6),
+                                    Container(
+                                      height: 50,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          width: .5,
+                                          color: AppColors.lightBlack40,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(left: 20),
+                                            child: Obx(
+                                              () => controller
+                                                      .selectedSkillIdList
+                                                      .isEmpty
+                                                  ? const Text(
+                                                      'Select Skills',
+                                                      style: TextStyle(
+                                                          color: CommonColor
+                                                              .hintTextColor),
+                                                    )
+                                                  : Text(
+                                                      List<String>.generate(
+                                                          controller
+                                                              .selectedSkillNameList
+                                                              .length,
+                                                          (int index) => controller
+                                                                  .selectedSkillNameList[
+                                                              index]).toString(),
+                                                    ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
                                   ],
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
+                              ),
                         10.sh,
                         OutlinedInputField(
                           labelText: AppStrings.password,

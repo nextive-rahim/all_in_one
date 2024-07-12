@@ -31,11 +31,13 @@ class CourseRegistrationSection
   @override
   Widget build(BuildContext context) {
     final profileController = Get.find<ProfileController>();
+    final courseRegistratoinController =
+        Get.find<CourseRegistrationViewController>();
     final userType = CacheService.boxAuth.read(CacheKeys.userType);
     if (userType == 2) {
       controller.appearInTest.value = true;
     }
-    print(controller.isWatchAllVideoList.contains(true));
+
     return Column(
       children: [
         Obx(
@@ -53,12 +55,20 @@ class CourseRegistrationSection
                     profileController.profileResponseModel.isSubscribed == 1
                 ? GestureDetector(
                     onTap: () {
-                      if (controller.isWatchAllVideoList.contains(false)) {
+                      if (!courseRegistratoinController
+                          .isCourseAllVideosWatched.value) {
                         // userCourseAvailabilityViewController
                         //     .checkUserCourseAvailability()
                         //     .then(
                         //   (value) {
+                        Util.displayToast(
+                            context,
+                            "Please watch the all videos first",
+                            CommonColor.redColors);
 
+                        // },
+                        // );
+                      } else {
                         Get.toNamed(
                           Routes.appearTestAndScheduleInterviewMobilePage,
                           arguments: [
@@ -66,13 +76,6 @@ class CourseRegistrationSection
                             () {},
                           ],
                         );
-                        // },
-                        // );
-                      } else {
-                        Util.displayToast(
-                            context,
-                            "Please watch the all videos first",
-                            CommonColor.redColors);
                       }
                     },
                     child: Container(

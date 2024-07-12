@@ -20,7 +20,7 @@ class ContentTileBuilder extends StatelessWidget {
           shrinkWrap: true,
           itemCount: contentList.length, //AppStrings.courseContentList.length,
           physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index1) {
+          itemBuilder: (context, index) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               // subtitle: TextWidget(
@@ -36,7 +36,7 @@ class ContentTileBuilder extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 10),
                   child: TextWidget(
                     textAlign: TextAlign.start,
-                    text: contentList[index1].name ?? '',
+                    text: contentList[index].name ?? '',
                     color: CommonColor.blackColor2,
                     maxLine: 2,
                     fontFamily: AppStrings.sfProDisplay,
@@ -45,8 +45,7 @@ class ContentTileBuilder extends StatelessWidget {
                   ),
                 ),
                 ContentVideoBuilder(
-                  index: index1,
-                  contentVideoList: contentList[index1].courseContent ?? [],
+                  contentVideoList: contentList[index].courseContent ?? [],
                 )
               ],
             );

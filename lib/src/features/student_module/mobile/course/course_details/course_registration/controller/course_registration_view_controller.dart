@@ -16,8 +16,8 @@ class CourseRegistrationViewController extends GetxController {
   get pageState => _pageStateController.value;
   RxBool appearInTest = false.obs;
   RxBool courseRegistered = false.obs;
-  RxBool isCourseVideoWatched = false.obs;
-  RxList<bool> isWatchAllVideoList = <bool>[].obs;
+  RxBool isCourseAllVideosWatched = false.obs;
+//  RxList<bool> isWatchAllVideoList = <bool>[].obs;
   late CommonResponse registration;
   final userId = CacheService.boxAuth.read(CacheKeys.userId);
   Future<void> checkCourseRegistration(
