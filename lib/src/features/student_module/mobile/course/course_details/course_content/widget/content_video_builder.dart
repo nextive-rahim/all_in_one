@@ -39,19 +39,36 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
     for (int i = 0; i < widget.contentVideoList.length; i++) {
       if (widget.contentVideoList[i].isWatch == 1) {
         isWachVideoList.add(true);
+        setState(() {});
       } else {
         isWachVideoList.add(false);
+        setState(() {});
       }
     }
-    if (!isWachVideoList.contains(false)) {
-      courseRegistratoinController.isCourseAllVideosWatched.value = true;
-    }
+
+    print('watch Video list Length 1 :${isWachVideoList.length}');
   }
 
   final profileController = Get.find<ProfileController>();
   final userType = CacheService.boxAuth.read(CacheKeys.userType);
+
   @override
   Widget build(BuildContext context) {
+    print('Watch video lIst : ${isWachVideoList.map((e) => e)}');
+    if (!isWachVideoList.contains(false)) {
+      courseRegistratoinController.isCourseAllVideosWatched.value = true;
+      print(
+          "isWatchedAllVideo :  ${courseRegistratoinController.isCourseAllVideosWatched.value}");
+    }
+
+    print(" Any UnWatched Vedio: ${isWachVideoList.contains(false)}");
+
+    print(
+        'Is  Register course : ${(userType == 1 && profileController.profileResponseModel.isSubscribed == 1)}');
+    if (userType == 1 &&
+        profileController.profileResponseModel.isSubscribed == 1) {
+      courseRegistratoinController.isCourseAllVideosWatched.value = true;
+    }
     return ListView.separated(
       shrinkWrap: true,
       itemCount: widget.contentVideoList.length,
@@ -62,10 +79,13 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
               isWachVideoList[index2],
           title: GestureDetector(
               onTap: () {
-                if (userType == 1 &&
-                    (courseRegistratoinController.courseRegistered.value ||
+                print(
+                    " Any UNWatched Vedio: ${isWachVideoList.contains(false)}");
+                if (((userType == 1 &&
                         profileController.profileResponseModel.isSubscribed !=
-                            1)) {
+                            1) ||
+                    !courseRegistratoinController
+                        .isCourseAllVideosWatched.value)) {
                   return Util.displayToast(
                     context,
                     "Please register the course first",
@@ -78,9 +98,10 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
                 if (!isWachVideoList.contains(false)) {
                   courseRegistratoinController.isCourseAllVideosWatched.value =
                       true;
+                  print(
+                      "isWatchedAllVideo :  ${courseRegistratoinController.isCourseAllVideosWatched.value}");
                 }
-                courseRegistratoinController.isCourseAllVideosWatched.value =
-                    true;
+
                 if (widget.contentVideoList[index2].isWatch != 1) {
                   videoController.isWatchVideo(
                     widget.contentVideoList[index2].id!,
@@ -90,6 +111,7 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
                 setState(() {
                   isWachVideoList[index2] = true;
                 });
+
                 //  print(dataList.map((e) => e));
               },
               child: Text(widget.contentVideoList[index2].name ?? '')),

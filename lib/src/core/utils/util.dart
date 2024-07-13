@@ -98,6 +98,6 @@ class Util {
   static void logout(BuildContext context) async {
     CacheService().dispose();
 
-    Get.offNamed(Routes.login);
+    Get.offAllNamed(Routes.login);
   }
 }

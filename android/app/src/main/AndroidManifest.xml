@@ -1,5 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <queries>   
+        <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="mailto" />
+        </intent>
+        
+        <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="tel" />
+        </intent>
+    
+        <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="https" />
+        </intent>
+    
+    </queries>
     <application
         android:label="all_in_one"
         android:name="${applicationName}"

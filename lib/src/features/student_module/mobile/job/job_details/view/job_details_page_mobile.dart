@@ -17,6 +17,7 @@ enum JobIsFrom {
   applied,
   saved,
   company,
+  other,
 }
 
 class JobDetailsPageMobile extends StatefulWidget {
@@ -36,6 +37,8 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
       Get.arguments[2] == JobIsFrom.applied ? true : false;
   final bool isFromSaveddJob =
       Get.arguments[2] == JobIsFrom.saved ? true : false;
+  final bool isFromOtherJob =
+      Get.arguments[2] == JobIsFrom.other ? true : false;
   @override
   void initState() {
     super.initState();
@@ -69,6 +72,16 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                     isFromCompanyJob || isFromSaveddJob
                         ? const Offstage()
                         : SaveJobButtonFromJobDetails(job: viewJobResponseData),
+                    isFromOtherJob
+                        ? Column(
+                            children: [
+                              SaveJobButtonFromJobDetails(
+                                  job: viewJobResponseData),
+                              10.sh,
+                              ApplyJobButton(job: viewJobResponseData),
+                            ],
+                          )
+                        : const Offstage(),
                     20.sh,
                     JobDescription(job: viewJobResponseData),
                     //  const JobShareButton(),

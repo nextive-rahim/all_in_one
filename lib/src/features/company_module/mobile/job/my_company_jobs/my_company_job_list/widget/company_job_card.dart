@@ -23,7 +23,7 @@ class CompanyJobCard extends StatelessWidget {
           onTap: () {
             Get.toNamed(
               Routes.jobDetails,
-              arguments: [job, true],
+              arguments: [job, true, ''],
             );
           },
           child: Container(
@@ -159,9 +159,9 @@ class CompanyJobCard extends StatelessWidget {
                       ),
                       const Row(
                         children: [
-                          EditJob(),
-                          SizedBox(width: 15),
-                          DeletedJob(),
+                          // EditJob(),
+                          // SizedBox(width: 15),
+                          // DeletedJob(),
                         ],
                       )
                     ],

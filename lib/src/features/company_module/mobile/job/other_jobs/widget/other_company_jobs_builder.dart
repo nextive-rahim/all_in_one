@@ -26,7 +26,7 @@ class OtherCompanyJobsBuilder extends StatelessWidget {
           onTap: () {
             Get.toNamed(
               Routes.jobDetails,
-              arguments: [otherCompany[index], true, JobIsFrom.all],
+              arguments: [otherCompany[index], true, JobIsFrom.other],
             );
           },
           job: otherCompany[index],

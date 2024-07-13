@@ -37,7 +37,7 @@ class CourseRegistrationSection
     if (userType == 2) {
       controller.appearInTest.value = true;
     }
-
+    print(controller.appearInTest.value);
     return Column(
       children: [
         Obx(
@@ -55,6 +55,8 @@ class CourseRegistrationSection
                     profileController.profileResponseModel.isSubscribed == 1
                 ? GestureDetector(
                     onTap: () {
+                      print(courseRegistratoinController
+                          .isCourseAllVideosWatched.value);
                       if (!courseRegistratoinController
                           .isCourseAllVideosWatched.value) {
                         // userCourseAvailabilityViewController

@@ -1,9 +1,12 @@
+import 'package:all_in_one/src/core/gobal_function.dart';
+import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CompanyJobAppliedCandidateProfile extends StatefulWidget {
   const CompanyJobAppliedCandidateProfile({super.key});
@@ -15,6 +18,26 @@ class CompanyJobAppliedCandidateProfile extends StatefulWidget {
 
 class _CompanyJobAppliedCandidateProfileState
     extends State<CompanyJobAppliedCandidateProfile> {
+  Future<void> hotlineSupport() async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: '01718663032',
+    );
+    await urlLauncher(
+      launchUri.toString(),
+    );
+  }
+
+  Future<void> emailSupport() async {
+    final Uri launchUri = Uri(
+      scheme: 'mailto',
+      path: 'rahimsr983@gmail.com',
+    );
+    await urlLauncher(
+      launchUri.toString(),
+    );
+  }
+
   bool jobAppliedStatus = false;
   List<String> topSkillsList = [
     "Java",
@@ -122,13 +145,13 @@ class _CompanyJobAppliedCandidateProfileState
                               children: [
                                 TextWidget(
                                     textAlign: TextAlign.center,
-                                    text: "widget.name",
+                                    text: "Addul Rahim",
                                     color: CommonColor.blackColor1,
                                     maxLine: 1,
                                     fontFamily: AppStrings.aeonikTRIAL,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 22),
-                                Icon(Icons.more_vert)
+                                // Icon(Icons.more_vert)
                               ],
                             ),
                             const SizedBox(
@@ -154,125 +177,141 @@ class _CompanyJobAppliedCandidateProfileState
                             const SizedBox(
                               height: 10,
                             ),
-                            Container(
-                              width: SizeConfig.screenWidth,
-                              height: 44,
-                              alignment: Alignment.center,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: ShapeDecoration(
-                                color: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                      width: 0.50,
-                                      color: CommonColor.greyColor5),
-                                  borderRadius: BorderRadius.circular(8),
+                            InkWell(
+                              onTap: () {
+                                hotlineSupport();
+                              },
+                              child: Container(
+                                width: SizeConfig.screenWidth,
+                                height: 44,
+                                alignment: Alignment.center,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    side: const BorderSide(
+                                        width: 0.50,
+                                        color: CommonColor.greyColor5),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  shadows: const [
+                                    BoxShadow(
+                                      color: CommonColor.blackColor3,
+                                      blurRadius: 2,
+                                      offset: Offset(0, 1),
+                                      spreadRadius: 0,
+                                    )
+                                  ],
                                 ),
-                                shadows: const [
-                                  BoxShadow(
-                                    color: CommonColor.blackColor3,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 1),
-                                    spreadRadius: 0,
-                                  )
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    ImageConstant.send1,
-                                    color: CommonColor.headingTextColor2,
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  const TextWidget(
-                                      text: AppStrings.call,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      ImageConstant.send1,
                                       color: CommonColor.headingTextColor2,
-                                      maxLine: 1,
-                                      fontFamily: AppStrings.inter,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16),
-                                ],
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    const TextWidget(
+                                        text: AppStrings.call,
+                                        color: CommonColor.headingTextColor2,
+                                        maxLine: 1,
+                                        fontFamily: AppStrings.inter,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16),
+                                  ],
+                                ),
                               ),
                             ),
                             const SizedBox(
                               height: 12,
                             ),
-                            Container(
-                              width: SizeConfig.screenWidth,
-                              height: 44,
-                              alignment: Alignment.center,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: ShapeDecoration(
-                                color: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                      width: 0.50,
-                                      color: CommonColor.greyColor5),
-                                  borderRadius: BorderRadius.circular(8),
+                            InkWell(
+                              onTap: () {
+                                emailSupport();
+                              },
+                              child: Container(
+                                width: SizeConfig.screenWidth,
+                                height: 44,
+                                alignment: Alignment.center,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    side: const BorderSide(
+                                        width: 0.50,
+                                        color: CommonColor.greyColor5),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  shadows: const [
+                                    BoxShadow(
+                                      color: CommonColor.blackColor3,
+                                      blurRadius: 2,
+                                      offset: Offset(0, 1),
+                                      spreadRadius: 0,
+                                    )
+                                  ],
                                 ),
-                                shadows: const [
-                                  BoxShadow(
-                                    color: CommonColor.blackColor3,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 1),
-                                    spreadRadius: 0,
-                                  )
-                                ],
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Image.asset(
-                                    ImageConstant.send1,
-                                    color: CommonColor.headingTextColor2,
-                                  ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  const TextWidget(
-                                      text: AppStrings.email,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Image.asset(
+                                      ImageConstant.send1,
                                       color: CommonColor.headingTextColor2,
-                                      maxLine: 1,
-                                      fontFamily: AppStrings.inter,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16),
-                                ],
+                                    ),
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    const TextWidget(
+                                        text: AppStrings.email,
+                                        color: CommonColor.headingTextColor2,
+                                        maxLine: 1,
+                                        fontFamily: AppStrings.inter,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 16),
+                                  ],
+                                ),
                               ),
                             ),
                             const SizedBox(
                               height: 10,
                             ),
-                            Container(
-                              width: SizeConfig.screenWidth,
-                              height: 44,
-                              alignment: Alignment.center,
-                              clipBehavior: Clip.antiAlias,
-                              decoration: ShapeDecoration(
-                                color: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                      width: 0.50,
-                                      color: CommonColor.greyColor5),
-                                  borderRadius: BorderRadius.circular(8),
+                            InkWell(
+                              onTap: () {
+                                Get.snackbar('Successfully',
+                                    'Selected Candidate for Interview');
+                              },
+                              child: Container(
+                                width: SizeConfig.screenWidth,
+                                height: 44,
+                                alignment: Alignment.center,
+                                clipBehavior: Clip.antiAlias,
+                                decoration: ShapeDecoration(
+                                  color: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    side: const BorderSide(
+                                        width: 0.50,
+                                        color: CommonColor.greyColor5),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  shadows: const [
+                                    BoxShadow(
+                                      color: CommonColor.blackColor3,
+                                      blurRadius: 2,
+                                      offset: Offset(0, 1),
+                                      spreadRadius: 0,
+                                    )
+                                  ],
                                 ),
-                                shadows: const [
-                                  BoxShadow(
-                                    color: CommonColor.blackColor3,
-                                    blurRadius: 2,
-                                    offset: Offset(0, 1),
-                                    spreadRadius: 0,
-                                  )
-                                ],
+                                child: const TextWidget(
+                                    text: AppStrings.selectForCompanyInterview,
+                                    color: CommonColor.headingTextColor2,
+                                    maxLine: 1,
+                                    fontFamily: AppStrings.inter,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16),
                               ),
-                              child: const TextWidget(
-                                  text: AppStrings.selectForCompanyInterview,
-                                  color: CommonColor.headingTextColor2,
-                                  maxLine: 1,
-                                  fontFamily: AppStrings.inter,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 16),
                             ),
                             const SizedBox(
                               height: 30,
@@ -386,7 +425,6 @@ class _CompanyJobAppliedCandidateProfileState
                                   },
                                   child: Container(
                                     width: SizeConfig.screenWidth,
-                                    height: 85,
                                     decoration: ShapeDecoration(
                                       color:
                                           selectedCompletedCoursesIndex != null
@@ -485,11 +523,12 @@ class _CompanyJobAppliedCandidateProfileState
                                                   fontSize: 12),
                                             ],
                                           ),
-                                          const Icon(
-                                            Icons.more_vert,
-                                            color:
-                                                CommonColor.headingTextColor1,
-                                          )
+                                          const Text('')
+                                          // const Icon(
+                                          //   Icons.more_vert,
+                                          //   color:
+                                          //       CommonColor.headingTextColor1,
+                                          // )
                                         ],
                                       ),
                                     ),
@@ -518,41 +557,28 @@ class _CompanyJobAppliedCandidateProfileState
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  children: [
-                                    const TextWidget(
-                                        text: AppStrings.testYourSkills,
+                                InkWell(
+                                  onTap: () {
+                                    urlLauncher('www.google.com');
+                                  },
+                                  child: Row(
+                                    children: [
+                                      const TextWidget(
+                                          text: AppStrings.projectLink,
+                                          color: CommonColor.blueColor1,
+                                          maxLine: 1,
+                                          fontFamily: AppStrings.inter,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 16),
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      Image.asset(
+                                        ImageConstant.link2,
                                         color: CommonColor.blueColor1,
-                                        maxLine: 1,
-                                        fontFamily: AppStrings.inter,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16),
-                                    const SizedBox(
-                                      width: 8,
-                                    ),
-                                    Image.asset(
-                                      ImageConstant.link2,
-                                      color: CommonColor.blueColor1,
-                                    )
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const TextWidget(
-                                        text: AppStrings.projectLink,
-                                        color: CommonColor.blueColor1,
-                                        maxLine: 1,
-                                        fontFamily: AppStrings.inter,
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 16),
-                                    const SizedBox(
-                                      width: 8,
-                                    ),
-                                    Image.asset(
-                                      ImageConstant.link2,
-                                      color: CommonColor.blueColor1,
-                                    )
-                                  ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -561,24 +587,29 @@ class _CompanyJobAppliedCandidateProfileState
                             ),
                             Stack(
                               children: [
-                                Container(
-                                  width: 199,
-                                  height: 142,
-                                  decoration: ShapeDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(ImageConstant.cv),
-                                      fit: BoxFit.fill,
-                                    ),
-                                    gradient: LinearGradient(
-                                      begin: const Alignment(0.00, -1.00),
-                                      end: const Alignment(0, 1),
-                                      colors: [
-                                        Colors.black.withOpacity(0),
-                                        Colors.black
-                                      ],
-                                    ),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(20),
+                                InkWell(
+                                  onTap: () {
+                                    Get.toNamed(Routes.resume, arguments: '');
+                                  },
+                                  child: Container(
+                                    width: 199,
+                                    height: 142,
+                                    decoration: ShapeDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(ImageConstant.cv),
+                                        fit: BoxFit.fill,
+                                      ),
+                                      gradient: LinearGradient(
+                                        begin: const Alignment(0.00, -1.00),
+                                        end: const Alignment(0, 1),
+                                        colors: [
+                                          Colors.black.withOpacity(0),
+                                          Colors.black
+                                        ],
+                                      ),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -588,35 +619,35 @@ class _CompanyJobAppliedCandidateProfileState
                               height: 8,
                             ),
                             const TextWidget(
-                                text: 'Resume of Sara',
+                                text: 'Resume of Abdul Rahim',
                                 color: CommonColor.greyColor11,
                                 maxLine: 2,
                                 fontFamily: AppStrings.sfProDisplay,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 12),
                             const SizedBox(
-                              height: 3,
+                              height: 30,
                             ),
-                            const TextWidget(
-                                text: 'Last updated 31st May at 9:15',
-                                color: CommonColor.greyColor11,
-                                maxLine: 2,
-                                fontFamily: AppStrings.sfProDisplay,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            const TextWidget(
-                                text: '146 KB',
-                                color: CommonColor.greyColor11,
-                                maxLine: 1,
-                                fontFamily: AppStrings.sfProDisplay,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 12),
-                            const SizedBox(
-                              height: 60,
-                            ),
+                            // const TextWidget(
+                            //     text: 'Last updated 31st May at 9:15',
+                            //     color: CommonColor.greyColor11,
+                            //     maxLine: 2,
+                            //     fontFamily: AppStrings.sfProDisplay,
+                            //     fontWeight: FontWeight.w400,
+                            //     fontSize: 12),
+                            // const SizedBox(
+                            //   height: 8,
+                            // ),
+                            // const TextWidget(
+                            //     text: '146 KB',
+                            //     color: CommonColor.greyColor11,
+                            //     maxLine: 1,
+                            //     fontFamily: AppStrings.sfProDisplay,
+                            //     fontWeight: FontWeight.w400,
+                            //     fontSize: 12),
+                            // const SizedBox(
+                            //   height: 60,
+                            // ),
                           ]),
                     ),
                   ],
