@@ -22,7 +22,7 @@ class InterviewerTestRequestViewController extends GetxController {
   final TextEditingController timeSlotBController = TextEditingController();
   final userId = CacheService.boxAuth.read(CacheKeys.userId);
   RxBool activeRequistForInterview = false.obs;
-  
+
   Future<void> interviewRequest(int courseId) async {
     _pageStateController(PageState.loading);
 

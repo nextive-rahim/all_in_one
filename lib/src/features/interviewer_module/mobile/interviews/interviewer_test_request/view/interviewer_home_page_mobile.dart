@@ -27,9 +27,6 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
 
   @override
   Widget build(BuildContext context) {
-    // final isInterviewerApproved =
-    //     CacheService.boxAuth.read(CacheKeys.interviewApproval);
-    print(interviewTestRequestController.verificationPending.value);
     return Scaffold(
       backgroundColor: CommonColor.greyColor1,
       body: Obx(
@@ -53,7 +50,7 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
                                     .isInterviewerApproved.value ||
                                 profileController.profileResponseModel
                                         .testRequest?.status ==
-                                    2)
+                                    3)
                             ? const AllInterviewsSection()
                             : const Offstage()
               ],

@@ -55,7 +55,7 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                             null ||
                         profilecontroller
                                 .profileResponseModel.testRequest?.status !=
-                            2
+                            3
                     ? _isNotApprovedchildren
                     : _isApprovedchildren,
               ),
@@ -88,7 +88,7 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                                     null ||
                                 profilecontroller.profileResponseModel
                                         .testRequest?.status !=
-                                    2
+                                    3
                             ? BottomNavigationBar(
                                 type: BottomNavigationBarType.fixed,
                                 items: <BottomNavigationBarItem>[

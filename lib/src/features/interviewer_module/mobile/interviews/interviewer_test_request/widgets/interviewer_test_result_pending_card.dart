@@ -1,10 +1,7 @@
-import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
-import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
-import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/controller/interviewer_test_request_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +43,8 @@ class InterviewerTestResultPendingCard
           const SizedBox(height: 10),
           GestureDetector(
             onTap: () {
-              controller.verificationPending.value = false;
+              controller.isInterviewerApproved.value = true;
+              print(controller.isInterviewerApproved.value);
             },
             child: Container(
               width: 165,
@@ -95,16 +93,6 @@ class InterviewerTestResultPendingCard
             ),
           ),
           const SizedBox(height: 20),
-          PrimaryButton(
-            onTap: () {
-              controller.isInterviewerApproved.value = true;
-              CacheService.boxAuth.write(CacheKeys.interviewApproval, true);
-            },
-            widget: const Text(
-              'Approved Manually',
-              style: TextStyle(fontSize: 16, color: Colors.white),
-            ),
-          ),
         ],
       ),
     );
