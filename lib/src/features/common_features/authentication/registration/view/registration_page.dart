@@ -93,6 +93,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           labelText: AppStrings.phoneNumber,
                           controller: controller.phoneNumberController,
                           hintText: AppStrings.phoneNumberHint,
+                          keyboardType: TextInputType.phone,
                         ),
                         Get.arguments == 3
                             ? const Offstage()

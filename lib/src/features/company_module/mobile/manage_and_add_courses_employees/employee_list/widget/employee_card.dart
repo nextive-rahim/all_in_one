@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/gobal_function.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
@@ -5,12 +6,38 @@ import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_cou
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EmployeeCard extends StatelessWidget {
+class EmployeeCard extends StatefulWidget {
   const EmployeeCard({
     super.key,
     required this.employee,
   });
   final EmployeeModel employee;
+
+  @override
+  State<EmployeeCard> createState() => _EmployeeCardState();
+}
+
+class _EmployeeCardState extends State<EmployeeCard> {
+  Future<void> hotlineSupport() async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: '01718663032',
+    );
+    await urlLauncher(
+      launchUri.toString(),
+    );
+  }
+
+  Future<void> emailSupport() async {
+    final Uri launchUri = Uri(
+      scheme: 'mailto',
+      path: 'rahimsr983@gmail.com',
+    );
+    await urlLauncher(
+      launchUri.toString(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -38,7 +65,7 @@ class EmployeeCard extends StatelessWidget {
               onTap: () {
                 Get.toNamed(
                   Routes.companyEmployeeProfilePage,
-                  arguments: employee,
+                  arguments: widget.employee,
                 );
               },
               child: Row(
@@ -53,7 +80,7 @@ class EmployeeCard extends StatelessWidget {
                       shape: CircleBorder(),
                     ),
                     child: Text(
-                      getInitials(employee.name ?? ''),
+                      getInitials(widget.employee.name ?? ''),
                       style: const TextStyle(
                         color: Color(0xFF5A5959),
                         fontSize: 16,
@@ -68,7 +95,7 @@ class EmployeeCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          employee.name ?? '',
+                          widget.employee.name ?? '',
                           style: const TextStyle(
                             color: Color(0xFF262626),
                             fontSize: 16,
@@ -78,7 +105,7 @@ class EmployeeCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          employee.degination ?? '',
+                          widget.employee.degination ?? '',
                           style: const TextStyle(
                             color: Color(0xFF262626),
                             fontSize: 16,
@@ -89,7 +116,7 @@ class EmployeeCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          employee.descripton ?? '',
+                          widget.employee.descripton ?? '',
                           maxLines: 2,
                           style: const TextStyle(
                             color: Color(0xFF8A8A8A),
@@ -122,18 +149,26 @@ class EmployeeCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const Row(
+                Row(
                   children: [
-                    Icon(Icons.call_outlined),
-                    SizedBox(width: 24),
-                    Icon(Icons.mail_outline_outlined)
+                    InkWell(
+                        onTap: () {
+                          hotlineSupport();
+                        },
+                        child: const Icon(Icons.call_outlined)),
+                    const SizedBox(width: 24),
+                    InkWell(
+                        onTap: () {
+                          emailSupport();
+                        },
+                        child: const Icon(Icons.mail_outline_outlined))
                   ],
                 ),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(
                       Routes.companyAssignedCourses,
-                      arguments: employee,
+                      arguments: widget.employee,
                     );
                   },
                   child: Container(

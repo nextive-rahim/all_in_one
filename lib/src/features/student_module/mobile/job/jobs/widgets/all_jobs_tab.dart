@@ -39,7 +39,6 @@ class AllJobsTab extends GetView<JobsViewController> {
                           Routes.jobDetails,
                           arguments: [
                             controller.myJobList[index],
-                            false,
                             JobIsFrom.all
                           ],
                         );

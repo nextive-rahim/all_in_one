@@ -1,5 +1,6 @@
-
 import 'dart:convert';
+
+import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
 
 EmployeeModelResponse employeeModelResponseFromJson(String? str) =>
     EmployeeModelResponse.fromJson(json.decode(str!));
@@ -59,7 +60,7 @@ class EmployeeModel {
   String? resume;
   String? descripton;
   String? keySkill;
-
+  List<UserSkill>? userSkill;
   EmployeeModel({
     this.id,
     this.username,
@@ -82,6 +83,7 @@ class EmployeeModel {
     this.resume,
     this.descripton,
     this.keySkill,
+    this.userSkill,
   });
 
   factory EmployeeModel.fromJson(Map<String?, dynamic> json) => EmployeeModel(
@@ -106,6 +108,10 @@ class EmployeeModel {
         resume: json["resume"],
         descripton: json["descripton"],
         keySkill: json["key_skill"],
+        userSkill: json["skill"] == null
+            ? []
+            : List<UserSkill>.from(
+                json["skill"].map((x) => UserSkill.fromJson(x))),
       );
 
   Map<String?, dynamic> toJson() => {
@@ -130,5 +136,6 @@ class EmployeeModel {
         "resume": resume,
         "descripton": descripton,
         "key_skill": keySkill,
+        "skill": userSkill
       };
 }

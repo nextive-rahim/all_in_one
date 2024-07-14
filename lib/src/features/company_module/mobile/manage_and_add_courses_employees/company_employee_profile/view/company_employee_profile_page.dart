@@ -37,53 +37,48 @@ class _CompanyEmployeeProfilePageState
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: CommonColor.greyColor1,
-        body: Column(
-          children: [
-            const StudentAppBarMobile(
-              titel1: AppStrings.recommendedJobsForYou,
-              title2: AppStrings.youSelectJobsApplyOrSaveLater,
-              isBack: true,
-              searchHintText: AppStrings.searchForJobs,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        left: 18,
-                        right: 18,
-                        top: 7,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CompanyEmployeeProfileHeader(employee: employee),
-                          const SizedBox(height: 10),
-                          CompanyEmployeeProfileContactSection(
-                              employee: employee),
-                          const SizedBox(height: 30),
-                          CompanyEmployeeProfileDescriptionSection(
-                              employee: employee),
-                          const SizedBox(height: 30),
-                          CompanyEmployeeSkillSection(employee: employee),
-                          const SizedBox(height: 30),
-                          const CompanyEmployeeCompletedCourseSection(),
-                          const SizedBox(height: 30),
-                          const CompanyEmployeeProfileEvaluationSection()
-                        ],
-                      ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(employee.name ?? ''),
+      ),
+      backgroundColor: CommonColor.greyColor1,
+      body: Column(
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      left: 18,
+                      right: 18,
+                      top: 7,
                     ),
-                  ],
-                ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CompanyEmployeeProfileHeader(employee: employee),
+                        const SizedBox(height: 10),
+                        CompanyEmployeeProfileContactSection(
+                            employee: employee),
+                        const SizedBox(height: 30),
+                        CompanyEmployeeProfileDescriptionSection(
+                            employee: employee),
+                        const SizedBox(height: 30),
+                        CompanyEmployeeSkillSection(user: employee),
+                        const SizedBox(height: 30),
+                        const CompanyEmployeeCompletedCourseSection(),
+                        const SizedBox(height: 30),
+                        const CompanyEmployeeProfileEvaluationSection()
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }

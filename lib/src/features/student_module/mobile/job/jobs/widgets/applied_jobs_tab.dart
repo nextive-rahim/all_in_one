@@ -41,7 +41,6 @@ class AppliedTab extends GetView<AppliedJobsViewController> {
                             Routes.jobDetails,
                             arguments: [
                               controller.appiedJobList[index],
-                              false,
                               JobIsFrom.applied
                             ],
                           );

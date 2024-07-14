@@ -13,51 +13,51 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Obx(
-          () => PrimaryButton(
-            isLoading: controller.pageState == PageState.loading,
-            onTap: () async {
-              if (controller.employeeController.text.isEmpty ||
-                  controller.nameController.text.isEmpty ||
-                  controller.emailController.text.isEmpty ||
-                  controller.contactsNumberController.text.isEmpty ||
-                  controller.deginationController.text.isEmpty ||
-                  controller.skillsController.text.isEmpty ||
-                  controller.employeeDescriptionController.text.isEmpty) {
+      padding: const EdgeInsets.all(20.0),
+      child: Obx(
+        () => PrimaryButton(
+          isLoading: controller.pageState == PageState.loading,
+          onTap: () async {
+            if (controller.employeeController.text.isEmpty ||
+                controller.nameController.text.isEmpty ||
+                controller.emailController.text.isEmpty ||
+                controller.contactsNumberController.text.isEmpty ||
+                controller.deginationController.text.isEmpty ||
+                controller.employeeDescriptionController.text.isEmpty) {
+              Get.snackbar(
+                'Waring',
+                'Please fill the field',
+                borderColor: AppColors.red,
+                borderWidth: 1,
+              );
+              return;
+            }
+            controller.addedNewEmployee().then((value) {
+              if (value.success == false) {
                 Get.snackbar(
-                  'Waring',
-                  'Please fill the field',
-                  borderColor: AppColors.red,
-                  borderWidth: 1,
+                  'Failed',
+                  value.message ?? 'Fail to add new employee',
                 );
                 return;
               }
-              controller.addedNewEmployee().then((value) {
-                if (value.success == true) {
-                  Get.snackbar(
-                    'Failed',
-                    value.message ?? 'Fail to add new employee',
-                  );
-                  return;
-                }
-                if (value.success == true) {
-                  controller.clearTextFields();
-                  Get.snackbar(
-                    'Successfully',
-                    value.message ?? 'Employee Added Successfully',
-                  );
-                  Get.find<EmployeeListViewController>().getEmployeeList();
-                  Get.back();
-                }
-              });
-            },
-            widget: Text(
-              'Added new employee',
-              textAlign: TextAlign.center,
-              style: AppTextStyle.bold16.copyWith(color: AppColors.white),
-            ),
+              if (value.success == true) {
+                controller.clearTextFields();
+                Get.snackbar(
+                  'Successfully',
+                  value.message ?? 'Employee Added Successfully',
+                );
+                Get.find<EmployeeListViewController>().getEmployeeList();
+                Get.back();
+              }
+            });
+          },
+          widget: Text(
+            'Added new employee',
+            textAlign: TextAlign.center,
+            style: AppTextStyle.bold16.copyWith(color: AppColors.white),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }

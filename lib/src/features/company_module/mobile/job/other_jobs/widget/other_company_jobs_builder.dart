@@ -4,7 +4,6 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/vie
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/job_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class OtherCompanyJobsBuilder extends StatelessWidget {
   const OtherCompanyJobsBuilder({
@@ -26,7 +25,7 @@ class OtherCompanyJobsBuilder extends StatelessWidget {
           onTap: () {
             Get.toNamed(
               Routes.jobDetails,
-              arguments: [otherCompany[index], true, JobIsFrom.other],
+              arguments: [otherCompany[index], JobIsFrom.all],
             );
           },
           job: otherCompany[index],

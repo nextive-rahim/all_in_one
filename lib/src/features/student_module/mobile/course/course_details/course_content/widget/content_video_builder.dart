@@ -67,7 +67,7 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
         'Is  Register course : ${(userType == 1 && profileController.profileResponseModel.isSubscribed == 1)}');
     if (userType == 1 &&
         profileController.profileResponseModel.isSubscribed == 1) {
-      courseRegistratoinController.isCourseAllVideosWatched.value = true;
+      courseRegistratoinController.courseRegistered.value = true;
     }
     return ListView.separated(
       shrinkWrap: true,
@@ -84,8 +84,7 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
                 if (((userType == 1 &&
                         profileController.profileResponseModel.isSubscribed !=
                             1) ||
-                    !courseRegistratoinController
-                        .isCourseAllVideosWatched.value)) {
+                    !courseRegistratoinController.courseRegistered.value)) {
                   return Util.displayToast(
                     context,
                     "Please register the course first",

@@ -35,7 +35,6 @@ class SavedJobsTab extends GetView<JobsViewController> {
                           Routes.jobDetails,
                           arguments: [
                             controller.savedJobList[index],
-                            false,
                             JobIsFrom.saved
                           ],
                         );

@@ -72,10 +72,10 @@ class _CourseDetailMobilePageState extends State<CourseDetailMobilePage> {
             registrationController: registrationController,
           ),
           // CourseLevelSection(collectinListData: collectinListData!),
-          const Expanded(
+          Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   top: 10,
                   right: 10,
                   left: 10,
@@ -86,8 +86,8 @@ class _CourseDetailMobilePageState extends State<CourseDetailMobilePage> {
                   children: [
                     // CourseShareSection(collectinListData: collectinListData!),
 
-                    CourseContent(),
-                    //  CommentSection(collectinListData: collectinListData!),
+                    const CourseContent(),
+                    CommentSection(collectinListData: collectinListData!),
                   ],
                 ),
               ),

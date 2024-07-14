@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 
 class SkillUpdateSection extends GetView<UpdateProfileiewController> {
   SkillUpdateSection({super.key});
-  final SkillViewController skillController = Get.find();
+  final SkillViewController skillController = Get.put(SkillViewController());
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -20,7 +20,7 @@ class SkillUpdateSection extends GetView<UpdateProfileiewController> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: const Text('Update Skills'),
+              title: const Text(' Skills'),
               content: Obx(() {
                 if (skillController.pageState == PageState.loading) {
                   return const CircularProgressIndicator();
@@ -52,7 +52,7 @@ class SkillUpdateSection extends GetView<UpdateProfileiewController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Update Skills',
+            ' Skills',
             style: AppTextStyle.medium14.copyWith(color: AppColors.black),
           ),
           const SizedBox(height: 6),

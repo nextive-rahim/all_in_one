@@ -18,7 +18,7 @@ class UpdateProfileForm extends GetView<UpdateProfileiewController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          labelText('Name'),
+          labelText('Name*'),
           TextFormFieldWidget(
             isEmailField: true,
             controller: controller.nameController,

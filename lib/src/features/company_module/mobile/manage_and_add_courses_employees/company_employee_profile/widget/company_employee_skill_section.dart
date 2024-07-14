@@ -3,66 +3,63 @@ import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:flutter/material.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/common_features/user_details/model/user_details_model.dart';
+import 'package:flutter/widgets.dart';
 
-class CompanyEmployeeSkillSection extends StatelessWidget {
+class CompanyEmployeeSkillSection extends StatefulWidget {
   const CompanyEmployeeSkillSection({
     super.key,
-    required this.employee,
+    required this.user,
   });
-  final EmployeeModel employee;
+  final EmployeeModel? user;
+  @override
+  State<CompanyEmployeeSkillSection> createState() =>
+      _CompanyEmployeeSkillSectionState();
+}
+
+class _CompanyEmployeeSkillSectionState
+    extends State<CompanyEmployeeSkillSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 30),
         const TextWidget(
-          text: AppStrings.topSkills,
-          color: CommonColor.blackColor1,
+          text: 'Skills',
+          color: CommonColor.greyColor4,
           maxLine: 1,
+          underline: TextDecoration.underline,
           fontFamily: AppStrings.sfProDisplay,
           fontWeight: FontWeight.w600,
           fontSize: 18,
         ),
-        const SizedBox(height: 15),
-        Wrap(
-          direction: Axis.horizontal,
-          spacing: 3.0,
-          runSpacing: 8.0,
-          children: [
-            Container(
-              height: 40,
-              padding: const EdgeInsets.only(
-                left: 16,
-                right: 16,
-                top: 10,
+        const SizedBox(height: 10),
+        GridView.builder(
+          padding: const EdgeInsets.only(bottom: 10),
+          shrinkWrap: true,
+          itemCount: widget.user?.userSkill!.length,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // number of items in each row
+              mainAxisSpacing: 8.0, // spacing between rows
+              crossAxisSpacing: 8.0,
+              mainAxisExtent: 50 // spacing between columns
               ),
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                      width: 0.50, color: CommonColor.greyColor5),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-                shadows: const [
-                  BoxShadow(
-                    color: CommonColor.blackColor3,
-                    blurRadius: 2,
-                    offset: Offset(0, 1),
-                    spreadRadius: 0,
-                  )
-                ],
-              ),
-              child: TextWidget(
-                textAlign: TextAlign.center,
-                text: employee.keySkill ?? "",
-                color: CommonColor.greyColor11,
-                maxLine: 1,
-                fontFamily: AppStrings.inter,
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-              ),
-            ),
-          ],
+          itemBuilder: (context, index) {
+            return TextWidget(
+              text:
+                  "${index + 1} . ${widget.user?.userSkill![index].skill ?? ''}",
+              color: CommonColor.blackColor2,
+              maxLine: 2,
+              fontFamily: AppStrings.inter,
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+            );
+          },
         ),
       ],
     );

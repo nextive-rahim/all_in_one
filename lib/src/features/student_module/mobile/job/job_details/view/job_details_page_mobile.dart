@@ -32,13 +32,12 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
       Get.lazyPut(() => AppliedJobsViewController(), fenix: true);
   final savecontroller = Get.lazyPut(() => JobsViewController(), fenix: true);
   final JobModel viewJobResponseData = Get.arguments[0];
-  final isFromCompanyJob = Get.arguments[1] ?? false;
+  final isFromCompanyJob = Get.arguments[1] == JobIsFrom.company ? true : false;
   final bool isFromAppliedJob =
-      Get.arguments[2] == JobIsFrom.applied ? true : false;
+      Get.arguments[1] == JobIsFrom.applied ? true : false;
   final bool isFromSaveddJob =
-      Get.arguments[2] == JobIsFrom.saved ? true : false;
-  final bool isFromOtherJob =
-      Get.arguments[2] == JobIsFrom.other ? true : false;
+      Get.arguments[1] == JobIsFrom.saved ? true : false;
+  final bool isFromOtherJob = Get.arguments[1] == JobIsFrom.all ? true : false;
   @override
   void initState() {
     super.initState();
@@ -66,12 +65,10 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                   children: [
                     JobDetailsHeader(job: viewJobResponseData),
                     JobSummaryCard(job: viewJobResponseData),
-                    isFromCompanyJob || isFromAppliedJob
-                        ? const Offstage()
-                        : ApplyJobButton(job: viewJobResponseData),
-                    isFromCompanyJob || isFromSaveddJob
-                        ? const Offstage()
-                        : SaveJobButtonFromJobDetails(job: viewJobResponseData),
+
+                    isFromSaveddJob
+                        ? ApplyJobButton(job: viewJobResponseData)
+                        : const Offstage(),
                     isFromOtherJob
                         ? Column(
                             children: [
