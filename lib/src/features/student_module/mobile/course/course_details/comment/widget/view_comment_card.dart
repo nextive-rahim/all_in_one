@@ -4,6 +4,7 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/formated_date_time.dart';
+import 'package:all_in_one/src/core/utils/string.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
@@ -57,7 +58,8 @@ class _ViewCommentCardState extends State<ViewCommentCard> {
             decoration: const BoxDecoration(),
             child: ClipRRect(
                 borderRadius: BorderRadius.circular(50),
-                child: Image.network(profileController.userModel?.image ?? '')
+                child: Image.network(
+                    profileController.userModel?.image ?? noImageFound)
                 //  AppCachedNetworkImage(
                 //   imageUrl: profileController.userModel?.image,
                 //   cachedHeight: 131,

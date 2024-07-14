@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
+import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_with_course_page.dart';
 import 'package:all_in_one/src/features/student_module/root/view/home_page.dart';
 import 'package:all_in_one/src/features/student_module/root/widget/home_appbar.dart';
@@ -19,12 +20,7 @@ class _BottomNavBarEmployeeState extends State<BottomNavBarEmployee> {
   final controller = Get.put(DashboardViewController());
   final List<Widget> _children = <Widget>[
     const CategoryWithCoursePage(),
-    HomePage(
-      title: 'Profile',
-      onLogout: () {
-        // Util.logout(context);
-      },
-    ),
+    ProfilePage()
   ];
 
   static const double _borderRadius = 20;
