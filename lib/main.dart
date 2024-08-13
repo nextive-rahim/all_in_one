@@ -1,11 +1,9 @@
 import 'dart:io';
 
-import 'package:all_in_one/firebase_options.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/theme/theme.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -21,9 +19,9 @@ class MyHttpOverrides extends HttpOverrides {
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // HttpOverrides.global = MyHttpOverrides();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   await CacheService().initialize();
   runApp(
     const MyApp(),
