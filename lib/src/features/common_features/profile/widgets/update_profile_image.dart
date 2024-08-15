@@ -11,7 +11,7 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
 
   @override
   Widget build(BuildContext context) {
-    final profileController = Get.find<ProfileController>();
+    final profileController = Get.find<ProfileViewController>();
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: ClipRRect(

@@ -29,6 +29,7 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(const Duration(seconds: 2)).then((value) {
       log("Auth Token.... : ${CacheService.boxAuth.read(CacheKeys.token)}");
       if (CacheService.boxAuth.read(CacheKeys.token) == null) {
+        //  Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
         Get.offNamed(Routes.login);
         return;
       }
@@ -37,14 +38,18 @@ class _SplashPageState extends State<SplashPage> {
       if (userType == 1) {
         if (kIsWeb) {
           print('object');
-          Get.offNamed(Routes.bottomNavBarStudent);
+          Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
+          // Get.offNamed(Routes.bottomNavBarStudent);
         } else {
+          // Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
           Get.offNamed(Routes.bottomNavBarStudent);
         }
       } else if (userType == 2) {
         if (kIsWeb) {
-          Get.offNamed(Routes.bottomNavBarEmployee);
+          Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
+          // Get.offNamed(Routes.bottomNavBarEmployee);
         } else {
+          // Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
           Get.offNamed(Routes.bottomNavBarEmployee);
         }
       } else if (userType == 3) {

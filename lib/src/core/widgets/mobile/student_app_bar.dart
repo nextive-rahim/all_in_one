@@ -31,7 +31,7 @@ class StudentAppBarMobile extends StatefulWidget {
 
 class _StudentAppBarMobileState extends State<StudentAppBarMobile> {
   final _searchController = TextEditingController();
-  final profileController = Get.find<ProfileController>();
+  final profileController = Get.find<ProfileViewController>();
   @override
   void initState() {
     super.initState();

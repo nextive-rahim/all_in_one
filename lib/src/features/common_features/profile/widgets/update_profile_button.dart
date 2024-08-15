@@ -18,7 +18,7 @@ class UpdateProfileButton extends GetView<UpdateProfileiewController> {
             if (value.success == true) {
               Get.snackbar('Successfully', 'Update Profile Successfully',
                   snackPosition: SnackPosition.BOTTOM);
-              Get.find<ProfileController>().profile();
+              Get.find<ProfileViewController>().getUser();
               // Get.back();
             }
           });

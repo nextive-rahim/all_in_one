@@ -49,7 +49,7 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
     print('watch Video list Length 1 :${isWachVideoList.length}');
   }
 
-  final profileController = Get.find<ProfileController>();
+  final profileController = Get.find<ProfileViewController>();
   final userType = CacheService.boxAuth.read(CacheKeys.userType);
 
   @override

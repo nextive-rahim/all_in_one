@@ -20,7 +20,7 @@ GlobalKey navBarGlobalKey = GlobalKey(debugLabel: 'bottomAppBar');
 
 class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
   final controller = Get.put(DashboardViewController());
-  final profileController = Get.put(ProfileController());
+  final profileController = Get.put(ProfileViewController());
   final List<Widget> _children = <Widget>[
     const CategoryWithCoursePage(),
     const ListAndSearchJobStudentMobile(),

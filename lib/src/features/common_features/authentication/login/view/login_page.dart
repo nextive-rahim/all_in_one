@@ -305,7 +305,8 @@ class _LoginPageState extends State<LoginPage> {
         }
         if (controller.loginModel.data?.userType == 1) {
           if (kIsWeb) {
-            Get.offNamed(Routes.bottomNavBarStudent);
+            Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
+            // Get.offNamed(Routes.bottomNavBarStudent);
           } else {
             Get.offNamed(Routes.bottomNavBarStudent);
           }

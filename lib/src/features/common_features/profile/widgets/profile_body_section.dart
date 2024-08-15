@@ -30,12 +30,12 @@ class ProfileBodySection extends StatelessWidget {
         ),
         TextWidget(
           text: List<String>.generate(
-              Get.find<ProfileController>()
+              Get.find<ProfileViewController>()
                   .profileResponseModel
                   .userSkill!
                   .length,
               (int index) =>
-                  Get.find<ProfileController>()
+                  Get.find<ProfileViewController>()
                       .profileResponseModel
                       .userSkill![index]
                       .skill ??

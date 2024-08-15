@@ -3,6 +3,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/controller/interviewer_test_request_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,45 +42,48 @@ class InterviewerTestResultPendingCard
             fontSize: 14,
           ),
           const SizedBox(height: 10),
-          GestureDetector(
-            onTap: () {
-              controller.isInterviewerApproved.value = true;
-              print(controller.isInterviewerApproved.value);
-            },
-            child: Container(
-              width: 165,
-              height: 40,
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 10,
-              ),
-              clipBehavior: Clip.antiAlias,
-              decoration: ShapeDecoration(
-                color: Colors.white,
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(
-                    width: 0.50,
-                    color: CommonColor.greyColor5,
-                  ),
-                  borderRadius: BorderRadius.circular(8),
+          Container(
+            width: 165,
+            height: 40,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 10,
+            ),
+            clipBehavior: Clip.antiAlias,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                side: const BorderSide(
+                  width: 0.50,
+                  color: CommonColor.greyColor5,
                 ),
-                shadows: const [
-                  BoxShadow(
-                    color: CommonColor.blackColor3,
-                    blurRadius: 2,
-                    offset: Offset(0, 1),
-                    spreadRadius: 0,
-                  )
-                ],
+                borderRadius: BorderRadius.circular(8),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(ImageConstant.refresh),
-                  const SizedBox(width: 10),
-                  const Text(
+              shadows: const [
+                BoxShadow(
+                  color: CommonColor.blackColor3,
+                  blurRadius: 2,
+                  offset: Offset(0, 1),
+                  spreadRadius: 0,
+                )
+              ],
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(ImageConstant.refresh),
+                const SizedBox(width: 10),
+                GestureDetector(
+                  onTap: () {
+                    Get.find<ProfileViewController>().getUser().then((v) {
+                      if (v.testRequest?.status == 3) {
+                        controller.isInterviewerApproved.value = true;
+                      }
+                    });
+                  },
+                  child: const Text(
                     AppStrings.refresh,
                     style: TextStyle(
                       color: CommonColor.blackColor4,
@@ -88,8 +92,8 @@ class InterviewerTestResultPendingCard
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 20),

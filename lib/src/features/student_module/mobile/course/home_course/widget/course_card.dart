@@ -3,6 +3,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,6 +34,13 @@ class CourseCard extends StatelessWidget {
           child: GestureDetector(
             onTap: onTap ??
                 () {
+                  if (kIsWeb) {
+                    Get.rootDelegate.toNamed(
+                      Routes.courseDetailMobilePage,
+                      arguments: course,
+                    );
+                    return;
+                  }
                   Get.toNamed(
                     Routes.courseDetailMobilePage,
                     arguments: course,

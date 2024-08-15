@@ -36,7 +36,7 @@ class _CourseDetailsVideoSectionState extends State<CourseDetailsVideoSection> {
 
   @override
   Widget build(BuildContext context) {
-    final profileController = Get.find<ProfileController>();
+    final profileController = Get.find<ProfileViewController>();
     if (userType == 2) {
       widget.registrationController.courseRegistered.value = true;
     }

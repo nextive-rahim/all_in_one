@@ -73,7 +73,7 @@ class SkillUpdateSection extends GetView<UpdateProfileiewController> {
                 Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: Obx(
-                    () => Get.find<ProfileController>()
+                    () => Get.find<ProfileViewController>()
                             .profileResponseModel
                             .userSkill!
                             .isEmpty
@@ -98,11 +98,11 @@ class SkillUpdateSection extends GetView<UpdateProfileiewController> {
                               )
                             : Text(
                                 List<String>.generate(
-                                    Get.find<ProfileController>()
+                                    Get.find<ProfileViewController>()
                                         .profileResponseModel
                                         .userSkill!
                                         .length, (int index) {
-                                  return Get.find<ProfileController>()
+                                  return Get.find<ProfileViewController>()
                                           .profileResponseModel
                                           .userSkill![index]
                                           .skill ??

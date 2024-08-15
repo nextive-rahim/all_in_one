@@ -2,6 +2,7 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/course_card.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -49,6 +50,13 @@ class CategoryWithCourseBuilder extends StatelessWidget {
                             children: [
                               InkWell(
                                 onTap: () {
+                                  if (kIsWeb) {
+                                    Get.rootDelegate.toNamed(
+                                        Routes.categoryWiseCourse,
+                                        arguments: categories[categoryIndex]
+                                            .collectinList);
+                                    return;
+                                  }
                                   Get.toNamed(Routes.categoryWiseCourse,
                                       arguments: categories[categoryIndex]
                                           .collectinList);

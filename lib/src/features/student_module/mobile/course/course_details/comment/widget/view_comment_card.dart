@@ -28,7 +28,7 @@ class ViewCommentCard extends StatefulWidget {
 }
 
 bool isShowReplyForm = false;
-final profileController = Get.find<ProfileController>();
+final profileController = Get.find<ProfileViewController>();
 
 class _ViewCommentCardState extends State<ViewCommentCard> {
   Key? focusedCommentBoxKey = (null as Key?);

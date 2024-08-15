@@ -9,7 +9,8 @@ import 'package:get/get.dart';
 class CompanyProfileUpdatePage
     extends GetView<CompanyProfileUpdateViewController> {
   CompanyProfileUpdatePage({super.key}) {
-    controller.profileDataPopulate(Get.find<ProfileController>().userModel!);
+    controller
+        .profileDataPopulate(Get.find<ProfileViewController>().userModel!);
   }
 
   @override

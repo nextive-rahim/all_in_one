@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-class ProfileController extends GetxController {
+class ProfileViewController extends GetxController {
   final ProfileRepository _repository = ProfileRepository();
 
   RxBool rememberMe = false.obs;
@@ -17,7 +17,7 @@ class ProfileController extends GetxController {
 
   @override
   void onInit() async {
-    await profile();
+    await getUser();
     // TODO: implement onInit
     super.onInit();
   }
@@ -30,7 +30,7 @@ class ProfileController extends GetxController {
   late ProfileResponseModel profileResponseModel;
   UserModel? userModel;
 
-  Future<void> profile() async {
+  Future<ProfileResponseModel> getUser() async {
     _pageStateController(PageState.loading);
 
     Map<String, dynamic> requestBody = {};
@@ -45,12 +45,12 @@ class ProfileController extends GetxController {
       print(' Name : ${userModel!.name}');
       _pageStateController(PageState.success);
 
-      return;
+      return profileResponseModel;
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       _pageStateController(PageState.error);
-      return;
+      return profileResponseModel;
     }
   }
 

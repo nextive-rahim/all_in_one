@@ -19,7 +19,7 @@ class InterviewerHomePageMobile extends StatefulWidget {
 class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
   final interviewTestRequestController =
       Get.find<InterviewerTestRequestViewController>();
-  final profileController = Get.put(ProfileController());
+  final profileController = Get.put(ProfileViewController());
   @override
   void initState() {
     super.initState();

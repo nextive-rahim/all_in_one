@@ -13,7 +13,7 @@ class AuthenticationBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => LoginViewController(), fenix: true);
     Get.lazyPut(() => RegistrationViewController(), fenix: true);
-    Get.lazyPut(() => ProfileController(), fenix: true);
+    Get.lazyPut(() => ProfileViewController(), fenix: true);
     Get.lazyPut(() => SkillViewController(), fenix: true);
     Get.lazyPut(() => ForgetPasswordViewController(), fenix: true);
     Get.lazyPut(() => ForgetPasswordEmailViewController(), fenix: true);

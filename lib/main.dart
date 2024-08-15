@@ -4,7 +4,12 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/theme/theme.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/features/common_features/authentication/login/view/login_page.dart';
+import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
+import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/nav2/get_nav_config.dart';
+import 'package:get/get_navigation/src/nav2/get_router_delegate.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -38,6 +43,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppStrings.appName,
+      // routerDelegate: AppRouterDelegate(),
       navigatorObservers: [RouteObserver<ModalRoute<void>>()],
       getPages: AppPages.pages,
       theme: themeData,
@@ -49,6 +55,18 @@ class MyApp extends StatelessWidget {
       //     //DashboardRegFirstTimeWeb()
       //     SplashPage(),
       // //BottomNavBarCompany()
+    );
+  }
+}
+
+class AppRouterDelegate extends GetDelegate {
+  @override
+  Widget build(BuildContext context) {
+    return Navigator(
+      onPopPage: (route, result) => route.didPop(result),
+      pages: currentConfiguration != null
+          ? [currentConfiguration!.currentPage!]
+          : [GetNavConfig.fromRoute(Routes.splash)!.currentPage!],
     );
   }
 }

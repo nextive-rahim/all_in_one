@@ -22,7 +22,7 @@ class BottomNavBarInterviewer extends StatefulWidget {
 
 class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
   final controller = Get.put(DashboardViewController());
-  final profilecontroller = Get.put(ProfileController());
+  final profilecontroller = Get.put(ProfileViewController());
   final List<Widget> _isApprovedchildren = <Widget>[
     const InterviewerHomePageMobile(),
     const InterviewerPaymentHomePageMobile(),

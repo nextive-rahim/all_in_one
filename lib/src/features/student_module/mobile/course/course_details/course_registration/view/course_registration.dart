@@ -30,7 +30,7 @@ class CourseRegistrationSection
       userCourseAvailabilityViewController;
   @override
   Widget build(BuildContext context) {
-    final profileController = Get.find<ProfileController>();
+    final profileController = Get.find<ProfileViewController>();
     final courseRegistratoinController =
         Get.find<CourseRegistrationViewController>();
     final userType = CacheService.boxAuth.read(CacheKeys.userType);
@@ -140,7 +140,7 @@ class CourseRegistrationSection
                                   .coursePriceReponseData[0].courseReteId
                                   .toString())
                           .then((value) {
-                        Get.find<ProfileController>().profile();
+                        Get.find<ProfileViewController>().getUser();
                         controller.appearInTest.value = true;
                         controller.courseRegistered.value = true;
                         courseRegistrationSuccessfulBottomSheet(

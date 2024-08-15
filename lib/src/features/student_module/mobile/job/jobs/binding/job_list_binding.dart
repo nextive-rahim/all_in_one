@@ -7,7 +7,7 @@ import 'package:get/get_instance/get_instance.dart';
 class JobListBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => ProfileController(), fenix: true);
+    Get.lazyPut(() => ProfileViewController(), fenix: true);
     Get.lazyPut(() => AppliedJobsViewController(), fenix: true);
     Get.lazyPut(() => JobsViewController(), fenix: true);
   }

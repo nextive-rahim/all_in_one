@@ -56,7 +56,8 @@ class CommentReplyCard extends GetView<WriteReplyViewController> {
                     (ViewCommentResponseData(
                         updatedAt: DateTime.now(),
                         username:
-                            Get.find<ProfileController>().userModel?.name ?? '',
+                            Get.find<ProfileViewController>().userModel?.name ??
+                                '',
                         replyText:
                             controller.repleCommentTextController.text)));
 

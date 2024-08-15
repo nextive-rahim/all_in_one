@@ -17,7 +17,7 @@ class InterviewerTestRequestCard extends StatefulWidget {
     super.key,
     required this.profileController,
   });
-  final ProfileController profileController;
+  final ProfileViewController profileController;
   @override
   State<InterviewerTestRequestCard> createState() =>
       _InterviewerTestRequestCardState();

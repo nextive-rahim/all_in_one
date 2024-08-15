@@ -9,7 +9,7 @@ import 'package:all_in_one/src/features/common_features/profile/controller/profi
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CompanyProfilePage extends GetView<ProfileController> {
+class CompanyProfilePage extends GetView<ProfileViewController> {
   const CompanyProfilePage({super.key});
 
   @override

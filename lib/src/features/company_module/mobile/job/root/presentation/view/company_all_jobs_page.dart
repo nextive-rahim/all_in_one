@@ -22,7 +22,7 @@ class CompanyAllJobsMobilePage extends StatefulWidget {
 class _CompanyAllJobsMobilePageState extends State<CompanyAllJobsMobilePage> {
   final controller = Get.put(OtherCompanyJobsViewController());
   final appliedController = Get.put(AppliedJobsViewController());
-  final profileController = Get.find<ProfileController>();
+  final profileController = Get.find<ProfileViewController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

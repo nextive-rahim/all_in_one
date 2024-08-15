@@ -13,7 +13,7 @@ import 'package:all_in_one/src/features/common_features/profile/widgets/profile_
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProfilePage extends GetView<ProfileController> {
+class ProfilePage extends GetView<ProfileViewController> {
   ProfilePage({super.key}) {
     // controller.profile();
   }

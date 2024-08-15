@@ -24,7 +24,7 @@ bool isShowReplyForm = false;
 
 class _ReplyCardState extends State<ReplyCard> {
   final replyController = Get.find<ViewReplyViewController>();
-  final profileController = Get.find<ProfileController>();
+  final profileController = Get.find<ProfileViewController>();
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -156,10 +156,11 @@ class WriteComment extends GetView<WriteCommentViewController> {
                               Get.find<ViewCommentViewController>()
                                   .addNewComment((ViewCommentResponseData(
                                       updatedAt: DateTime.now(),
-                                      username: Get.find<ProfileController>()
-                                              .userModel
-                                              ?.name ??
-                                          '',
+                                      username:
+                                          Get.find<ProfileViewController>()
+                                                  .userModel
+                                                  ?.name ??
+                                              '',
                                       commentText: controller
                                           .writeCommentTextController.text)));
 
