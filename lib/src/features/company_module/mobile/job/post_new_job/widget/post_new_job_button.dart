@@ -15,11 +15,11 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
         onTap: () {
-          if (controller.jobRoleController.text.isEmpty ||
-              controller.workExpMinController.text.isEmpty ||
-              controller.workExpMaxController.text.isEmpty ||
-              controller.paySalaryController.text.isEmpty ||
-              controller.workLocationController.text.isEmpty ||
+          if (controller.jobRoleController.text.isEmpty &&
+              controller.workExpMinController.text.isEmpty &&
+              controller.workExpMaxController.text.isEmpty &&
+              controller.paySalaryController.text.isEmpty &&
+              controller.workLocationController.text.isEmpty &&
               controller.jobDescriptionController.text.isEmpty) {
             Get.snackbar(
               'Waring',
@@ -32,12 +32,14 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
           }
           controller.postNewJob().then((value) {
             if (value.success == true) {
+              Get.back();
               Get.snackbar(
                 'Successfully',
                 'Post Added Successfully',
                 backgroundColor: CommonColor.greenColor1,
                 colorText: Colors.white,
               );
+
               Get.find<JobsViewController>().getjobList();
             }
           });

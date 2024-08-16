@@ -4,21 +4,8 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controlle
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MyCompanyJobListPageMobile extends StatefulWidget {
+class MyCompanyJobListPageMobile extends GetView<JobsViewController> {
   const MyCompanyJobListPageMobile({super.key});
-
-  @override
-  State<MyCompanyJobListPageMobile> createState() =>
-      _MyCompanyJobListPageMobileState();
-}
-
-class _MyCompanyJobListPageMobileState
-    extends State<MyCompanyJobListPageMobile> {
-  @override
-  void initState() {
-    Get.put(JobsViewController());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

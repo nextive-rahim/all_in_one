@@ -4,44 +4,28 @@ import 'package:all_in_one/src/features/company_module/mobile/job/my_company_job
 import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/view/other_company_jobs_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/root/presentation/widget/company_job_common_tab.dart';
-import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/applied_jobs_tab.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/saved_job_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CompanyAllJobsMobilePage extends StatefulWidget {
+class CompanyAllJobsMobilePage extends StatelessWidget {
   const CompanyAllJobsMobilePage({super.key});
 
   @override
-  State<CompanyAllJobsMobilePage> createState() =>
-      _CompanyAllJobsMobilePageState();
-}
-
-class _CompanyAllJobsMobilePageState extends State<CompanyAllJobsMobilePage> {
-  final controller = Get.put(OtherCompanyJobsViewController());
-  final jobController = Get.put(JobsViewController());
-  final profileController = Get.find<ProfileViewController>();
-  @override
   Widget build(BuildContext context) {
+    Get.put(JobsViewController());
+    Get.put(OtherCompanyJobsViewController());
     return Scaffold(
       backgroundColor: CommonColor.greyColor1,
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {
-            jobController.getjobList();
+            Get.find<JobsViewController>().getjobList();
           },
           child: Column(
             children: [
-              // StudentAppBarMobile(
-              //   titel1: AppStrings.companyName,
-              //   title2: AppStrings.companyTaglineHere,
-              //   isBack: false,
-              //   searchHintText: AppStrings.searchForJobs,
-              //   onSearchListener: (value) {},
-              //   isShowNotificationIcon: false,
-              // ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Container(
@@ -53,19 +37,15 @@ class _CompanyAllJobsMobilePageState extends State<CompanyAllJobsMobilePage> {
                         top: 10,
                         bottom: 60,
                       ),
-                      child: Column(
-                        children: [
-                          CompanyJobCommonTabSection(
-                            title3: AppStrings.savedJobs,
-                            title1: AppStrings.ourJobs,
-                            title2: AppStrings.otherJobs,
-                            title4: AppStrings.appliedJobs,
-                            firstTabViewItems: [MyCompanyJobListPageMobile()],
-                            secondTabViewItems: [OtherCompanyJobPage()],
-                            thirdTabViewItems: [SavedJobsTab()],
-                            fourthTabViewItems: [AppliedTab()],
-                          ),
-                        ],
+                      child: CompanyJobCommonTabSection(
+                        title3: AppStrings.savedJobs,
+                        title1: AppStrings.ourJobs,
+                        title2: AppStrings.otherJobs,
+                        title4: AppStrings.appliedJobs,
+                        firstTabViewItems: [MyCompanyJobListPageMobile()],
+                        secondTabViewItems: [OtherCompanyJobPage()],
+                        thirdTabViewItems: [SavedJobsTab()],
+                        fourthTabViewItems: [AppliedTab()],
                       ),
                     ),
                   ),
