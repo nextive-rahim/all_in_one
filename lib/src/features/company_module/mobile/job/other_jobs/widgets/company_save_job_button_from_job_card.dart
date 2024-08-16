@@ -1,13 +1,14 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
-  SaveJobButtonFromJobCard({
+class CompanySaveJobButtonFromJobCard
+    extends GetView<OtherCompanyJobsViewController> {
+  CompanySaveJobButtonFromJobCard({
     super.key,
     required this.job,
   });
@@ -37,7 +38,7 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
               backgroundColor: CommonColor.greenColor1,
               colorText: Colors.white,
             );
-            controller.savedJobList.add(job);
+            controller.companySavedJobList.add(job);
           } else {
             isSavedJob.value = false;
             Get.snackbar(

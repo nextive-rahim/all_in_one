@@ -22,7 +22,7 @@ class JobsViewController extends GetxController {
   @override
   void onInit() async {
     await getjobList();
-    // savedjobList();
+
     super.onInit();
   }
 
@@ -54,24 +54,6 @@ class JobsViewController extends GetxController {
     }
   }
 
-  // Future<void> savedjobList() async {
-  //   //_pageStateController(PageState.loading);
-
-  //   try {
-  //     final res = await _repository.fetchSavedJobs();
-  //     JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
-  //     savedJobList.value = jobListResponse.data ?? [];
-  //     // _pageStateController(PageState.success);
-
-  //     return;
-  //   } catch (e, stackTrace) {
-  //     Log.error(e.toString());
-  //     Log.error(stackTrace.toString());
-  //     _pageStateController(PageState.error);
-  //     return;
-  //   }
-  // }
-
   Future<RegistrationResponseModel> saveJob(int id) async {
     // _pageStateController(PageState.loading);
 
@@ -83,9 +65,7 @@ class JobsViewController extends GetxController {
       final res = await _repository.saveJob(body);
 
       signupModel = RegistrationResponseModel.fromJson(res);
-      // _pageStateController(PageState.success);
-      // savedJobList.add();
-      // savedjobList();
+
       return signupModel;
       // clearTextFields();
     } catch (e, stackTrace) {

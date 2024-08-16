@@ -1,13 +1,15 @@
+import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
-  SaveJobButtonFromJobCard({
+class DeleteOtherCompanySavedJobCard
+    extends GetView<OtherCompanyJobsViewController> {
+  DeleteOtherCompanySavedJobCard({
     super.key,
     required this.job,
   });
@@ -17,32 +19,24 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (isSavedJob.value || job.isSaved != 0) {
-          Get.snackbar(
-            'Alert',
-            'Job is already saved',
-            snackPosition: SnackPosition.TOP,
-            backgroundColor: CommonColor.redColors,
-            colorText: Colors.white,
-          );
-
-          return;
-        }
-        controller.saveJob(job.id!).then((value) {
+        controller.deleteSaveJob(job.id!).then((value) {
           if (value.success == true) {
-            isSavedJob.value = true;
+            controller.companySavedJobList
+                .removeWhere((element) => element.id == job.id);
+
             Get.snackbar(
               'Success',
-              'Successfully Saved job',
+              'Successfully Delete Saved job',
+              snackPosition: SnackPosition.TOP,
               backgroundColor: CommonColor.greenColor1,
               colorText: Colors.white,
             );
-            controller.savedJobList.add(job);
+            controller.getOtherCompanyjobList();
+            // Get.find<AppliedJobsViewController>().appliedjobList();
           } else {
-            isSavedJob.value = false;
             Get.snackbar(
               'Falied',
-              'Failed Save job',
+              'Failed  Delete Saved job',
               snackPosition: SnackPosition.TOP,
               backgroundColor: CommonColor.redColors,
               colorText: Colors.white,
@@ -53,22 +47,18 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
       child: ValueListenableBuilder<bool>(
         valueListenable: isSavedJob,
         builder: (BuildContext context, bool value, child) {
-          return Row(
+          return const Row(
             children: [
               Icon(
-                value || job.isSaved != 0
-                    ? Icons.bookmark
-                    : Icons.bookmark_add_outlined,
+                Icons.delete,
                 size: 20,
-                color: value || job.isSaved != 0
-                    ? CommonColor.blueColor1
-                    : CommonColor.blackColor1,
+                color: AppColors.red,
               ),
-              const SizedBox(width: 5),
-              const TextWidget(
+              SizedBox(width: 5),
+              TextWidget(
                 textAlign: TextAlign.start,
-                text: "Save",
-                color: CommonColor.greyColor4,
+                text: "Delete",
+                color: CommonColor.redColors,
                 maxLine: 1,
                 fontFamily: AppStrings.sfProDisplay,
                 fontWeight: FontWeight.w400,

@@ -20,13 +20,13 @@ class JobListRepository {
     return res.data;
   }
 
-  Future<dynamic> fetchSavedJobs() async {
-    final res = await RestClient.dev().get(
-      APIType.PROTECTED,
-      API.viewSavedJobUrl,
-    );
-    return res.data;
-  }
+  // Future<dynamic> fetchSavedJobs() async {
+  //   final res = await RestClient.dev().get(
+  //     APIType.PROTECTED,
+  //     API.viewSavedJobUrl,
+  //   );
+  //   return res.data;
+  // }
 
   Future<dynamic> otherCompanyJobs(Map<String, dynamic> data) async {
     final res = await RestClient.dev().post(
