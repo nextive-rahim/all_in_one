@@ -4,7 +4,6 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_update_view_controller.dart';
-import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/widgets/skill_update_section.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/controller/added_new_employee_view_controller.dart';
 import 'package:flutter/material.dart';

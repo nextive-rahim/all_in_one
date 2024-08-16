@@ -3,10 +3,6 @@ import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:flutter/material.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/core/utils/strings.dart';
-import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/common_features/user_details/model/user_details_model.dart';
 import 'package:flutter/widgets.dart';
 
 class CompanyEmployeeSkillSection extends StatefulWidget {

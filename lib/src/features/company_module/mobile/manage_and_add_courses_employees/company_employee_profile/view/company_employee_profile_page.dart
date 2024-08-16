@@ -1,6 +1,5 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
-import 'package:all_in_one/src/core/widgets/mobile/student_app_bar.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_completed_course_section.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_description_section.dart';
