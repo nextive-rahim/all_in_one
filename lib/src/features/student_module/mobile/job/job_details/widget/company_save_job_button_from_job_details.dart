@@ -4,13 +4,14 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
-  SaveJobButtonFromJobDetails({
+class CompanySaveJobButtonFromJobDetails
+    extends GetView<OtherCompanyJobsViewController> {
+  CompanySaveJobButtonFromJobDetails({
     super.key,
     required this.job,
   });
@@ -47,7 +48,7 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                     colorText: Colors.white,
                   );
                   // controller.savedjobList();
-                  controller.getjobList();
+                  controller.getOtherCompanyjobList();
                 } else {
                   Get.snackbar(
                     'Falied',

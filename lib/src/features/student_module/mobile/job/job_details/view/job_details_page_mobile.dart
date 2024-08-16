@@ -1,6 +1,9 @@
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/common_features/user_details/controller/user_details_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/controller/other_company_job_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/company_job_apply_button.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/company_save_job_button_from_job_details.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/company_job_candidate_list.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/apply_job_button.dart';
@@ -28,13 +31,12 @@ class JobDetailsPageMobile extends StatefulWidget {
 }
 
 class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
-  final savecontroller = Get.lazyPut(() => JobsViewController(), fenix: true);
+  final jobController = Get.lazyPut(() => JobsViewController(), fenix: true);
+  final otherCompanyjobController =
+      Get.lazyPut(() => OtherCompanyJobsViewController(), fenix: true);
   final JobModel viewJobResponseData = Get.arguments[0];
   final isFromCompanyJob = Get.arguments[1] == JobIsFrom.company ? true : false;
-  final bool isFromAppliedJob =
-      Get.arguments[1] == JobIsFrom.applied ? true : false;
-  final bool isFromSaveddJob =
-      Get.arguments[1] == JobIsFrom.saved ? true : false;
+
   final bool isFromOtherJob = Get.arguments[1] == JobIsFrom.all ? true : false;
   @override
   void initState() {
@@ -65,19 +67,25 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                     JobDetailsHeader(job: viewJobResponseData),
                     JobSummaryCard(job: viewJobResponseData),
 
-                    isFromSaveddJob
-                        ? ApplyJobButton(job: viewJobResponseData)
-                        : const Offstage(),
                     isFromOtherJob
                         ? Column(
                             children: [
-                              SaveJobButtonFromJobDetails(
+                              CompanySaveJobButtonFromJobDetails(
                                   job: viewJobResponseData),
                               10.sh,
-                              ApplyJobButton(job: viewJobResponseData),
+                              CompanyJobApplyButton(job: viewJobResponseData),
                             ],
                           )
-                        : const Offstage(),
+                        : isFromCompanyJob
+                            ? const Offstage()
+                            : Column(
+                                children: [
+                                  SaveJobButtonFromJobDetails(
+                                      job: viewJobResponseData),
+                                  10.sh,
+                                  ApplyJobButton(job: viewJobResponseData),
+                                ],
+                              ),
                     20.sh,
                     JobDescription(job: viewJobResponseData),
                     //  const JobShareButton(),

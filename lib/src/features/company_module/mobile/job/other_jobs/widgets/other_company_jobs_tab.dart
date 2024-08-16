@@ -39,7 +39,7 @@ class OtherCompanyJobsTab extends GetView<OtherCompanyJobsViewController> {
                           Routes.jobDetails,
                           arguments: [
                             controller.otherCompany[index],
-                            JobIsFrom.all
+                            JobIsFrom.other
                           ],
                         );
                       },

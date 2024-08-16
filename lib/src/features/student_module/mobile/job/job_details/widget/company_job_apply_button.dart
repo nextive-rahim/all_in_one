@@ -5,13 +5,13 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ApplyJobButton extends GetView<JobsViewController> {
-  ApplyJobButton({
+class CompanyJobApplyButton extends GetView<OtherCompanyJobsViewController> {
+  CompanyJobApplyButton({
     super.key,
     required this.job,
   });
@@ -40,25 +40,6 @@ class ApplyJobButton extends GetView<JobsViewController> {
                   );
                   return;
                 }
-                controller.applyJob(job.id!).then((value) {
-                  if (value.success == true) {
-                    Get.snackbar(
-                      'Success',
-                      'Successfully applied job',
-                      backgroundColor: CommonColor.greenColor1,
-                      colorText: Colors.white,
-                    );
-                    isAppliedJob.value = true;
-                    controller.getjobList();
-                  } else {
-                    Get.snackbar(
-                      'Falied',
-                      'Failed apply job',
-                      backgroundColor: CommonColor.redColors,
-                      colorText: Colors.white,
-                    );
-                  }
-                });
               },
               widget: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
