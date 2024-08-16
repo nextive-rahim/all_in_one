@@ -44,7 +44,7 @@ class _EmployeeListBuilder extends StatelessWidget {
         );
       }),
       separatorBuilder: ((context, index) {
-        return const SizedBox(height: 30);
+        return const SizedBox(height: 15);
       }),
     );
   }

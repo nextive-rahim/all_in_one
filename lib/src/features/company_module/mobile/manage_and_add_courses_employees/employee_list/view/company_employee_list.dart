@@ -42,9 +42,9 @@ class _CompanyEmployeeListPageMobileState
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                          left: 18,
-                          right: 18,
-                          top: 7,
+                          left: 15,
+                          right: 15,
+                          top: 5,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

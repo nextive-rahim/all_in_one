@@ -1,12 +1,13 @@
 import 'package:all_in_one/src/core/gobal_function.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EmployeeCard extends StatefulWidget {
+class EmployeeCard extends StatelessWidget {
   const EmployeeCard({
     super.key,
     required this.employee,
@@ -14,48 +15,14 @@ class EmployeeCard extends StatefulWidget {
   final EmployeeModel employee;
 
   @override
-  State<EmployeeCard> createState() => _EmployeeCardState();
-}
-
-class _EmployeeCardState extends State<EmployeeCard> {
-  Future<void> hotlineSupport() async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: '01718663032',
-    );
-    await urlLauncher(
-      launchUri.toString(),
-    );
-  }
-
-  Future<void> emailSupport() async {
-    final Uri launchUri = Uri(
-      scheme: 'mailto',
-      path: 'rahimsr983@gmail.com',
-    );
-    await urlLauncher(
-      launchUri.toString(),
-    );
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
       width: SizeConfig.screenWidth,
-      height: 183,
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        shadows: const [
-          BoxShadow(
-            color: Color(0x19000000),
-            blurRadius: 20,
-            offset: Offset(0, 4),
-            spreadRadius: 0,
-          )
-        ],
       ),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(15, 21, 30, 21),
@@ -65,7 +32,7 @@ class _EmployeeCardState extends State<EmployeeCard> {
               onTap: () {
                 Get.toNamed(
                   Routes.companyEmployeeProfilePage,
-                  arguments: widget.employee,
+                  arguments: employee,
                 );
               },
               child: Row(
@@ -80,11 +47,10 @@ class _EmployeeCardState extends State<EmployeeCard> {
                       shape: CircleBorder(),
                     ),
                     child: Text(
-                      getInitials(widget.employee.name ?? ''),
+                      getInitials(employee.name ?? ''),
                       style: const TextStyle(
                         color: Color(0xFF5A5959),
                         fontSize: 16,
-                        fontFamily: 'SF Pro Display',
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -95,33 +61,30 @@ class _EmployeeCardState extends State<EmployeeCard> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.employee.name ?? '',
+                          employee.name ?? '',
                           style: const TextStyle(
                             color: Color(0xFF262626),
                             fontSize: 16,
-                            fontFamily: 'SF Pro Display',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         const SizedBox(height: 5),
                         Text(
-                          widget.employee.degination ?? '',
+                          employee.degination ?? '',
                           style: const TextStyle(
                             color: Color(0xFF262626),
                             fontSize: 16,
-                            fontFamily: 'SF Pro Display',
                             fontWeight: FontWeight.w400,
                             height: 0,
                           ),
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          widget.employee.descripton ?? '',
+                          employee.descripton ?? '',
                           maxLines: 2,
                           style: const TextStyle(
                             color: Color(0xFF8A8A8A),
                             fontSize: 16,
-                            fontFamily: 'SF Pro Display',
                             fontWeight: FontWeight.w400,
                             height: 0,
                           ),
@@ -147,37 +110,51 @@ class _EmployeeCardState extends State<EmployeeCard> {
             ),
             const SizedBox(height: 8),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
                   children: [
                     InkWell(
                         onTap: () {
-                          hotlineSupport();
+                          hotlineSupport(employee.phone ?? '');
                         },
-                        child: const Icon(Icons.call_outlined)),
-                    const SizedBox(width: 24),
+                        child: const Icon(
+                          Icons.call_outlined,
+                          color: CommonColor.purpleColor1,
+                        )),
+                    const SizedBox(width: 20),
                     InkWell(
-                        onTap: () {
-                          emailSupport();
-                        },
-                        child: const Icon(Icons.mail_outline_outlined))
+                      onTap: () {
+                        emailSupport(employee.username ?? '');
+                      },
+                      child: const Icon(
+                        Icons.mail_outline_outlined,
+                        color: CommonColor.purpleColor1,
+                      ),
+                    )
                   ],
                 ),
                 GestureDetector(
                   onTap: () {
                     Get.toNamed(
                       Routes.companyAssignedCourses,
-                      arguments: widget.employee,
+                      arguments: employee,
                     );
                   },
                   child: Container(
-                    decoration: BoxDecoration(border: Border.all()),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: .5,
+                        ),
+                        borderRadius: BorderRadius.circular(5)),
                     child: const Padding(
                       padding: EdgeInsets.all(3.0),
                       child: Row(
                         children: [
-                          Icon(Icons.add),
+                          Icon(
+                            Icons.add,
+                            color: CommonColor.purpleColor1,
+                          ),
                           Text(
                             'Assing courses',
                             style: AppTextStyle.bold12,

@@ -45,7 +45,7 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
                 return;
               }
               if (value.success == true) {
-                controller.clearTextFields();
+                Get.back();
                 Get.snackbar(
                   'Successfully',
                   value.message ?? 'Employee Added Successfully',
@@ -53,7 +53,6 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
                   colorText: Colors.white,
                 );
                 Get.find<EmployeeListViewController>().getEmployeeList();
-                Get.back();
               }
             });
           },
