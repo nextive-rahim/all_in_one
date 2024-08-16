@@ -15,15 +15,10 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
       padding: const EdgeInsets.all(20.0),
       child: GestureDetector(
         onTap: () {
-          if (controller.jobRoleController.text.isEmpty &&
-              controller.workExpMinController.text.isEmpty &&
-              controller.workExpMaxController.text.isEmpty &&
-              controller.paySalaryController.text.isEmpty &&
-              controller.workLocationController.text.isEmpty &&
-              controller.jobDescriptionController.text.isEmpty) {
+          if (!controller.formKey.currentState!.validate()) {
             Get.snackbar(
-              'Waring',
-              'Please fill the field',
+              'Attention',
+              'Please fill the field.',
               backgroundColor: CommonColor.redColors,
               colorText: Colors.white,
               borderWidth: 1,

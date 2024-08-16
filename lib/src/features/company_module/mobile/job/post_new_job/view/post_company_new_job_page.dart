@@ -1,5 +1,5 @@
 import 'package:all_in_one/src/core/theme/text_style.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/widget/job_post_form_field.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/widget/company_new_job_post_form_field.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/widget/post_new_job_button.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +31,7 @@ class _PostCompanyNewJobPageState extends State<PostCompanyNewJobPage> {
               child: SingleChildScrollView(
                 child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: JobPostFormField()),
+                    child: CompanyNewJobPostFormField()),
               ),
             ),
           ],
