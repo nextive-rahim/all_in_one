@@ -5,7 +5,7 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/vie
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/repository/job_repository.dart';
 import 'package:get/get.dart';
 
-class JobsViewController extends GetxController {
+class CompanyViewController extends GetxController {
   final JobListRepository _repository = JobListRepository();
 
   /// Page State
@@ -17,7 +17,7 @@ class JobsViewController extends GetxController {
   //late JobResponseModel jobListResponse;
   RxList<JobModel> savedJobList = <JobModel>[].obs;
 
-  RxList<JobModel> companyJobList = <JobModel>[].obs;
+  RxList<JobModel> myJobList = <JobModel>[].obs;
   RxList<JobModel> appiedJobList = <JobModel>[].obs;
   @override
   void onInit() async {
@@ -38,7 +38,7 @@ class JobsViewController extends GetxController {
     try {
       final res = await _repository.fetchJobList(requestBody);
       JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
-      companyJobList.value = jobListResponse.data ?? [];
+      myJobList.value = jobListResponse.data ?? [];
       savedJobList.value =
           jobListResponse.data!.where((v) => v.isSaved != 0).toList();
       appiedJobList.value =
@@ -107,27 +107,6 @@ class JobsViewController extends GetxController {
       signupModel = RegistrationResponseModel.fromJson(res);
 
       getjobList();
-      return signupModel;
-
-      // clearTextFields();
-    } catch (e, stackTrace) {
-      Log.error(e.toString());
-      Log.error(stackTrace.toString());
-    }
-    return signupModel;
-  }
-
-  Future<RegistrationResponseModel> deleteCompanyJob(int id) async {
-    Map<String, dynamic> body = {
-      "job_id": id,
-    };
-
-    try {
-      final res = await _repository.deleteCompanyJob(body);
-
-      signupModel = RegistrationResponseModel.fromJson(res);
-
-      // getjobList();
       return signupModel;
 
       // clearTextFields();

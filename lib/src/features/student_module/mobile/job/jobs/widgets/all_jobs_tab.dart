@@ -20,12 +20,12 @@ class AllJobsTab extends GetView<JobsViewController> {
           if (controller.pageState == PageState.loading) {
             return const JobCardLoading();
           }
-          return controller.myJobList.isEmpty
+          return controller.companyJobList.isEmpty
               ? const EmptyScreen(
                   title: "Latest Job",
                 )
               : ListView.separated(
-                  itemCount: controller.myJobList.length,
+                  itemCount: controller.companyJobList.length,
                   shrinkWrap: true,
                   reverse: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -38,12 +38,12 @@ class AllJobsTab extends GetView<JobsViewController> {
                         Get.toNamed(
                           Routes.jobDetails,
                           arguments: [
-                            controller.myJobList[index],
+                            controller.companyJobList[index],
                             JobIsFrom.all
                           ],
                         );
                       },
-                      job: controller.myJobList[index],
+                      job: controller.companyJobList[index],
                     );
                   },
                 );

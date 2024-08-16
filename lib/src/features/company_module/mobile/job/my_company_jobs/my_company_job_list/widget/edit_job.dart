@@ -9,23 +9,31 @@ class EditJob extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          ImageConstant.edit,
-          color: CommonColor.blackColor1,
-        ),
-        const SizedBox(width: 5),
-        const TextWidget(
-          textAlign: TextAlign.start,
-          text: AppStrings.edit,
-          color: CommonColor.greyColor4,
-          maxLine: 1,
-          fontFamily: AppStrings.sfProDisplay,
-          fontWeight: FontWeight.w400,
-          fontSize: 12,
-        ),
-      ],
+    return GestureDetector(
+      onTap: () {
+        print('Edir');
+        // controller.deleteCompanyJob(job.id!).then((v) {
+        //   controller.companyJobList.removeWhere((v) => v.id == v.id);
+        // });
+      },
+      child: Row(
+        children: [
+          Image.asset(
+            ImageConstant.edit,
+            color: CommonColor.greenColor1,
+          ),
+          const SizedBox(width: 5),
+          const TextWidget(
+            textAlign: TextAlign.start,
+            text: AppStrings.edit,
+            color: CommonColor.greenColor1,
+            maxLine: 1,
+            fontFamily: AppStrings.sfProDisplay,
+            fontWeight: FontWeight.w400,
+            fontSize: 12,
+          ),
+        ],
+      ),
     );
   }
 }

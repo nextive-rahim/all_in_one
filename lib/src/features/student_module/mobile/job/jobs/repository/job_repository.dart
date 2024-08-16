@@ -63,4 +63,13 @@ class JobListRepository {
     );
     return res.data;
   }
+
+  Future<dynamic> deleteCompanyJob(Map<String, dynamic> data) async {
+    final res = await RestClient.dev().post(
+      APIType.PROTECTED,
+      API.deleteCompanyJobUrl,
+      data,
+    );
+    return res.data;
+  }
 }

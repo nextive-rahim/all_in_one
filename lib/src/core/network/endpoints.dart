@@ -22,6 +22,7 @@ class API {
   static const String applyJobUrl = 'apply-job';
   static const String saveJobUrl = 'save-job';
   static const String deleteSaveJobUrl = 'remove-save-job';
+  static const String deleteCompanyJobUrl = 'company-job-delete';
   static const String viewJobUrl = 'view-job';
   static const String appliedJobUrl = 'applied-job';
   static const String viewSavedJobUrl = 'view-save-job';

@@ -5,6 +5,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/my_company_jobs/my_company_job_list/widget/delete_job.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/my_company_jobs/my_company_job_list/widget/edit_job.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
@@ -17,32 +18,31 @@ class CompanyJobCard extends StatelessWidget {
   final JobModel job;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        GestureDetector(
-          onTap: () {
-            Get.toNamed(
-              Routes.jobDetails,
-              arguments: [job, JobIsFrom.company],
-            );
-          },
-          child: Container(
-            //height: 262,
-            width: SizeConfig.screenWidth,
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 26,
-                top: 29,
-                right: 26,
-                bottom: 20,
-              ),
+    return Container(
+      //height: 262,
+      width: SizeConfig.screenWidth,
+      decoration: ShapeDecoration(
+        color: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 26,
+          top: 29,
+          right: 26,
+          bottom: 20,
+        ),
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Get.toNamed(
+                  Routes.jobDetails,
+                  arguments: [job, JobIsFrom.company],
+                );
+              },
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -56,9 +56,10 @@ class CompanyJobCard extends StatelessWidget {
                     fontSize: 18,
                   ),
                   const SizedBox(height: 7),
-                  const TextWidget(
+                  TextWidget(
                     textAlign: TextAlign.center,
-                    text: "Glan Management Consultancy",
+                    text:
+                        Get.find<ProfileViewController>().userModel?.name ?? '',
                     color: CommonColor.greyColor12,
                     maxLine: 1,
                     fontFamily: AppStrings.sfProDisplay,
@@ -158,21 +159,22 @@ class CompanyJobCard extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         fontSize: 12,
                       ),
-                      const Row(
-                        children: [
-                          EditJob(),
-                          SizedBox(width: 15),
-                          DeletedJob(),
-                        ],
-                      )
                     ],
                   )
                 ],
               ),
             ),
-          ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const EditJob(),
+                const SizedBox(width: 20),
+                DeletedJob(job: job),
+              ],
+            )
+          ],
         ),
-      ],
+      ),
     );
   }
 }
