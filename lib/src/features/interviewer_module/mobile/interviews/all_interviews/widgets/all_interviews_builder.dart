@@ -8,22 +8,25 @@ class AllInterviewsBuilder extends GetView<AllInterviewsViewController> {
   // final List<ViewInterviewResponseData> interviews;
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => ListView.separated(
-        itemCount: controller.allnterviews.length,
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        separatorBuilder: (context, ind) {
-          return const SizedBox(height: 10);
-        },
-        itemBuilder: (context, index) {
-          final interview = controller.allnterviews[index];
-          return InterViewCard(
-            index: index,
-            interview: interview,
-            isFormRequestsInterviews: true,
-          );
-        },
+    return RefreshIndicator(
+      onRefresh: () async {},
+      child: Obx(
+        () => ListView.separated(
+          itemCount: controller.allnterviews.length,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, ind) {
+            return const SizedBox(height: 10);
+          },
+          itemBuilder: (context, index) {
+            final interview = controller.allnterviews[index];
+            return InterViewCard(
+              index: index,
+              interview: interview,
+              isFormRequestsInterviews: true,
+            );
+          },
+        ),
       ),
     );
   }

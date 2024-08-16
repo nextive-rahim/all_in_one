@@ -113,13 +113,8 @@ class _InterviewerTestRequestCardState
                                       .then(
                                     (value3) {
                                       if (value3) {
-                                        setState(
-                                          () {
-                                            interviewTestRequestController
-                                                .verificationPending
-                                                .value = true;
-                                          },
-                                        );
+                                        interviewTestRequestController
+                                            .verificationPending.value = true;
                                       }
                                     },
                                   );

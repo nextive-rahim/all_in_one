@@ -28,25 +28,31 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CommonColor.greyColor1,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 10),
-            profileController.profileResponseModel.testRequest?.status == 1 ||
-                    interviewTestRequestController.verificationPending.value
-                ? const InterviewerTestResultPendingCard()
-                : profileController.profileResponseModel.testRequest == null
-                    ? InterviewerTestRequestCard(
-                        profileController: profileController)
-                    : (interviewTestRequestController
-                                .isInterviewerApproved.value ||
-                            profileController
-                                    .profileResponseModel.testRequest?.status ==
-                                3)
-                        ? const AllInterviewsSection()
-                        : const Offstage()
-          ],
+      body: RefreshIndicator(
+        onRefresh: () async {},
+        child: SingleChildScrollView(
+          child: Obx(() => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  interviewTestRequestController.verificationPending.value ||
+                          profileController
+                                  .profileResponseModel.testRequest?.status ==
+                              1
+                      ? const InterviewerTestResultPendingCard()
+                      : profileController.profileResponseModel.testRequest ==
+                              null
+                          ? InterviewerTestRequestCard(
+                              profileController: profileController)
+                          : (interviewTestRequestController
+                                      .isInterviewerApproved.value ||
+                                  profileController.profileResponseModel
+                                          .testRequest?.status ==
+                                      3)
+                              ? const AllInterviewsSection()
+                              : const Offstage()
+                ],
+              )),
         ),
       ),
     );

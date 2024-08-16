@@ -20,8 +20,8 @@ class UpdateProfileButton extends GetView<UpdateProfileiewController> {
               Get.snackbar(
                 'Successfully',
                 'Update Profile Successfully',
-                snackPosition: SnackPosition.BOTTOM,
-                backgroundColor: CommonColor.purpleColor1,
+                snackPosition: SnackPosition.TOP,
+                backgroundColor: CommonColor.greenColor1,
                 colorText: Colors.white,
               );
               Get.find<ProfileViewController>().getUser();
