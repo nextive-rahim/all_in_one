@@ -1,15 +1,4 @@
-import 'package:all_in_one/src/core/extension/string_extension.dart';
-import 'package:all_in_one/src/core/routes/app_pages.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/core/utils/size_config.dart';
-import 'package:all_in_one/src/core/utils/strings.dart';
-import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/widgets/completed_interview_card.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/widgets/confirmed_interview_card.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+part of '../view/all_interview_section_mobile.dart';
 
 class InterViewCard extends StatefulWidget {
   const InterViewCard({
@@ -77,8 +66,10 @@ class _InterViewCardState extends State<InterViewCard> {
                   const SizedBox(height: 16),
                   Row(
                     children: [
-                      Text(
-                          '(${widget.interview.timeSlotA ?? ''} , ${widget.interview.timeSlotB})'),
+                      widget.interview.status == 1
+                          ? Text(
+                              '(${widget.interview.timeSlotA ?? ''} , ${widget.interview.timeSlotB})')
+                          : Text(widget.interview.approvedSlotA.toString()),
                       const SizedBox(width: 10),
                       Text(getFormattedDate(widget.interview.date) ?? ''),
                     ],
@@ -87,7 +78,7 @@ class _InterViewCardState extends State<InterViewCard> {
                       ? InterviewFeedbackCard(interview: widget.interview)
                       : const Offstage(),
                   widget.isFormConfirmInterviews
-                      ? const InterviewLinkCard()
+                      ? InterviewLinkButton(interview: widget.interview)
                       : const Offstage(),
                 ],
               ),

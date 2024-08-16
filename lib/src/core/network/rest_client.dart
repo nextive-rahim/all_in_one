@@ -6,6 +6,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart' as getx;
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
@@ -238,6 +239,8 @@ class RestClient {
               'Unknown Exception',
               message.toString(),
               snackPosition: SnackPosition.TOP,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
             ),
           );
         case DioExceptionType.receiveTimeout:
@@ -247,6 +250,8 @@ class RestClient {
               'Failed',
               error.message.toString(),
               snackPosition: SnackPosition.TOP,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
             ),
           );
         case DioExceptionType.sendTimeout:
@@ -258,6 +263,8 @@ class RestClient {
               'Failed',
               message.toString(),
               snackPosition: SnackPosition.TOP,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
             ),
           );
         case DioExceptionType.badCertificate:
@@ -307,6 +314,8 @@ class RestClient {
                   'Failed',
                   message.toString(),
                   snackPosition: SnackPosition.TOP,
+                  backgroundColor: CommonColor.redColors,
+                  colorText: Colors.white,
                 ),
               );
             case 409:

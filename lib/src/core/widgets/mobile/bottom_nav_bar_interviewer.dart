@@ -4,6 +4,7 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/widgets/interview_card_loading.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/view/interviewer_payment_home_page_mobile.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/view/interviewer_home_page_mobile.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
@@ -22,7 +23,7 @@ class BottomNavBarInterviewer extends StatefulWidget {
 
 class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
   final controller = Get.put(DashboardViewController());
-  final profilecontroller = Get.put(ProfileViewController());
+
   final List<Widget> _isApprovedchildren = <Widget>[
     const InterviewerHomePageMobile(),
     const InterviewerPaymentHomePageMobile(),
@@ -37,6 +38,7 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
 
   @override
   Widget build(BuildContext context) {
+    final profilecontroller = Get.put(ProfileViewController());
     SizeConfig().init(context);
     //bool value;
     return Scaffold(
@@ -44,7 +46,16 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
       body: Obx(
         () {
           if (profilecontroller.pageState == PageState.loading) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+                child: Padding(
+              padding: EdgeInsets.only(
+                top: 0,
+                left: 15,
+                right: 15,
+                bottom: 80,
+              ),
+              child: InterviewCardLoading(),
+            ));
           }
           return WillPopScope(
             onWillPop: _onWillPop,

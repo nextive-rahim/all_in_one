@@ -29,6 +29,8 @@ class _CandidateProfileSectionState extends State<CandidateProfileSection> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 10),
+              Text(widget.user?.data?.description ?? ''),
               const SizedBox(height: 25),
               Stack(
                 children: [

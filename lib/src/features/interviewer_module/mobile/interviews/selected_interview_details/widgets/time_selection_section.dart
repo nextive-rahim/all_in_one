@@ -9,7 +9,6 @@ import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/sel
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/widgets/interview_confirmation_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class InterviewTimeSelectedSection extends StatefulWidget {
   const InterviewTimeSelectedSection({
@@ -90,9 +89,11 @@ class _InterviewTimeSelectedSectionState
                                 if (selectSlotB.value) {
                                   selectSlotB.value = false;
                                 }
-                                //Navigator.pop(context, true);
                                 selectedTime.value =
                                     widget.interview.timeSlotA!;
+                                //Navigator.pop(context, true);
+                                controller.selectedTimeSlot.value =
+                                    selectedTime.value;
                               },
                               child: Container(
                                 width: SizeConfig.screenWidth,
@@ -143,6 +144,8 @@ class _InterviewTimeSelectedSectionState
                                 }
                                 selectedTime.value =
                                     widget.interview.timeSlotB!;
+                                controller.selectedTimeSlot.value =
+                                    selectedTime.value;
                               },
                               child: Container(
                                 width: SizeConfig.screenWidth,

@@ -18,4 +18,13 @@ class InterviewsRepository {
     );
     return res.data;
   }
+
+  Future<dynamic> completeInterview(Map<String, dynamic> data) async {
+    final res = await RestClient.dev().post(
+      APIType.PROTECTED,
+      API.completeInterview,
+      data,
+    );
+    return res.data;
+  }
 }

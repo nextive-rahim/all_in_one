@@ -1,5 +1,6 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
+import 'package:all_in_one/src/core/utils/string.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
@@ -21,57 +22,78 @@ class InterviewDetailsHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            Container(
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(50)),
+              height: 80,
+              width: 80,
+              child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: Image.network(
+                    user?.image ?? noImageFound,
+                    fit: BoxFit.fill,
+                  )),
+            ),
+            const SizedBox(width: 20),
+            Column(
+              children: [
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      const TextSpan(
+                        text: "Name : ",
+                        style: TextStyle(
+                          color: CommonColor.blackColor1,
+                          fontSize: 20,
+                          fontFamily: AppStrings.aeonikTRIAL,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                      TextSpan(
+                        text: user?.name ?? '', //' Introduction to Java',
+                        style: const TextStyle(
+                          color: CommonColor.blackColor1,
+                          fontSize: 20,
+                          fontFamily: AppStrings.aeonikTRIAL,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      const TextSpan(
+                        text: "${AppStrings.courseName} : ",
+                        style: TextStyle(
+                          color: CommonColor.blackColor1,
+                          fontSize: 16,
+                          fontFamily: AppStrings.inter,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                      TextSpan(
+                        text: interview.title,
+                        style: const TextStyle(
+                          color: CommonColor.blackColor1,
+                          fontSize: 16,
+                          fontFamily: AppStrings.inter,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
         const SizedBox(height: 20),
-        Text.rich(
-          TextSpan(
-            children: [
-              const TextSpan(
-                text: "Name : ",
-                style: TextStyle(
-                  color: CommonColor.blackColor1,
-                  fontSize: 20,
-                  fontFamily: AppStrings.aeonikTRIAL,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              TextSpan(
-                text: user?.name ?? '', //' Introduction to Java',
-                style: const TextStyle(
-                  color: CommonColor.blackColor1,
-                  fontSize: 20,
-                  fontFamily: AppStrings.aeonikTRIAL,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
-        Text.rich(
-          TextSpan(
-            children: [
-              const TextSpan(
-                text: "${AppStrings.courseName} : ",
-                style: TextStyle(
-                  color: CommonColor.blackColor1,
-                  fontSize: 16,
-                  fontFamily: AppStrings.inter,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              TextSpan(
-                text: interview.title,
-                style: const TextStyle(
-                  color: CommonColor.blackColor1,
-                  fontSize: 16,
-                  fontFamily: AppStrings.inter,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

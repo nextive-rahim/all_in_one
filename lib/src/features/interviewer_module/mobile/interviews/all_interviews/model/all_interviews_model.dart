@@ -52,6 +52,7 @@ class ViewInterviewResponseData {
   String? thumbnailImage;
   String? totalTime;
   String? author;
+  String? interviewLink;
 
   ViewInterviewResponseData({
     this.id,
@@ -71,6 +72,7 @@ class ViewInterviewResponseData {
     this.thumbnailImage,
     this.totalTime,
     this.author,
+    this.interviewLink,
   });
 
   factory ViewInterviewResponseData.fromJson(Map<String, dynamic> json) =>
@@ -92,6 +94,7 @@ class ViewInterviewResponseData {
         thumbnailImage: json["thumbnail_image"],
         totalTime: json["total_time"],
         author: json["author"],
+        interviewLink: json["interview_meeting_link"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -112,5 +115,6 @@ class ViewInterviewResponseData {
         "thumbnail_image": thumbnailImage,
         "total_time": totalTime,
         "author": author,
+        "interview_meeting_link": interviewLink,
       };
 }

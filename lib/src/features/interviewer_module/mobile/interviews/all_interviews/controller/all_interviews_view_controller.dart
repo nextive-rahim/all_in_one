@@ -16,7 +16,12 @@ class AllInterviewsViewController extends GetxController {
   get pageState => _pageStateController.value;
 
   late AllViewInterviewResponse _responseModel;
-  List<ViewInterviewResponseData> allnterviews = [];
+  RxList<ViewInterviewResponseData> allnterviews =
+      <ViewInterviewResponseData>[].obs;
+  RxList<ViewInterviewResponseData> comfirmedInterviewList =
+      <ViewInterviewResponseData>[].obs;
+  RxList<ViewInterviewResponseData> completedInterviewList =
+      <ViewInterviewResponseData>[].obs;
   RxBool isInterviewRequestTab = true.obs;
   RxBool isConfirmInterviewTab = false.obs;
   RxBool isCompletedInterviewTab = false.obs;
@@ -32,7 +37,16 @@ class AllInterviewsViewController extends GetxController {
     try {
       final res = await repository.fetchAllInterviews();
       _responseModel = AllViewInterviewResponse.fromJson(res);
-      allnterviews = _responseModel.data!;
+      List<ViewInterviewResponseData> initialInterviewList =
+          _responseModel.data ?? [];
+      allnterviews.value =
+          initialInterviewList.where((v) => v.status == 1).toList();
+
+      comfirmedInterviewList.value =
+          initialInterviewList.where((v) => v.status == 2).toList();
+      completedInterviewList.value =
+          initialInterviewList.where((v) => v.status == 3).toList();
+      // allnterviews.value = _responseModel.data!;
       _pageStateController(PageState.success);
     } catch (e, stackTrace) {
       Log.error(e.toString());
@@ -41,6 +55,26 @@ class AllInterviewsViewController extends GetxController {
       Get.snackbar(
         'Failed',
         'Fetching all interviews failed',
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
+
+  Future<void> completeInterviewRequest(int id) async {
+    _pageStateController(PageState.loading);
+    Map<String, dynamic> body = {"id": id};
+
+    try {
+      await repository.completeInterview(body);
+
+      _pageStateController(PageState.success);
+    } catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      _pageStateController(PageState.error);
+      Get.snackbar(
+        'Failed',
+        'Interview Not Confirmed',
         snackPosition: SnackPosition.BOTTOM,
       );
     }

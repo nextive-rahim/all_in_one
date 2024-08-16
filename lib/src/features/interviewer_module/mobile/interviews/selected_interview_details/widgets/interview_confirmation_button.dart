@@ -3,6 +3,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/controller/All_interviews_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/controller/confirm_interview_request_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/notification/controller/send_notification_view_controller.dart';
@@ -28,8 +29,10 @@ class InterviewConfarmationButton extends StatefulWidget {
 class _InterviewConfarmationButtonState
     extends State<InterviewConfarmationButton> {
   final controller = Get.put(ConfirmInterviewREquestViewController());
+
   @override
   Widget build(BuildContext context) {
+    final controller3 = Get.put(AllInterviewsViewController());
     return GestureDetector(
       onTap: () {
         controller.confirmInterviewRequest(widget.interview.id!).then((value) {
@@ -42,23 +45,28 @@ class _InterviewConfarmationButtonState
           //     borderWidth: 1,
           //   );
           // } else {
-          controller.interviewLInk.clear();
+
           // final FocusScopeNode focusScope = FocusScope.of(context);
           // focusScope.unfocus();
           // Get.snackbar(
           //   'Successfully',
           //   'Interview  Confirmed Successfully',
           //   snackPosition: SnackPosition.BOTTOM,
-          // );
+          // // );
+          controller3.getAllInterviews();
           Get.put(SendNotificationViewController()).sendNotification(
               userId: widget.interview.userId,
               text: controller.interviewLInk.text);
           interviewConfirmedBottomSheet(
             date: widget.selectedDate,
             time: widget.selectedTime,
+            interview: widget.interview,
           );
-          // }
-        });
+
+          controller.interviewLInk.clear();
+        }
+            // },
+            );
       },
       child: Container(
         width: SizeConfig.screenWidth,
@@ -95,6 +103,7 @@ class _InterviewConfarmationButtonState
   Future<bool> interviewConfirmedBottomSheet({
     String? date,
     String? time,
+    ViewInterviewResponseData? interview,
   }) async {
     return await showModalBottomSheet(
           shape: const RoundedRectangleBorder(

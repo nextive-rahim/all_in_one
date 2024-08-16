@@ -36,6 +36,7 @@ class API {
   static const String storeInterviewerFeedbackUrl =
       'store-interviewer-feedback';
   static const String userApplyInterviewUrl = 'user-apply-interview';
+  static const String completeInterview = 'complete-interview';
   static const String viewInterviewUrl = 'view-interview';
   static const String confirmInterviewUrl = 'confirm-interview';
   static const String interviewFeedbackUrl = 'interview-feedback';

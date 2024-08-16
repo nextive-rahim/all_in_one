@@ -48,26 +48,25 @@ class _CommonTabSectionState extends State<CommonTabSection>
           child: Container(
             height: 50,
             decoration: BoxDecoration(
-              color: CommonColor.blue300,
+              color: CommonColor.purpleColor1,
               borderRadius: BorderRadius.circular(4),
             ),
             child: TabBar(
-              onTap: 
-                  (index) {
-                    setState(() {
-                      selectedIndex = index;
-                      if (selectedIndex == 1) {
-                        // ref
-                        //     .read(selectedSecoundTabProvider.notifier)
-                        //     .update((state) => true);
-                      } else {
-                        // ref
-                        //     .read(selectedSecoundTabProvider.notifier)
-                        //     .update((state) => false);
-                      }
-                      tabController?.animateTo(index);
-                    });
-                  },
+              onTap: (index) {
+                setState(() {
+                  selectedIndex = index;
+                  if (selectedIndex == 1) {
+                    // ref
+                    //     .read(selectedSecoundTabProvider.notifier)
+                    //     .update((state) => true);
+                  } else {
+                    // ref
+                    //     .read(selectedSecoundTabProvider.notifier)
+                    //     .update((state) => false);
+                  }
+                  tabController?.animateTo(index);
+                });
+              },
               controller: tabController,
               isScrollable: false,
               indicatorWeight: 0,

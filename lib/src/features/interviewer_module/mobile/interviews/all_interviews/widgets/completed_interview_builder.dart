@@ -1,30 +1,29 @@
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
-import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/widgets/interview_card.dart';
-import 'package:flutter/material.dart';
+part of '../view/all_interview_section_mobile.dart';
 
-class CompletedInterviewsBuilder extends StatelessWidget {
+class CompletedInterviewsBuilder extends GetView<AllInterviewsViewController> {
   const CompletedInterviewsBuilder({
     super.key,
-    required this.interviews,
+    // required this.interviews,
   });
-  final List<ViewInterviewResponseData> interviews;
+  //final List<ViewInterviewResponseData> interviews;
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: interviews.length,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      separatorBuilder: (context, ind) {
-        return const SizedBox(height: 10);
-      },
-      itemBuilder: (context, index) {
-        final interview = interviews[index];
-        return InterViewCard(
-          index: index,
-          interview: interview,
-          isFormCompletedInterviews: true,
-        );
-      },
-    );
+    return Obx(() => ListView.separated(
+          itemCount: controller.completedInterviewList.length,
+          shrinkWrap: true,
+          reverse: true,
+          physics: const NeverScrollableScrollPhysics(),
+          separatorBuilder: (context, ind) {
+            return const SizedBox(height: 10);
+          },
+          itemBuilder: (context, index) {
+            final interview = controller.completedInterviewList[index];
+            return InterViewCard(
+              index: index,
+              interview: interview,
+              isFormCompletedInterviews: true,
+            );
+          },
+        ));
   }
 }
