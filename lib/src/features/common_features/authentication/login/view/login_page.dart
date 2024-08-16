@@ -298,9 +298,10 @@ class _LoginPageState extends State<LoginPage> {
         if (controller.loginModel.success == false) {
           Get.snackbar(
               AppStrings.failed, controller.loginModel.message.toString(),
-              borderColor: CommonColor.redColors,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
               borderWidth: 1,
-              snackPosition: SnackPosition.BOTTOM);
+              snackPosition: SnackPosition.TOP);
           return;
         }
         if (controller.loginModel.data?.userType == 1) {
@@ -357,7 +358,8 @@ class _LoginPageState extends State<LoginPage> {
                     Get.snackbar(
                       'Send OTP',
                       controller.loginModel.message.toString(),
-                      borderColor: CommonColor.redColors,
+                      backgroundColor: CommonColor.purpleColor1,
+                      colorText: Colors.white,
                       borderWidth: 1,
                     );
                   },

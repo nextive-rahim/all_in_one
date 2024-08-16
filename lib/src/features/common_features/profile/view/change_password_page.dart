@@ -148,7 +148,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         Get.snackbar(
           AppStrings.success,
           controller.loginModel.message.toString(),
-          borderColor: CommonColor.greenColor1,
+          backgroundColor: CommonColor.purpleColor1,
+          colorText: Colors.white,
           borderWidth: 1,
         );
 
@@ -157,7 +158,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       Get.snackbar(
         AppStrings.failed,
         controller.loginModel.message.toString(),
-        borderColor: CommonColor.redColors,
+        backgroundColor: CommonColor.redColors,
+        colorText: Colors.white,
         borderWidth: 1,
       );
     });

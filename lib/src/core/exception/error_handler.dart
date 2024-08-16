@@ -1,4 +1,6 @@
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 void errorHandler(
@@ -12,6 +14,8 @@ void errorHandler(
   Get.snackbar(
     'Failed',
     feedback,
-    snackPosition: SnackPosition.BOTTOM,
+    snackPosition: SnackPosition.TOP,
+    backgroundColor: CommonColor.redColors,
+    colorText: Colors.white,
   );
 }

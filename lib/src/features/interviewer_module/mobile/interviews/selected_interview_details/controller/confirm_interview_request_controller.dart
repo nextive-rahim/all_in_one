@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/selected_interview_details/repository/confirm_interview_request_repository.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,9 @@ class ConfirmInterviewREquestViewController extends GetxController {
       Get.snackbar(
         'Failed',
         'Interview Not Confirmed',
-        snackPosition: SnackPosition.BOTTOM,
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: CommonColor.redColors,
+        colorText: Colors.white,
       );
     }
   }

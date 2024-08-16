@@ -346,19 +346,30 @@ class _RegistrationPageState extends State<RegistrationPage> {
         Get.snackbar(
           'Waring',
           'Please selecte skill',
+          backgroundColor: CommonColor.redColors,
+          colorText: Colors.white,
+          snackPosition: SnackPosition.TOP,
         );
         return;
       }
 
       if (controller.signupModel!.success == false) {
-        Get.snackbar(AppStrings.failed, AppStrings.registrationFailedMessage,
-            borderColor: CommonColor.redColors,
-            borderWidth: 1,
-            snackPosition: SnackPosition.BOTTOM);
+        Get.snackbar(
+          AppStrings.failed,
+          AppStrings.registrationFailedMessage,
+          backgroundColor: CommonColor.redColors,
+          colorText: Colors.white,
+          borderWidth: 1,
+          snackPosition: SnackPosition.TOP,
+        );
       } else {
         Get.snackbar(
-            AppStrings.success, AppStrings.registrationSuccessfulMessage,
-            snackPosition: SnackPosition.BOTTOM);
+          AppStrings.success,
+          AppStrings.registrationSuccessfulMessage,
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: CommonColor.purpleColor1,
+          colorText: Colors.white,
+        );
         Get.offNamed(Routes.registrationCompleted);
       }
     });

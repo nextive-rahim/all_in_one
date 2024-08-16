@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:all_in_one/src/core/service/file/file_service.dart';
+import 'package:all_in_one/src/core/utils/string.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_update_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
   @override
   Widget build(BuildContext context) {
     final profileController = Get.find<ProfileViewController>();
+    print(profileController.userModel?.image);
     return Padding(
       padding: const EdgeInsets.only(left: 20),
       child: ClipRRect(
@@ -51,7 +53,8 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
                               height: 140,
                               width: 140,
                               child: Image.network(
-                                profileController.userModel?.image ?? '',
+                                profileController.userModel?.image ??
+                                    noImageFound,
                                 cacheHeight: 367,
                                 cacheWidth: 367,
                               )

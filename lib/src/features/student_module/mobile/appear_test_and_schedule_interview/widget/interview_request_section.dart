@@ -365,7 +365,8 @@ class _InterviewRequestSectionState extends State<InterviewRequestSection> {
                                   Get.snackbar(
                                     'Waring',
                                     AppStrings.plzFillAllFields,
-                                    borderColor: CommonColor.redColors,
+                                    backgroundColor: CommonColor.redColors,
+                                    colorText: Colors.white,
                                     borderWidth: 1,
                                   );
                                 } else {
@@ -376,6 +377,9 @@ class _InterviewRequestSectionState extends State<InterviewRequestSection> {
                                       Get.snackbar(
                                         'Successful',
                                         'Successfully submitted interview request',
+                                        backgroundColor:
+                                            CommonColor.purpleColor1,
+                                        colorText: Colors.white,
                                       );
                                       Navigator.pop(context, false);
                                     },

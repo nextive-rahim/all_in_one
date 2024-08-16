@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/controller/added_new_employee_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
@@ -27,7 +28,8 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
               Get.snackbar(
                 'Waring',
                 'Please fill the field',
-                borderColor: AppColors.red,
+                backgroundColor: CommonColor.redColors,
+                colorText: Colors.white,
                 borderWidth: 1,
               );
               return;
@@ -37,6 +39,8 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
                 Get.snackbar(
                   'Failed',
                   value.message ?? 'Fail to add new employee',
+                  backgroundColor: CommonColor.redColors,
+                  colorText: Colors.white,
                 );
                 return;
               }
@@ -45,6 +49,8 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
                 Get.snackbar(
                   'Successfully',
                   value.message ?? 'Employee Added Successfully',
+                  backgroundColor: CommonColor.purpleColor1,
+                  colorText: Colors.white,
                 );
                 Get.find<EmployeeListViewController>().getEmployeeList();
                 Get.back();

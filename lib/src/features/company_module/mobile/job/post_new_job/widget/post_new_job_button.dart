@@ -1,5 +1,6 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/controller/post_company_new_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,8 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
             Get.snackbar(
               'Waring',
               'Please fill the field',
-              borderColor: AppColors.red,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
               borderWidth: 1,
             );
             return;
@@ -33,6 +35,8 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
               Get.snackbar(
                 'Successfully',
                 'Post Added Successfully',
+                backgroundColor: CommonColor.purpleColor1,
+                colorText: Colors.white,
               );
               Get.find<JobsViewController>().getjobList();
             }

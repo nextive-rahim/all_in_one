@@ -36,6 +36,8 @@ class ApplyJobButton extends GetView<AppliedJobsViewController> {
                   Get.snackbar(
                     'Warning',
                     'Job is already Applied',
+                    backgroundColor: CommonColor.redColors,
+                    colorText: Colors.white,
                   );
                   return;
                 }
@@ -44,6 +46,8 @@ class ApplyJobButton extends GetView<AppliedJobsViewController> {
                     Get.snackbar(
                       'Success',
                       'Successfully applied job',
+                      backgroundColor: CommonColor.purpleColor1,
+                      colorText: Colors.white,
                     );
                     isAppliedJob.value = true;
                     controller.appliedjobList();
@@ -51,6 +55,8 @@ class ApplyJobButton extends GetView<AppliedJobsViewController> {
                     Get.snackbar(
                       'Falied',
                       'Failed apply job',
+                      backgroundColor: CommonColor.redColors,
+                      colorText: Colors.white,
                     );
                   }
                 });

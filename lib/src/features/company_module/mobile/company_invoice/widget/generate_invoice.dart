@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/company_invoice_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -94,6 +95,8 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
               Get.snackbar(
                 'Warning',
                 'Please select employee name',
+                backgroundColor: CommonColor.redColors,
+                colorText: Colors.white,
               );
               return;
             }
@@ -102,6 +105,8 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
               Get.snackbar(
                 'Successful',
                 'Generate Invoice successfully',
+                backgroundColor: CommonColor.purpleColor1,
+                colorText: Colors.white,
               );
             });
           },

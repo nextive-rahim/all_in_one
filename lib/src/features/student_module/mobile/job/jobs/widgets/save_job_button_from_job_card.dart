@@ -21,7 +21,9 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
           Get.snackbar(
             'Alert',
             'Job is already saved',
-            snackPosition: SnackPosition.BOTTOM,
+            snackPosition: SnackPosition.TOP,
+            backgroundColor: CommonColor.redColors,
+            colorText: Colors.white,
           );
           return;
         }
@@ -38,7 +40,9 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
             Get.snackbar(
               'Falied',
               'Failed Save job',
-              snackPosition: SnackPosition.BOTTOM,
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
             );
           }
         });

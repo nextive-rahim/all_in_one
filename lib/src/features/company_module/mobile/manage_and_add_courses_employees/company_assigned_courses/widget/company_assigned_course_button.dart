@@ -21,7 +21,8 @@ class CompanyAssignedCourseButton
           Get.snackbar(
             'Waring',
             'Selected at least one course',
-            borderColor: AppColors.red,
+            backgroundColor: CommonColor.redColors,
+            colorText: Colors.white,
             borderWidth: 1,
           );
           return;
@@ -32,12 +33,15 @@ class CompanyAssignedCourseButton
             Get.snackbar(
               'Success',
               'course added successfully.',
+              backgroundColor: CommonColor.purpleColor1,
+              colorText: Colors.white,
             );
           } else {
             Get.snackbar(
               'Failed',
               'course added Failed.',
-              borderColor: AppColors.red,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
               borderWidth: 1,
             );
           }

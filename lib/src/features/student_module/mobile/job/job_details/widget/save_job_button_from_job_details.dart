@@ -34,6 +34,8 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                 Get.snackbar(
                   'Warning',
                   'Job is already Saved',
+                  backgroundColor: CommonColor.redColors,
+                  colorText: Colors.white,
                 );
               }
               controller.saveJob(job.id!).then((value) {
@@ -42,6 +44,8 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                   Get.snackbar(
                     'Success',
                     'Successfully Saved job',
+                    backgroundColor: CommonColor.purpleColor1,
+                    colorText: Colors.white,
                   );
                   controller.savedjobList();
                   controller.getjobList();
@@ -51,6 +55,8 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                   Get.snackbar(
                     'Falied',
                     'Failed Save job',
+                    backgroundColor: CommonColor.redColors,
+                    colorText: Colors.white,
                   );
                 }
               });

@@ -168,7 +168,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
         Get.snackbar(
           AppStrings.failed,
           controller.loginModel.message.toString(),
-          borderColor: CommonColor.redColors,
+          backgroundColor: CommonColor.redColors,
+          colorText: Colors.white,
           borderWidth: 1,
         );
       } else {
@@ -176,6 +177,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           AppStrings.success,
           controller.loginModel.message.toString(),
           borderWidth: 1,
+          backgroundColor: CommonColor.purpleColor1,
+          colorText: Colors.white,
         );
         Get.offNamed(Routes.login);
       }

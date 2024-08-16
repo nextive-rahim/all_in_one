@@ -136,8 +136,12 @@ class _CompanyPaymentPageMobileState extends State<CompanyPaymentPageMobile> {
                               InkWell(
                                 onTap: () {
                                   print('object');
-                                  Get.snackbar('Waring',
-                                      'Payment gateway not ready yet');
+                                  Get.snackbar(
+                                    'Waring',
+                                    'Payment gateway not ready yet',
+                                    backgroundColor: CommonColor.redColors,
+                                    colorText: Colors.white,
+                                  );
                                 },
                                 child: Container(
                                   width: 165,
@@ -387,8 +391,12 @@ class _CompanyPaymentPageMobileState extends State<CompanyPaymentPageMobile> {
                                   ),
                                   child: InkWell(
                                     onTap: () {
-                                      Get.snackbar('Waring',
-                                          'Payment gateway not ready yet');
+                                      Get.snackbar(
+                                        'Waring',
+                                        'Payment gateway not ready yet',
+                                        backgroundColor: CommonColor.redColors,
+                                        colorText: Colors.white,
+                                      );
                                     },
                                     child: const Text(
                                       'Pay Now',

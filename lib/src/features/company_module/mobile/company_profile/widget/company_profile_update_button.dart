@@ -1,5 +1,6 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/controller/company_profile_update_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,8 @@ class CompanyProfileUpdateButton
               Get.snackbar(
                 'Successfully',
                 'Employee Added Successfully',
+                backgroundColor: CommonColor.purpleColor1,
+                colorText: Colors.white,
               );
               Get.find<ProfileViewController>().getUser();
             }

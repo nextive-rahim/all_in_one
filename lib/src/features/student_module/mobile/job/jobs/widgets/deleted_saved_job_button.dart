@@ -27,7 +27,9 @@ class DeletedSaveJobButtonFromJobCard extends GetView<JobsViewController> {
             Get.snackbar(
               'Success',
               'Successfully Saved job',
-              snackPosition: SnackPosition.BOTTOM,
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: CommonColor.purpleColor1,
+              colorText: Colors.white,
             );
             controller.getjobList();
             Get.find<AppliedJobsViewController>().appliedjobList();
@@ -35,7 +37,9 @@ class DeletedSaveJobButtonFromJobCard extends GetView<JobsViewController> {
             Get.snackbar(
               'Falied',
               'Failed Save job',
-              snackPosition: SnackPosition.BOTTOM,
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
             );
           }
         });
