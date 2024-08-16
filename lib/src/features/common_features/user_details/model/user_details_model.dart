@@ -56,9 +56,13 @@ class UserDetailsResponseModelData {
       UserDetailsResponseModelData(
         userType: json["user_type"],
         data: UserModel.fromJson(json["data"]),
-        examData: ExamData.fromJson(json["exam_data"]),
-        userSkill: List<UserSkill>.from(
-            json["user_skill"].map((x) => UserSkill.fromJson(x))),
+        examData: json["exam_data"] == null
+            ? null
+            : ExamData.fromJson(json["exam_data"]),
+        userSkill: json["user_skill"] == null
+            ? null
+            : List<UserSkill>.from(
+                json["user_skill"].map((x) => UserSkill.fromJson(x))),
         isSubscribed: json["is_subscribed"],
       );
 

@@ -23,7 +23,7 @@ class AppliedCandidateListBuilder extends StatelessWidget {
             itemBuilder: (context, index) {
               UserDetail user = userDetails![index];
               return CompanyInterviewCandidateCard(
-                name: user.username ?? '',
+                user: user,
                 color: CommonColor.purpleColor1,
               );
             },

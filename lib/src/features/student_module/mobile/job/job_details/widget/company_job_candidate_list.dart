@@ -27,9 +27,7 @@ class CompanyJobInterviewCandidateList extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
-                  height: 40,
-                ),
+                const SizedBox(height: 40),
                 const TextWidget(
                   textAlign: TextAlign.center,
                   text: AppStrings.appliedProfiles,
