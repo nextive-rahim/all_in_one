@@ -2,17 +2,21 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/controller/post_company_new_job_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PostCompanyJob extends StatelessWidget {
+class PostCompanyJob extends GetView<PostCompanyNewJobViewController> {
   const PostCompanyJob({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(Routes.postCompanyNewJob);
+        controller.isFromPostEdit.value = false;
+        controller.clearTextFields().then((v) {
+          Get.toNamed(Routes.postCompanyNewJob);
+        });
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 20),

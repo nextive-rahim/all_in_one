@@ -1,20 +1,31 @@
+import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/controller/post_company_new_job_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class EditJob extends StatelessWidget {
-  const EditJob({super.key});
+class EditJob extends GetView<PostCompanyNewJobViewController> {
+  const EditJob({
+    super.key,
+    required this.job,
+  });
+  final JobModel job;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('Edir');
-        // controller.deleteCompanyJob(job.id!).then((v) {
-        //   controller.companyJobList.removeWhere((v) => v.id == v.id);
-        // });
+        controller.isFromPostEdit.value = true;
+        controller.popolateTextFormField(job).then((v) {
+          Get.toNamed(
+            Routes.postCompanyNewJob,
+            arguments: job,
+          );
+        });
       },
       child: Row(
         children: [

@@ -1,7 +1,7 @@
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/apply_candidate_list.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/company_job_candidate_list.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/apply_job_button.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/job_description.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/job_details_header.dart';
@@ -82,7 +82,8 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                     JobDescription(job: viewJobResponseData),
                     //  const JobShareButton(),
                     isFromCompanyJob
-                        ? const AppliedCandidateList()
+                        ? CompanyJobInterviewCandidateList(
+                            userDetails: viewJobResponseData.userDetails)
                         : const Offstage()
                   ],
                 ),

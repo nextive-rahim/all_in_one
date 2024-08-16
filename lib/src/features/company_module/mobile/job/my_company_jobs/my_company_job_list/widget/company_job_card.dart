@@ -167,7 +167,7 @@ class CompanyJobCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const EditJob(),
+                EditJob(job: job),
                 const SizedBox(width: 20),
                 DeletedJob(job: job),
               ],

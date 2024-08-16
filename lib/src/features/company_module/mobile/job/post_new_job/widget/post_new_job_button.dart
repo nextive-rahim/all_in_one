@@ -25,19 +25,35 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
             );
             return;
           }
-          controller.postNewJob().then((value) {
-            if (value.success == true) {
-              Get.back();
-              Get.snackbar(
-                'Successfully',
-                'Post Added Successfully',
-                backgroundColor: CommonColor.greenColor1,
-                colorText: Colors.white,
-              );
+          if (controller.isFromPostEdit.value) {
+            controller.editCompanyJob().then((value) {
+              if (value.success == true) {
+                Get.back();
+                Get.snackbar(
+                  'Successfully',
+                  'Post Edit Successfully',
+                  backgroundColor: CommonColor.greenColor1,
+                  colorText: Colors.white,
+                );
 
-              Get.find<JobsViewController>().getjobList();
-            }
-          });
+                Get.find<JobsViewController>().getjobList();
+              }
+            });
+          } else {
+            controller.postNewJob().then((value) {
+              if (value.success == true) {
+                Get.back();
+                Get.snackbar(
+                  'Successfully',
+                  'Post Added Successfully',
+                  backgroundColor: CommonColor.greenColor1,
+                  colorText: Colors.white,
+                );
+
+                Get.find<JobsViewController>().getjobList();
+              }
+            });
+          }
         },
         child: Container(
           decoration: BoxDecoration(

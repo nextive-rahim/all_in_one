@@ -19,7 +19,7 @@ class JobSummaryCard extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: Container(
         width: SizeConfig.screenWidth,
-        height: 161,
+        height: 165,
         padding: const EdgeInsets.all(20),
         decoration: ShapeDecoration(
           //color: Colors.white,
@@ -34,69 +34,21 @@ class JobSummaryCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Image.asset(
-                  ImageConstant.jobLogo,
-                  width: 18,
-                  height: 18,
-                  color: CommonColor.blackColor1,
-                ),
-                const SizedBox(
-                  width: 12,
-                ),
-                TextWidget(
-                  textAlign: TextAlign.center,
-                  text: "${job.workExpMin ?? ''}-${job.workExpMax ?? ''} Yrs",
-                  color: CommonColor.greyColor11,
-                  maxLine: 1,
-                  fontFamily: AppStrings.sfProDisplay,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13,
-                ),
-              ],
+            _JobSummaryItem(
+              name: "${job.workExpMin ?? ''}-${job.workExpMax ?? ''} Yrs",
+              icon: ImageConstant.jobLogo,
             ),
             const SizedBox(height: 12),
-            Row(
-              children: [
-                Image.asset(
-                  ImageConstant.dollarCircle,
-                  color: CommonColor.blackColor1,
-                ),
-                const SizedBox(width: 12),
-                TextWidget(
-                  textAlign: TextAlign.center,
-                  text: job.paysalary ?? '' "/yr.",
-                  color: CommonColor.greyColor11,
-                  maxLine: 1,
-                  fontFamily: AppStrings.sfProDisplay,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13,
-                ),
-              ],
+            _JobSummaryItem(
+              name: job.paysalary ?? '' "/yr.",
+              icon: ImageConstant.dollarCircle,
             ),
             const SizedBox(height: 12),
-            Row(
-              children: [
-                Image.asset(
-                  ImageConstant.send2,
-                  color: CommonColor.blackColor1,
-                ),
-                const SizedBox(width: 12),
-                TextWidget(
-                  textAlign: TextAlign.center,
-                  text: job.workLocation ?? '', //"Bay area, Texas",
-                  color: CommonColor.greyColor11,
-                  maxLine: 1,
-                  fontFamily: AppStrings.sfProDisplay,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13,
-                ),
-              ],
+            _JobSummaryItem(
+              name: job.workLocation ?? '',
+              icon: ImageConstant.send2,
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 16),
             Text.rich(
               TextSpan(
                 children: [
@@ -125,6 +77,36 @@ class JobSummaryCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _JobSummaryItem extends StatelessWidget {
+  const _JobSummaryItem({
+    required this.name,
+    required this.icon,
+  });
+  final String name;
+  final String icon;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Image.asset(
+          icon,
+          color: CommonColor.purpleColor1,
+        ),
+        const SizedBox(width: 8),
+        TextWidget(
+          textAlign: TextAlign.start,
+          text: name,
+          color: CommonColor.greyColor4,
+          maxLine: 1,
+          fontFamily: AppStrings.sfProDisplay,
+          fontWeight: FontWeight.w400,
+          fontSize: 13,
+        ),
+      ],
     );
   }
 }
