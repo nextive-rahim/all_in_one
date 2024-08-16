@@ -7,24 +7,8 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/s
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ListAndSearchJobStudentMobile extends StatefulWidget {
+class ListAndSearchJobStudentMobile extends GetView<JobsViewController> {
   const ListAndSearchJobStudentMobile({super.key});
-
-  @override
-  State<ListAndSearchJobStudentMobile> createState() =>
-      _ListAndSearchJobStudentMobileState();
-}
-
-class _ListAndSearchJobStudentMobileState
-    extends State<ListAndSearchJobStudentMobile> {
-  final appliedController =
-      Get.lazyPut(() => JobsViewController(), fenix: true);
-  final controller = Get.find<JobsViewController>();
-  @override
-  void initState() {
-    super.initState();
-    controller.getjobList();
-  }
 
   @override
   Widget build(BuildContext context) {

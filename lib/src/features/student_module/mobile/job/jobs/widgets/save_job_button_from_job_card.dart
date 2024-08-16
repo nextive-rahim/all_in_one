@@ -17,14 +17,17 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (isSavedJob.value || job.isSaved == 1) {
-          Get.snackbar(
-            'Alert',
-            'Job is already saved',
-            snackPosition: SnackPosition.TOP,
-            backgroundColor: CommonColor.redColors,
-            colorText: Colors.white,
-          );
+        if (isSavedJob.value || job.isSaved != 0) {
+          controller.deleteSaveJob(job.id!).then((v) {
+            Get.snackbar(
+              'Alert',
+              'Job is already saved',
+              snackPosition: SnackPosition.TOP,
+              backgroundColor: CommonColor.redColors,
+              colorText: Colors.white,
+            );
+          });
+
           return;
         }
         controller.saveJob(job.id!).then((value) {
@@ -55,11 +58,11 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
           return Row(
             children: [
               Icon(
-                value || job.isSaved == 1
+                value || job.isSaved != 0
                     ? Icons.bookmark
                     : Icons.bookmark_add_outlined,
                 size: 20,
-                color: value || job.isSaved == 1
+                color: value || job.isSaved != 0
                     ? CommonColor.blueColor1
                     : CommonColor.blackColor1,
               ),

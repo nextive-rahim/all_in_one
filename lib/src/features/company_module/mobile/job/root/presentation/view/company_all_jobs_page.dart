@@ -5,7 +5,7 @@ import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/con
 import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/view/other_company_jobs_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/root/presentation/widget/company_job_common_tab.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/applied_jobs_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/applied_jobs_tab.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/saved_job_tab.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +21,7 @@ class CompanyAllJobsMobilePage extends StatefulWidget {
 
 class _CompanyAllJobsMobilePageState extends State<CompanyAllJobsMobilePage> {
   final controller = Get.put(OtherCompanyJobsViewController());
-  final appliedController = Get.put(AppliedJobsViewController());
+  final jobController = Get.put(JobsViewController());
   final profileController = Get.find<ProfileViewController>();
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _CompanyAllJobsMobilePageState extends State<CompanyAllJobsMobilePage> {
       body: SafeArea(
         child: RefreshIndicator(
           onRefresh: () async {
-            appliedController.appliedjobList();
+            jobController.getjobList();
           },
           child: Column(
             children: [

@@ -37,6 +37,7 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                   backgroundColor: CommonColor.redColors,
                   colorText: Colors.white,
                 );
+                return;
               }
               controller.saveJob(job.id!).then((value) {
                 if (value.success == true) {
@@ -47,7 +48,7 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                     backgroundColor: CommonColor.greenColor1,
                     colorText: Colors.white,
                   );
-                  controller.savedjobList();
+                  // controller.savedjobList();
                   controller.getjobList();
                   Get.put(OtherCompanyJobsViewController()
                       .getOtherCompanyjobList());

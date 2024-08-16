@@ -7,7 +7,6 @@ import 'package:all_in_one/src/features/student_module/mobile/job/job_details/wi
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/job_details_header.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/job_summary_card.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/save_job_button_from_job_details.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/applied_jobs_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,8 +27,8 @@ class JobDetailsPageMobile extends StatefulWidget {
 }
 
 class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
-  final controller =
-      Get.lazyPut(() => AppliedJobsViewController(), fenix: true);
+  // final controller =
+  //     Get.lazyPut(() => AppliedJobsViewController(), fenix: true);
   final savecontroller = Get.lazyPut(() => JobsViewController(), fenix: true);
   final JobModel viewJobResponseData = Get.arguments[0];
   final isFromCompanyJob = Get.arguments[1] == JobIsFrom.company ? true : false;

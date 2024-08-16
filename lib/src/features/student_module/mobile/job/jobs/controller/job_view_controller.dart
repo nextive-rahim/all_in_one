@@ -18,10 +18,11 @@ class JobsViewController extends GetxController {
   RxList<JobModel> savedJobList = <JobModel>[].obs;
 
   RxList<JobModel> myJobList = <JobModel>[].obs;
+  RxList<JobModel> appiedJobList = <JobModel>[].obs;
   @override
   void onInit() async {
     await getjobList();
-    savedjobList();
+    // savedjobList();
     super.onInit();
   }
 
@@ -38,6 +39,10 @@ class JobsViewController extends GetxController {
       final res = await _repository.fetchJobList(requestBody);
       JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
       myJobList.value = jobListResponse.data ?? [];
+      savedJobList.value =
+          jobListResponse.data!.where((v) => v.isSaved != 0).toList();
+      appiedJobList.value =
+          jobListResponse.data!.where((v) => v.isApplied != 0).toList();
       _pageStateController(PageState.success);
 
       return;
@@ -49,23 +54,23 @@ class JobsViewController extends GetxController {
     }
   }
 
-  Future<void> savedjobList() async {
-    //_pageStateController(PageState.loading);
+  // Future<void> savedjobList() async {
+  //   //_pageStateController(PageState.loading);
 
-    try {
-      final res = await _repository.fetchSavedJobs();
-      JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
-      savedJobList.value = jobListResponse.data ?? [];
-      // _pageStateController(PageState.success);
+  //   try {
+  //     final res = await _repository.fetchSavedJobs();
+  //     JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
+  //     savedJobList.value = jobListResponse.data ?? [];
+  //     // _pageStateController(PageState.success);
 
-      return;
-    } catch (e, stackTrace) {
-      Log.error(e.toString());
-      Log.error(stackTrace.toString());
-      _pageStateController(PageState.error);
-      return;
-    }
-  }
+  //     return;
+  //   } catch (e, stackTrace) {
+  //     Log.error(e.toString());
+  //     Log.error(stackTrace.toString());
+  //     _pageStateController(PageState.error);
+  //     return;
+  //   }
+  // }
 
   Future<RegistrationResponseModel> saveJob(int id) async {
     // _pageStateController(PageState.loading);
@@ -100,14 +105,35 @@ class JobsViewController extends GetxController {
       final res = await _repository.deleteSaveJob(body);
 
       signupModel = RegistrationResponseModel.fromJson(res);
-      savedJobList.refresh();
-      // savedjobList();
+
+      getjobList();
       return signupModel;
 
       // clearTextFields();
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
+    }
+    return signupModel;
+  }
+
+  Future<RegistrationResponseModel> applyJob(int id) async {
+    _pageStateController(PageState.loading);
+
+    Map<String, dynamic> body = {
+      "company_job_id": id,
+    };
+
+    try {
+      final res = await _repository.applyJob(body);
+
+      signupModel = RegistrationResponseModel.fromJson(res);
+      _pageStateController(PageState.success);
+      return signupModel;
+    } catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      _pageStateController(PageState.error);
     }
     return signupModel;
   }
