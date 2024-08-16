@@ -44,7 +44,7 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                   Get.snackbar(
                     'Success',
                     'Successfully Saved job',
-                    backgroundColor: CommonColor.purpleColor1,
+                    backgroundColor: CommonColor.greenColor1,
                     colorText: Colors.white,
                   );
                   controller.savedjobList();

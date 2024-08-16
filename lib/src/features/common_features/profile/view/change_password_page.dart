@@ -83,7 +83,16 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         labelText: AppStrings.newPassword,
                         controller: controller.newPasswordController,
                         hintText: AppStrings.newPassword,
-                        validator: InputFieldValidator.password(),
+                        validator: InputFieldValidator.confirmPassword(
+                          password: controller.oldPasswordController.text,
+                          optional:
+                              controller.oldPasswordController.text.isEmpty,
+                        ),
+                        onChanged: (v) {
+                          if (v.isEmpty || v.length >= 6) {
+                            setState(() {});
+                          }
+                        },
                       ),
                       10.sh,
                       const SizedBox(height: 30),
@@ -148,7 +157,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         Get.snackbar(
           AppStrings.success,
           controller.loginModel.message.toString(),
-          backgroundColor: CommonColor.purpleColor1,
+          backgroundColor: CommonColor.greenColor1,
           colorText: Colors.white,
           borderWidth: 1,
         );

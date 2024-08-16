@@ -49,7 +49,7 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
                 Get.snackbar(
                   'Successfully',
                   value.message ?? 'Employee Added Successfully',
-                  backgroundColor: CommonColor.purpleColor1,
+                  backgroundColor: CommonColor.greenColor1,
                   colorText: Colors.white,
                 );
                 Get.find<EmployeeListViewController>().getEmployeeList();

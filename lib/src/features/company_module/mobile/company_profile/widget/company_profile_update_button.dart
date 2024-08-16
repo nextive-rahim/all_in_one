@@ -21,7 +21,7 @@ class CompanyProfileUpdateButton
               Get.snackbar(
                 'Successfully',
                 'Employee Added Successfully',
-                backgroundColor: CommonColor.purpleColor1,
+                backgroundColor: CommonColor.greenColor1,
                 colorText: Colors.white,
               );
               Get.find<ProfileViewController>().getUser();

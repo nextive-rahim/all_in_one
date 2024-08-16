@@ -358,7 +358,7 @@ class _LoginPageState extends State<LoginPage> {
                     Get.snackbar(
                       'Send OTP',
                       controller.loginModel.message.toString(),
-                      backgroundColor: CommonColor.purpleColor1,
+                      backgroundColor: CommonColor.greenColor1,
                       colorText: Colors.white,
                       borderWidth: 1,
                     );

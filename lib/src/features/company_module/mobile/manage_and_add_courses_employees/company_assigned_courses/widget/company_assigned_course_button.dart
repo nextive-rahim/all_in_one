@@ -33,7 +33,7 @@ class CompanyAssignedCourseButton
             Get.snackbar(
               'Success',
               'course added successfully.',
-              backgroundColor: CommonColor.purpleColor1,
+              backgroundColor: CommonColor.greenColor1,
               colorText: Colors.white,
             );
           } else {

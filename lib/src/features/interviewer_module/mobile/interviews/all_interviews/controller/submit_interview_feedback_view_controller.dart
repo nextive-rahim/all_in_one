@@ -33,7 +33,7 @@ class SubmittedInterviewFeedbackViewController extends GetxController {
         'Success',
         'Feedback store Successfully.',
         snackPosition: SnackPosition.TOP,
-        backgroundColor: CommonColor.purpleColor1,
+        backgroundColor: CommonColor.greenColor1,
         colorText: Colors.white,
       );
     } catch (e, stackTrace) {

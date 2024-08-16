@@ -28,7 +28,7 @@ class DeletedSaveJobButtonFromJobCard extends GetView<JobsViewController> {
               'Success',
               'Successfully Saved job',
               snackPosition: SnackPosition.TOP,
-              backgroundColor: CommonColor.purpleColor1,
+              backgroundColor: CommonColor.greenColor1,
               colorText: Colors.white,
             );
             controller.getjobList();

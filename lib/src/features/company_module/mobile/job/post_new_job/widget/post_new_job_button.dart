@@ -35,7 +35,7 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
               Get.snackbar(
                 'Successfully',
                 'Post Added Successfully',
-                backgroundColor: CommonColor.purpleColor1,
+                backgroundColor: CommonColor.greenColor1,
                 colorText: Colors.white,
               );
               Get.find<JobsViewController>().getjobList();

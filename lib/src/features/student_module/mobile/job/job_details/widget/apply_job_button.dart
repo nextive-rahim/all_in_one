@@ -46,7 +46,7 @@ class ApplyJobButton extends GetView<AppliedJobsViewController> {
                     Get.snackbar(
                       'Success',
                       'Successfully applied job',
-                      backgroundColor: CommonColor.purpleColor1,
+                      backgroundColor: CommonColor.greenColor1,
                       colorText: Colors.white,
                     );
                     isAppliedJob.value = true;

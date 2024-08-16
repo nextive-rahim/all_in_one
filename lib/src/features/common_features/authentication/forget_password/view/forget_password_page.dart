@@ -177,7 +177,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           AppStrings.success,
           controller.loginModel.message.toString(),
           borderWidth: 1,
-          backgroundColor: CommonColor.purpleColor1,
+          backgroundColor: CommonColor.greenColor1,
           colorText: Colors.white,
         );
         Get.offNamed(Routes.login);

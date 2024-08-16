@@ -378,7 +378,7 @@ class _InterviewRequestSectionState extends State<InterviewRequestSection> {
                                         'Successful',
                                         'Successfully submitted interview request',
                                         backgroundColor:
-                                            CommonColor.purpleColor1,
+                                            CommonColor.greenColor1,
                                         colorText: Colors.white,
                                       );
                                       Navigator.pop(context, false);

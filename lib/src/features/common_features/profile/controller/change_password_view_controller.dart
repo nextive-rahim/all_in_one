@@ -16,11 +16,8 @@ class ChangePasswordViewController extends GetxController {
 
   late RegistrationResponseModel loginModel;
 
-  Future<void> changePassword(GlobalKey<FormState> formKey) async {
-    if (!formKey.currentState!.validate()) {
-      return;
-    }
-
+  Future<RegistrationResponseModel> changePassword(
+      GlobalKey<FormState> formKey) async {
     _pageStateController(PageState.loading);
 
     Map<String, dynamic> requestBody = {
@@ -37,14 +34,14 @@ class ChangePasswordViewController extends GetxController {
 
       _pageStateController(PageState.success);
 
-      return;
+      return loginModel;
       //clearTextFields();
       //  Get.offAllNamed(Routes.dashboard);
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       _pageStateController(PageState.error);
-      return;
+      return RegistrationResponseModel(message: '');
     }
   }
 

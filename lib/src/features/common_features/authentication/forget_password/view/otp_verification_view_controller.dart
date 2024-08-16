@@ -145,7 +145,7 @@ class OTPverificationPageState extends State<OTPverificationPage> {
             controller.loginModel.message.toString(),
             borderWidth: 1,
             snackPosition: SnackPosition.TOP,
-            backgroundColor: CommonColor.purpleColor1,
+            backgroundColor: CommonColor.greenColor1,
             colorText: Colors.white,
           );
           Get.toNamed(Routes.forgotPassword);

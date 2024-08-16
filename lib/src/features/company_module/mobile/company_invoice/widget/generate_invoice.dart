@@ -105,7 +105,7 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
               Get.snackbar(
                 'Successful',
                 'Generate Invoice successfully',
-                backgroundColor: CommonColor.purpleColor1,
+                backgroundColor: CommonColor.greenColor1,
                 colorText: Colors.white,
               );
             });

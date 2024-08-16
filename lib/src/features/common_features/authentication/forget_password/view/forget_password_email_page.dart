@@ -155,7 +155,7 @@ class _ForgetPasswordEmailPageState extends State<ForgetPasswordEmailPage> {
           controller.loginModel.message.toString(),
           borderWidth: 1,
           snackPosition: SnackPosition.TOP,
-          backgroundColor: CommonColor.purpleColor1,
+          backgroundColor: CommonColor.greenColor1,
           colorText: Colors.white,
         );
         Get.toNamed(Routes.otpVerification);

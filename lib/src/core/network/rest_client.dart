@@ -289,7 +289,7 @@ class RestClient {
               // throw CustomException(400, jsonEncode(error.response?.data), ""); /// Before
               throw CustomException(
                 400,
-                error.response?.data["message"],
+                error.response?.data["message"]['message'],
                 "",
               );
             case 403:
@@ -335,15 +335,14 @@ class RestClient {
                 ),
               );
             case 500:
-              final message =
-                  errorMessage ?? '${error.response?.data['message']}';
+              final message = errorMessage ??
+                  '${error.response?.data['message']['message']}';
               throw InternalServerException(
                 500,
-                Get.snackbar(
-                  'Failed',
-                  message.toString(),
-                  snackPosition: SnackPosition.TOP,
-                ),
+                Get.snackbar('Failed', message['message'].toString(),
+                    snackPosition: SnackPosition.TOP,
+                    backgroundColor: CommonColor.redColors,
+                    colorText: CommonColor.whiteColor),
               );
             case 422:
               final message =

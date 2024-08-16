@@ -279,8 +279,11 @@ class _CompanyJobAppliedCandidateProfileState
                             ),
                             InkWell(
                               onTap: () {
-                                Get.snackbar('Successfully',
-                                    'Selected Candidate for Interview');
+                                Get.snackbar(
+                                  'Successfully',
+                                  'Selected Candidate for Interview',
+                                  backgroundColor: CommonColor.greenColor1,
+                                );
                               },
                               child: Container(
                                 width: SizeConfig.screenWidth,

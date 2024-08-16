@@ -367,7 +367,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           AppStrings.success,
           AppStrings.registrationSuccessfulMessage,
           snackPosition: SnackPosition.TOP,
-          backgroundColor: CommonColor.purpleColor1,
+          backgroundColor: CommonColor.greenColor1,
           colorText: Colors.white,
         );
         Get.offNamed(Routes.registrationCompleted);
