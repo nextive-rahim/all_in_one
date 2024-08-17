@@ -54,6 +54,7 @@ class API {
   static const String addCourseEmployeeUrl = 'add-course-employee';
   static const String companyappliedJob = 'multiple-job-apply';
   static const String getEmployeeUrl = 'get-employee';
+  static const String deleteEmployeeUrl = 'company-delete-employee';
   static const String manageEmployeeUrl = 'manage-employee';
   static const String postJobByCompany = 'post-job-by-company';
   static const String editCompanyJob = 'update-post';

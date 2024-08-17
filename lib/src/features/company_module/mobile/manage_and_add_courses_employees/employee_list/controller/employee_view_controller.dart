@@ -44,4 +44,27 @@ class EmployeeListViewController extends GetxController {
       return;
     }
   }
+
+  Future<void> deleteEmployee(int employeeID) async {
+    // _pageStateController(PageState.loading);
+
+    Map<String, dynamic> requestBody = {
+      "employee_id": employeeID,
+    };
+
+    Log.debug(requestBody.toString());
+
+    try {
+      await _repository.deleteEmployee(requestBody);
+      employeeList.removeWhere((v) => v.id == employeeID);
+      // _pageStateController(PageState.success);
+
+      return;
+    } catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      // _pageStateController(PageState.error);
+      return;
+    }
+  }
 }
