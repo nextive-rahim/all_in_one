@@ -3,6 +3,7 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
+import 'package:all_in_one/src/core/utils/string.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,14 +47,26 @@ class EmployeeCard extends StatelessWidget {
                       color: Color(0xFFECECEC),
                       shape: CircleBorder(),
                     ),
-                    child: Text(
-                      getInitials(employee.name ?? ''),
-                      style: const TextStyle(
-                        color: Color(0xFF5A5959),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    child: employee.image != null
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: Image.network(
+                              employee.image!,
+                              fit: BoxFit.fill,
+                              width: double.infinity,
+                              errorBuilder: (context, error, stackTrace) {
+                                return Image.network(noImageFound);
+                              },
+                            ),
+                          )
+                        : Text(
+                            getInitials(employee.name ?? ''),
+                            style: const TextStyle(
+                              color: Color(0xFF5A5959),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
                   ),
                   const SizedBox(width: 21),
                   Expanded(

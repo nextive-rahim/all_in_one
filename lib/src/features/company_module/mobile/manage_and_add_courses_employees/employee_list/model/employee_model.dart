@@ -41,6 +41,7 @@ class EmployeeModelResponse {
 class EmployeeModel {
   int? id;
   String? username;
+  String? image;
   String? password;
   int? userType;
   String? address;
@@ -64,6 +65,7 @@ class EmployeeModel {
   EmployeeModel({
     this.id,
     this.username,
+    this.image,
     this.password,
     this.userType,
     this.address,
@@ -89,6 +91,7 @@ class EmployeeModel {
   factory EmployeeModel.fromJson(Map<String?, dynamic> json) => EmployeeModel(
         id: json["id"],
         username: json["username"],
+        image: json["image"],
         password: json["password"],
         userType: json["user_type"],
         address: json["address"],
@@ -117,6 +120,7 @@ class EmployeeModel {
   Map<String?, dynamic> toJson() => {
         "id": id,
         "username": username,
+        "image": image,
         "password": password,
         "user_type": userType,
         "address": address,

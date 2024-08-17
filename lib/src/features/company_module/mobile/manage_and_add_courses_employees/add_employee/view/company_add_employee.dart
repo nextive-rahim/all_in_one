@@ -54,6 +54,7 @@ class _CompanyAddEmployeePageMobileState
                       AddedEployeeImageByCompany(),
                       AddedNewEmployeeFormField(),
                       //  _AddedCoursesForEmployee()
+                      SizedBox(height: 70)
                     ],
                   ),
                 ),

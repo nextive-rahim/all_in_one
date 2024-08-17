@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:all_in_one/src/core/service/file/file_service.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_update_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/controller/added_new_employee_view_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
+import 'package:get/get.dart';
 
 class AddedEployeeImageByCompany
     extends GetView<AddedNewEmployeeViewController> {
@@ -25,20 +25,29 @@ class AddedEployeeImageByCompany
           ),
           child: GestureDetector(
             onTap: () async {
-              FileModel? file = await FileService().pickAFile();
-              controller.imagelink.value = file!.path;
+              await FileService().pickAFile().then((value) {
+                controller.isUploadFile.value = true;
+                controller.fileImagelink.value = value!.path;
+                Get.put(UpdateProfileiewController())
+                    .uploadFile(value.file)
+                    .then((value2) {});
+                controller.isUploadFile.value = false;
+                return;
+              });
+              // FileModel? file = await FileService().pickAFile();
+              // controller.imagelink.value = file!.path;
             },
             child: Column(
               children: [
                 Obx(
                   () => Stack(
                     children: [
-                      controller.imagelink.value != ''
+                      controller.fileImagelink.value != ''
                           ? SizedBox(
                               height: 140,
                               width: 140,
                               child: Image.file(
-                                File(controller.imagelink.value),
+                                File(controller.fileImagelink.value),
                                 fit: BoxFit.cover,
                               ),
                             )
