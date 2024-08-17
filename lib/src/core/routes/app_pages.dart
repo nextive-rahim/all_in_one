@@ -11,6 +11,8 @@ import 'package:all_in_one/src/features/common_features/authentication/registrat
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_completed_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/root/binding/auth_binding.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/applied_job_for_multiple_employee/binding/company_applied_job_binding.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/applied_job_for_multiple_employee/view/company_applied_job_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/binding/company_profile_update_binding.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/company_profile_update_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_applied_candidate_profile/view/company_job_applied_candidate_profile.dart';
@@ -350,13 +352,14 @@ class AppPages {
       curve: Curves.easeInOut,
       transitionDuration: const Duration(milliseconds: 300),
     ),
-    // GetPage(
-    //   name: Routes.bookPreviews,
-    //   page: () => const BookPreviewsPage(),
-    //   transition: Transition.fade,
-    //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
-    // ),
+    GetPage(
+      name: Routes.companyAppliedJobForMultipleEmployee,
+      binding: CompanyAppliedJobBinding(),
+      page: () => const CompanyAppliedJobForMultipleEmployee(),
+      transition: Transition.fade,
+      curve: Curves.easeInOut,
+      transitionDuration: const Duration(milliseconds: 300),
+    ),
 
     // /// Book Purchases
     // GetPage(

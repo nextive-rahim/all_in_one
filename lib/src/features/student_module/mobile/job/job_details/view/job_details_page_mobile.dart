@@ -37,7 +37,8 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
   final JobModel viewJobResponseData = Get.arguments[0];
   final isFromCompanyJob = Get.arguments[1] == JobIsFrom.company ? true : false;
 
-  final bool isFromOtherJob = Get.arguments[1] == JobIsFrom.all ? true : false;
+  final bool isFromOtherJob =
+      Get.arguments[1] == JobIsFrom.other ? true : false;
   @override
   void initState() {
     Get.put(UserDetailsViewController());
@@ -46,6 +47,7 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
 
   @override
   Widget build(BuildContext context) {
+    print(isFromOtherJob);
     return Scaffold(
       backgroundColor: CommonColor.greyColor1,
       appBar: AppBar(

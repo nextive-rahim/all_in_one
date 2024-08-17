@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
@@ -34,12 +35,16 @@ class CompanyJobApplyButton extends GetView<OtherCompanyJobsViewController> {
                 if (job.isApplied != 0 || isAppliedJob.value) {
                   Get.snackbar(
                     'Warning',
-                    'Job is already Applied',
+                    'Job is already Applied222',
                     backgroundColor: CommonColor.redColors,
                     colorText: Colors.white,
                   );
                   return;
                 }
+                Get.toNamed(
+                  Routes.companyAppliedJobForMultipleEmployee,
+                  arguments: job,
+                );
               },
               widget: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
