@@ -18,6 +18,7 @@ class CompanyProfileUpdateButton
         onTap: () async {
           controller.companyProfileUpdate().then((value) {
             if (value.success == true) {
+              Get.back();
               Get.snackbar(
                 'Successfully',
                 'Employee Added Successfully',

@@ -43,9 +43,12 @@ class CompanyProfilePage extends GetView<ProfileViewController> {
                           width: 150,
                           color: AppColors.white,
                           child: Center(
-                              child: Image.network(controller
-                                      .userModel!.image ??
-                                  'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg')
+                              child: Image.network(
+                            controller.userModel!.image ??
+                                'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg',
+                            fit: BoxFit.fill,
+                            height: double.infinity,
+                          )
                               //  AppCachedNetworkImage(
                               //   imageUrl: controller.userModel?.image,
                               // ),

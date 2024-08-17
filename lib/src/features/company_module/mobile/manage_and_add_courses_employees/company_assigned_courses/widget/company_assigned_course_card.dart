@@ -50,18 +50,18 @@ class _CompanyAssingnedCoursesCardState
           ),
         ],
       ),
-      trailing: Wrap(
-        children: [
-          const Text(
-            "Level  :   ",
-            style: AppTextStyle.bold14,
-          ),
-          Text(
-            widget.course?.id.toString() ?? '',
-            style: AppTextStyle.bold16,
-          ),
-        ],
-      ),
+      // trailing: Wrap(
+      //   children: [
+      //     const Text(
+      //       "Level  :   ",
+      //       style: AppTextStyle.bold14,
+      //     ),
+      //     Text(
+      //       widget.course?.id.toString() ?? '',
+      //       style: AppTextStyle.bold16,
+      //     ),
+      //   ],
+      // ),
       leading: _mainUI(widget.isSelectItem),
     );
   }

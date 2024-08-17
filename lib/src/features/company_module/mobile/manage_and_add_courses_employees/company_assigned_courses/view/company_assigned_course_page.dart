@@ -50,25 +50,20 @@ class _CompanyAssignedCoursesState extends State<CompanyAssignedCourses> {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    children: [
-                      Obx(() {
-                        if (courseController.pageState == PageState.loading) {
-                          return const CircularProgressIndicator();
-                        }
-                        return CompanyAssigniedCourseBuilder(
-                          homeCourses:
-                              courseController.homeCourses[0].collectinList ??
-                                  [],
-                          controller: companyAssignedCourseController,
-                        );
-                      })
-                    ],
-                  ),
-                ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Obx(() {
+                  if (courseController.pageState == PageState.loading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return SingleChildScrollView(
+                    child: CompanyAssigniedCourseBuilder(
+                      homeCourses:
+                          courseController.homeCourses[0].collectinList ?? [],
+                      controller: companyAssignedCourseController,
+                    ),
+                  );
+                }),
               ),
             ),
           ],

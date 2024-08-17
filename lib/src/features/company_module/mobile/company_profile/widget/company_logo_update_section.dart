@@ -38,12 +38,12 @@ class CompanyLogoUpdateSection
               Obx(
                 () => Stack(
                   children: [
-                    controller.imagelink.value != ''
+                    controller.fileImagelink.value != ''
                         ? SizedBox(
                             height: 140,
                             width: 140,
                             child: Image.file(
-                              File(controller.imagelink.value),
+                              File(controller.fileImagelink.value),
                               fit: BoxFit.cover,
                             ),
                           )
