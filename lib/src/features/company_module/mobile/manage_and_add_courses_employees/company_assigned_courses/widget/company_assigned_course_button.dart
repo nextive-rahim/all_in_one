@@ -55,7 +55,7 @@ class CompanyAssignedCourseButton
           right: 20,
         ),
         child: Container(
-          height: 60,
+          height: 50,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: CommonColor.blueColor1),

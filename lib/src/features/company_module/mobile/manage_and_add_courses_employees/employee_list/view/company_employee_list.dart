@@ -37,6 +37,7 @@ class _CompanyEmployeeListPageMobileState
               // ),
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

@@ -62,9 +62,9 @@ class CompanyInvoiceViewController extends GetxController {
     Log.debug(requestBody.toString());
 
     try {
-      final res = await _repository.generateInvoice(requestBody);
+      await _repository.generateInvoice(requestBody);
 
-      invoiceModel = InvoiceResponseModel.fromJson(res);
+      //invoiceModel = InvoiceResponseModel.fromJson(res);
 
       _pageStateController(PageState.success);
 

@@ -1,7 +1,6 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_completed_course_section.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_description_section.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_evaluations_section.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_profile_contact_section.dart';
@@ -41,43 +40,47 @@ class _CompanyEmployeeProfilePageState
         title: Text(employee.name ?? ''),
       ),
       backgroundColor: CommonColor.greyColor1,
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 18,
-                      right: 18,
-                      top: 7,
+      body: RefreshIndicator(
+        onRefresh: () async {},
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 15,
+                        right: 15,
+                        top: 10,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CompanyEmployeeProfileHeader(employee: employee),
+                          const SizedBox(height: 10),
+                          CompanyEmployeeProfileContactSection(
+                              employee: employee),
+                          const SizedBox(height: 30),
+                          CompanyEmployeeProfileDescriptionSection(
+                              employee: employee),
+                          const SizedBox(height: 30),
+                          CompanyEmployeeSkillSection(user: employee),
+                          // const SizedBox(height: 30),
+                          // const CompanyEmployeeCompletedCourseSection(),
+                          // const SizedBox(height: 30),
+                          CompanyEmployeeProfileEvaluationSection(
+                              employee: employee)
+                        ],
+                      ),
                     ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CompanyEmployeeProfileHeader(employee: employee),
-                        const SizedBox(height: 10),
-                        CompanyEmployeeProfileContactSection(
-                            employee: employee),
-                        const SizedBox(height: 30),
-                        CompanyEmployeeProfileDescriptionSection(
-                            employee: employee),
-                        const SizedBox(height: 30),
-                        CompanyEmployeeSkillSection(user: employee),
-                        const SizedBox(height: 30),
-                        const CompanyEmployeeCompletedCourseSection(),
-                        const SizedBox(height: 30),
-                        const CompanyEmployeeProfileEvaluationSection()
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

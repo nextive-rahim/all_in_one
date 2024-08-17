@@ -47,14 +47,14 @@ class CompanyEmployeeProfileContactSection extends StatelessWidget {
               children: [
                 Image.asset(
                   ImageConstant.send1,
-                  color: CommonColor.headingTextColor2,
+                  color: CommonColor.purpleColor1,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 const TextWidget(
                   text: AppStrings.call,
-                  color: CommonColor.headingTextColor2,
+                  color: CommonColor.purpleColor1,
                   maxLine: 1,
                   fontFamily: AppStrings.inter,
                   fontWeight: FontWeight.w500,
@@ -95,14 +95,14 @@ class CompanyEmployeeProfileContactSection extends StatelessWidget {
               children: [
                 Image.asset(
                   ImageConstant.send1,
-                  color: CommonColor.headingTextColor2,
+                  color: CommonColor.purpleColor1,
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 const TextWidget(
                   text: AppStrings.email,
-                  color: CommonColor.headingTextColor2,
+                  color: CommonColor.purpleColor1,
                   maxLine: 1,
                   fontFamily: AppStrings.inter,
                   fontWeight: FontWeight.w500,
