@@ -6,7 +6,7 @@ import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/mobile/student_app_bar.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/core/widgets/web/side_nav_bar_company.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/saved_job_company/saved_jobs_company_mobile.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/saved_job_company/saved_jobs_company_mobile.dart';
 import 'package:all_in_one/src/features/company_module/web/manage_and_add_courses_employees/company_employee_list_web.dart';
 import 'package:all_in_one/src/features/company_module/web/my_company_jobs/my_company_job_detail_web.dart';
 import 'package:all_in_one/src/features/company_module/web/payment_and_invoice/company_payment_and_invoice_web.dart';

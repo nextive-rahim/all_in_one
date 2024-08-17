@@ -1,4 +1,4 @@
-import 'package:all_in_one/src/features/company_module/mobile/job/saved_job_company/save_job_detail_company_mobile.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/saved_job_company/save_job_detail_company_mobile.dart';
 import 'package:all_in_one/src/features/company_module/web/manage_and_add_courses_employees/company_employee_list_web.dart';
 import 'package:all_in_one/src/features/company_module/web/my_company_jobs/my_company_job_web.dart';
 import 'package:all_in_one/src/features/company_module/web/payment_and_invoice/company_payment_and_invoice_web.dart';

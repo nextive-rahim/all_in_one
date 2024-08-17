@@ -1,7 +1,7 @@
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/common_features/user_details/controller/user_details_view_controller.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/other_jobs/controller/other_company_job_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/company_job_apply_button.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/company_save_job_button_from_job_details.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';

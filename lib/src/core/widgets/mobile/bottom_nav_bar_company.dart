@@ -4,7 +4,7 @@ import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/comapny_profile_page.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/root/presentation/view/company_all_jobs_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/view/company_all_jobs_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/view/company_employee_list.dart';
 import 'package:all_in_one/src/features/company_module/mobile/payment/company_payment.dart';
 import 'package:flutter/material.dart';

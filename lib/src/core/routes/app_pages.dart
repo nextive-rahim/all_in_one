@@ -13,9 +13,9 @@ import 'package:all_in_one/src/features/common_features/authentication/registrat
 import 'package:all_in_one/src/features/common_features/authentication/root/binding/auth_binding.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/binding/company_profile_update_binding.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/company_profile_update_page.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/my_company_jobs/my_company_job_applied_candidate_profile/view/company_job_applied_candidate_profile.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/binding/post_job_binding.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/post_new_job/view/post_company_new_job_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_applied_candidate_profile/view/company_job_applied_candidate_profile.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/binding/post_job_binding.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/view/post_company_new_job_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/binding/add_new_employee_binding.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/view/company_add_employee.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/binding/company_assigned_course_binding.dart';
