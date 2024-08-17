@@ -12,7 +12,7 @@ class PostNewJobRepository {
   }
 
   Future<dynamic> editCompanyJob(Map<String, dynamic> data) async {
-    final res = await RestClient.dev().postFormData(
+    final res = await RestClient.dev().post(
       APIType.PROTECTED,
       API.editCompanyJob,
       data,

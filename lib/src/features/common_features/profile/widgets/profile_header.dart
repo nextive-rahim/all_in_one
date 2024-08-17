@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
+import 'package:all_in_one/src/core/utils/string.dart';
 import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
 import 'package:flutter/material.dart';
 
@@ -91,10 +92,16 @@ class ProfileHeader extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Image.network(
-                    userModel.image ??
-                        'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg',
+                    userModel.image ?? noImageFound,
                     width: double.infinity,
                     fit: BoxFit.fill,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.network(
+                        noImageFound,
+                        width: double.infinity,
+                        fit: BoxFit.fill,
+                      );
+                    },
                   ),
                 ),
               ),

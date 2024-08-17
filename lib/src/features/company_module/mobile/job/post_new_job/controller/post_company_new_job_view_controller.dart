@@ -14,6 +14,7 @@ class PostCompanyNewJobViewController extends GetxController {
 
   get pageState => _pageStateController.value;
   late RegistrationResponseModel signupModel;
+  JobModel? job;
   RxBool isFromPostEdit = false.obs;
   final formKey = GlobalKey<FormState>();
   Future<RegistrationResponseModel> postNewJob() async {
@@ -48,7 +49,7 @@ class PostCompanyNewJobViewController extends GetxController {
     return signupModel;
   }
 
-  Future<RegistrationResponseModel> editCompanyJob() async {
+  Future<RegistrationResponseModel> editCompanyJob(int id) async {
     // if (!formKey.currentState!.validate()) {
     //   return;
     // }
@@ -56,13 +57,14 @@ class PostCompanyNewJobViewController extends GetxController {
     _pageStateController(PageState.loading);
 
     Map<String, dynamic> body = {
+      "id": id,
       "job_role": jobRoleController.text,
       "work_exp_min": workExpMinController.text,
       "work_exp_max": workExpMaxController.text,
       "paysalary": paySalaryController.text,
       "work_location": workLocationController.text,
       "job_description": jobDescriptionController.text,
-      "time": '',
+      // "time": '',
     };
 
     try {

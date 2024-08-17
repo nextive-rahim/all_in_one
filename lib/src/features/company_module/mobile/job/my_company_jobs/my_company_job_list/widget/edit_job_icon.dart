@@ -8,8 +8,8 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/vie
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EditJob extends GetView<PostCompanyNewJobViewController> {
-  const EditJob({
+class EditJobIcon extends GetView<PostCompanyNewJobViewController> {
+  const EditJobIcon({
     super.key,
     required this.job,
   });
@@ -20,6 +20,7 @@ class EditJob extends GetView<PostCompanyNewJobViewController> {
     return GestureDetector(
       onTap: () {
         controller.isFromPostEdit.value = true;
+        controller.job = job;
         controller.popolateTextFormField(job).then((v) {
           Get.toNamed(
             Routes.postCompanyNewJob,

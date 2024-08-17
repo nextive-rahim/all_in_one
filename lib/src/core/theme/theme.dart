@@ -9,7 +9,11 @@ ThemeData themeData = ThemeData(
       centerTitle: true,
       elevation: 0,
       backgroundColor: CommonColor.purpleColor1,
-      titleTextStyle: TextStyle(color: AppColors.white, fontSize: 20),
+      titleTextStyle: TextStyle(
+        color: AppColors.white,
+        fontSize: 20,
+        fontFamily: 'NotoSerifBengali',
+      ),
       shape: OutlineInputBorder(
         borderSide: BorderSide.none,
         borderRadius: BorderRadius.only(

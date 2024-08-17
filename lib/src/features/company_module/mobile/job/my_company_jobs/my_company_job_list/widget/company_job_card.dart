@@ -7,7 +7,7 @@ import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/job/my_company_jobs/my_company_job_list/widget/delete_job.dart';
-import 'package:all_in_one/src/features/company_module/mobile/job/my_company_jobs/my_company_job_list/widget/edit_job.dart';
+import 'package:all_in_one/src/features/company_module/mobile/job/my_company_jobs/my_company_job_list/widget/edit_job_icon.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
@@ -71,7 +71,7 @@ class CompanyJobCard extends StatelessWidget {
                     children: [
                       Image.asset(
                         ImageConstant.jobLogo,
-                        color: CommonColor.blackColor1,
+                        color: CommonColor.purpleColor1,
                       ),
                       const SizedBox(width: 15),
                       TextWidget(
@@ -90,7 +90,7 @@ class CompanyJobCard extends StatelessWidget {
                     children: [
                       Image.asset(
                         ImageConstant.dollarCircle,
-                        color: CommonColor.blackColor1,
+                        color: CommonColor.purpleColor1,
                       ),
                       const SizedBox(width: 15),
                       TextWidget(
@@ -109,7 +109,7 @@ class CompanyJobCard extends StatelessWidget {
                     children: [
                       Image.asset(
                         ImageConstant.send2,
-                        color: CommonColor.blackColor1,
+                        color: CommonColor.purpleColor1,
                       ),
                       const SizedBox(width: 15),
                       TextWidget(
@@ -129,7 +129,7 @@ class CompanyJobCard extends StatelessWidget {
                     children: [
                       const Icon(
                         Icons.insert_drive_file_outlined,
-                        color: CommonColor.blackColor1,
+                        color: CommonColor.purpleColor1,
                         size: 18,
                       ),
                       const SizedBox(width: 15),
@@ -167,7 +167,7 @@ class CompanyJobCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                EditJob(job: job),
+                EditJobIcon(job: job),
                 const SizedBox(width: 20),
                 DeletedJob(job: job),
               ],

@@ -26,7 +26,7 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
             return;
           }
           if (controller.isFromPostEdit.value) {
-            controller.editCompanyJob().then((value) {
+            controller.editCompanyJob(controller.job!.id!).then((value) {
               if (value.success == true) {
                 Get.back();
                 Get.snackbar(
@@ -62,7 +62,7 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Text(
-              'Post Job',
+              controller.isFromPostEdit.value ? 'Edit job' : 'Post Job',
               textAlign: TextAlign.center,
               style: AppTextStyle.bold16.copyWith(color: AppColors.white),
             ),

@@ -57,6 +57,13 @@ class UpdateProfileImageSecton extends GetView<UpdateProfileiewController> {
                                     noImageFound,
                                 cacheHeight: 367,
                                 cacheWidth: 367,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Image.network(
+                                    noImageFound,
+                                    cacheHeight: 367,
+                                    cacheWidth: 367,
+                                  );
+                                },
                               )
 
                               // AppCachedNetworkImage(
