@@ -18,9 +18,9 @@
     
     </queries>
     <application
-        android:label="all_in_one"
+        android:label="All In One"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
