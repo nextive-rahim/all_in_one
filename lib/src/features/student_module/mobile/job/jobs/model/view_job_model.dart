@@ -56,9 +56,10 @@ class JobModel {
   DateTime? createdAt;
   DateTime? updatedAt;
   int? isApplied;
+  int? isSelected;
   int? isSaved;
-  List<User>? user;
-  List<UserDetail>? userDetails;
+  List<UserDetail>? user;
+  int? totalUserApplied;
 
   JobModel({
     this.id,
@@ -74,9 +75,10 @@ class JobModel {
     this.createdAt,
     this.updatedAt,
     this.isApplied,
+    this.isSelected,
     this.isSaved,
     this.user,
-    this.userDetails,
+    this.totalUserApplied,
   });
 
   factory JobModel.fromJson(Map<String?, dynamic> json) => JobModel(
@@ -93,14 +95,13 @@ class JobModel {
         createdAt: DateTime.parse(json["createdAt"]),
         updatedAt: DateTime.parse(json["updatedAt"]),
         isApplied: json["isApplied"],
+        isSelected: json["isSelected"],
         isSaved: json["isSaved"],
         user: json["user"] == null
             ? []
-            : List<User>.from(json["user"].map((x) => User.fromJson(x))),
-        userDetails: json["userDetails"] == null
-            ? []
             : List<UserDetail>.from(
-                json["userDetails"].map((x) => UserDetail.fromJson(x))),
+                json["user"].map((x) => UserDetail.fromJson(x))),
+        totalUserApplied: json["total_user_applied"],
       );
 
   Map<String?, dynamic> toJson() => {
@@ -117,35 +118,22 @@ class JobModel {
         "createdAt": createdAt!.toIso8601String(),
         "updatedAt": updatedAt!.toIso8601String(),
         "isApplied": isApplied,
+        "isSelected": isSelected,
         "isSaved": isSaved,
         "user": List<dynamic>.from(user!.map((x) => x.toJson())),
-        "userDetails": List<dynamic>.from(userDetails!.map((x) => x.toJson())),
-      };
-}
-
-class User {
-  int? appliedBy;
-
-  User({
-    this.appliedBy,
-  });
-
-  factory User.fromJson(Map<String?, dynamic> json) => User(
-        appliedBy: json["applied_by"],
-      );
-
-  Map<String?, dynamic> toJson() => {
-        "applied_by": appliedBy,
+        "total_user_applied": totalUserApplied,
       };
 }
 
 class UserDetail {
+  int? appliedBy;
+  int? isSelected;
   int? id;
   String? username;
   String? password;
   int? userType;
-  dynamic address;
-  dynamic phone;
+  String? address;
+  String? phone;
   dynamic empId;
   dynamic registrationNo;
   int? isActive;
@@ -155,6 +143,8 @@ class UserDetail {
   DateTime? updatedAt;
 
   UserDetail({
+    this.appliedBy,
+    this.isSelected,
     this.id,
     this.username,
     this.password,
@@ -170,7 +160,9 @@ class UserDetail {
     this.updatedAt,
   });
 
-  factory UserDetail.fromJson(Map<String?, dynamic> json) => UserDetail(
+  factory UserDetail.fromJson(Map<String, dynamic> json) => UserDetail(
+        appliedBy: json["applied_by"],
+        isSelected: json["isSelected"],
         id: json["id"],
         username: json["username"],
         password: json["password"],
@@ -186,7 +178,9 @@ class UserDetail {
         updatedAt: DateTime.parse(json["updatedAt"]),
       );
 
-  Map<String?, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
+        "applied_by": appliedBy,
+        "isSelected": isSelected,
         "id": id,
         "username": username,
         "password": password,

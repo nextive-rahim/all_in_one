@@ -42,14 +42,14 @@ class UserDetailsResponseModelData {
   UserModel? data;
   ExamData? examData;
   List<UserSkill>? userSkill;
-  int? isSubscribed;
+  // int? isSubscribed;
 
   UserDetailsResponseModelData({
     this.userType,
     this.data,
     this.examData,
     this.userSkill,
-    this.isSubscribed,
+    //this.isSubscribed,
   });
 
   factory UserDetailsResponseModelData.fromJson(Map<String, dynamic> json) =>
@@ -63,7 +63,7 @@ class UserDetailsResponseModelData {
             ? null
             : List<UserSkill>.from(
                 json["user_skill"].map((x) => UserSkill.fromJson(x))),
-        isSubscribed: json["is_subscribed"],
+        // isSubscribed: json["is_subscribed"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -71,6 +71,6 @@ class UserDetailsResponseModelData {
         "data": data!.toJson(),
         "exam_data": examData!.toJson(),
         "user_skill": List<dynamic>.from(userSkill!.map((x) => x.toJson())),
-        "is_subscribed": isSubscribed,
+        // "is_subscribed": isSubscribed,
       };
 }

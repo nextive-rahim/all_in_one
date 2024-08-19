@@ -38,47 +38,49 @@ class CompanyJobCandidateProfileDetails extends StatelessWidget {
           fontSize: 18,
         ),
         const SizedBox(height: 15),
-        Wrap(
-          direction: Axis.horizontal,
-          spacing: 3.0,
-          runSpacing: 8.0,
-          children: [
-            for (int i = 0; i < user.userSkill!.length; i++)
-              Container(
-                height: 40,
-                padding: const EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                  top: 10,
-                ),
-                decoration: ShapeDecoration(
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    side: const BorderSide(
-                        width: 0.50, color: CommonColor.greyColor5),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  shadows: const [
-                    BoxShadow(
-                      color: CommonColor.blackColor3,
-                      blurRadius: 2,
-                      offset: Offset(0, 1),
-                      spreadRadius: 0,
-                    )
-                  ],
-                ),
-                child: TextWidget(
-                  textAlign: TextAlign.center,
-                  text: user.userSkill![i].skill ?? '',
-                  color: CommonColor.greyColor11,
-                  maxLine: 1,
-                  fontFamily: AppStrings.inter,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 14,
-                ),
+        user.userSkill == null
+            ? const Offstage()
+            : Wrap(
+                direction: Axis.horizontal,
+                spacing: 3.0,
+                runSpacing: 8.0,
+                children: [
+                  for (int i = 0; i < user.userSkill!.length; i++)
+                    Container(
+                      height: 40,
+                      padding: const EdgeInsets.only(
+                        left: 16,
+                        right: 16,
+                        top: 10,
+                      ),
+                      decoration: ShapeDecoration(
+                        color: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(
+                              width: 0.50, color: CommonColor.greyColor5),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        shadows: const [
+                          BoxShadow(
+                            color: CommonColor.blackColor3,
+                            blurRadius: 2,
+                            offset: Offset(0, 1),
+                            spreadRadius: 0,
+                          )
+                        ],
+                      ),
+                      child: TextWidget(
+                        textAlign: TextAlign.center,
+                        text: user.userSkill![i].skill ?? '',
+                        color: CommonColor.greyColor11,
+                        maxLine: 1,
+                        fontFamily: AppStrings.inter,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                    ),
+                ],
               ),
-          ],
-        ),
         const SizedBox(height: 30),
         // const TextWidget(
         //     text: AppStrings.completedCourses,
@@ -158,7 +160,7 @@ class CompanyJobCandidateProfileDetails extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextWidget(
-          text: 'Resume of ${user.data!.name}',
+          text: 'Resume of ${user.data?.name}',
           color: CommonColor.greyColor11,
           maxLine: 2,
           fontFamily: AppStrings.sfProDisplay,

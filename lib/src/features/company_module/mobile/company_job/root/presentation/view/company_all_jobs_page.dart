@@ -30,6 +30,7 @@ class CompanyAllJobsMobilePage extends StatelessWidget {
             children: [
               Expanded(
                 child: SingleChildScrollView(
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: Container(
                     color: CommonColor.greyColor15,
                     child: const Padding(

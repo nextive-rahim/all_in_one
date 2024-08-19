@@ -27,7 +27,17 @@ class CompanyJobInterviewCandidateList extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                const SizedBox(height: 30),
+                TextWidget(
+                  textAlign: TextAlign.center,
+                  text: 'Total Applied : ${userDetails!.length}',
+                  color: CommonColor.greyColor4,
+                  maxLine: 1,
+                  fontFamily: AppStrings.sfProDisplay,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
+                const SizedBox(height: 30),
                 const TextWidget(
                   textAlign: TextAlign.center,
                   text: AppStrings.appliedProfiles,

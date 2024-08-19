@@ -1,5 +1,6 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
+import 'package:all_in_one/src/features/common_features/authentication/login/model/login_response_model.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/repository/employee_repository.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
@@ -45,7 +46,7 @@ class EmployeeListViewController extends GetxController {
     }
   }
 
-  Future<void> deleteEmployee(int employeeID) async {
+  Future<LoginResponseModel> deleteEmployee(int employeeID) async {
     // _pageStateController(PageState.loading);
 
     Map<String, dynamic> requestBody = {
@@ -55,16 +56,17 @@ class EmployeeListViewController extends GetxController {
     Log.debug(requestBody.toString());
 
     try {
-      await _repository.deleteEmployee(requestBody);
-      employeeList.removeWhere((v) => v.id == employeeID);
+      final res = await _repository.deleteEmployee(requestBody);
+      LoginResponseModel loginResponseModel = LoginResponseModel.fromJson(res);
+
       // _pageStateController(PageState.success);
 
-      return;
+      return loginResponseModel;
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       // _pageStateController(PageState.error);
-      return;
+      return LoginResponseModel();
     }
   }
 }

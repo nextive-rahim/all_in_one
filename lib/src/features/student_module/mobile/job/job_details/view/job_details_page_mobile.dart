@@ -93,7 +93,7 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                     //  const JobShareButton(),
                     isFromCompanyJob
                         ? CompanyJobInterviewCandidateList(
-                            userDetails: viewJobResponseData.userDetails)
+                            userDetails: viewJobResponseData.user)
                         : const Offstage()
                   ],
                 ),

@@ -12,22 +12,24 @@ class SelectedCandidateListBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return userDetails!.isNotEmpty
+    List<UserDetail> selectedusers =
+        userDetails!.where((v) => v.isSelected == 1).toList();
+    return selectedusers.isNotEmpty
         ? ListView.separated(
             shrinkWrap: true,
-            itemCount: userDetails!.length,
+            itemCount: selectedusers.length,
             physics: const NeverScrollableScrollPhysics(),
             separatorBuilder: (context, index) {
               return const SizedBox(height: 10);
             },
             itemBuilder: (context, index) {
-              UserDetail user = userDetails![index];
+              UserDetail user = selectedusers[index];
               return CompanyInterviewCandidateCard(
                 user: user,
                 color: CommonColor.greenColor1,
               );
             },
           )
-        : const Text('No SeletedCandidate Founded');
+        : const Center(child: Text('No SeletedCandidate Founded'));
   }
 }

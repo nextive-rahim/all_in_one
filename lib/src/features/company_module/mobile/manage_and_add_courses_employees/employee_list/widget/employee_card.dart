@@ -234,7 +234,21 @@ class EmployeeCard extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Get.find<EmployeeListViewController>()
-                    .deleteEmployee(employee.id ?? 0);
+                    .deleteEmployee(employee.id ?? 0)
+                    .then((v) {
+                  if (v.success == true) {
+                    Get.find<EmployeeListViewController>()
+                        .employeeList
+                        .removeWhere((v) => v.id == employee.id);
+                  } else {
+                    Get.snackbar(
+                      'Failded',
+                      v.message ?? '',
+                      backgroundColor: CommonColor.redColors,
+                      colorText: CommonColor.whiteColor,
+                    );
+                  }
+                });
                 Navigator.of(context).pop();
               },
               child: const Text(

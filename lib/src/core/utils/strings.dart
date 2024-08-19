@@ -265,8 +265,8 @@ class AppStrings {
   static const otherJobs = 'Other\nJobs';
   static const edit = 'Edit';
   static const delete = 'Delete';
-  static const appliedProfiles = 'Applied profiles';
-  static const selectedProfiles = 'Selected profiles';
+  static const appliedProfiles = 'Unselected profiles -';
+  static const selectedProfiles = 'Selected profiles -';
 
   static const call = 'Call';
   static const email = 'Email';
