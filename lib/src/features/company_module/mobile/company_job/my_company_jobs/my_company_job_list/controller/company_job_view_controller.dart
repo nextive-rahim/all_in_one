@@ -17,6 +17,14 @@ class CompanyJobViewController extends GetxController {
   //late JobResponseModel jobListResponse;
   int? companyJonID;
   UserDetail? user;
+  RxList<UserDetail>? appliedCandidateList = <UserDetail>[].obs;
+  RxList<UserDetail>? seletedCandidate = <UserDetail>[].obs;
+  RxList<UserDetail>? unSeletedCandidate = <UserDetail>[].obs;
+  Future<void> fileterList() async {
+    unSeletedCandidate!.remove(user);
+    seletedCandidate!.add(user!);
+  }
+
   RxList<JobModel> companyJobList = <JobModel>[].obs;
   @override
   void onInit() async {

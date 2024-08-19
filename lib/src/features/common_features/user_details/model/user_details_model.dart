@@ -38,6 +38,7 @@ class UserDetailsResponseModel {
 }
 
 class UserDetailsResponseModelData {
+  String? userName;
   int? userType;
   UserModel? data;
   ExamData? examData;
@@ -45,6 +46,7 @@ class UserDetailsResponseModelData {
   // int? isSubscribed;
 
   UserDetailsResponseModelData({
+    this.userName,
     this.userType,
     this.data,
     this.examData,
@@ -54,6 +56,7 @@ class UserDetailsResponseModelData {
 
   factory UserDetailsResponseModelData.fromJson(Map<String, dynamic> json) =>
       UserDetailsResponseModelData(
+        userName: json['user_name'],
         userType: json["user_type"],
         data: UserModel.fromJson(json["data"]),
         examData: json["exam_data"] == null
@@ -67,6 +70,7 @@ class UserDetailsResponseModelData {
       );
 
   Map<String, dynamic> toJson() => {
+        "user_name": userName,
         "user_type": userType,
         "data": data!.toJson(),
         "exam_data": examData!.toJson(),

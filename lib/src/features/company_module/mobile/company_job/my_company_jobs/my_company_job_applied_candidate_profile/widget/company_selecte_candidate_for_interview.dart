@@ -20,13 +20,17 @@ class CompanySelecteCandidateForInterview
 
         controller.companySelecteCandidateForInterview().then((v) {
           if (v.success == true) {
-            Get.back();
-            Get.snackbar(
-              'Successfully',
-              'Selected Candidate for Interview.',
-              backgroundColor: CommonColor.greenColor1,
-            );
-            controller.getCompanyjobList();
+            controller.fileterList().then((v) {
+              controller.appliedCandidateList!.refresh();
+              controller.seletedCandidate!.refresh();
+              Get.back();
+              Get.snackbar(
+                'Successfully',
+                'Selected Candidate for Interview.',
+                backgroundColor: CommonColor.greenColor1,
+              );
+              controller.getCompanyjobList();
+            });
           }
         });
       },

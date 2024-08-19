@@ -5,14 +5,14 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
     super.key,
     required this.user,
   });
-  final UserModel user;
+  final UserDetailsResponseModelData user;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         InkWell(
           onTap: () {
-            SupportLink.hotlineSupport('01718663032');
+            SupportLink.hotlineSupport(user.data!.phone??'');
           },
           child: Container(
             width: SizeConfig.screenWidth,
@@ -58,7 +58,7 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
         const SizedBox(height: 12),
         InkWell(
           onTap: () {
-            SupportLink.emailSupport('rahimsr983@gmail.com');
+            SupportLink.emailSupport(user.userName??'');
           },
           child: Container(
             width: SizeConfig.screenWidth,

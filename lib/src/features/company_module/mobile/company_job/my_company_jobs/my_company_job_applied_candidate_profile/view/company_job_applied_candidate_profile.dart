@@ -56,7 +56,7 @@ class CompanyJobAppliedCandidateProfile
                                 userModel: controller.userModel!),
                             const SizedBox(height: 10),
                             AppliedCandidateCommunicationLink(
-                                user: controller.userModel!),
+                                user: controller.userDetailsResponseModelData!),
                             const SizedBox(height: 10),
                             const CompanySelecteCandidateForInterview(),
                             const SizedBox(height: 30),
