@@ -30,6 +30,13 @@ class SelectedCandidateListBuilder extends StatelessWidget {
               );
             },
           )
-        : const Center(child: Text('No SeletedCandidate Founded'));
+        : const Center(
+            child: Text(
+              'No SeletedCandidate Founded',
+              style: TextStyle(
+                color: CommonColor.redColors,
+              ),
+            ),
+          );
   }
 }

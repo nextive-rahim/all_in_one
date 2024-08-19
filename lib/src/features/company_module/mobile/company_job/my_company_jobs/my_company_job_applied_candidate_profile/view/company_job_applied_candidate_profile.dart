@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/gobal_function.dart';
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
@@ -10,6 +11,7 @@ import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
 import 'package:all_in_one/src/features/common_features/user_details/controller/user_details_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/user_details/model/user_details_model.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/controller/company_job_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 part '../widget/company_job_candidate_profile_header.dart';

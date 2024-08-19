@@ -58,6 +58,8 @@ class API {
   static const String manageEmployeeUrl = 'manage-employee';
   static const String postJobByCompany = 'post-job-by-company';
   static const String editCompanyJob = 'update-post';
+  static const String companySelectCandidateForInterview =
+      'company-select-job-interview';
   static const String otherCompanyJobs = 'view-other-company-jobs';
   static const String companyGenerateInvoice = 'company-invoice-store';
   static const String companyInvoiceLink = 'download-invoice-pdf';

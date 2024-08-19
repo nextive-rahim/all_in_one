@@ -44,7 +44,7 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
               if (value.success == true) {
                 Get.back();
                 Get.snackbar(
-                  'Successfully',
+                  'Successful',
                   'Post Added Successfully',
                   backgroundColor: CommonColor.greenColor1,
                   colorText: Colors.white,

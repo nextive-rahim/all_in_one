@@ -4,6 +4,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/user_details/controller/user_details_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/controller/company_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,8 @@ class CompanyInterviewCandidateCard extends GetView<UserDetailsViewController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        Get.find<CompanyJobViewController>().user = user;
+
         controller.userDetails(
           userId: user.id,
           userType: user.userType,

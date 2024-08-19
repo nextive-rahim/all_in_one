@@ -5,7 +5,7 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/vie
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/repository/job_repository.dart';
 import 'package:get/get.dart';
 
-class CompanyViewController extends GetxController {
+class CompanyJobViewController extends GetxController {
   final JobListRepository _repository = JobListRepository();
 
   /// Page State
@@ -16,7 +16,8 @@ class CompanyViewController extends GetxController {
   final RxBool isSavedJob = false.obs;
   //late JobResponseModel jobListResponse;
   RxList<JobModel> savedJobList = <JobModel>[].obs;
-
+  int? companyJonID;
+  UserDetail? user;
   RxList<JobModel> myJobList = <JobModel>[].obs;
   RxList<JobModel> appiedJobList = <JobModel>[].obs;
   @override
@@ -53,24 +54,6 @@ class CompanyViewController extends GetxController {
       return;
     }
   }
-
-  // Future<void> savedjobList() async {
-  //   //_pageStateController(PageState.loading);
-
-  //   try {
-  //     final res = await _repository.fetchSavedJobs();
-  //     JobResponseModel jobListResponse = JobResponseModel.fromJson(res);
-  //     savedJobList.value = jobListResponse.data ?? [];
-  //     // _pageStateController(PageState.success);
-
-  //     return;
-  //   } catch (e, stackTrace) {
-  //     Log.error(e.toString());
-  //     Log.error(stackTrace.toString());
-  //     _pageStateController(PageState.error);
-  //     return;
-  //   }
-  // }
 
   Future<RegistrationResponseModel> saveJob(int id) async {
     // _pageStateController(PageState.loading);
@@ -130,6 +113,34 @@ class CompanyViewController extends GetxController {
       signupModel = RegistrationResponseModel.fromJson(res);
       _pageStateController(PageState.success);
       return signupModel;
+    } catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      _pageStateController(PageState.error);
+    }
+    return signupModel;
+  }
+
+  Future<RegistrationResponseModel>
+      companySelecteCandidateForInterview() async {
+    // if (!formKey.currentState!.validate()) {
+    //   return;
+    // }
+
+    _pageStateController(PageState.loading);
+
+    Map<String, dynamic> body = {
+      "company_job_id": companyJonID,
+      "user_id": user?.id,
+    };
+
+    try {
+      final res = await _repository.companySelectCandidateforInterview(body);
+      print(res['success']);
+      signupModel = RegistrationResponseModel.fromJson(res);
+      _pageStateController(PageState.success);
+      return signupModel;
+      // clearTextFields();
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());

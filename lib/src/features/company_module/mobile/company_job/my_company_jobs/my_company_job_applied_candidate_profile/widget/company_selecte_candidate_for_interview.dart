@@ -1,17 +1,34 @@
 part of '../view/company_job_applied_candidate_profile.dart';
 
-class CompanySelecteCandidateForInterview extends StatelessWidget {
+class CompanySelecteCandidateForInterview
+    extends GetView<CompanyJobViewController> {
   const CompanySelecteCandidateForInterview({super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.snackbar(
-          'Successfully',
-          'Selected Candidate for Interview',
-          backgroundColor: CommonColor.greenColor1,
-        );
+        if (controller.user?.isSelected == 1) {
+          Get.snackbar(
+            'Attention!!',
+            'Already selected for interview.',
+            backgroundColor: CommonColor.redColors,
+            colorText: AppColors.white,
+          );
+          return;
+        }
+
+        controller.companySelecteCandidateForInterview().then((v) {
+          if (v.success == true) {
+            Get.back();
+            Get.snackbar(
+              'Successfully',
+              'Selected Candidate for Interview.',
+              backgroundColor: CommonColor.greenColor1,
+            );
+            controller.getjobList();
+          }
+        });
       },
       child: Container(
         width: SizeConfig.screenWidth,
@@ -19,7 +36,9 @@ class CompanySelecteCandidateForInterview extends StatelessWidget {
         alignment: Alignment.center,
         clipBehavior: Clip.antiAlias,
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: controller.user?.isSelected == 1
+              ? Colors.grey
+              : CommonColor.purpleColor1,
           shape: RoundedRectangleBorder(
             side: const BorderSide(width: 0.50, color: CommonColor.greyColor5),
             borderRadius: BorderRadius.circular(8),
@@ -35,7 +54,7 @@ class CompanySelecteCandidateForInterview extends StatelessWidget {
         ),
         child: const TextWidget(
           text: AppStrings.selectForCompanyInterview,
-          color: CommonColor.headingTextColor2,
+          color: CommonColor.whiteColor,
           maxLine: 1,
           fontFamily: AppStrings.inter,
           fontWeight: FontWeight.w500,
