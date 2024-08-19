@@ -25,7 +25,7 @@ class DeletedSaveJobButtonFromJobCard extends GetView<JobsViewController> {
 
             Get.snackbar(
               'Success',
-              'Successfully Saved job',
+              'Successfully delete Saved job',
               snackPosition: SnackPosition.TOP,
               backgroundColor: CommonColor.greenColor1,
               colorText: Colors.white,

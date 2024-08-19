@@ -37,7 +37,8 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
               backgroundColor: CommonColor.greenColor1,
               colorText: Colors.white,
             );
-            controller.savedJobList.add(job);
+            controller.getjobList();
+            // controller.savedJobList.add(job);
           } else {
             isSavedJob.value = false;
             Get.snackbar(

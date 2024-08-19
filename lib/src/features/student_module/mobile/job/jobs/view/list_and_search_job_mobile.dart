@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/widgets/common_tab_section.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
@@ -17,7 +18,10 @@ class ListAndSearchJobStudentMobile extends GetView<JobsViewController> {
         backgroundColor: CommonColor.greyColor1,
         body: RefreshIndicator(
           onRefresh: () async {
-            controller.getjobList();
+            controller.pageStateController(PageState.loading);
+            controller.getjobList().then((v) {
+              controller.pageStateController(PageState.success);
+            });
           },
           child: SingleChildScrollView(
             child: Padding(

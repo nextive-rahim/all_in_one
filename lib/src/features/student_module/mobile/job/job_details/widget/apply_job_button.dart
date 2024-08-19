@@ -1,4 +1,3 @@
-import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
@@ -29,7 +28,7 @@ class ApplyJobButton extends GetView<JobsViewController> {
               backgroundColor: job.isApplied != 0 || value
                   ? AppColors.grey
                   : CommonColor.purpleColor1,
-              isLoading: controller.pageState == PageState.loading,
+              isLoading: controller.isLoadingAppliedJob.value == true,
               onTap: () {
                 if (job.isApplied != 0 || isAppliedJob.value) {
                   Get.snackbar(

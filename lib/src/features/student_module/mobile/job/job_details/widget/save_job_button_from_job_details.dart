@@ -1,4 +1,3 @@
-import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
@@ -26,7 +25,7 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
             backgroundColor: job.isSaved != 0 || value
                 ? AppColors.grey
                 : CommonColor.purpleColor1,
-            isLoading: controller.pageState == PageState.loading,
+            isLoading: controller.isLoadingSavedJob.value == true,
             onTap: () {
               if (job.isSaved != 0 || isSavedJob.value) {
                 Get.snackbar(
@@ -40,6 +39,7 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
               controller.saveJob(job.id!).then((value) {
                 if (value.success == true) {
                   isSavedJob.value = true;
+                  controller.getjobList();
                   Get.snackbar(
                     'Success',
                     'Successfully Saved job',
@@ -47,7 +47,6 @@ class SaveJobButtonFromJobDetails extends GetView<JobsViewController> {
                     colorText: Colors.white,
                   );
                   // controller.savedjobList();
-                  controller.getjobList();
                 } else {
                   Get.snackbar(
                     'Falied',
