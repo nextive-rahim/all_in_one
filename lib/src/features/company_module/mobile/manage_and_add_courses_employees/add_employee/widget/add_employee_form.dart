@@ -125,9 +125,15 @@ class AddedNewEmployeeFormField
               () => IconButton(
                 onPressed: () async {
                   await FileService().pickAFile(pdfOnly: true).then((value) {
-                    controller.isUploadFile.value = true;
+                    if (value == null) {
+                      return;
+                    }
+                    if (value.file.path.isNotEmpty) {
+                      controller.isUploadFile.value = true;
+                    }
+
                     Get.put(UpdateProfileiewController())
-                        .uploadFile(value!.file)
+                        .uploadFile(value.file)
                         .then((value2) {
                       controller.resumeLink.value = value2;
                       controller.uploadResumeController.text =
