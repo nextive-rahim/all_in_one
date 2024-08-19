@@ -2,13 +2,13 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/controller/company_job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DeletedJob extends GetView<JobsViewController> {
-  const DeletedJob({
+class DeletedCompanyJob extends GetView<CompanyJobViewController> {
+  const DeletedCompanyJob({
     super.key,
     required this.job,
   });

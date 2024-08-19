@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/controller/company_job_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/view/my_company_job_mobile.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/other_jobs/widgets/company_applied_jobs_tab.dart';
@@ -8,7 +9,6 @@ import 'package:all_in_one/src/features/company_module/mobile/company_job/other_
 import 'package:all_in_one/src/features/company_module/mobile/company_job/other_jobs/widgets/company_saved_job_tab.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/controller/post_company_new_job_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/widget/company_job_common_tab.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class CompanyAllJobsMobilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final jobViwecontroller = Get.put(JobsViewController());
+    final jobViwecontroller = Get.put(CompanyJobViewController());
     final otherCompnayJobController = Get.put(OtherCompanyJobsViewController());
     Get.put(PostCompanyNewJobViewController());
     return SafeArea(
@@ -25,7 +25,7 @@ class CompanyAllJobsMobilePage extends StatelessWidget {
         backgroundColor: CommonColor.greyColor1,
         body: RefreshIndicator(
           onRefresh: () async {
-            jobViwecontroller.getjobList();
+            jobViwecontroller.getCompanyjobList();
             otherCompnayJobController.pageStateController(PageState.loading);
             otherCompnayJobController.getOtherCompanyjobList();
             otherCompnayJobController.pageStateController(PageState.success);

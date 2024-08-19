@@ -26,7 +26,7 @@ class CompanySelecteCandidateForInterview
               'Selected Candidate for Interview.',
               backgroundColor: CommonColor.greenColor1,
             );
-            controller.getjobList();
+            controller.getCompanyjobList();
           }
         });
       },

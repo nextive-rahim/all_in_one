@@ -3,7 +3,6 @@ import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/controller/company_job_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/controller/post_company_new_job_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,7 +36,7 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
                   colorText: Colors.white,
                 );
 
-                Get.find<CompanyJobViewController>().getjobList();
+                Get.find<CompanyJobViewController>().getCompanyjobList();
               }
             });
           } else {
@@ -51,7 +50,7 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
                   colorText: Colors.white,
                 );
 
-                Get.find<JobsViewController>().getjobList();
+                Get.find<CompanyJobViewController>().getCompanyjobList();
               }
             });
           }

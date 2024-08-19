@@ -96,27 +96,6 @@ class JobsViewController extends GetxController {
     return signupModel;
   }
 
-  Future<RegistrationResponseModel> deleteCompanyJob(int id) async {
-    Map<String, dynamic> body = {
-      "job_id": id,
-    };
-
-    try {
-      final res = await _repository.deleteCompanyJob(body);
-
-      signupModel = RegistrationResponseModel.fromJson(res);
-
-      // getjobList();
-      return signupModel;
-
-      // clearTextFields();
-    } catch (e, stackTrace) {
-      Log.error(e.toString());
-      Log.error(stackTrace.toString());
-    }
-    return signupModel;
-  }
-
   Future<RegistrationResponseModel> applyJob(int id) async {
     isLoadingAppliedJob.value = true;
 
