@@ -1,4 +1,3 @@
-import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
@@ -27,7 +26,7 @@ class CompanySaveJobButtonFromJobDetails
             backgroundColor: job.isSaved != 0 || value
                 ? AppColors.grey
                 : CommonColor.purpleColor1,
-            isLoading: controller.pageState == PageState.loading,
+            isLoading: controller.isLoadingSavedJob.value == true,
             onTap: () {
               if (job.isSaved != 0 || isSavedJob.value) {
                 Get.snackbar(

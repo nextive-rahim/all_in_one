@@ -141,7 +141,12 @@ class ProfilePage extends GetView<ProfileViewController> {
                                                       onPressed: () {
                                                         Util.logout(context);
                                                       },
-                                                      child: const Text('OK'),
+                                                      child: const Text(
+                                                        'OK',
+                                                        style: TextStyle(
+                                                            color: CommonColor
+                                                                .redColors),
+                                                      ),
                                                     )
                                                   ],
                                                 );

@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/view/my_company_job_mobile.dart';
@@ -16,15 +17,18 @@ class CompanyAllJobsMobilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(JobsViewController());
-    Get.put(OtherCompanyJobsViewController());
+    final jobViwecontroller = Get.put(JobsViewController());
+    final otherCompnayJobController = Get.put(OtherCompanyJobsViewController());
     Get.put(PostCompanyNewJobViewController());
     return SafeArea(
       child: Scaffold(
         backgroundColor: CommonColor.greyColor1,
         body: RefreshIndicator(
           onRefresh: () async {
-            Get.find<JobsViewController>().getjobList();
+            jobViwecontroller.getjobList();
+            otherCompnayJobController.pageStateController(PageState.loading);
+            otherCompnayJobController.getOtherCompanyjobList();
+            otherCompnayJobController.pageStateController(PageState.success);
           },
           child: Column(
             children: [

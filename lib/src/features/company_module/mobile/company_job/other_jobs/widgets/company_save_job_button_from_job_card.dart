@@ -38,6 +38,7 @@ class CompanySaveJobButtonFromJobCard
               backgroundColor: CommonColor.greenColor1,
               colorText: Colors.white,
             );
+            controller.getOtherCompanyjobList();
             controller.companySavedJobList.add(job);
           } else {
             isSavedJob.value = false;

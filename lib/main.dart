@@ -106,13 +106,13 @@ class Responsive extends StatelessWidget {
 }
 
 ///...... Student........
-/// student@gmail.com   type :1
+/// largeitlink2@gmail.com   type :1
 
 ///...... Employee........
 ///employee@gmail.com  type :2
 
 ///...... Company........
-/// company1@gmail.com   type :3
+/// rahim.nextive@gmail.com   type :3
 
 ///...... Interviwer........
 ///interviewer@gmail.com type :4
