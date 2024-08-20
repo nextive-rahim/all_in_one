@@ -2,6 +2,7 @@ import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/mobile/student_app_bar.dart';
@@ -102,7 +103,38 @@ class CompanyProfilePage extends GetView<ProfileViewController> {
                         const SizedBox(height: 50),
                         GestureDetector(
                           onTap: () async {
-                            Util.logout(context);
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Center(
+                                    child: Text('Are you sure?'),
+                                  ),
+                                  content: const SingleChildScrollView(
+                                    child: SelectableText(
+                                        'Once logged out, you will need to login again to access this app.'),
+                                  ),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('Cancel'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () {
+                                        Util.logout(context);
+                                      },
+                                      child: const Text(
+                                        'OK',
+                                        style: TextStyle(
+                                            color: CommonColor.redColors),
+                                      ),
+                                    )
+                                  ],
+                                );
+                              },
+                            );
                           },
                           child: const Row(
                             children: [

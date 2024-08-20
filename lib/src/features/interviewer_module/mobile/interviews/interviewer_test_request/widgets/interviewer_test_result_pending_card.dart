@@ -14,76 +14,76 @@ class InterviewerTestResultPendingCard
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 26,
-        left: 18,
-        right: 16,
-        bottom: 50,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset(
-            ImageConstant.verificationPending,
-            width: SizeConfig.screenWidth,
-            height: SizeConfig.screenHeight * 0.5,
-            fit: BoxFit.fill,
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          const TextWidget(
-            text: AppStrings.verificationPending,
-            color: CommonColor.greyColor6,
-            maxLine: 1,
-            fontFamily: AppStrings.sfProDisplay,
-            fontWeight: FontWeight.w600,
-            fontSize: 14,
-          ),
-          const SizedBox(height: 10),
-          Container(
-            width: 165,
-            height: 40,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 10,
+    return GestureDetector(
+      onTap: () {
+        Get.find<ProfileViewController>().getUser().then((v) {
+          if (v.testRequest?.status == 3) {
+            controller.isInterviewerApproved.value = true;
+          }
+        });
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 26,
+          left: 18,
+          right: 16,
+          bottom: 50,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Image.asset(
+              ImageConstant.verificationPending,
+              width: SizeConfig.screenWidth,
+              height: SizeConfig.screenHeight * 0.5,
+              fit: BoxFit.fill,
             ),
-            clipBehavior: Clip.antiAlias,
-            decoration: ShapeDecoration(
-              color: Colors.white,
-              shape: RoundedRectangleBorder(
-                side: const BorderSide(
-                  width: 0.50,
-                  color: CommonColor.greyColor5,
-                ),
-                borderRadius: BorderRadius.circular(8),
+            const SizedBox(
+              height: 50,
+            ),
+            const TextWidget(
+              text: AppStrings.verificationPending,
+              color: CommonColor.greyColor6,
+              maxLine: 1,
+              fontFamily: AppStrings.sfProDisplay,
+              fontWeight: FontWeight.w600,
+              fontSize: 14,
+            ),
+            const SizedBox(height: 10),
+            Container(
+              width: 165,
+              height: 40,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 10,
               ),
-              shadows: const [
-                BoxShadow(
-                  color: CommonColor.blackColor3,
-                  blurRadius: 2,
-                  offset: Offset(0, 1),
-                  spreadRadius: 0,
-                )
-              ],
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(ImageConstant.refresh),
-                const SizedBox(width: 10),
-                GestureDetector(
-                  onTap: () {
-                    Get.find<ProfileViewController>().getUser().then((v) {
-                      if (v.testRequest?.status == 3) {
-                        controller.isInterviewerApproved.value = true;
-                      }
-                    });
-                  },
-                  child: const Text(
+              clipBehavior: Clip.antiAlias,
+              decoration: ShapeDecoration(
+                color: Colors.white,
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(
+                    width: 0.50,
+                    color: CommonColor.greyColor5,
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                shadows: const [
+                  BoxShadow(
+                    color: CommonColor.blackColor3,
+                    blurRadius: 2,
+                    offset: Offset(0, 1),
+                    spreadRadius: 0,
+                  )
+                ],
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(ImageConstant.refresh),
+                  const SizedBox(width: 10),
+                  const Text(
                     AppStrings.refresh,
                     style: TextStyle(
                       color: CommonColor.blackColor4,
@@ -92,12 +92,12 @@ class InterviewerTestResultPendingCard
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-        ],
+            const SizedBox(height: 20),
+          ],
+        ),
       ),
     );
   }

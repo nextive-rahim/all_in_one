@@ -35,15 +35,15 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 10),
-                  interviewTestRequestController.verificationPending.value ||
-                          profileController
-                                  .profileResponseModel.testRequest?.status ==
-                              1
-                      ? const InterviewerTestResultPendingCard()
-                      : profileController.profileResponseModel.testRequest ==
-                              null
-                          ? InterviewerTestRequestCard(
-                              profileController: profileController)
+                  profileController.profileResponseModel.testRequest == null
+                      ? InterviewerTestRequestCard(
+                          profileController: profileController)
+                      : interviewTestRequestController
+                                  .verificationPending.value ||
+                              profileController.profileResponseModel.testRequest
+                                      ?.status ==
+                                  1
+                          ? const InterviewerTestResultPendingCard()
                           : (interviewTestRequestController
                                       .isInterviewerApproved.value ||
                                   profileController.profileResponseModel
