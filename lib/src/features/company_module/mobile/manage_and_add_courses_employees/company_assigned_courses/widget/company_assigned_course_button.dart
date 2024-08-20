@@ -27,7 +27,7 @@ class CompanyAssignedCourseButton
           );
           return;
         }
-        controller.companyAssingedCourse(employee.id!).then((value) {
+        controller.companyAssingedCourse(employee.userId!).then((value) {
           if (value.success == true) {
             Get.back();
             Get.snackbar(

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
+import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 
 EmployeeModelResponse employeeModelResponseFromJson(String? str) =>
     EmployeeModelResponse.fromJson(json.decode(str!));
@@ -62,6 +63,7 @@ class EmployeeModel {
   String? descripton;
   String? keySkill;
   List<UserSkill>? userSkill;
+  List<CourseModel>? assignCourse;
   EmployeeModel({
     this.id,
     this.username,
@@ -86,6 +88,7 @@ class EmployeeModel {
     this.descripton,
     this.keySkill,
     this.userSkill,
+    this.assignCourse,
   });
 
   factory EmployeeModel.fromJson(Map<String?, dynamic> json) => EmployeeModel(
@@ -115,6 +118,10 @@ class EmployeeModel {
             ? []
             : List<UserSkill>.from(
                 json["skill"].map((x) => UserSkill.fromJson(x))),
+        assignCourse: json["assign_course"] == null
+            ? []
+            : List<CourseModel>.from(
+                json["assign_course"].map((x) => CourseModel.fromJson(x))),
       );
 
   Map<String?, dynamic> toJson() => {
@@ -140,6 +147,8 @@ class EmployeeModel {
         "resume": resume,
         "descripton": descripton,
         "key_skill": keySkill,
-        "skill": userSkill
+        "skill": userSkill,
+        "assign_course":
+            List<dynamic>.from(assignCourse!.map((x) => x.toJson())),
       };
 }
