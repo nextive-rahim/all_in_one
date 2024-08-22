@@ -13,6 +13,7 @@ class CompanyAssignedCouseViewController extends GetxController {
 
   get pageState => _pageStateController.value;
   late RegistrationResponseModel signupModel;
+
   final RxList<int> courseIDList = <int>[].obs;
 
   Future<RegistrationResponseModel> companyAssingedCourse(

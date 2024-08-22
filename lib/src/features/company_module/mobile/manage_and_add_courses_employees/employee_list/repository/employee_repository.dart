@@ -20,15 +20,14 @@ class EmployeeListRepository {
     return res.data;
   }
 
-  // Future<dynamic> fetchAppliedJobs(Map<String, dynamic> data) async {
-  //   final res = await RestClient.dev().post(
-  //     APIType.PROTECTED,
-  //     StudentApiEndpoints.appliedJobUrl,
-  //     data,
-  //   );
-  //   return res.data;
-  // }
-
+  Future<dynamic> deleteAssingedCourse(Map<String, dynamic> data) async {
+    final res = await RestClient.dev().post(
+      APIType.PROTECTED,
+      API.deleteAssignedCourse,
+      data,
+    );
+    return res.data;
+  }
   // Future<dynamic> otherCompanyJobs(Map<String, dynamic> data) async {
   //   final res = await RestClient.dev().post(
   //     APIType.PROTECTED,

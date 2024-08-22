@@ -7,6 +7,7 @@ import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_cou
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_profile_contact_section.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_profile_header.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/widget/company_employee_skill_section.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,11 +22,15 @@ class CompanyEmployeeProfilePage extends StatefulWidget {
 
 class _CompanyEmployeeProfilePageState
     extends State<CompanyEmployeeProfilePage> {
+  final companyAssingedCourseController = Get.put(EmployeeListViewController());
   final EmployeeModel employee = Get.arguments;
   bool jobAppliedStatus = false;
 
   @override
   void initState() {
+    companyAssingedCourseController.employeeModel = Get.arguments;
+    companyAssingedCourseController.assignedCouseList.value =
+        employee.assignCourse!;
     super.initState();
   }
 
@@ -69,9 +74,7 @@ class _CompanyEmployeeProfilePageState
                           const SizedBox(height: 30),
                           CompanyEmployeeSkillSection(user: employee),
                           const SizedBox(height: 30),
-                          CompanyEmployeeCompletedCourseSection(
-                            assignCourse: employee.assignCourse,
-                          ),
+                          const CompanyEmployeeCompletedCourseSection(),
                           const SizedBox(height: 30),
                           CompanyEmployeeProfileEvaluationSection(
                               employee: employee)
