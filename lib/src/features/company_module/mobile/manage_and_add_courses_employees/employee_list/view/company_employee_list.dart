@@ -5,12 +5,12 @@ import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_cou
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CompanyEmployeeListPageMobile
-    extends GetView<CompanyEmployeeListViewController> {
+class CompanyEmployeeListPageMobile extends StatelessWidget {
   const CompanyEmployeeListPageMobile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CompanyEmployeeListViewController());
     return Scaffold(
       backgroundColor: CommonColor.greyColor1,
       body: SafeArea(

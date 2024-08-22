@@ -61,14 +61,14 @@ class AppPages {
       page: () => const SplashPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.splash,
       page: () => const SplashPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     /// Authentication
@@ -78,14 +78,14 @@ class AppPages {
       binding: AuthenticationBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.engagement,
       page: () => const ChooseEngagementPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.responsibileDashboardFirstTime,
@@ -100,7 +100,7 @@ class AppPages {
       ],
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.bottomNavBarStudent,
@@ -111,7 +111,7 @@ class AppPages {
       ],
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.bottomNavBarEmployee,
@@ -122,7 +122,7 @@ class AppPages {
       ],
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     // GetPage(
     //   name: Routes.responsiveLayoutDashboardInterview,
@@ -133,7 +133,7 @@ class AppPages {
     //   ),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     GetPage(
       name: Routes.bottomNavBarInterview,
@@ -144,7 +144,7 @@ class AppPages {
       ],
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
@@ -153,7 +153,7 @@ class AppPages {
       //  binding: DashboardBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
@@ -161,20 +161,20 @@ class AppPages {
       page: () => const BottomNavBarEmployee(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.myCompanyJobListPageWeb,
       page: () => const MyCompanyJobListPageWeb(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.forgetPasswordEmailPage,
       page: () => const ForgetPasswordEmailPage(),
       transition: Transition.fade,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.bottomNavBarCompany,
@@ -182,7 +182,7 @@ class AppPages {
       binding: JobListBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
@@ -191,14 +191,14 @@ class AppPages {
       // binding: SupportBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.registrationCompleted,
       page: () => const RegistrationCompletedPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.courseDetailMobilePage,
@@ -206,7 +206,7 @@ class AppPages {
       binding: CourseDetailsBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.categoryWiseCourse,
@@ -214,7 +214,7 @@ class AppPages {
       binding: CourseDetailsBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.appearTestAndScheduleInterviewMobilePage,
@@ -222,7 +222,7 @@ class AppPages {
       transition: Transition.fade,
       binding: AppearTestBinding(),
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
@@ -231,7 +231,7 @@ class AppPages {
       binding: ConfirmInterviewRequestBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.jobDetails,
@@ -239,7 +239,7 @@ class AppPages {
       // binding: BlogsBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
@@ -248,7 +248,7 @@ class AppPages {
       binding: PostJobBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.companyAddEmployeePageMobile,
@@ -256,7 +256,7 @@ class AppPages {
       binding: AddedNewEmployeeBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.companyAssignedCourses,
@@ -264,17 +264,17 @@ class AppPages {
       binding: CompanyAssingedCourseBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     // /// Course Details
     GetPage(
       name: Routes.companyProfileUpdatePage,
-      page: () => CompanyProfileUpdatePage(),
+      page: () => const CompanyProfileUpdatePage(),
       binding: CompanyProfileUpdateBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.companyJobAppliedCandidateProfile,
@@ -282,7 +282,7 @@ class AppPages {
       binding: CourseDetailsBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.companyInvoicePage,
@@ -290,7 +290,7 @@ class AppPages {
       binding: CourseDetailsBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
@@ -298,7 +298,7 @@ class AppPages {
       page: () => const CompanyEmployeeProfilePage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
@@ -307,28 +307,28 @@ class AppPages {
       transition: Transition.fade,
       curve: Curves.easeInOut,
       binding: ProfileBinding(),
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.courseVideo,
       page: () => const VideoPlayerPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.forgotPassword,
       page: () => const ForgetPasswordPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.resume,
       page: () => const ResumeViewPage(),
       transition: Transition.fade,
       // curve: Curves.easeInOut,
-      // transitionDuration: const Duration(milliseconds: 300),
+      // transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.changePassword,
@@ -336,21 +336,21 @@ class AppPages {
       page: () => const ChangePasswordPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     GetPage(
       name: Routes.notification,
       page: () => NotificationViewPage(),
       transition: Transition.fade,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.otpVerification,
       page: () => const OTPverificationPage(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
     GetPage(
       name: Routes.companyAppliedJobForMultipleEmployee,
@@ -358,7 +358,7 @@ class AppPages {
       page: () => const CompanyAppliedJobForMultipleEmployee(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 300),
+      transitionDuration: const Duration(milliseconds: 50),
     ),
 
     // /// Book Purchases
@@ -368,7 +368,7 @@ class AppPages {
     //   binding: CartBinding(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.addressInfo,
@@ -376,7 +376,7 @@ class AppPages {
     //   binding: AddressInfoBinding(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.checkout,
@@ -384,7 +384,7 @@ class AppPages {
     //   binding: CoursePurchaseBinding(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.congratulation,
@@ -392,14 +392,14 @@ class AppPages {
     //   binding: CoursePurchaseBinding(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.webviewPage,
     //   page: () => const WebViewPage(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.examInfo,
@@ -407,28 +407,28 @@ class AppPages {
     //   binding: ExamInfoBinding(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.subjectChoice,
     //   page: () => SubjectChoicePage(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.groupExamPage,
     //   page: () => const GroupExamPage(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.examPage,
     //   page: () => ExamPage(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.examAnalysis,
@@ -436,7 +436,7 @@ class AppPages {
     //   binding: ExamAnalysisBinding(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
     // GetPage(
     //   name: Routes.examLeaderboard,
@@ -444,7 +444,7 @@ class AppPages {
     //   binding: LeaderboardBinding(),
     //   transition: Transition.fade,
     //   curve: Curves.easeInOut,
-    //   transitionDuration: const Duration(milliseconds: 300),
+    //   transitionDuration: const Duration(milliseconds: 50),
     // ),
   ];
 }
