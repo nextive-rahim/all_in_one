@@ -17,6 +17,12 @@ class StudentHomeViewController extends GetxController {
   RxList<CourseModel> categoryWiseCourse = <CourseModel>[].obs;
   RxList<CourseModel> searchCourse = <CourseModel>[].obs;
   List<CategoryWiseCourseModel> collectinListDataFixed = [];
+  @override
+  void onInit() {
+    getStudentHomeData();
+    // Get called when controller is created
+    super.onInit();
+  }
 
   Future<void> getStudentHomeData() async {
     _pageStateController(PageState.loading);

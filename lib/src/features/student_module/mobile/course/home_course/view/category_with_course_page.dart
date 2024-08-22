@@ -22,9 +22,9 @@ class _CategoryWithCoursePageState extends State<CategoryWithCoursePage> {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      studentDashboardController.getStudentHomeData();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //   studentDashboardController.getStudentHomeData();
+    // });
     // TODO: implement initState
     super.initState();
   }

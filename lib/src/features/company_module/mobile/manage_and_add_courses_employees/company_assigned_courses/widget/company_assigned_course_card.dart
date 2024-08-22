@@ -4,7 +4,7 @@ import 'package:all_in_one/src/core/utils/text_style.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
 
-class CompanyAssingnedCoursesCard extends StatefulWidget {
+class CompanyAssingnedCoursesCard extends StatelessWidget {
   const CompanyAssingnedCoursesCard({
     super.key,
     required this.course,
@@ -15,16 +15,9 @@ class CompanyAssingnedCoursesCard extends StatefulWidget {
   final bool isSelectItem;
   final void Function()? onTap;
   @override
-  State<CompanyAssingnedCoursesCard> createState() =>
-      _CompanyAssingnedCoursesCardState();
-}
-
-class _CompanyAssingnedCoursesCardState
-    extends State<CompanyAssingnedCoursesCard> {
-  @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: widget.onTap,
+      onTap: onTap,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +27,7 @@ class _CompanyAssingnedCoursesCardState
             style: AppTextStyle.bold14,
           ),
           Text(
-            widget.course?.title ?? '',
+            course?.title ?? '',
             style: AppTextStyle.bold16,
           ),
         ],
@@ -46,7 +39,7 @@ class _CompanyAssingnedCoursesCardState
             style: AppTextStyle.bold14,
           ),
           Text(
-            widget.course?.id.toString() ?? '',
+            course?.id.toString() ?? '',
             style: AppTextStyle.bold16,
           ),
         ],
@@ -58,12 +51,12 @@ class _CompanyAssingnedCoursesCardState
             style: AppTextStyle.bold14,
           ),
           Text(
-            widget.course?.coursesLevel.toString() ?? '',
+            course?.coursesLevel.toString() ?? '',
             style: AppTextStyle.bold13.copyWith(color: CommonColor.greyColor),
           ),
         ],
       ),
-      leading: _mainUI(widget.isSelectItem),
+      leading: _mainUI(isSelectItem),
     );
   }
 
