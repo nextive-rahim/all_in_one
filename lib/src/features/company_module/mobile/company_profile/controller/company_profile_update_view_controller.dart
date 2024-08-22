@@ -3,11 +3,13 @@ import 'dart:io';
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/model/registration_response_model.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/repository/company_profile_update_repository.dart';
 import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart' as getx;
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
@@ -24,6 +26,12 @@ class CompanyProfileUpdateViewController extends GetxController {
   final RxString resumeLink = ''.obs;
   late RegistrationResponseModel profileResponseModel;
   final formKey = GlobalKey<FormState>();
+  @override
+  void onInit() async {
+    profileDataPopulates(Get.find<ProfileViewController>().userModel!);
+    super.onInit();
+  }
+
   Future<RegistrationResponseModel> companyProfileUpdate() async {
     // if (!formKey.currentState!.validate()) {
     //   return;
@@ -84,7 +92,7 @@ class CompanyProfileUpdateViewController extends GetxController {
     }
   }
 
-  void profileDataPopulate(UserModel user) {
+  void profileDataPopulates(UserModel user) {
     nameController.text = user.name ?? '';
     contactsNumberController.text = user.phone ?? '';
     employeeDescriptionController.text = user.description ?? '';

@@ -1,16 +1,22 @@
+import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/string.dart';
-import 'package:all_in_one/src/features/common_features/profile/model/profile_response_model.dart';
+import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/widgets/text_widget.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ProfileHeader extends StatelessWidget {
+class ProfileHeader extends GetView<ProfileViewController> {
   const ProfileHeader({
     super.key,
-    required this.userModel,
+    this.isFromcompany = false,
   });
-  final UserModel userModel;
+  final bool isFromcompany;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,7 +43,7 @@ class ProfileHeader extends StatelessWidget {
                               .copyWith(color: AppColors.white),
                         ),
                         Text(
-                          userModel.name ?? 'N/A',
+                          controller.userModel?.name ?? 'N/A',
                           style: AppTextStyle.bold16
                               .copyWith(color: AppColors.white),
                         ),
@@ -52,7 +58,7 @@ class ProfileHeader extends StatelessWidget {
                               .copyWith(color: AppColors.white),
                         ),
                         Text(
-                          userModel.phone ?? 'N/A',
+                          controller.userModel?.phone ?? 'N/A',
                           style: AppTextStyle.bold16
                               .copyWith(color: AppColors.white),
                         ),
@@ -62,12 +68,12 @@ class ProfileHeader extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          'StudentID : ',
+                          'Email : ',
                           style: AppTextStyle.bold14
                               .copyWith(color: AppColors.white),
                         ),
                         Text(
-                          userModel.id.toString(),
+                          controller.userModel!.name.toString(),
                           style: AppTextStyle.bold16
                               .copyWith(color: AppColors.white),
                         ),
@@ -92,7 +98,7 @@ class ProfileHeader extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
                   child: Image.network(
-                    userModel.image ?? noImageFound,
+                    controller.userModel!.image ?? noImageFound,
                     width: double.infinity,
                     fit: BoxFit.fill,
                     errorBuilder: (context, error, stackTrace) {
@@ -106,55 +112,62 @@ class ProfileHeader extends StatelessWidget {
                 ),
               ),
             ),
-            // Positioned(
-            //   right: 0,
-            //   bottom: 0,
-            //   child: Container(
-            //     width: 161,
-            //     height: 36,
-            //     padding: const EdgeInsets.symmetric(
-            //       horizontal: 14,
-            //       vertical: 8,
-            //     ),
-            //     clipBehavior: Clip.antiAlias,
-            //     decoration: ShapeDecoration(
-            //       color: Colors.white,
-            //       shape: RoundedRectangleBorder(
-            //         side: const BorderSide(
-            //             width: 0.50, color: CommonColor.greyColor5),
-            //         borderRadius: BorderRadius.circular(8),
-            //       ),
-            //       shadows: const [
-            //         BoxShadow(
-            //           color: CommonColor.blackColor3,
-            //           blurRadius: 2,
-            //           offset: Offset(0, 1),
-            //           spreadRadius: 0,
-            //         )
-            //       ],
-            //     ),
-            //     child: const Row(
-            //       // mainAxisSize: MainAxisSize.min,
-            //       mainAxisAlignment: MainAxisAlignment.center,
-            //       crossAxisAlignment: CrossAxisAlignment.center,
-            //       children: [
-            //         Icon(
-            //           Icons.image_outlined,
-            //           size: 20,
-            //         ),
-            //         SizedBox(width: 8),
-            //         TextWidget(
-            //           text: AppStrings.changeCover,
-            //           color: CommonColor.blackColor4,
-            //           maxLine: 1,
-            //           fontFamily: AppStrings.inter,
-            //           fontWeight: FontWeight.w500,
-            //           fontSize: 14,
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // )
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: GestureDetector(
+                onTap: () {
+                  isFromcompany == true
+                      ? Get.toNamed(Routes.companyProfileUpdatePage)
+                      : Get.toNamed(Routes.profileUpdatePage);
+                },
+                child: Container(
+                  width: 161,
+                  height: 36,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 14,
+                    vertical: 8,
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  decoration: ShapeDecoration(
+                    color: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                          width: 0.50, color: CommonColor.greyColor5),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    shadows: const [
+                      BoxShadow(
+                        color: CommonColor.blackColor3,
+                        blurRadius: 2,
+                        offset: Offset(0, 1),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                  child: Row(
+                    // mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        ImageConstant.edit,
+                        color: CommonColor.greenColor1,
+                      ),
+                      const SizedBox(width: 8),
+                      const TextWidget(
+                        text: AppStrings.editProfile,
+                        color: CommonColor.blackColor4,
+                        maxLine: 1,
+                        fontFamily: AppStrings.inter,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ],

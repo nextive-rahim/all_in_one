@@ -98,11 +98,7 @@ flutter:
     - family: NotoSerifBengali
       fonts:
         - asset: assets/fonts/NotoSerifBengali-Regular.ttf
-        - asset: assets/fonts/NotoSerifBengali-Black.ttf
         - asset: assets/fonts/NotoSerifBengali-Bold.ttf
-        - asset: assets/fonts/NotoSerifBengali-ExtraBold.ttf
-        - asset: assets/fonts/NotoSerifBengali-ExtraLight.ttf
-        - asset: assets/fonts/NotoSerifBengali-Light.ttf
         - asset: assets/fonts/NotoSerifBengali-Medium.ttf
         - asset: assets/fonts/NotoSerifBengali-SemiBold.ttf
         - asset: assets/fonts/NotoSerifBengali-Thin.ttf

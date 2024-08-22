@@ -51,7 +51,7 @@ class ProfilePage extends GetView<ProfileViewController> {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ProfileHeader(userModel: controller.userModel!),
+                              const ProfileHeader(),
                               const SizedBox(height: 21),
                               Padding(
                                 padding: const EdgeInsets.only(

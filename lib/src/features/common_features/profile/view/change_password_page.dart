@@ -83,11 +83,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         labelText: AppStrings.newPassword,
                         controller: controller.newPasswordController,
                         hintText: AppStrings.newPassword,
-                        validator: InputFieldValidator.confirmPassword(
-                          password: controller.oldPasswordController.text,
-                          optional:
-                              controller.oldPasswordController.text.isEmpty,
-                        ),
+                        validator: InputFieldValidator.password(),
                         onChanged: (v) {
                           if (v.isEmpty || v.length >= 6) {
                             setState(() {});
@@ -153,7 +149,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       return;
     }
     controller.changePassword(_formKey).then((response) {
+      print(controller.loginModel.message);
       if (controller.loginModel.message == 'Password Change Successfully.') {
+        Get.back();
         Get.snackbar(
           AppStrings.success,
           controller.loginModel.message.toString(),
@@ -164,13 +162,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
 
         return;
       }
-      Get.snackbar(
-        AppStrings.failed,
-        controller.loginModel.message.toString(),
-        backgroundColor: CommonColor.redColors,
-        colorText: Colors.white,
-        borderWidth: 1,
-      );
+      // Get.snackbar(
+      //   AppStrings.failed,
+      //   controller.loginModel.message.toString(),
+      //   backgroundColor: CommonColor.redColors,
+      //   colorText: Colors.white,
+      //   borderWidth: 1,
+      // );
     });
   }
 }

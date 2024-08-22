@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
+import 'package:all_in_one/src/core/widgets/logout_button.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/comapny_profile_page.dart';
@@ -162,34 +163,34 @@ class CompanyHomeAppBar extends AppBar {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   mainAxisSize: MainAxisSize.min,
-              //   children: [
-              //     GestureDetector(
-              //       onTap: () => Get.toNamed(Routes.notification),
-              //       child: Container(
-              //         height: 40,
-              //         width: 40,
-              //         decoration: BoxDecoration(
-              //           color: AppColors.grey100,
-              //           borderRadius: BorderRadius.circular(8),
-              //           border: Border.all(
-              //             color: AppColors.lightBlack10,
-              //             width: 1,
+              const LogoutButton()
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.end,
+              //       mainAxisSize: MainAxisSize.min,
+              //       children: [
+              //         GestureDetector(
+              //           onTap: () => Get.toNamed(Routes.notification),
+              //           child: Container(
+              //             height: 40,
+              //             width: 40,
+              //             decoration: BoxDecoration(
+              //               color: AppColors.grey100,
+              //               borderRadius: BorderRadius.circular(8),
+              //               border: Border.all(
+              //                 color: AppColors.lightBlack10,
+              //                 width: 1,
+              //               ),
+              //             ),
+              //             padding: const EdgeInsets.all(8),
+              //             child: const Icon(
+              //               Icons.notifications_none_outlined,
+              //               color: CommonColor.headingTextColor1,
+              //             ),
               //           ),
               //         ),
-              //         padding: const EdgeInsets.all(8),
-              //         child: const Icon(
-              //           Icons.notifications_none_outlined,
-              //           color: CommonColor.headingTextColor1,
-              //         ),
-              //       ),
+              //         const SizedBox(width: 10),
+              //       ],
               //     ),
-              const SizedBox(width: 10),
-
-              //  ],
-              // ),
             ],
           ),
         );

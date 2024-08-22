@@ -1,5 +1,3 @@
-import 'package:all_in_one/src/core/theme/colors.dart';
-import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/controller/company_profile_update_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -16,83 +14,32 @@ class CompanyProfileUpdateFormField
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          labelText('Company Name'),
-          TextFormFieldWidget(
-            isEmailField: true,
+          OutlinedInputField(
+            labelText: 'Company Name',
             controller: controller.nameController,
-            valtext: AppStrings.commonTextVal,
-            height: 45,
-            hintText: 'Nextive Solution',
-            readOnly: false,
-            maxLine: 1,
-            keyType: TextInputType.text,
-            wordLimit: 100,
-            fontFamily: AppStrings.inter,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            onChanged: (value) {},
+            hintText: 'Add company name',
+            //validator: InputFieldValidator.name(),
           ),
-          labelText('Address'),
-          TextFormFieldWidget(
-            isEmailField: true,
+          OutlinedInputField(
+            labelText: 'Address',
             controller: controller.addressController,
-            valtext: AppStrings.commonTextVal,
-            height: 45,
-            hintText: 'example@gmail.com',
-            readOnly: false,
-            maxLine: 1,
-            keyType: TextInputType.text,
-            wordLimit: 100,
-            fontFamily: AppStrings.inter,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            onChanged: (value) {},
+            hintText: 'Add Address',
+            // validator: InputFieldValidator.name(),
           ),
-          labelText('Contact no.'),
-          TextFormFieldWidget(
-            isEmailField: true,
+          OutlinedInputField(
+            labelText: 'Contact no.',
             controller: controller.contactsNumberController,
-            valtext: AppStrings.commonTextVal,
-            hintText: 'Contact number',
-            readOnly: false,
-            maxLine: 1,
-            keyType: TextInputType.text,
-            wordLimit: 100,
-            fontFamily: AppStrings.inter,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            onChanged: (value) {},
+            hintText: 'Add contact number',
+            // validator: InputFieldValidator.name(),
           ),
-          labelText('Company Description'),
-          TextFormFieldWidget(
-            isEmailField: true,
+          OutlinedInputField(
+            labelText: 'Company Description',
             controller: controller.employeeDescriptionController,
-            valtext: AppStrings.commonTextVal,
-            height: 45,
             hintText: 'Company Description',
-            readOnly: false,
-            maxLine: 5,
-            keyType: TextInputType.text,
-            wordLimit: 100,
-            fontFamily: AppStrings.inter,
-            fontSize: 16,
-            fontWeight: FontWeight.w400,
-            onChanged: (value) {},
+            maxLines: 5,
+            // validator: InputFieldValidator.name(),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget labelText(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        bottom: 10,
-        top: 20,
-      ),
-      child: Title(
-        color: AppColors.black,
-        child: Text(title),
       ),
     );
   }

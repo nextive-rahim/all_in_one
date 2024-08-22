@@ -14,7 +14,7 @@ class ChangePasswordViewController extends GetxController {
 
   get pageState => _pageStateController.value;
 
-  late RegistrationResponseModel loginModel;
+  RegistrationResponseModel loginModel = RegistrationResponseModel();
 
   Future<RegistrationResponseModel> changePassword(
       GlobalKey<FormState> formKey) async {
@@ -41,7 +41,7 @@ class ChangePasswordViewController extends GetxController {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       _pageStateController(PageState.error);
-      return RegistrationResponseModel(message: '');
+      return loginModel;
     }
   }
 
