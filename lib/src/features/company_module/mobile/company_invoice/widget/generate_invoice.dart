@@ -23,7 +23,7 @@ class GenerateInvoice extends StatefulWidget {
 
 class _GenerateInvoiceState extends State<GenerateInvoice> {
   final controller = Get.find<CompanyInvoiceViewController>();
-  final employeControler = Get.find<EmployeeListViewController>();
+  final employeControler = Get.find<CompanyEmployeeListViewController>();
   @override
   Widget build(BuildContext context) {
     return Column(

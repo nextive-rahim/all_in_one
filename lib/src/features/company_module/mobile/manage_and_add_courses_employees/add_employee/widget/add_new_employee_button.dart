@@ -52,7 +52,7 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
                   backgroundColor: CommonColor.greenColor1,
                   colorText: Colors.white,
                 );
-                Get.find<EmployeeListViewController>().getEmployeeList();
+                Get.find<CompanyEmployeeListViewController>().getEmployeeList();
               }
             });
           },

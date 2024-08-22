@@ -22,15 +22,15 @@ class CompanyEmployeeProfilePage extends StatefulWidget {
 
 class _CompanyEmployeeProfilePageState
     extends State<CompanyEmployeeProfilePage> {
-  final companyAssingedCourseController = Get.put(EmployeeListViewController());
+  final companyEmployeeController =
+      Get.put(CompanyEmployeeListViewController());
   final EmployeeModel employee = Get.arguments;
   bool jobAppliedStatus = false;
 
   @override
   void initState() {
-    companyAssingedCourseController.employeeModel = Get.arguments;
-    companyAssingedCourseController.assignedCouseList.value =
-        employee.assignCourse!;
+    companyEmployeeController.employeeModel = Get.arguments;
+    companyEmployeeController.assignedCouseList.value = employee.assignCourse!;
     super.initState();
   }
 

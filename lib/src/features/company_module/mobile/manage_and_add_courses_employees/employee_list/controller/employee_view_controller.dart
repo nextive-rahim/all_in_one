@@ -8,8 +8,9 @@ import 'package:all_in_one/src/features/student_module/mobile/course/home_course
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
-class EmployeeListViewController extends GetxController {
-  final EmployeeListRepository _repository = EmployeeListRepository();
+class CompanyEmployeeListViewController extends GetxController {
+  final CompanyEmployeeListRepository _repository =
+      CompanyEmployeeListRepository();
 
   /// Page State
   final Rx<PageState> _pageStateController = Rx(PageState.initial);

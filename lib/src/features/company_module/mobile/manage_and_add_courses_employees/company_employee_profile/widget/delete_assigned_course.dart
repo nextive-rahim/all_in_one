@@ -4,7 +4,7 @@ import 'package:all_in_one/src/features/student_module/mobile/course/home_course
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DeletedAssignCourse extends GetView<EmployeeListViewController> {
+class DeletedAssignCourse extends GetView<CompanyEmployeeListViewController> {
   const DeletedAssignCourse({
     super.key,
     required this.course,

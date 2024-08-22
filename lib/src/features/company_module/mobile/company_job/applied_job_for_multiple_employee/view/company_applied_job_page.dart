@@ -18,7 +18,7 @@ class CompanyAppliedJobForMultipleEmployee extends StatefulWidget {
 
 class _CompanyAppliedJobForMultipleEmployeeState
     extends State<CompanyAppliedJobForMultipleEmployee> {
-  final courseController = Get.find<EmployeeListViewController>();
+  final courseController = Get.find<CompanyEmployeeListViewController>();
   final companyAssignedCourseController =
       Get.find<CompanyAppliedJobViewController>();
   final JobModel employeeModel = Get.arguments;

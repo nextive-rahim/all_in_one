@@ -5,17 +5,10 @@ import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_cou
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CompanyEmployeeListPageMobile extends StatefulWidget {
+class CompanyEmployeeListPageMobile
+    extends GetView<CompanyEmployeeListViewController> {
   const CompanyEmployeeListPageMobile({super.key});
 
-  @override
-  State<CompanyEmployeeListPageMobile> createState() =>
-      _CompanyEmployeeListPageMobileState();
-}
-
-class _CompanyEmployeeListPageMobileState
-    extends State<CompanyEmployeeListPageMobile> {
-  final controller = Get.put(EmployeeListViewController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

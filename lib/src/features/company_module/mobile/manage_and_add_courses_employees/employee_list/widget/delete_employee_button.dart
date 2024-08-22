@@ -4,7 +4,7 @@ import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_cou
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class DeleteEmployeeButton extends GetView<EmployeeListViewController> {
+class DeleteEmployeeButton extends GetView<CompanyEmployeeListViewController> {
   const DeleteEmployeeButton({
     super.key,
     required this.employee,

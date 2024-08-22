@@ -7,7 +7,7 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/j
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EmployeeListSection extends GetView<EmployeeListViewController> {
+class EmployeeListSection extends GetView<CompanyEmployeeListViewController> {
   const EmployeeListSection({super.key});
 
   @override

@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CompanyEmployeeCompletedCourseSection
-    extends GetView<EmployeeListViewController> {
+    extends GetView<CompanyEmployeeListViewController> {
   const CompanyEmployeeCompletedCourseSection({super.key});
 
   @override

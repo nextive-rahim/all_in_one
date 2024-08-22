@@ -30,7 +30,7 @@ class CompanyAssignedCourseButton
         }
         controller.companyAssingedCourse(employee.userId!).then((value) {
           if (value.success == true) {
-            Get.find<EmployeeListViewController>().getEmployeeList();
+            Get.find<CompanyEmployeeListViewController>().getEmployeeList();
             Get.back();
             Get.snackbar(
               'Success',
