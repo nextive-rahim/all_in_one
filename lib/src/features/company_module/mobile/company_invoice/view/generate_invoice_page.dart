@@ -14,12 +14,16 @@ class GenerateCompanyInvoice extends StatefulWidget {
 }
 
 class _GenerateCompanyInvoiceState extends State<GenerateCompanyInvoice> {
-  final controler = Get.put(CompanyInvoiceViewController());
+  final controller = Get.put(CompanyInvoiceViewController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.fetchInvoices();
+        },
         child: SingleChildScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

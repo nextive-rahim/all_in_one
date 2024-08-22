@@ -1,6 +1,6 @@
 import 'package:all_in_one/src/core/extension/string_extension.dart';
-import 'package:all_in_one/src/core/gobal_function.dart';
 import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/company_invoice_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -24,10 +24,11 @@ class InvoiceListPage extends GetView<CompanyInvoiceViewController> {
             return Card(
               child: ListTile(
                 onTap: () {
-                  urlLauncher(
-                      'http://13.233.141.65:3000/invoice/AllinOne9.pdf');
-                  // controller.invoiceLink(controller.invoice[index].id!);
-                  // Get.toNamed(Routes.companyInvoicePage);
+                  controller
+                      .invoiceLink(controller.invoice[index].id!)
+                      .then((v) async {
+                    Get.toNamed(Routes.resume, arguments: v.url);
+                  });
                 },
                 title: Text(controller.invoice[index].name ?? ''),
                 subtitle: Text(

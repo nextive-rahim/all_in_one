@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/extension/string_extension.dart';
 import 'package:all_in_one/src/core/extension/text_extension.dart';
-import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/validators/input_form_validators.dart';
@@ -44,9 +43,9 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
         ),
         const SizedBox(height: 6),
         Obx(() {
-          if (controller.pageState == PageState.loading) {
-            return const CircularProgressIndicator();
-          }
+          // if (controller.pageState == PageState.loading) {
+          //   return const CircularProgressIndicator();
+          // }
           return CommonPopupMenu(
             onSelected: (String value) {
               setState(() {
@@ -89,8 +88,11 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
         ),
         20.sh,
         PrimaryButton(
-          isLoading: controller.pageState == PageState.loading,
+          isLoading: controller.isGeneratedInvoice.value == true,
           onTap: () {
+            if (!controller.formKey.currentState!.validate()) {
+              return;
+            }
             if (controller.selectedEmployeeName == null) {
               Get.snackbar(
                 'Warning',
@@ -101,6 +103,8 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
               return;
             }
             controller.generateInvoice().then((value) {
+              controller.clearTextFields();
+              FocusScope.of(context).unfocus();
               controller.fetchInvoices();
               Get.snackbar(
                 'Successful',

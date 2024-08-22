@@ -4,8 +4,7 @@ import 'package:all_in_one/src/features/company_module/mobile/company_invoice/mo
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/model/invoice_model.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/repository/company_invoice_repository.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 
 class CompanyInvoiceViewController extends GetxController {
   final CompanyInvoiceRepository _repository = CompanyInvoiceRepository();
@@ -18,23 +17,27 @@ class CompanyInvoiceViewController extends GetxController {
   final RxList<InvoiceModel> invoice = <InvoiceModel>[].obs;
   late InvoiceResponseModel invoiceModel;
   InvoiceResponseModel? invoiceResponseModel;
-  InvoiceLinkResponseModel? invoiceLinkResponseModel;
+  InvoiceLinkResponseModel? invoiceLinkResponseModel =
+      InvoiceLinkResponseModel();
   String? selectedEmployeeName;
   RxBool isInvoiceLinkLoading = false.obs;
+  RxBool isGeneratedInvoice = false.obs;
+
   @override
   void onInit() async {
     await fetchInvoices();
+
     super.onInit();
   }
 
   Future<void> fetchInvoices() async {
-    // _pageStateController(PageState.loading);
+    _pageStateController(PageState.loading);
 
     try {
       final res = await _repository.fetchInvoices();
       InvoiceResponseModel jobListResponse = InvoiceResponseModel.fromJson(res);
       invoice.value = jobListResponse.data ?? [];
-      //  _pageStateController(PageState.success);
+      _pageStateController(PageState.success);
 
       return;
     } catch (e, stackTrace) {
@@ -46,11 +49,9 @@ class CompanyInvoiceViewController extends GetxController {
   }
 
   Future<void> generateInvoice() async {
-    if (!formKey.currentState!.validate()) {
-      return;
-    }
+    print(!formKey.currentState!.validate());
 
-    _pageStateController(PageState.loading);
+    isGeneratedInvoice.value = true;
 
     Map<String, dynamic> requestBody = {
       'name': selectedEmployeeName,
@@ -66,7 +67,7 @@ class CompanyInvoiceViewController extends GetxController {
 
       //invoiceModel = InvoiceResponseModel.fromJson(res);
 
-      _pageStateController(PageState.success);
+      isGeneratedInvoice.value = false;
 
       return;
       //clearTextFields();
@@ -74,12 +75,12 @@ class CompanyInvoiceViewController extends GetxController {
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
-      _pageStateController(PageState.error);
+      isGeneratedInvoice.value = false;
       return;
     }
   }
 
-  Future<void> invoiceLink(int invoiceId) async {
+  Future<InvoiceLinkResponseModel> invoiceLink(int invoiceId) async {
     isInvoiceLinkLoading.value = false;
 
     Map<String, dynamic> requestBody = {
@@ -95,14 +96,14 @@ class CompanyInvoiceViewController extends GetxController {
 
       isInvoiceLinkLoading.value = true;
 
-      return;
+      return invoiceLinkResponseModel!;
       //clearTextFields();
       //  Get.offAllNamed(Routes.dashboard);
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       _pageStateController(PageState.error);
-      return;
+      return invoiceLinkResponseModel!;
     }
   }
 
