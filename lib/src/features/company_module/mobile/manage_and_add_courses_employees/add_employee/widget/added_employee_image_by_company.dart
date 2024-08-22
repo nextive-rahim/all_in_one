@@ -30,12 +30,15 @@ class AddedEployeeImageByCompany
                 controller.fileImagelink.value = value!.path;
                 Get.put(UpdateProfileiewController())
                     .uploadFile(value.file)
-                    .then((value2) {});
-                controller.isUploadFile.value = false;
+                    .then((value2) {
+                  controller.isUploadFile.value = false;
+                  controller.imagelink.value = value2;
+                });
+
                 return;
               });
               // FileModel? file = await FileService().pickAFile();
-              // controller.imagelink.value = file!.path;
+              //
             },
             child: Column(
               children: [
