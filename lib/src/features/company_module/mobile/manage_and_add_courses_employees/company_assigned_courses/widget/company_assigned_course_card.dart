@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/text_style.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
@@ -50,18 +51,18 @@ class _CompanyAssingnedCoursesCardState
           ),
         ],
       ),
-      // trailing: Wrap(
-      //   children: [
-      //     const Text(
-      //       "Level  :   ",
-      //       style: AppTextStyle.bold14,
-      //     ),
-      //     Text(
-      //       widget.course?.id.toString() ?? '',
-      //       style: AppTextStyle.bold16,
-      //     ),
-      //   ],
-      // ),
+      trailing: Column(
+        children: [
+          const Text(
+            "Level  :   ",
+            style: AppTextStyle.bold14,
+          ),
+          Text(
+            widget.course?.coursesLevel.toString() ?? '',
+            style: AppTextStyle.bold13.copyWith(color: CommonColor.greyColor),
+          ),
+        ],
+      ),
       leading: _mainUI(widget.isSelectItem),
     );
   }

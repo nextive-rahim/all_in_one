@@ -20,7 +20,7 @@ class DeleteEmployeeButton extends GetView<EmployeeListViewController> {
       child: const Icon(
         Icons.delete_forever_outlined,
         color: CommonColor.redColors,
-        size: 28,
+        size: 23,
       ),
     );
   }

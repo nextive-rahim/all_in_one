@@ -132,6 +132,12 @@ class AppTextStyle {
     height: 16 / 12,
     fontFamily: 'NotoSerifBengali',
   );
+  static const bold13 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 13,
+    height: 16 / 13,
+    fontFamily: 'NotoSerifBengali',
+  );
 
   static const regular16 = TextStyle(
     fontWeight: FontWeight.w400,

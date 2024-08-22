@@ -22,9 +22,9 @@ class _CompanyAssignedCoursesState extends State<CompanyAssignedCourses> {
   final EmployeeModel employeeModel = Get.arguments;
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      courseController.getStudentHomeData();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    courseController.getStudentHomeData();
+    // });
     // TODO: implement initState
     super.initState();
   }
@@ -35,38 +35,43 @@ class _CompanyAssignedCoursesState extends State<CompanyAssignedCourses> {
       appBar: AppBar(
         title: const Text('Assigned Courses'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: Text(
-                'Assigned courses for employee',
-                style: AppTextStyle.bold20,
+      body: RefreshIndicator(
+        onRefresh: () async {
+          await courseController.getStudentHomeData();
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Text(
+                  'Assigned courses for employee',
+                  style: AppTextStyle.bold20,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Obx(() {
-                  if (courseController.pageState == PageState.loading) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  return SingleChildScrollView(
-                    child: CompanyAssigniedCourseBuilder(
-                      homeCourses:
-                          courseController.homeCourses[0].collectinList ?? [],
-                      controller: companyAssignedCourseController,
-                    ),
-                  );
-                }),
+              const SizedBox(height: 20),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Obx(() {
+                    if (courseController.pageState == PageState.loading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return SingleChildScrollView(
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      child: CompanyAssigniedCourseBuilder(
+                        homeCourses: courseController.homeCourses,
+                        controller: companyAssignedCourseController,
+                      ),
+                    );
+                  }),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CompanyAssignedCourseButton(employee: employeeModel),

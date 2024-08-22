@@ -119,6 +119,14 @@ class AppTextStyle {
     fontFamily: 'NotoSerifBengali',
   );
 
+  static const bold18 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 18,
+    height: 21 / 18,
+    letterSpacing: 0.2,
+    fontFamily: 'NotoSerifBengali',
+  );
+
   static const bold14 = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: 14,
