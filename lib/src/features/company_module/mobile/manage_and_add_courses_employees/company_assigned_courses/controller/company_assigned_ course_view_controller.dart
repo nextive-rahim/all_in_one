@@ -29,6 +29,7 @@ class CompanyAssignedCouseViewController extends GetxController {
       final res = await _repository.commanpanyAssignedCourse(body);
       print(res['success']);
       signupModel = RegistrationResponseModel.fromJson(res);
+
       _pageStateController(PageState.success);
       return signupModel;
       // clearTextFields();

@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/controller/company_assigned_%20course_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/widget/company_assigned_course_card.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/controller/student_home_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class _CourseBuilder extends StatefulWidget {
 
 class _CourseBuilderState extends State<_CourseBuilder> {
   final controller = Get.find<CompanyAssignedCouseViewController>();
-  // final homecontroller = Get.find<CompanyAssignedCouseViewController>();
+  final employeeController = Get.find<CompanyEmployeeListViewController>();
   @override
   Widget build(BuildContext context) {
     if (widget.courseList!.isEmpty) {
@@ -72,16 +73,23 @@ class _CourseBuilderState extends State<_CourseBuilder> {
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, courseIndex) {
         CourseModel course = widget.courseList![courseIndex];
+        // print(employeeController.assignedCouseList.map((v) => v.id));
 
+        final bool alreadyAssinged =
+            employeeController.assignedCouseList.any((v) => v.id == course.id);
         return Container(
             width: 360,
             margin: const EdgeInsets.only(right: 0),
             child: CompanyAssingnedCoursesCard(
               onTap: () {
+                if (alreadyAssinged) {
+                  return;
+                }
                 selectedsID(course);
               },
               course: course,
-              isSelectItem: controller.courseIDList.contains(course.id),
+              isSelectItem: alreadyAssinged ||
+                  controller.courseIDList.contains(course.id),
             ));
       },
     );
