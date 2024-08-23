@@ -1,5 +1,7 @@
 import 'package:all_in_one/src/core/widgets/common_tab_section.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/controller/interviewer_payment_view_controller.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/view/interview_completed_payment.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/view/interview_pending_payment.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/widgets/interviewer_payment_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,15 +32,9 @@ class InterviewerPaymentHomePageMobile extends StatelessWidget {
                   children: [
                     // PaymentFilteringSection(),
                     CommonTabSection(
-                      firstTabViewItems: [
-                        InterviewerPaymentBuilder(),
-                      ],
-                      secondTabViewItems: [
-                        //ConfirmInterviewsBuilder()
-                      ],
-                      thirdTabViewItems: [
-                        //CompletedInterviewsBuilder()
-                      ],
+                      firstTabViewItems: [InterviewerPaymentBuilder()],
+                      secondTabViewItems: [InterviewerPendingPaymentBuilder()],
+                      thirdTabViewItems: [InterviewerCompletedPaymentBuilder()],
                       title1: 'All\nPayments',
                       title2: 'Pending\nPayments',
                       title3: 'Completed\nPayments',
