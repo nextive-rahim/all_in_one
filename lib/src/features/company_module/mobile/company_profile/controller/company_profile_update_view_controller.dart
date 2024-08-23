@@ -95,6 +95,7 @@ class CompanyProfileUpdateViewController extends GetxController {
   void profileDataPopulates(UserModel user) {
     nameController.text = user.name ?? '';
     contactsNumberController.text = user.phone ?? '';
+    addressController.text = user.address ?? '';
     employeeDescriptionController.text = user.description ?? '';
   }
 
