@@ -24,7 +24,7 @@ class AllInterviewsBuilder extends GetView<AllInterviewsViewController> {
               index: index,
               interview: interview,
               isFormRequestsInterviews: true,
-              isExpaired: interview.isFormFillUpDateExpired,
+              //  isExpaired: interview.isFormFillUpDateExpired,
             );
           },
         ),

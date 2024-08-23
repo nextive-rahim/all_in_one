@@ -8,30 +8,29 @@ class InterViewCard extends StatelessWidget {
     this.isFormRequestsInterviews = false,
     this.isFormConfirmInterviews = false,
     this.isFormCompletedInterviews = false,
-    this.isExpaired = false,
+    //this.isExpaired = false,
   });
   final int index;
   final ViewInterviewResponseData interview;
   final bool isFormRequestsInterviews;
   final bool isFormConfirmInterviews;
   final bool isFormCompletedInterviews;
-  final bool isExpaired;
+  // final bool isExpaired;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(interview.id.toString() ?? ''),
         GestureDetector(
           onTap: () async {
-            if (isExpaired && isFormRequestsInterviews) {
-              Util.displayToast(
-                context,
-                'Acceptance timed out',
-                AppColors.red,
-              );
-              return;
-            }
+            // if (isExpaired && isFormRequestsInterviews) {
+            //   Util.displayToast(
+            //     context,
+            //     'Acceptance timed out',
+            //     AppColors.red,
+            //   );
+            //   return;
+            // }
             isFormRequestsInterviews
                 ? Get.toNamed(
                     Routes.selecteInterviewFormConfirmation,
@@ -42,9 +41,7 @@ class InterViewCard extends StatelessWidget {
           child: Container(
             width: SizeConfig.screenWidth,
             decoration: ShapeDecoration(
-              color: (isFormRequestsInterviews && isExpaired)
-                  ? CommonColor.greyColor18
-                  : Colors.white,
+              color: Colors.white,
               shape: RoundedRectangleBorder(
                 side: const BorderSide(
                   width: 2,
@@ -86,16 +83,6 @@ class InterViewCard extends StatelessWidget {
                       ? InterviewLinkButton(interview: interview)
                       : const Offstage(),
                   const SizedBox(height: 5),
-                  isFormRequestsInterviews
-                      ? Text(
-                          interview.remainingDayForFormFillUp,
-                          style: AppTextStyle.bold13.copyWith(
-                            color: isExpaired
-                                ? CommonColor.redColors
-                                : CommonColor.greenColor1,
-                          ),
-                        )
-                      : const Offstage(),
                 ],
               ),
             ),

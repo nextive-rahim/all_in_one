@@ -1,6 +1,5 @@
 import 'package:all_in_one/src/core/extension/string_extension.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
@@ -40,21 +39,18 @@ class _InterviewFeedbackCardState extends State<InterviewFeedbackCard> {
           child: isFeedBackDone
               ? GestureDetector(
                   onTap: () {
-                    interviewfeedbackBottomSheet(widget.interview,
-                        isFromEdit: true);
+                    // interviewfeedbackBottomSheet(widget.interview,
+                    //     isFromEdit: true);
                   },
-                  child: Row(
+                  child: const Row(
                     children: [
-                      Image.asset(
-                        ImageConstant.edit,
+                      Icon(
+                        Icons.done_all,
                         color: CommonColor.greenColor1,
-                        width: 20,
-                        height: 20,
-                        fit: BoxFit.fill,
                       ),
-                      const SizedBox(width: 5),
-                      const Text(
-                        'Edit Feedback',
+                      SizedBox(width: 5),
+                      Text(
+                        'Completed Feedback',
                         style: TextStyle(
                           color: CommonColor.greenColor1,
                         ),
