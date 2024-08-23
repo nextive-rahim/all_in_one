@@ -1,4 +1,3 @@
-
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -74,8 +73,9 @@ class _TextDateFieldWidgetState extends State<TextDateFieldWidget> {
         showDatePicker(
                 context: context,
                 initialDate: DateTime.now(),
-                firstDate: DateTime(1900, 1),
-                lastDate: DateTime(2100, 12))
+                firstDate:
+                    DateTime(2024, DateTime.now().month, DateTime.now().day),
+                lastDate: DateTime(2025, 12, 30))
             .then((selectedDate) {
           if (selectedDate != null) {
             setState(() {

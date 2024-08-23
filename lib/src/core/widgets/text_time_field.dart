@@ -1,4 +1,3 @@
-
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:flutter/material.dart';
@@ -76,25 +75,37 @@ class _TextTimeFieldWidgetState extends State<TextTimeFieldWidget> {
           showTimePicker(
             context: context,
             initialTime: TimeOfDay.now(),
-          ).then((selectedTime) {
-            if (selectedTime != null) {
-              setState(() {
-                final now = DateTime.now();
-                widget.onChanged(DateFormat('HH:mm').format(DateTime(
-                    now.year,
-                    now.month,
-                    now.day,
-                    selectedTime.hour,
-                    selectedTime.minute)));
-                widget.controller.text = DateFormat.jm().format(DateTime(
-                    now.year,
-                    now.month,
-                    now.day,
-                    selectedTime.hour,
-                    selectedTime.minute));
-              });
-            }
-          });
+          ).then(
+            (selectedTime) {
+              if (selectedTime != null) {
+                setState(
+                  () {
+                    final now = DateTime.now();
+                    widget.onChanged(
+                      DateFormat('HH:mm').format(
+                        DateTime(
+                          now.year,
+                          now.month,
+                          now.day,
+                          selectedTime.hour,
+                          selectedTime.minute,
+                        ),
+                      ),
+                    );
+                    widget.controller.text = DateFormat.jm().format(
+                      DateTime(
+                        now.year,
+                        now.month,
+                        now.day,
+                        selectedTime.hour,
+                        selectedTime.minute,
+                      ),
+                    );
+                  },
+                );
+              }
+            },
+          );
         },
         autofocus: false,
         style: TextStyle(
