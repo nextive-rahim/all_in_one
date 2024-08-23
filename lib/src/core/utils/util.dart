@@ -8,6 +8,25 @@ import 'package:get/get.dart';
 
 enum UrlType { image, video, unknown }
 
+class SnackBarService {
+  static final scaffoldKey = GlobalKey<ScaffoldMessengerState>();
+  static void showErrorSnackBar(String content) {
+    scaffoldKey.currentState?.showSnackBar(SnackBar(
+      content: Text(content),
+      backgroundColor: CommonColor.redColors,
+      duration: const Duration(seconds: 2),
+    ));
+  }
+
+  static void showInfoSnackBar(String content) {
+    scaffoldKey.currentState?.showSnackBar(SnackBar(
+      content: Text(content),
+      backgroundColor: CommonColor.greenColor1,
+      duration: const Duration(seconds: 2),
+    ));
+  }
+}
+
 class Util {
   static void log(Object? object) {
     if (kDebugMode) {
@@ -15,12 +34,27 @@ class Util {
     }
   }
 
-  static void displayToast(
-      BuildContext context, String messsage, Color bgColor) {
+  static void displayErrorToast(
+    BuildContext context,
+    String messsage,
+  ) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(messsage),
-        backgroundColor: bgColor,
+        backgroundColor: CommonColor.redColors,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  static void displayInfoToast(
+    BuildContext context,
+    String messsage,
+  ) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(messsage),
+        backgroundColor: CommonColor.greenColor1,
         duration: const Duration(seconds: 2),
       ),
     );

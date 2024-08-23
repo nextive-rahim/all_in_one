@@ -105,18 +105,43 @@ class UpdateProfileForm extends GetView<UpdateProfileiewController> {
             suffixIcon: Obx(() => IconButton(
                   onPressed: () async {
                     await FileService().pickAFile(pdfOnly: true).then((value) {
-                      controller.isUploadFile.value = true;
-                      controller.uploadFile(value!.file).then((value2) {
+                      if (value == null) {
+                        return;
+                      }
+                      if (value.file.path.isNotEmpty) {
+                        controller.isUploadFile.value = true;
+                      }
+
+                      Get.put(UpdateProfileiewController())
+                          .uploadFile(value.file)
+                          .then((value2) {
                         controller.resumeLink.value = value2;
                         controller.uploadResumeController.text =
                             controller.resumeLink.value;
+                        controller.isUploadFile.value = false;
                       });
-                      controller.isUploadFile.value = false;
+
                       return;
                     });
+
+                    // await FileService()
+                    //     .pickAFile(pdfOnly: true)
+                    //     .then((value) async {
+                    //   controller.isUploadFile.value = true;
+                    //   await controller.uploadFile(value!.file).then((value2) {
+                    //     controller.resumeLink.value = value2;
+                    //     controller.uploadResumeController.text =
+                    //         controller.resumeLink.value;
+                    //   });
+                    //   controller.isUploadFile.value = false;
+                    //   return;
+                    // });
                   },
                   icon: controller.isUploadFile.value
-                      ? const CircularProgressIndicator()
+                      ? const SizedBox(
+                          height: 13,
+                          width: 13,
+                          child: CircularProgressIndicator())
                       : const Icon(Icons.upload),
                 )),
           ),

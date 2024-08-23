@@ -10,7 +10,7 @@ class SkillBuilder extends StatefulWidget {
     required this.selectedSkillIdList,
     required this.selectedSkillNameList,
   });
-  final RxList<int> selectedSkillIdList;
+  final RxList<int?> selectedSkillIdList;
   final RxList<String> selectedSkillNameList;
   @override
   State<SkillBuilder> createState() => SkillBuilderState();
@@ -29,13 +29,16 @@ class SkillBuilderState extends State<SkillBuilder> {
         itemCount: controller.skillsList.length,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
+          final bool alreadyAssinged = widget.selectedSkillIdList
+              .any((v) => v == controller.skillsList[index].id);
           return SkillCard(
             onTap: () {
               selectedsID(controller.skillsList[index]);
             },
             course: controller.skillsList[index],
-            isSelectItem: widget.selectedSkillIdList
-                .contains(controller.skillsList[index].id),
+            isSelectItem: alreadyAssinged ||
+                widget.selectedSkillIdList
+                    .contains(controller.skillsList[index].id),
           );
         },
       ),

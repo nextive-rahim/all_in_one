@@ -12,11 +12,15 @@ class InterviewLinkButton extends GetView<AllInterviewsViewController> {
     return GestureDetector(
       onTap: () async {
         if (!interview.interviewLink!.contains('https://')) {
-          Get.snackbar(
-            'Failed',
-            'Please inter a vaild meeting link',
-            backgroundColor: CommonColor.redColors,
-            colorText: Colors.white,
+          // Get.snackbar(
+          //   'Failed',
+          //   'Please enter a vaild meeting link',
+          //   backgroundColor: CommonColor.redColors,
+          //   colorText: Colors.white,
+          // );
+          Util.displayErrorToast(
+            context,
+            'Please enter a vaild meeting link',
           );
           return;
         }

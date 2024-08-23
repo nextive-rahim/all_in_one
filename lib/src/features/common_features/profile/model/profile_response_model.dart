@@ -91,10 +91,10 @@ class UserModel {
         id: json["id"],
         name: json["name"],
         userId: json["user_id"],
-        phone: json["phone"] == '' ? 'N/A' : json["phone"],
-        resume: json["resume"] == '' ? null : json["resume"],
-        address: json["address"] == '' ? 'N/A' : json["address"],
-        description: json["description"] == '' ? 'N/A' : json["description"],
+        phone: json["phone"],
+        resume: json["resume"],
+        address: json["address"],
+        description: json["description"],
         image: json["image"] == ''
             ? 'https://nextivesolution.sgp1.cdn.digitaloceanspaces.com/static/not-found.jpg'
             : json["image"],

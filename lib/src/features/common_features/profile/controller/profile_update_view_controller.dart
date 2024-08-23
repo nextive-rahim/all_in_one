@@ -24,7 +24,7 @@ class UpdateProfileiewController extends GetxController {
   final RxString fileImagelink = ''.obs;
   final RxString resumeLink = ''.obs;
   final formKey = GlobalKey<FormState>();
-  RxList<int> selectedSkillIdList = <int>[].obs;
+  RxList<int?> selectedSkillIdList = <int?>[].obs;
   RxList<String> selectedSkillNameList = <String>[].obs;
   Future<RegistrationResponseModel> updateProfile() async {
     // if (!formKey.currentState!.validate()) {
@@ -41,7 +41,6 @@ class UpdateProfileiewController extends GetxController {
       if (imagelink.value != '') "image": imagelink.value,
       "address": addressController.text,
       "skill": selectedSkillIdList,
-      "time": '',
     };
 
     try {
@@ -56,7 +55,7 @@ class UpdateProfileiewController extends GetxController {
       Log.error(stackTrace.toString());
       _pageStateController(PageState.error);
     }
-    return signupModel;
+    return RegistrationResponseModel(success: false);
   }
 
   late RegistrationResponseModel profileResponseModel;
@@ -100,11 +99,14 @@ class UpdateProfileiewController extends GetxController {
   TextEditingController addressController = TextEditingController();
   TextEditingController skillsController = TextEditingController();
   TextEditingController timeController = TextEditingController();
-  void profileDataPopulate(UserModel user) {
-    nameController.text = user.name ?? '';
-    contactsNumberController.text = user.phone ?? '';
-    employeeDescriptionController.text = user.description ?? '';
-    addressController.text = user.address ?? '';
+  void profileDataPopulate(ProfileResponseModel profileModel) {
+    nameController.text = profileModel.data?.name ?? '';
+    contactsNumberController.text = profileModel.data?.phone ?? '';
+    employeeDescriptionController.text = profileModel.data?.description ?? '';
+    addressController.text = profileModel.data?.address ?? '';
+    uploadResumeController.text = profileModel.data?.resume ?? '';
+    selectedSkillIdList.value =
+        profileModel.userSkill!.map((v) => v.skillId).toList();
   }
 
   // void clearTextFields() {

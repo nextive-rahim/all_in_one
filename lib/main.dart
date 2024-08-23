@@ -4,6 +4,7 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/theme/theme.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/nav2/get_nav_config.dart';
 import 'package:get/get_navigation/src/nav2/get_router_delegate.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // debugInvertOversizedImages = true;
     return GetMaterialApp(
+      scaffoldMessengerKey: SnackBarService.scaffoldKey,
       debugShowCheckedModeBanner: false,
       title: AppStrings.appName,
       // routerDelegate: AppRouterDelegate(),
