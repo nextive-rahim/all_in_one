@@ -1,6 +1,6 @@
 part of '../view/all_interview_section_mobile.dart';
 
-class InterViewCard extends StatefulWidget {
+class InterViewCard extends StatelessWidget {
   const InterViewCard({
     super.key,
     required this.index,
@@ -8,17 +8,14 @@ class InterViewCard extends StatefulWidget {
     this.isFormRequestsInterviews = false,
     this.isFormConfirmInterviews = false,
     this.isFormCompletedInterviews = false,
+    this.isExpaired = false,
   });
   final int index;
   final ViewInterviewResponseData interview;
   final bool isFormRequestsInterviews;
   final bool isFormConfirmInterviews;
   final bool isFormCompletedInterviews;
-  @override
-  State<InterViewCard> createState() => _InterViewCardState();
-}
-
-class _InterViewCardState extends State<InterViewCard> {
+  final bool isExpaired;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,17 +23,27 @@ class _InterViewCardState extends State<InterViewCard> {
       children: [
         GestureDetector(
           onTap: () async {
-            widget.isFormRequestsInterviews
+            // if (isExpaired && isFormRequestsInterviews) {
+            //   Util.displayToast(
+            //     context,
+            //     'Acceptance timed out',
+            //     AppColors.red,
+            //   );
+            //   return;
+            // }
+            isFormRequestsInterviews
                 ? Get.toNamed(
                     Routes.selecteInterviewFormConfirmation,
-                    arguments: widget.interview,
+                    arguments: interview,
                   )
                 : null;
           },
           child: Container(
             width: SizeConfig.screenWidth,
             decoration: ShapeDecoration(
-              //color: Colors.white,
+              color: (isFormRequestsInterviews && isExpaired)
+                  ? CommonColor.greyColor18
+                  : Colors.white,
               shape: RoundedRectangleBorder(
                 side: const BorderSide(
                   width: 2,
@@ -46,39 +53,47 @@ class _InterViewCardState extends State<InterViewCard> {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-                right: 20,
-                top: 24,
-                bottom: 24,
-              ),
+              padding: const EdgeInsets.all(15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextWidget(
-                    text: widget.interview.title ?? '',
+                    text: interview.title ?? '',
                     color: CommonColor.blackColor2,
                     maxLine: 1,
                     fontFamily: AppStrings.sfProDisplay,
                     fontWeight: FontWeight.w400,
                     fontSize: 20,
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 5),
                   Row(
                     children: [
-                      widget.interview.status == 1
+                      interview.status == 1
                           ? Text(
-                              '(${widget.interview.timeSlotA ?? ''} , ${widget.interview.timeSlotB})')
-                          : Text(widget.interview.approvedSlotA.toString()),
+                              '(${interview.timeSlotA ?? ''} , ${interview.timeSlotB})')
+                          : Text(interview.approvedSlotA == 1
+                              ? interview.timeSlotA.toString()
+                              : interview.timeSlotB.toString()),
                       const SizedBox(width: 10),
-                      Text(getFormattedDate(widget.interview.date) ?? ''),
+                      Text(getFormattedDate(interview.date) ?? ''),
                     ],
                   ),
-                  widget.isFormCompletedInterviews
-                      ? InterviewFeedbackCard(interview: widget.interview)
+                  isFormCompletedInterviews
+                      ? InterviewFeedbackCard(interview: interview)
                       : const Offstage(),
-                  widget.isFormConfirmInterviews
-                      ? InterviewLinkButton(interview: widget.interview)
+                  isFormConfirmInterviews
+                      ? InterviewLinkButton(interview: interview)
+                      : const Offstage(),
+                  const SizedBox(height: 5),
+                  isFormRequestsInterviews
+                      ? Text(
+                          interview.remainingDayForFormFillUp,
+                          style: AppTextStyle.bold13.copyWith(
+                            color: isExpaired
+                                ? CommonColor.redColors
+                                : CommonColor.greenColor1,
+                          ),
+                        )
                       : const Offstage(),
                 ],
               ),

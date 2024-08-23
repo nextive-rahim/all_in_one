@@ -74,6 +74,21 @@ class ViewInterviewResponseData {
     this.author,
     this.interviewLink,
   });
+  bool get isFormFillUpDateExpired {
+    int? days = date?.difference(DateTime.now().toLocal()).inDays;
+    if (days == null || days <= 0) {
+      return true;
+    }
+    return false;
+  }
+
+  String get remainingDayForFormFillUp {
+    int? days = date?.difference(DateTime.now().toLocal()).inDays;
+    if (days == null || days <= 0) {
+      return 'Expired';
+    }
+    return "$days days left";
+  }
 
   factory ViewInterviewResponseData.fromJson(Map<String, dynamic> json) =>
       ViewInterviewResponseData(

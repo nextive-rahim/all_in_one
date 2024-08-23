@@ -11,7 +11,7 @@ class CompletedInterviewsBuilder extends GetView<AllInterviewsViewController> {
     return Obx(() => ListView.separated(
           itemCount: controller.completedInterviewList.length,
           shrinkWrap: true,
-          reverse: true,
+          // reverse: true,
           physics: const NeverScrollableScrollPhysics(),
           separatorBuilder: (context, ind) {
             return const SizedBox(height: 10);

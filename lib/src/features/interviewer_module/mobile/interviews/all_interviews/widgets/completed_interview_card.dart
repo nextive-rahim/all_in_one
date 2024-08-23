@@ -272,7 +272,7 @@ class _InterviewFeedbackCardState extends State<InterviewFeedbackCard> {
                                 } else {
                                   controller
                                       .submittedInterviewFeedBack(
-                                        widget.interview.userId!,
+                                        widget.interview.id!,
                                         _interviewFeedbackController.text,
                                       )
                                       .then(

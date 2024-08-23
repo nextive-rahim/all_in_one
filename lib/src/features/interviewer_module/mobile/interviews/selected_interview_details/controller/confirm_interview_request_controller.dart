@@ -17,14 +17,15 @@ class ConfirmInterviewREquestViewController extends GetxController {
   bool responsStatus = false;
   get pageState => _pageStateController.value;
   final TextEditingController interviewLInk = TextEditingController();
-  RxString selectedTimeSlot = ''.obs;
+  RxInt selectedTimeSlotA = 0.obs;
+  RxInt selectedTimeSlotB = 0.obs;
   Future<void> confirmInterviewRequest(int id) async {
     _pageStateController(PageState.loading);
     Map<String, dynamic> body = {
       "id": id,
       "link": interviewLInk.text,
-      "approved_slot_a": selectedTimeSlot.value,
-      // "approved_slot_b": "0"
+      "approved_slot_a": selectedTimeSlotA.value,
+      "approved_slot_b": selectedTimeSlotB.value
     };
 
     try {

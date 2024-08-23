@@ -91,9 +91,8 @@ class _InterviewTimeSelectedSectionState
                                 }
                                 selectedTime.value =
                                     widget.interview.timeSlotA!;
-                                //Navigator.pop(context, true);
-                                controller.selectedTimeSlot.value =
-                                    selectedTime.value;
+                                controller.selectedTimeSlotA.value = 1;
+                                controller.selectedTimeSlotB.value = 0;
                               },
                               child: Container(
                                 width: SizeConfig.screenWidth,
@@ -144,8 +143,8 @@ class _InterviewTimeSelectedSectionState
                                 }
                                 selectedTime.value =
                                     widget.interview.timeSlotB!;
-                                controller.selectedTimeSlot.value =
-                                    selectedTime.value;
+                                controller.selectedTimeSlotA.value = 0;
+                                controller.selectedTimeSlotB.value = 1;
                               },
                               child: Container(
                                 width: SizeConfig.screenWidth,

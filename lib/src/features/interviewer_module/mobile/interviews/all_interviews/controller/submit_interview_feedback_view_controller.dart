@@ -21,7 +21,7 @@ class SubmittedInterviewFeedbackViewController extends GetxController {
   ) async {
     _pageStateController(PageState.loading);
     Map<String, dynamic> body = {
-      "id": id,
+      "schedule_interview_id": id,
       "feedback_content": feedbackMsg,
     };
 

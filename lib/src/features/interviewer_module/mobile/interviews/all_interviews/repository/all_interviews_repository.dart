@@ -13,7 +13,7 @@ class InterviewsRepository {
   Future<dynamic> submitInterviewFeedback(Map<String, dynamic> data) async {
     final res = await RestClient.dev().post(
       APIType.PROTECTED,
-      API.storeInterviewerFeedbackUrl,
+      API.interviewFeedPost,
       data,
     );
     return res.data;

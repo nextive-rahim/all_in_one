@@ -34,7 +34,7 @@ class AllInterviewsViewController extends GetxController {
   }
 
   Future<void> getAllInterviews() async {
-    _pageStateController(PageState.loading);
+    // _pageStateController(PageState.loading);
 
     try {
       final res = await repository.fetchAllInterviews();
@@ -49,11 +49,11 @@ class AllInterviewsViewController extends GetxController {
       completedInterviewList.value =
           initialInterviewList.where((v) => v.status == 3).toList();
       // allnterviews.value = _responseModel.data!;
-      _pageStateController(PageState.success);
+      // _pageStateController(PageState.success);
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
-      _pageStateController(PageState.error);
+      // _pageStateController(PageState.error);
       Get.snackbar(
         'Failed',
         'Fetching all interviews failed',
@@ -65,17 +65,17 @@ class AllInterviewsViewController extends GetxController {
   }
 
   Future<void> completeInterviewRequest(int id) async {
-    _pageStateController(PageState.loading);
+    // _pageStateController(PageState.loading);
     Map<String, dynamic> body = {"id": id};
 
     try {
       await repository.completeInterview(body);
 
-      _pageStateController(PageState.success);
+      // _pageStateController(PageState.success);
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
-      _pageStateController(PageState.error);
+      // _pageStateController(PageState.error);
       Get.snackbar(
         'Failed',
         'Interview Not Confirmed',

@@ -36,6 +36,7 @@ class API {
       'get-interviewer-approved-data';
   static const String storeInterviewerFeedbackUrl =
       'store-interviewer-feedback';
+  static const String interviewFeedPost = 'interview-feedback';
   static const String userApplyInterviewUrl = 'user-apply-interview';
   static const String completeInterview = 'complete-interview';
   static const String viewInterviewUrl = 'view-interview';
