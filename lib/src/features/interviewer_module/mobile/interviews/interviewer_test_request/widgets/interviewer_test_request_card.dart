@@ -1,9 +1,8 @@
-import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
-import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_date_field.dart';
 import 'package:all_in_one/src/core/widgets/text_time_field.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
@@ -65,20 +64,14 @@ class _InterviewerTestRequestCardState
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Obx(() {
-                      if (widget.profileController.pageState ==
-                          PageState.loading) {
-                        return const Offstage();
-                      }
-                      return TextWidget(
-                        text: 'Hi, ${widget.profileController.userModel?.name}',
-                        color: CommonColor.greyColor12,
-                        maxLine: 1,
-                        fontFamily: AppStrings.sfProDisplay,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 18,
-                      );
-                    }),
+                    TextWidget(
+                      text: 'Hi, ${widget.profileController.userModel?.name}',
+                      color: CommonColor.greyColor12,
+                      maxLine: 1,
+                      fontFamily: AppStrings.sfProDisplay,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                    ),
                     const SizedBox(height: 23),
                     const TextWidget(
                       text:
@@ -364,10 +357,12 @@ class _InterviewerTestRequestCardState
                                         .timeSlotAController.text.isEmpty ||
                                     interviewTestRequestController
                                         .timeSlotBController.text.isEmpty) {
-                                  Util.displayToast(
-                                      context,
-                                      AppStrings.plzFillAllFields,
-                                      CommonColor.redColors);
+                                  Get.snackbar(
+                                    'Failed',
+                                    AppStrings.plzFillAllFields,
+                                    backgroundColor: AppColors.red,
+                                    colorText: AppColors.white,
+                                  );
                                 } else {
                                   Navigator.pop(context, true);
                                 }

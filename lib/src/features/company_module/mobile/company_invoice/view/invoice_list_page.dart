@@ -27,7 +27,7 @@ class InvoiceListPage extends GetView<CompanyInvoiceViewController> {
                   controller
                       .invoiceLink(controller.invoice[index].id!)
                       .then((v) async {
-                    Get.toNamed(Routes.resume, arguments: v.url);
+                    Get.toNamed(Routes.companyInvoicePage, arguments: v.url);
                   });
                 },
                 title: Text(controller.invoice[index].name ?? ''),

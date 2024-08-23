@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/view/all_interview_section_mobile.dart';
@@ -31,28 +32,33 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
       body: RefreshIndicator(
         onRefresh: () async {},
         child: SingleChildScrollView(
-          child: Obx(() => Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 10),
-                  profileController.profileResponseModel.testRequest == null
-                      ? InterviewerTestRequestCard(
-                          profileController: profileController)
-                      : interviewTestRequestController
-                                  .verificationPending.value ||
-                              profileController.profileResponseModel.testRequest
-                                      ?.status ==
-                                  1
-                          ? const InterviewerTestResultPendingCard()
-                          : (interviewTestRequestController
-                                      .isInterviewerApproved.value ||
-                                  profileController.profileResponseModel
-                                          .testRequest?.status ==
-                                      3)
-                              ? const AllInterviewsSection()
-                              : const Offstage()
-                ],
-              )),
+          child: Obx(() {
+            if (profileController.pageState == PageState.loading) {
+              return const Offstage();
+            }
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 10),
+                profileController.profileResponseModel.testRequest == null
+                    ? InterviewerTestRequestCard(
+                        profileController: profileController)
+                    : interviewTestRequestController
+                                .verificationPending.value ||
+                            profileController
+                                    .profileResponseModel.testRequest?.status ==
+                                1
+                        ? const InterviewerTestResultPendingCard()
+                        : (interviewTestRequestController
+                                    .isInterviewerApproved.value ||
+                                profileController.profileResponseModel
+                                        .testRequest?.status ==
+                                    3)
+                            ? const AllInterviewsSection()
+                            : const Offstage()
+              ],
+            );
+          }),
         ),
       ),
     );
