@@ -1,14 +1,21 @@
+import 'package:all_in_one/src/core/extension/string_extension.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/model/interviewer_payment_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class InterviewerPaymentCard extends StatelessWidget {
-  const InterviewerPaymentCard({super.key});
-
+  const InterviewerPaymentCard({
+    super.key,
+    required this.paymentModel,
+  });
+  final InterviewerPaymentModel paymentModel;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.only(top: 0),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -16,28 +23,28 @@ class InterviewerPaymentCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Principles of UX in development',
+                'Interview Title Need',
                 style: AppTextStyle.bold16,
               ),
               const SizedBox(height: 5),
-              Text(
-                'Subtitle ',
-                style:
-                    AppTextStyle.bold14.copyWith(color: AppColors.lightBlack80),
-              ),
+              // Text(
+              //   'Subtitle ',
+              //   style:
+              //       AppTextStyle.bold14.copyWith(color: AppColors.lightBlack80),
+              // ),
               const SizedBox(height: 10),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.date_range),
-                      SizedBox(width: 10),
-                      Text('26th May 2024')
+                      const Icon(Icons.date_range),
+                      const SizedBox(width: 10),
+                      Text(getFormattedDate(paymentModel.createdAt)!),
                     ],
                   ),
                   Text(
-                    '+ £52',
+                    '+ £${paymentModel.amount}',
                     style: AppTextStyle.bold16,
                   )
                 ],
@@ -46,28 +53,29 @@ class InterviewerPaymentCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Row(
+                  Row(
                     children: [
-                      Icon(Icons.watch_later_outlined),
-                      SizedBox(width: 10),
-                      Text('9:30 PM')
+                      const Icon(Icons.watch_later_outlined),
+                      const SizedBox(width: 10),
+                      Text(getFormattedTime(paymentModel.createdAt)!),
                     ],
                   ),
                   Text(
-                    '√ Paid',
+                    '√ ${paymentModel.status == 1 ? 'Peding' : 'Completed'}',
                     style: AppTextStyle.bold16.copyWith(color: AppColors.green),
                   )
                 ],
               ),
               const SizedBox(height: 10),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.person),
-                      SizedBox(width: 10),
-                      Text('Interviwer Name')
+                      const Icon(Icons.person),
+                      const SizedBox(width: 10),
+                      Text(Get.find<ProfileViewController>().userModel!.name ??
+                          '')
                     ],
                   ),
                 ],
@@ -75,7 +83,9 @@ class InterviewerPaymentCard extends StatelessWidget {
               const SizedBox(height: 10),
               const Divider(),
               const SizedBox(height: 10),
-              const _FeedBackSection(),
+              _FeedBackSection(
+                paymentModel: paymentModel,
+              ),
             ],
           ),
         ),
@@ -85,7 +95,11 @@ class InterviewerPaymentCard extends StatelessWidget {
 }
 
 class _FeedBackSection extends StatelessWidget {
-  const _FeedBackSection();
+  const _FeedBackSection({
+    super.key,
+    required this.paymentModel,
+  });
+  final InterviewerPaymentModel paymentModel;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +112,7 @@ class _FeedBackSection extends StatelessWidget {
         ),
         const SizedBox(height: 5),
         Text(
-          'Interviewer Feedbaca book or other written or printed work, regarded in terms of its content rather than its physical form.',
+          paymentModel.feedbackContent ?? '',
           style: AppTextStyle.bold14.copyWith(color: AppColors.lightBlack80),
         )
       ],
