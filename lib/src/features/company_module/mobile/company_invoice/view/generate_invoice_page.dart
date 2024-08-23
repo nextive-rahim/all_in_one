@@ -1,22 +1,28 @@
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
+import 'package:all_in_one/src/core/extension/string_extension.dart';
+import 'package:all_in_one/src/core/extension/text_extension.dart';
+import 'package:all_in_one/src/core/theme/colors.dart';
+import 'package:all_in_one/src/core/theme/text_style.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/validators/input_form_validators.dart';
+import 'package:all_in_one/src/core/widgets/common_dropdown.dart';
+import 'package:all_in_one/src/core/widgets/primary_button.dart';
+import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/company_invoice_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/invoice_list_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/widget/company_invoice_tab.dart';
-import 'package:all_in_one/src/features/company_module/mobile/company_invoice/widget/generate_invoice.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+part '../widget/generate_invoice_button.dart';
+part '../widget/generate_invoice.dart';
 
-class GenerateCompanyInvoice extends StatefulWidget {
+class GenerateCompanyInvoice extends StatelessWidget {
   const GenerateCompanyInvoice({super.key});
 
   @override
-  State<GenerateCompanyInvoice> createState() => _GenerateCompanyInvoiceState();
-}
-
-class _GenerateCompanyInvoiceState extends State<GenerateCompanyInvoice> {
-  final controller = Get.put(CompanyInvoiceViewController());
-  @override
   Widget build(BuildContext context) {
+    final controller = Get.put(CompanyInvoiceViewController());
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () async {

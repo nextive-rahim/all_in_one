@@ -1,28 +1,8 @@
-import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/company_invoice_view_controller.dart';
-import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
-import 'package:flutter/material.dart';
-import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
-import 'package:all_in_one/src/core/extension/string_extension.dart';
-import 'package:all_in_one/src/core/extension/text_extension.dart';
-import 'package:all_in_one/src/core/theme/colors.dart';
-import 'package:all_in_one/src/core/theme/text_style.dart';
-import 'package:all_in_one/src/core/validators/input_form_validators.dart';
-import 'package:all_in_one/src/core/widgets/common_dropdown.dart';
-import 'package:all_in_one/src/core/widgets/primary_button.dart';
-import 'package:all_in_one/src/core/widgets/text_form_field.dart';
-import 'package:get/get.dart';
+part of '../view/generate_invoice_page.dart';
 
-class GenerateInvoice extends StatefulWidget {
+class GenerateInvoice extends GetView<CompanyInvoiceViewController> {
   const GenerateInvoice({super.key});
 
-  @override
-  State<GenerateInvoice> createState() => _GenerateInvoiceState();
-}
-
-class _GenerateInvoiceState extends State<GenerateInvoice> {
-  final controller = Get.find<CompanyInvoiceViewController>();
-  final employeControler = Get.find<CompanyEmployeeListViewController>();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,18 +23,15 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
         ),
         const SizedBox(height: 6),
         Obx(() {
-          // if (controller.pageState == PageState.loading) {
-          //   return const CircularProgressIndicator();
-          // }
+          final employeControler =
+              Get.find<CompanyEmployeeListViewController>();
           return CommonPopupMenu(
             onSelected: (String value) {
-              setState(() {
-                controller.selectedEmployeeName = value;
-              });
+              controller.selectedEmployeeName.value = value;
             },
             data:
                 employeControler.employeeList.map((e) => e.name ?? '').toList(),
-            selectedValue: controller.selectedEmployeeName ?? 'Select employee',
+            selectedValue: controller.selectedEmployeeName.value,
           );
         }),
         10.sh,
@@ -83,42 +60,12 @@ class _GenerateInvoiceState extends State<GenerateInvoice> {
                 validator: InputFieldValidator.name(),
                 keyboardType: TextInputType.number,
               ),
+              const SizedBox(height: 15),
+              const _GenerateInvoiceButton()
             ],
           ),
         ),
         20.sh,
-        PrimaryButton(
-          isLoading: controller.isGeneratedInvoice.value == true,
-          onTap: () {
-            if (!controller.formKey.currentState!.validate()) {
-              return;
-            }
-            if (controller.selectedEmployeeName == null) {
-              Get.snackbar(
-                'Warning',
-                'Please select employee name',
-                backgroundColor: CommonColor.redColors,
-                colorText: Colors.white,
-              );
-              return;
-            }
-            controller.generateInvoice().then((value) {
-              controller.clearTextFields();
-              FocusScope.of(context).unfocus();
-              controller.fetchInvoices();
-              Get.snackbar(
-                'Successful',
-                'Generate Invoice successfully',
-                backgroundColor: CommonColor.greenColor1,
-                colorText: Colors.white,
-              );
-            });
-          },
-          widget: const Text('Generate Invoice')
-              .fontSize(16)
-              .bold(FontWeight.w600)
-              .color(AppColors.white),
-        )
       ],
     );
   }

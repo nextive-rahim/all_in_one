@@ -19,7 +19,7 @@ class CompanyInvoiceViewController extends GetxController {
   InvoiceResponseModel? invoiceResponseModel;
   InvoiceLinkResponseModel? invoiceLinkResponseModel =
       InvoiceLinkResponseModel();
-  String? selectedEmployeeName;
+  Rx<String> selectedEmployeeName = 'selecte employee'.obs;
   RxBool isInvoiceLinkLoading = false.obs;
   RxBool isGeneratedInvoice = false.obs;
 
@@ -48,13 +48,13 @@ class CompanyInvoiceViewController extends GetxController {
     }
   }
 
-  Future<void> generateInvoice() async {
-    print(!formKey.currentState!.validate());
+  Future<InvoiceResponseModel> generateInvoice() async {
+    // print(!formKey.currentState!.validate());
 
     isGeneratedInvoice.value = true;
 
     Map<String, dynamic> requestBody = {
-      'name': selectedEmployeeName,
+      'name': selectedEmployeeName.value,
       'hour': hourController.text,
       'days': daysController.text,
       'amount': amountController.text,
@@ -63,21 +63,21 @@ class CompanyInvoiceViewController extends GetxController {
     Log.debug(requestBody.toString());
 
     try {
-      await _repository.generateInvoice(requestBody);
+      final res = await _repository.generateInvoice(requestBody);
 
-      //invoiceModel = InvoiceResponseModel.fromJson(res);
+      invoiceModel = InvoiceResponseModel.fromJson(res);
 
       isGeneratedInvoice.value = false;
 
-      return;
-      //clearTextFields();
+      return invoiceModel;
+
       //  Get.offAllNamed(Routes.dashboard);
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       isGeneratedInvoice.value = false;
-      return;
     }
+    return InvoiceResponseModel(success: false);
   }
 
   Future<InvoiceLinkResponseModel> invoiceLink(int invoiceId) async {
@@ -116,5 +116,18 @@ class CompanyInvoiceViewController extends GetxController {
     hourController.clear();
     daysController.clear();
     amountController.clear();
+  }
+
+  // @override
+  // void onClose() {
+  //   // TODO: implement onClose
+  //   super.onClose();
+  // }
+  @override
+  void dispose() {
+    hourController.dispose();
+    daysController.dispose();
+    amountController.dispose();
+    super.dispose();
   }
 }

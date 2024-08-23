@@ -24,8 +24,10 @@ class InvoiceResponseModel {
         success: json["success"],
         error: json["error"],
         message: json["message"],
-        data: List<InvoiceModel>.from(
-            json["data"].map((x) => InvoiceModel.fromJson(x))),
+        data: json["data"] == null
+            ? null
+            : List<InvoiceModel>.from(
+                json["data"].map((x) => InvoiceModel.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
