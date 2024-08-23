@@ -1,5 +1,6 @@
 import 'package:all_in_one/src/core/extension/string_extension.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
@@ -7,6 +8,7 @@ import 'package:all_in_one/src/core/widgets/text_form_field.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/controller/submit_interview_feedback_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/controller/interviewer_payment_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,35 +27,65 @@ class _InterviewFeedbackCardState extends State<InterviewFeedbackCard> {
   final controller = Get.find<SubmittedInterviewFeedbackViewController>();
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        interviewfeedbackBottomSheet(widget.interview);
-      },
-      child: const Padding(
-        padding: EdgeInsets.only(top: 16),
-        child: Row(
-          children: [
-            Icon(
-              Icons.mode_edit_outline_outlined,
-              color: CommonColor.blueColor1,
-            ),
-            SizedBox(width: 8),
-            TextWidget(
-              text: AppStrings.writeAFeedback,
-              color: CommonColor.blueColor1,
-              maxLine: 1,
-              fontFamily: AppStrings.sfProDisplay,
-              fontWeight: FontWeight.w400,
-              fontSize: 18,
-            ),
-          ],
+    return Obx(() {
+      final bool isFeedBackDone = Get.find<InterviewerPaymentViewController>()
+          .allPayments
+          .any((v) => v.userApplyInterviewId == widget.interview.id);
+      return GestureDetector(
+        onTap: () {
+          interviewfeedbackBottomSheet(widget.interview);
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: isFeedBackDone
+              ? GestureDetector(
+                  onTap: () {
+                    interviewfeedbackBottomSheet(widget.interview,
+                        isFromEdit: true);
+                  },
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        ImageConstant.edit,
+                        color: CommonColor.greenColor1,
+                        width: 20,
+                        height: 20,
+                        fit: BoxFit.fill,
+                      ),
+                      const SizedBox(width: 5),
+                      const Text(
+                        'Edit Feedback',
+                        style: TextStyle(
+                          color: CommonColor.greenColor1,
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              : const Row(
+                  children: [
+                    Icon(
+                      Icons.mode_edit_outline_outlined,
+                      color: CommonColor.blueColor1,
+                    ),
+                    SizedBox(width: 8),
+                    TextWidget(
+                      text: AppStrings.writeAFeedback,
+                      color: CommonColor.blueColor1,
+                      maxLine: 1,
+                      fontFamily: AppStrings.sfProDisplay,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 15,
+                    ),
+                  ],
+                ),
         ),
-      ),
-    );
+      );
+    });
   }
 
-  Future<bool> interviewfeedbackBottomSheet(
-      ViewInterviewResponseData interview) async {
+  Future<bool> interviewfeedbackBottomSheet(ViewInterviewResponseData interview,
+      {bool? isFromEdit = false}) async {
     return await showModalBottomSheet(
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -270,14 +302,29 @@ class _InterviewFeedbackCardState extends State<InterviewFeedbackCard> {
                                       AppStrings.plzFillAllFields,
                                       CommonColor.redColors);
                                 } else {
-                                  controller
-                                      .submittedInterviewFeedBack(
-                                        widget.interview.id!,
-                                        _interviewFeedbackController.text,
-                                      )
-                                      .then(
-                                        (value) => Navigator.pop(context, true),
-                                      );
+                                  isFromEdit == true
+                                      ? controller
+                                          .editFeedback(widget.interview.id!,
+                                              _interviewFeedbackController.text)
+                                          .then((v) {
+                                          Navigator.pop(context, true);
+                                          Get.find<
+                                                  InterviewerPaymentViewController>()
+                                              .getInterviewerPayment();
+                                        })
+                                      : controller
+                                          .submittedInterviewFeedBack(
+                                          widget.interview.id!,
+                                          _interviewFeedbackController.text,
+                                        )
+                                          .then(
+                                          (value) {
+                                            Navigator.pop(context, true);
+                                            Get.find<
+                                                    InterviewerPaymentViewController>()
+                                                .getInterviewerPayment();
+                                          },
+                                        );
                                 }
                               },
                               child: Container(

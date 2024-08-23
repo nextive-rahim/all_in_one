@@ -11,15 +11,15 @@ class InterviewLinkButton extends GetView<AllInterviewsViewController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
-        // if (!interview.interviewLink!.contains('https://')) {
-        //   Get.snackbar(
-        //     'Failed',
-        //     'Please inter a vaild meeting link',
-        //     backgroundColor: CommonColor.redColors,
-        //     colorText: Colors.white,
-        //   );
-        //   return;
-        // }
+        if (!interview.interviewLink!.contains('https://')) {
+          Get.snackbar(
+            'Failed',
+            'Please inter a vaild meeting link',
+            backgroundColor: CommonColor.redColors,
+            colorText: Colors.white,
+          );
+          return;
+        }
         await urlLauncher(interview.interviewLink ?? '').then((v) {
           controller.completeInterviewRequest(interview.id!).then((v2) {
             controller.getAllInterviews();
@@ -41,7 +41,7 @@ class InterviewLinkButton extends GetView<AllInterviewsViewController> {
               maxLine: 1,
               fontFamily: AppStrings.sfProDisplay,
               fontWeight: FontWeight.w400,
-              fontSize: 18,
+              fontSize: 15,
             ),
           ],
         ),

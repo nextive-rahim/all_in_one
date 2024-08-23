@@ -40,13 +40,34 @@ class SubmittedInterviewFeedbackViewController extends GetxController {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
       _pageStateController(PageState.error);
+    }
+  }
+
+  Future<void> editFeedback(
+    int id,
+    String feedbackMsg,
+  ) async {
+    _pageStateController(PageState.loading);
+    Map<String, dynamic> body = {
+      "id": id,
+      "feedback_content": feedbackMsg,
+    };
+
+    try {
+      await repository.editFeedback(body);
+
+      _pageStateController(PageState.success);
       Get.snackbar(
-        'Failed',
-        'Failed to submited interview feedback',
-        backgroundColor: CommonColor.redColors,
-        colorText: Colors.white,
+        'Success',
+        'Edit Feedback Successfully.',
         snackPosition: SnackPosition.TOP,
+        backgroundColor: CommonColor.greenColor1,
+        colorText: Colors.white,
       );
+    } catch (e, stackTrace) {
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
+      _pageStateController(PageState.error);
     }
   }
 }

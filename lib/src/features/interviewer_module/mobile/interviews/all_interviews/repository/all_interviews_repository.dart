@@ -10,10 +10,23 @@ class InterviewsRepository {
     return res.data;
   }
 
-  Future<dynamic> submitInterviewFeedback(Map<String, dynamic> data) async {
+  Future<dynamic> submitInterviewFeedback(
+    Map<String, dynamic> data,
+  ) async {
     final res = await RestClient.dev().post(
       APIType.PROTECTED,
       API.interviewFeedPost,
+      data,
+    );
+    return res.data;
+  }
+
+  Future<dynamic> editFeedback(
+    Map<String, dynamic> data,
+  ) async {
+    final res = await RestClient.dev().post(
+      APIType.PROTECTED,
+      API.editFeedBack,
       data,
     );
     return res.data;
