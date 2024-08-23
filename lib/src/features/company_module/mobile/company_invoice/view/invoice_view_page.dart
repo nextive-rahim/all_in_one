@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/common_pdf_viewer.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/download_invoice_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -100,9 +101,7 @@ class CompanyInvoiceViewPage extends StatelessWidget {
                   IconButton(
                       onPressed: () {
                         Clipboard.setData(ClipboardData(text: url));
-                        Get.snackbar('Success', "Copied to Clipboard",
-                            colorText: CommonColor.whiteColor,
-                            backgroundColor: CommonColor.greenColor1);
+                        SnackBarService.showInfoSnackBar("Copied to Clipboard");
                       },
                       icon: const Icon(
                         Icons.copy,

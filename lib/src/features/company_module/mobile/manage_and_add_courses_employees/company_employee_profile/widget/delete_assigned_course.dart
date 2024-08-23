@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
@@ -48,13 +49,7 @@ class DeletedAssignCourse extends GetView<CompanyEmployeeListViewController> {
                   controller.assignedCouseList
                       .removeWhere((v) => v.id == course.id);
                   Get.back();
-                  Get.snackbar(
-                    'Successful',
-                    'Successfully delete job.',
-                    backgroundColor: CommonColor.greenColor1,
-                    colorText: Colors.white,
-                    borderWidth: 1,
-                  );
+                  SnackBarService.showInfoSnackBar('Successfully delete job.');
                 });
               },
               child: const Text(

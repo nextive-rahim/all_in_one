@@ -128,19 +128,14 @@ class _SubmitPortfolioLinkSectionState
             if (controller.submitExamLinkController.text.isNotEmpty) {
               if (!Get.find<SubmitResultLinkViewController>()
                   .isSubmittedResultLink) {
-                Util.displayToast(
-                  context,
-                  'Please submit the link first',
-                  Colors.red,
-                );
+                SnackBarService.showErrorSnackBar(
+                    'Please submit the link first');
+
                 return;
               }
               controller.submitPortfolioLink(1).then((value) {
-                Util.displayToast(
-                  context,
-                  'Successfully submitted portfolio link',
-                  Colors.black,
-                );
+                SnackBarService.showInfoSnackBar(
+                    'Successfully submitted portfolio link');
               });
               Get.find<StudentInterviewRequestViewController>()
                   .activeRequistForInterview

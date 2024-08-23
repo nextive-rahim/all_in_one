@@ -73,20 +73,15 @@ class SubmitExamResultLinkSection
             onTap: () {
               if (controller.submitExamLinkController.text.isNotEmpty) {
                 controller.submitExamLink(course.id!).then(
-                      (value) => Util.displayToast(
-                        context,
+                      (value) => SnackBarService.showInfoSnackBar(
                         'Successfully submitted result link',
-                        Colors.black,
                       ),
                     );
                 controller.isSubmittedResultLink = true;
                 controller.submitExamLinkController.clear();
               } else {
-                Util.displayToast(
-                  context,
-                  'Please enter exam result link',
-                  Colors.red,
-                );
+                SnackBarService.showErrorSnackBar(
+                    'Please enter exam result link');
               }
             },
             child: const TextWidget(

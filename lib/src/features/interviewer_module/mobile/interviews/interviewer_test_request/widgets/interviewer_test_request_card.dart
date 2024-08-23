@@ -1,8 +1,8 @@
-import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_date_field.dart';
 import 'package:all_in_one/src/core/widgets/text_time_field.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
@@ -357,12 +357,8 @@ class _InterviewerTestRequestCardState
                                         .timeSlotAController.text.isEmpty ||
                                     interviewTestRequestController
                                         .timeSlotBController.text.isEmpty) {
-                                  Get.snackbar(
-                                    'Failed',
-                                    AppStrings.plzFillAllFields,
-                                    backgroundColor: AppColors.red,
-                                    colorText: AppColors.white,
-                                  );
+                                  SnackBarService.showErrorSnackBar(
+                                      AppStrings.plzFillAllFields);
                                 } else {
                                   Navigator.pop(context, true);
                                 }

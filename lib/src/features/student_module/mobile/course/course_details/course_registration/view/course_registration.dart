@@ -59,17 +59,8 @@ class CourseRegistrationSection
                           .isCourseAllVideosWatched.value);
                       if (!courseRegistratoinController
                           .isCourseAllVideosWatched.value) {
-                        // userCourseAvailabilityViewController
-                        //     .checkUserCourseAvailability()
-                        //     .then(
-                        //   (value) {
-                        Util.displayToast(
-                            context,
-                            "Please watch the all videos first",
-                            CommonColor.redColors);
-
-                        // },
-                        // );
+                        SnackBarService.showErrorSnackBar(
+                            "Please watch the all videos first");
                       } else {
                         Get.toNamed(
                           Routes.appearTestAndScheduleInterviewMobilePage,

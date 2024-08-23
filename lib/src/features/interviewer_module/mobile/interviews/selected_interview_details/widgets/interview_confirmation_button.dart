@@ -36,23 +36,6 @@ class _InterviewConfarmationButtonState
     return GestureDetector(
       onTap: () {
         controller.confirmInterviewRequest(widget.interview.id!).then((value) {
-          // if (controller.responsStatus == false) {
-          //   Get.snackbar(
-          //     'Failed',
-          //     'Interview Not Confirmed',
-          //     snackPosition: SnackPosition.TOP,
-          //     borderColor: CommonColor.redColors,
-          //     borderWidth: 1,
-          //   );
-          // } else {
-
-          // final FocusScopeNode focusScope = FocusScope.of(context);
-          // focusScope.unfocus();
-          // Get.snackbar(
-          //   'Successfully',
-          //   'Interview  Confirmed Successfully',
-          //   snackPosition: SnackPosition.BOTTOM,
-          // // );
           controller3.getAllInterviews();
           Get.put(SendNotificationViewController()).sendNotification(
               userId: widget.interview.userId,

@@ -1,6 +1,5 @@
 import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
 import 'package:all_in_one/src/core/service/cache/cache_service.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/course_content/controller/is_watch_video_view_controller.dart';
@@ -85,11 +84,9 @@ class _ContentVideoBuilderState extends State<ContentVideoBuilder> {
                         profileController.profileResponseModel.isSubscribed !=
                             1) ||
                     !courseRegistratoinController.courseRegistered.value)) {
-                  return Util.displayToast(
-                    context,
-                    "Please register the course first",
-                    CommonColor.redColors,
-                  );
+                  SnackBarService.showErrorSnackBar(
+                      "Please register the course first");
+                  return;
                 }
                 videoController.videolink.value =
                     // 'https://www.youtube.com/watch?v=B5i-MSifHvY';

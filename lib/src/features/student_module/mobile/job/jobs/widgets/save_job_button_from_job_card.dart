@@ -1,5 +1,6 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
@@ -18,36 +19,20 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
     return GestureDetector(
       onTap: () {
         if (isSavedJob.value || job.isSaved != 0) {
-          Get.snackbar(
-            'Alert',
-            'Job is already saved',
-            snackPosition: SnackPosition.TOP,
-            backgroundColor: CommonColor.redColors,
-            colorText: Colors.white,
-          );
+          SnackBarService.showErrorSnackBar('Job is already saved');
 
           return;
         }
         controller.saveJob(job.id!).then((value) {
           if (value.success == true) {
             isSavedJob.value = true;
-            Get.snackbar(
-              'Success',
-              'Successfully Saved job',
-              backgroundColor: CommonColor.greenColor1,
-              colorText: Colors.white,
-            );
+            SnackBarService.showInfoSnackBar('Successfully Saved job');
+
             controller.getjobList();
             // controller.savedJobList.add(job);
           } else {
             isSavedJob.value = false;
-            Get.snackbar(
-              'Falied',
-              'Failed Save job',
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-            );
+            SnackBarService.showErrorSnackBar('Failed Save job');
           }
         });
       },

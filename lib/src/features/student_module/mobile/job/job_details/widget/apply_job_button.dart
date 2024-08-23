@@ -2,6 +2,7 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
@@ -31,31 +32,19 @@ class ApplyJobButton extends GetView<JobsViewController> {
               isLoading: controller.isLoadingAppliedJob.value == true,
               onTap: () {
                 if (job.isApplied != 0 || isAppliedJob.value) {
-                  Get.snackbar(
-                    'Warning',
-                    'Job is already Applied',
-                    backgroundColor: CommonColor.redColors,
-                    colorText: Colors.white,
-                  );
+                  SnackBarService.showErrorSnackBar('Job is already Applied');
+
                   return;
                 }
                 controller.applyJob(job.id!).then((value) {
                   if (value.success == true) {
-                    Get.snackbar(
-                      'Success',
-                      'Successfully applied job',
-                      backgroundColor: CommonColor.greenColor1,
-                      colorText: Colors.white,
-                    );
+                    SnackBarService.showInfoSnackBar(
+                        'Successfully applied job');
+
                     isAppliedJob.value = true;
                     controller.getjobList();
                   } else {
-                    Get.snackbar(
-                      'Falied',
-                      'Failed apply job',
-                      backgroundColor: CommonColor.redColors,
-                      colorText: Colors.white,
-                    );
+                    SnackBarService.showErrorSnackBar('Failed apply job');
                   }
                 });
               },

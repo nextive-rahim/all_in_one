@@ -3,6 +3,7 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/other_jobs/controller/other_company_job_view_controller.dart';
@@ -32,12 +33,8 @@ class CompanyJobApplyButton extends GetView<OtherCompanyJobsViewController> {
               isLoading: controller.isLoadingAppliedJob.value == true,
               onTap: () {
                 if (job.isApplied != 0 || isAppliedJob.value) {
-                  Get.snackbar(
-                    'Warning',
-                    'Job is already Applied222',
-                    backgroundColor: CommonColor.redColors,
-                    colorText: Colors.white,
-                  );
+                  SnackBarService.showErrorSnackBar('Job is already Applied');
+
                   return;
                 }
                 Get.toNamed(

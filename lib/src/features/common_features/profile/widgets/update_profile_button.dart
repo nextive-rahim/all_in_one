@@ -1,7 +1,7 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_update_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
@@ -19,18 +19,14 @@ class UpdateProfileButton extends GetView<UpdateProfileiewController> {
         child: PrimaryButton(
           isLoading: controller.pageState == PageState.loading,
           onTap: () async {
-            await controller.updateProfile().then((value) {
-              if (value.success == true) {
-                // Get.back();
-                Get.snackbar(
-                  'Successfully',
-                  'Update Profile Successfully',
-                  snackPosition: SnackPosition.TOP,
-                  backgroundColor: CommonColor.greenColor1,
-                  colorText: Colors.white,
-                );
-              }
-            }).then((v) {
+            await controller.updateProfile().then(
+              (value) {
+                if (value.success == true) {
+                  SnackBarService.showInfoSnackBar(
+                      'Update Profile Successfully');
+                }
+              },
+            ).then((v) {
               Get.find<ProfileViewController>().getUser();
             });
           },

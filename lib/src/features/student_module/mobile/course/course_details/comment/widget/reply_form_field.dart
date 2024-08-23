@@ -1,5 +1,4 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
@@ -40,11 +39,8 @@ class CommentReplyCard extends GetView<WriteReplyViewController> {
         IconButton(
             onPressed: () {
               if (controller.repleCommentTextController.text.isEmpty) {
-                return Util.displayToast(
-                  context,
-                  "Please make a reply",
-                  CommonColor.redColors,
-                );
+                SnackBarService.showErrorSnackBar('Please make a reply');
+                return;
               }
               controller
                   .addReply(

@@ -293,10 +293,8 @@ class _InterviewFeedbackCardState extends State<InterviewFeedbackCard> {
                             GestureDetector(
                               onTap: () {
                                 if (_interviewFeedbackController.text.isEmpty) {
-                                  Util.displayToast(
-                                      context,
-                                      AppStrings.plzFillAllFields,
-                                      CommonColor.redColors);
+                                  Util.displayErrorToast(
+                                      context, AppStrings.plzFillAllFields);
                                 } else {
                                   isFromEdit == true
                                       ? controller

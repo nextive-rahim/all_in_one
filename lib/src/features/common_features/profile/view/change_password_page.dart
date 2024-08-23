@@ -6,6 +6,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/validators/input_form_validators.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
@@ -149,26 +150,13 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       return;
     }
     controller.changePassword(_formKey).then((response) {
-      print(controller.loginModel.message);
       if (controller.loginModel.message == 'Password Change Successfully.') {
         Get.back();
-        Get.snackbar(
-          AppStrings.success,
-          controller.loginModel.message.toString(),
-          backgroundColor: CommonColor.greenColor1,
-          colorText: Colors.white,
-          borderWidth: 1,
-        );
+        SnackBarService.showInfoSnackBar(
+            controller.loginModel.message.toString());
 
         return;
       }
-      // Get.snackbar(
-      //   AppStrings.failed,
-      //   controller.loginModel.message.toString(),
-      //   backgroundColor: CommonColor.redColors,
-      //   colorText: Colors.white,
-      //   borderWidth: 1,
-      // );
     });
   }
 }

@@ -8,6 +8,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/validators/input_form_validators.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
@@ -343,33 +344,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
   void onTap() {
     controller.registration(_formKey, Get.arguments).then((value) {
       if (controller.selectedSkillIdList.isEmpty) {
-        Get.snackbar(
-          'Waring',
-          'Please selecte skill',
-          backgroundColor: CommonColor.redColors,
-          colorText: Colors.white,
-          snackPosition: SnackPosition.TOP,
-        );
+        SnackBarService.showErrorSnackBar('Please Select Skills');
+
         return;
       }
 
       if (controller.signupModel!.success == false) {
-        Get.snackbar(
-          AppStrings.failed,
-          AppStrings.registrationFailedMessage,
-          backgroundColor: CommonColor.redColors,
-          colorText: Colors.white,
-          borderWidth: 1,
-          snackPosition: SnackPosition.TOP,
-        );
+        SnackBarService.showErrorSnackBar(AppStrings.registrationFailedMessage);
       } else {
-        Get.snackbar(
-          AppStrings.success,
-          AppStrings.registrationSuccessfulMessage,
-          snackPosition: SnackPosition.TOP,
-          backgroundColor: CommonColor.greenColor1,
-          colorText: Colors.white,
-        );
+        SnackBarService.showInfoSnackBar(AppStrings.registrationFailedMessage);
+
         Get.offNamed(Routes.registrationCompleted);
       }
     });

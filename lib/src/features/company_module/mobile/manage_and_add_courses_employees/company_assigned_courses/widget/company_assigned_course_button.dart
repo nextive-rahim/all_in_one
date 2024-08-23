@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/controller/company_assigned_%20course_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
@@ -19,33 +20,17 @@ class CompanyAssignedCourseButton
     return GestureDetector(
       onTap: () {
         if (controller.courseIDList.isEmpty) {
-          Get.snackbar(
-            'Waring',
-            'Selected at least one course',
-            backgroundColor: CommonColor.redColors,
-            colorText: Colors.white,
-            borderWidth: 1,
-          );
+          SnackBarService.showErrorSnackBar('Selected at least one course');
+
           return;
         }
         controller.companyAssingedCourse(employee.userId!).then((value) {
           if (value.success == true) {
             Get.find<CompanyEmployeeListViewController>().getEmployeeList();
             Get.back();
-            Get.snackbar(
-              'Success',
-              'course added successfully.',
-              backgroundColor: CommonColor.greenColor1,
-              colorText: Colors.white,
-            );
+            SnackBarService.showInfoSnackBar('course added successfully.');
           } else {
-            Get.snackbar(
-              'Failed',
-              'course added Failed.',
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-              borderWidth: 1,
-            );
+            SnackBarService.showErrorSnackBar('course added Failed.');
           }
         });
       },

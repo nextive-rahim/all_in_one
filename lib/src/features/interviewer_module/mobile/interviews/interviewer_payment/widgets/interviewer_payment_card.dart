@@ -103,7 +103,6 @@ class InterviewerPaymentCard extends StatelessWidget {
 
 class _FeedBackSection extends StatefulWidget {
   const _FeedBackSection({
-    super.key,
     required this.paymentModel,
   });
   final InterviewerPaymentModel paymentModel;
@@ -332,10 +331,8 @@ class _FeedBackSectionState extends State<_FeedBackSection> {
                             GestureDetector(
                               onTap: () {
                                 if (_interviewFeedbackController.text.isEmpty) {
-                                  Util.displayToast(
-                                      context,
-                                      AppStrings.plzFillAllFields,
-                                      CommonColor.redColors);
+                                  Util.displayErrorToast(
+                                      context, AppStrings.plzFillAllFields);
                                 } else {
                                   controller
                                       .editFeedback(

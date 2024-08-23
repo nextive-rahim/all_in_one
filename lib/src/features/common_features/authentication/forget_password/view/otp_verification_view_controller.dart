@@ -6,6 +6,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/validators/input_form_validators.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/core/widgets/text_form_field.dart';
@@ -133,21 +134,12 @@ class OTPverificationPageState extends State<OTPverificationPage> {
     controller.otpverification(_formKey).then(
       (response) {
         if (controller.loginModel.success == false) {
-          Get.snackbar(
-              AppStrings.failed, controller.loginModel.message.toString(),
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-              borderWidth: 1,
-              snackPosition: SnackPosition.TOP);
+          SnackBarService.showErrorSnackBar(
+              controller.loginModel.message.toString());
         } else {
-          Get.snackbar(
-            AppStrings.success,
-            controller.loginModel.message.toString(),
-            borderWidth: 1,
-            snackPosition: SnackPosition.TOP,
-            backgroundColor: CommonColor.greenColor1,
-            colorText: Colors.white,
-          );
+          SnackBarService.showInfoSnackBar(
+              controller.loginModel.message.toString());
+
           Get.toNamed(Routes.forgotPassword);
         }
       },

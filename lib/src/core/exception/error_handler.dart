@@ -1,7 +1,5 @@
-import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 void errorHandler(
   Object e,
@@ -11,11 +9,5 @@ void errorHandler(
 }) {
   Log.error(e.toString());
   Log.error(stackTrace.toString());
-  Get.snackbar(
-    'Failed',
-    feedback,
-    snackPosition: SnackPosition.TOP,
-    backgroundColor: CommonColor.redColors,
-    colorText: Colors.white,
-  );
+  SnackBarService.showErrorSnackBar(feedback);
 }

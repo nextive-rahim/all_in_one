@@ -63,8 +63,10 @@ class _ChooseEngagementPageState extends State<ChooseEngagementPage> {
                       Get.toNamed(Routes.registration,
                           arguments: (_selectedIndex! + 1).toString());
                     } else {
-                      Util.displayToast(context, AppStrings.chooseEngagementMsg,
-                          CommonColor.redColors);
+                      Util.displayErrorToast(
+                        context,
+                        AppStrings.chooseEngagementMsg,
+                      );
                     }
                   },
                   child: Container(

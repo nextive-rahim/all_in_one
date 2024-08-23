@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:flutter/material.dart';
@@ -51,12 +52,7 @@ class DeleteEmployeeButton extends GetView<CompanyEmployeeListViewController> {
                     controller.employeeList
                         .removeWhere((v) => v.id == employee.id);
                   } else {
-                    Get.snackbar(
-                      'Failded',
-                      v.message ?? '',
-                      backgroundColor: CommonColor.redColors,
-                      colorText: CommonColor.whiteColor,
-                    );
+                    SnackBarService.showErrorSnackBar(v.message ?? '');
                   }
                 });
                 Navigator.of(context).pop();

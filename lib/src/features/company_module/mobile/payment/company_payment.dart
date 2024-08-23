@@ -4,9 +4,9 @@ import 'package:all_in_one/src/core/extension/text_extension.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/my_separator.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CompanyPaymentPageMobile extends StatefulWidget {
   const CompanyPaymentPageMobile({
@@ -135,13 +135,8 @@ class _CompanyPaymentPageMobileState extends State<CompanyPaymentPageMobile> {
                               ),
                               InkWell(
                                 onTap: () {
-                                  print('object');
-                                  Get.snackbar(
-                                    'Waring',
-                                    'Payment gateway not ready yet',
-                                    backgroundColor: CommonColor.redColors,
-                                    colorText: Colors.white,
-                                  );
+                                  SnackBarService.showErrorSnackBar(
+                                      'Payment gateway not ready yet');
                                 },
                                 child: Container(
                                   width: 165,
@@ -391,12 +386,8 @@ class _CompanyPaymentPageMobileState extends State<CompanyPaymentPageMobile> {
                                   ),
                                   child: InkWell(
                                     onTap: () {
-                                      Get.snackbar(
-                                        'Waring',
-                                        'Payment gateway not ready yet',
-                                        backgroundColor: CommonColor.redColors,
-                                        colorText: Colors.white,
-                                      );
+                                      SnackBarService.showErrorSnackBar(
+                                          'Payment gateway not ready yet');
                                     },
                                     child: const Text(
                                       'Pay Now',

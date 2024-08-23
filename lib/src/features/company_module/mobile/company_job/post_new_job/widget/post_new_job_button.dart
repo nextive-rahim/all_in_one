@@ -1,6 +1,6 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/controller/company_job_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/controller/post_company_new_job_view_controller.dart';
 import 'package:flutter/material.dart';
@@ -16,25 +16,15 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
       child: GestureDetector(
         onTap: () {
           if (!controller.formKey.currentState!.validate()) {
-            Get.snackbar(
-              'Attention',
-              'Please fill the field.',
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-              borderWidth: 1,
-            );
+            SnackBarService.showErrorSnackBar('Please fill the field.');
+
             return;
           }
           if (controller.isFromPostEdit.value) {
             controller.editCompanyJob(controller.job!.id!).then((value) {
               if (value.success == true) {
                 Get.back();
-                Get.snackbar(
-                  'Successfully',
-                  'Post Edit Successfully',
-                  backgroundColor: CommonColor.greenColor1,
-                  colorText: Colors.white,
-                );
+                SnackBarService.showInfoSnackBar('Post Edit Successfully');
 
                 Get.find<CompanyJobViewController>().getCompanyjobList();
               }
@@ -43,12 +33,7 @@ class PostNewJobButton extends GetView<PostCompanyNewJobViewController> {
             controller.postNewJob().then((value) {
               if (value.success == true) {
                 Get.back();
-                Get.snackbar(
-                  'Successful',
-                  'Post Added Successfully',
-                  backgroundColor: CommonColor.greenColor1,
-                  colorText: Colors.white,
-                );
+                SnackBarService.showInfoSnackBar('Post Added Successfully');
 
                 Get.find<CompanyJobViewController>().getCompanyjobList();
               }

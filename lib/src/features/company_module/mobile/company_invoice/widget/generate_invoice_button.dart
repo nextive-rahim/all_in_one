@@ -13,29 +13,22 @@ class _GenerateInvoiceButton extends GetView<CompanyInvoiceViewController> {
             return;
           }
           if (controller.selectedEmployeeName.value == 'selecte employee') {
-            Get.snackbar(
-              'Warning',
-              'Please select employee name',
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-            );
+            SnackBarService.showErrorSnackBar('Please select employee name');
+
             return;
           }
           FocusManager.instance.primaryFocus!.unfocus();
-          controller.generateInvoice().then((value) {
-            if (value.success == false) {
-              return;
-            }
-            controller.clearTextFields();
+          controller.generateInvoice().then(
+            (value) {
+              if (value.success == false) {
+                return;
+              }
+              controller.clearTextFields();
 
-            controller.fetchInvoices();
-            Get.snackbar(
-              'Successful',
-              'Generate Invoice successfully',
-              backgroundColor: CommonColor.greenColor1,
-              colorText: Colors.white,
-            );
-          });
+              controller.fetchInvoices();
+              SnackBarService.showInfoSnackBar('Generate Invoice successfully');
+            },
+          );
         },
         widget: const Text('Generate Invoice')
             .fontSize(16)

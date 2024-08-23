@@ -66,7 +66,6 @@ class CompanyEmployeeCompletedCourseSection
 
 class _AssignedCourseCard extends StatelessWidget {
   const _AssignedCourseCard({
-    super.key,
     required this.assignCourse,
   });
   final CourseModel? assignCourse;

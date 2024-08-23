@@ -50,26 +50,4 @@ class InterviewerPaymentViewController extends GetxController {
       _pageStateController(PageState.error);
     }
   }
-
-  // Future<void> completeInterviewRequest(int id) async {
-  //   // _pageStateController(PageState.loading);
-  //   Map<String, dynamic> body = {"id": id};
-
-  //   try {
-  //     await repository.completeInterview(body);
-
-  //     // _pageStateController(PageState.success);
-  //   } catch (e, stackTrace) {
-  //     Log.error(e.toString());
-  //     Log.error(stackTrace.toString());
-  //     // _pageStateController(PageState.error);
-  //     Get.snackbar(
-  //       'Failed',
-  //       'Interview Not Confirmed',
-  //       snackPosition: SnackPosition.TOP,
-  //       backgroundColor: CommonColor.redColors,
-  //       colorText: Colors.white,
-  //     );
-  //   }
-  // }
 }

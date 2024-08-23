@@ -3,7 +3,7 @@ import 'package:all_in_one/src/core/extension/string_extension.dart';
 import 'package:all_in_one/src/core/extension/text_extension.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/validators/input_form_validators.dart';
 import 'package:all_in_one/src/core/widgets/common_dropdown.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';

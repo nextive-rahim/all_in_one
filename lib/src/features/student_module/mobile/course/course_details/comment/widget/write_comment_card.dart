@@ -167,11 +167,8 @@ class WriteComment extends GetView<WriteCommentViewController> {
                               controller.writeCommentTextController.text = '';
                             });
                           } else {
-                            Util.displayToast(
-                              context,
-                              "Please make a comment",
-                              CommonColor.redColors,
-                            );
+                            SnackBarService.showErrorSnackBar(
+                                "Please make a comment");
                           }
                         },
                         child: Container(

@@ -9,12 +9,8 @@ class CompanySelecteCandidateForInterview
     return InkWell(
       onTap: () {
         if (controller.user?.isSelected == 1) {
-          Get.snackbar(
-            'Attention!!',
-            'Already selected for interview.',
-            backgroundColor: CommonColor.redColors,
-            colorText: AppColors.white,
-          );
+          SnackBarService.showErrorSnackBar('Already selected for interview.');
+
           return;
         }
 
@@ -24,11 +20,9 @@ class CompanySelecteCandidateForInterview
               controller.appliedCandidateList!.refresh();
               controller.seletedCandidate!.refresh();
               Get.back();
-              Get.snackbar(
-                'Successfully',
-                'Selected Candidate for Interview.',
-                backgroundColor: CommonColor.greenColor1,
-              );
+              SnackBarService.showInfoSnackBar(
+                  'Selected Candidate for Interview.');
+
               controller.getCompanyjobList();
             });
           }

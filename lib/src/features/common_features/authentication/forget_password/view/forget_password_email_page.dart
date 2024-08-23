@@ -146,23 +146,10 @@ class _ForgetPasswordEmailPageState extends State<ForgetPasswordEmailPage> {
           context,
           controller.loginModel.message.toString(),
         );
-        // Get.snackbar(
-        //   AppStrings.failed,
-        //   controller.loginModel.message.toString(),
-        //   backgroundColor: CommonColor.redColors,
-        //   colorText: Colors.white,
-        //   borderWidth: 1,
-        //   snackPosition: SnackPosition.TOP,
-        // );
       } else {
-        Get.snackbar(
-          AppStrings.success,
-          controller.loginModel.message.toString(),
-          borderWidth: 1,
-          snackPosition: SnackPosition.TOP,
-          backgroundColor: CommonColor.greenColor1,
-          colorText: Colors.white,
-        );
+        SnackBarService.showInfoSnackBar(
+            controller.loginModel.message.toString());
+
         Get.toNamed(Routes.otpVerification);
       }
     });

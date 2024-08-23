@@ -2,15 +2,12 @@ import 'package:all_in_one/src/core/exception/custom_exception.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
 import 'package:all_in_one/src/core/service/cache/cache_service.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart' as getx;
-import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/get_navigation/src/snackbar/snackbar.dart';
 import 'package:get_storage/get_storage.dart' show GetStorage;
 
 import 'endpoints.dart';
@@ -233,39 +230,22 @@ class RestClient {
           );
         case DioExceptionType.unknown:
           final message = errorMessage ?? '${error.response?.data['message']}';
+          SnackBarService.showErrorSnackBar(message.toString());
           throw UnknownException(
             002,
-            Get.snackbar(
-              'Unknown Exception',
-              message.toString(),
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-            ),
           );
         case DioExceptionType.receiveTimeout:
+          SnackBarService.showErrorSnackBar(
+              error.message.toString().toString());
           throw ReceiveTimeoutException(
             004,
-            Get.snackbar(
-              'Failed',
-              error.message.toString(),
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-            ),
           );
         case DioExceptionType.sendTimeout:
           final message = errorMessage ?? '${error.response?.data['message']}';
 
+          SnackBarService.showErrorSnackBar(message.toString().toString());
           throw RequestTimeoutException(
             004,
-            Get.snackbar(
-              'Failed',
-              message.toString(),
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-            ),
           );
         case DioExceptionType.badCertificate:
           throw BadRequestException(
@@ -273,15 +253,10 @@ class RestClient {
             'Could not connect to the server.Please try again.',
           );
         case DioExceptionType.connectionError:
+          SnackBarService.showErrorSnackBar(
+              'You don not have internet connection');
           throw RequestTimeoutException(
             522,
-            Get.snackbar(
-              'Failed',
-              'You don not have internet connection',
-              borderColor: CommonColor.redColors,
-              borderWidth: 1,
-              snackPosition: SnackPosition.TOP,
-            ),
           );
         case DioExceptionType.badResponse:
           switch (error.response?.statusCode) {
@@ -297,26 +272,15 @@ class RestClient {
               getx.Get.offAllNamed(Routes.login);
               break;
             case 401:
-              // Get.snackbar(
-              //   'Failed',
-              //   error.toString(),
-              //   snackPosition: SnackPosition.TOP,
-              // );
               CacheService().dispose();
               getx.Get.offAllNamed(Routes.login);
               break;
             case 404:
               final message =
                   errorMessage ?? '${error.response?.data['message']}';
+              SnackBarService.showErrorSnackBar(message.toString());
               throw NotFoundException(
                 404,
-                Get.snackbar(
-                  'Failed',
-                  message.toString(),
-                  snackPosition: SnackPosition.TOP,
-                  backgroundColor: CommonColor.redColors,
-                  colorText: Colors.white,
-                ),
               );
             case 409:
               throw ConflictException(
@@ -326,36 +290,27 @@ class RestClient {
             case 408:
               final message =
                   errorMessage ?? '${error.response?.data['message']}';
+              SnackBarService.showErrorSnackBar(message.toString());
               throw RequestTimeoutException(
                 408,
-                Get.snackbar(
-                  'Failed',
-                  message.toString(),
-                  snackPosition: SnackPosition.TOP,
-                ),
               );
             case 500:
               final message = errorMessage ??
                   '${error.response?.data['message']['message']}';
+              SnackBarService.showErrorSnackBar(message['message'].toString());
               throw InternalServerException(
                 500,
-                Get.snackbar('Failed', message['message'].toString(),
-                    snackPosition: SnackPosition.TOP,
-                    backgroundColor: CommonColor.redColors,
-                    colorText: CommonColor.whiteColor),
               );
             case 422:
               final message =
                   errorMessage ?? '${error.response?.data['message']}';
+              (message as Map).entries.first.value != null
+                  ? SnackBarService.showErrorSnackBar(
+                      message.toString().replaceAll(RegExp('[{}]'), ''),
+                    )
+                  : null;
               throw UnprocessableEntityException(
                 422,
-                (message as Map).entries.first.value != null
-                    ? Get.snackbar(
-                        'Failed',
-                        message.toString().replaceAll(RegExp('[{}]'), ''),
-                        snackPosition: SnackPosition.TOP,
-                      )
-                    : null,
               );
             default:
               throw DefaultException(

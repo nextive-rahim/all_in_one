@@ -5,8 +5,6 @@ import 'package:all_in_one/src/features/student_module/mobile/job/job_details/wi
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 class AppliedCandidateListBuilder extends GetView<CompanyJobViewController> {
   const AppliedCandidateListBuilder({

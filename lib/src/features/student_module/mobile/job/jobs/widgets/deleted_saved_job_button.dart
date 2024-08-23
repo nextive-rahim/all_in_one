@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
@@ -22,24 +23,12 @@ class DeletedSaveJobButtonFromJobCard extends GetView<JobsViewController> {
           if (value.success == true) {
             controller.savedJobList
                 .removeWhere((element) => element.id == job.id);
+            SnackBarService.showInfoSnackBar('Successfully delete Saved job');
 
-            Get.snackbar(
-              'Success',
-              'Successfully delete Saved job',
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: CommonColor.greenColor1,
-              colorText: Colors.white,
-            );
             controller.getjobList();
             // Get.find<AppliedJobsViewController>().appliedjobList();
           } else {
-            Get.snackbar(
-              'Falied',
-              'Failed Save job',
-              snackPosition: SnackPosition.TOP,
-              backgroundColor: CommonColor.redColors,
-              colorText: Colors.white,
-            );
+            SnackBarService.showErrorSnackBar('Failed Save job');
           }
         });
       },

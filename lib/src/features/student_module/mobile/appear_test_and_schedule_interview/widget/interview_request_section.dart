@@ -103,8 +103,10 @@ class _InterviewRequestSectionState extends State<InterviewRequestSection> {
               if (controller.activeRequistForInterview.value) {
                 requestForInterviewBottomSheet();
               } else {
-                Util.displayToast(context, "Please submit Project link",
-                    CommonColor.redColors);
+                Util.displayErrorToast(
+                  context,
+                  "Please submit Project link",
+                );
               }
             },
             child: Container(
@@ -362,25 +364,16 @@ class _InterviewRequestSectionState extends State<InterviewRequestSection> {
                                         .timeSlotAController.text.isEmpty ||
                                     controller
                                         .timeSlotBController.text.isEmpty) {
-                                  Get.snackbar(
-                                    'Waring',
-                                    AppStrings.plzFillAllFields,
-                                    backgroundColor: CommonColor.redColors,
-                                    colorText: Colors.white,
-                                    borderWidth: 1,
-                                  );
+                                  SnackBarService.showErrorSnackBar(
+                                      AppStrings.plzFillAllFields);
                                 } else {
                                   controller
                                       .interviewRequest(widget.course.id!)
                                       .then(
                                     (value) {
-                                      Get.snackbar(
-                                        'Successful',
-                                        'Successfully submitted interview request',
-                                        backgroundColor:
-                                            CommonColor.greenColor1,
-                                        colorText: Colors.white,
-                                      );
+                                      SnackBarService.showInfoSnackBar(
+                                          'Successfully submitted interview request');
+
                                       Navigator.pop(context, false);
                                     },
                                   );
