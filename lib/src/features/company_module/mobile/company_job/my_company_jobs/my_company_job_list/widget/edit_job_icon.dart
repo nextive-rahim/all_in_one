@@ -32,6 +32,8 @@ class EditJobIcon extends GetView<PostCompanyNewJobViewController> {
         children: [
           Image.asset(
             ImageConstant.edit,
+            height: 15,
+            width: 15,
             color: CommonColor.greenColor1,
           ),
           const SizedBox(width: 5),

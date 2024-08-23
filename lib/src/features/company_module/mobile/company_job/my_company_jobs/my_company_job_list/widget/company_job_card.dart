@@ -76,6 +76,9 @@ class CompanyJobCard extends StatelessWidget {
                         Image.asset(
                           ImageConstant.jobLogo,
                           color: CommonColor.purpleColor1,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.fill,
                         ),
                         const SizedBox(width: 15),
                         TextWidget(
@@ -93,8 +96,11 @@ class CompanyJobCard extends StatelessWidget {
                     Row(
                       children: [
                         Image.asset(
-                          ImageConstant.dollarCircle,
+                          ImageConstant.payment,
                           color: CommonColor.purpleColor1,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.fill,
                         ),
                         const SizedBox(width: 15),
                         TextWidget(
@@ -114,6 +120,9 @@ class CompanyJobCard extends StatelessWidget {
                         Image.asset(
                           ImageConstant.send2,
                           color: CommonColor.purpleColor1,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.fill,
                         ),
                         const SizedBox(width: 15),
                         TextWidget(
@@ -131,10 +140,12 @@ class CompanyJobCard extends StatelessWidget {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(
-                          Icons.insert_drive_file_outlined,
+                        Image.asset(
+                          ImageConstant.file,
                           color: CommonColor.purpleColor1,
-                          size: 18,
+                          height: 20,
+                          width: 20,
+                          fit: BoxFit.fill,
                         ),
                         const SizedBox(width: 15),
                         Expanded(

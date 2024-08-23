@@ -52,17 +52,17 @@ class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
                     visible: controller.navBarVisibility,
                     child: Container(
                       //  height: Platform.isAndroid ? 80 : null,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
                           topRight: Radius.circular(_borderRadius),
                           topLeft: Radius.circular(_borderRadius),
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: AppColors.navBarShadow,
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                              offset: const Offset(0, -3)),
+                              color: CommonColor.purpleColor1,
+                              spreadRadius: 0,
+                              blurRadius: 0,
+                              offset: Offset(0, -1)),
                         ],
                       ),
                       child: ClipRRect(
@@ -74,15 +74,15 @@ class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
                           type: BottomNavigationBarType.fixed,
                           items: <BottomNavigationBarItem>[
                             BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.bookOpenLogo, 0),
+                              icon: _buildIcon(ImageConstant.home, 0),
                               label: 'Home',
                             ),
                             BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.users, 1),
+                              icon: _buildIcon(ImageConstant.employees, 1),
                               label: 'Employee',
                             ),
                             BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.dollarCircle, 2),
+                              icon: _buildIcon(ImageConstant.payment, 2),
                               label: 'Payment',
                             ),
                             BottomNavigationBarItem(
@@ -127,6 +127,7 @@ class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
           : AppColors.unselectedNavItem,
       height: 28,
       width: 28,
+      fit: BoxFit.fill,
       cacheHeight: 73,
       cacheWidth: 73,
     );

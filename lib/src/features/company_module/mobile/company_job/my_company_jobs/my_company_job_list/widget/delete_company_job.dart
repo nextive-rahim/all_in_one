@@ -23,6 +23,8 @@ class DeletedCompanyJob extends GetView<CompanyJobViewController> {
       child: Row(
         children: [
           Image.asset(
+            height: 20,
+            width: 15,
             ImageConstant.trash,
             color: CommonColor.redColors,
           ),

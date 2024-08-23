@@ -41,7 +41,7 @@ class JobSummaryCard extends StatelessWidget {
             const SizedBox(height: 12),
             _JobSummaryItem(
               name: job.paysalary ?? '' "/yr.",
-              icon: ImageConstant.dollarCircle,
+              icon: ImageConstant.payment,
             ),
             const SizedBox(height: 12),
             _JobSummaryItem(
@@ -95,6 +95,9 @@ class _JobSummaryItem extends StatelessWidget {
         Image.asset(
           icon,
           color: CommonColor.purpleColor1,
+          height: 20,
+          width: 20,
+          fit: BoxFit.fill,
         ),
         const SizedBox(width: 8),
         TextWidget(

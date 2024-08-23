@@ -68,8 +68,11 @@ class OtherCompanyJobCard extends StatelessWidget {
                   Row(
                     children: [
                       Image.asset(
-                        ImageConstant.dollarCircle,
-                        color: CommonColor.blackColor1,
+                        ImageConstant.payment,
+                        height: 20,
+                        width: 20,
+                        fit: BoxFit.fill,
+                        color: CommonColor.purpleColor1,
                       ),
                       const SizedBox(
                         width: 15,

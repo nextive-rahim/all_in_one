@@ -1,5 +1,5 @@
-import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
+import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
@@ -38,22 +38,23 @@ class DeleteOtherCompanySavedJobCard
       child: ValueListenableBuilder<bool>(
         valueListenable: isSavedJob,
         builder: (BuildContext context, bool value, child) {
-          return const Row(
+          return Row(
             children: [
-              Icon(
-                Icons.delete,
-                size: 20,
-                color: AppColors.red,
+              Image.asset(
+                height: 20,
+                width: 15,
+                ImageConstant.trash,
+                color: CommonColor.redColors,
               ),
-              SizedBox(width: 5),
-              TextWidget(
+              const SizedBox(width: 5),
+              const TextWidget(
                 textAlign: TextAlign.start,
-                text: "Delete",
+                text: AppStrings.delete,
                 color: CommonColor.redColors,
                 maxLine: 1,
                 fontFamily: AppStrings.sfProDisplay,
                 fontWeight: FontWeight.w400,
-                fontSize: 16,
+                fontSize: 12,
               ),
             ],
           );

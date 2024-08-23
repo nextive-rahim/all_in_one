@@ -12,7 +12,7 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            SupportLink.hotlineSupport(user.data!.phone??'');
+            SupportLink.hotlineSupport(user.data!.phone ?? '');
           },
           child: Container(
             width: SizeConfig.screenWidth,
@@ -41,6 +41,9 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
                 Image.asset(
                   ImageConstant.send1,
                   color: CommonColor.headingTextColor2,
+                  height: 20,
+                  width: 20,
+                  fit: BoxFit.fill,
                 ),
                 const SizedBox(width: 10),
                 const TextWidget(
@@ -58,7 +61,7 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
         const SizedBox(height: 12),
         InkWell(
           onTap: () {
-            SupportLink.emailSupport(user.userName??'');
+            SupportLink.emailSupport(user.userName ?? '');
           },
           child: Container(
             width: SizeConfig.screenWidth,
@@ -87,6 +90,9 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
                 Image.asset(
                   ImageConstant.send1,
                   color: CommonColor.headingTextColor2,
+                  height: 20,
+                  width: 20,
+                  fit: BoxFit.fill,
                 ),
                 const SizedBox(width: 10),
                 const TextWidget(
