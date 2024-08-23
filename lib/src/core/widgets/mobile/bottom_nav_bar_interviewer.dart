@@ -104,8 +104,7 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                                 type: BottomNavigationBarType.fixed,
                                 items: <BottomNavigationBarItem>[
                                   BottomNavigationBarItem(
-                                    icon: _buildIcon(
-                                        ImageConstant.bookOpenLogo, 0),
+                                    icon: _buildIcon(ImageConstant.home, 0),
                                     label: 'Home',
                                   ),
                                   BottomNavigationBarItem(
@@ -121,13 +120,11 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                                 type: BottomNavigationBarType.fixed,
                                 items: <BottomNavigationBarItem>[
                                   BottomNavigationBarItem(
-                                    icon: _buildIcon(
-                                        ImageConstant.bookOpenLogo, 0),
+                                    icon: _buildIcon(ImageConstant.home, 0),
                                     label: 'Home',
                                   ),
                                   BottomNavigationBarItem(
-                                    icon: _buildIcon(
-                                        ImageConstant.dollarCircle, 1),
+                                    icon: _buildIcon(ImageConstant.payment, 1),
                                     label: 'Payment',
                                   ),
                                   BottomNavigationBarItem(

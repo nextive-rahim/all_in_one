@@ -6,6 +6,8 @@ class ImageConstant {
   static String loginWebExpended = 'assets/images/login_web_expended.png';
   static String registerWebExpended = 'assets/images/register_web_expended.png';
   static String bookOpenLogo = 'assets/images/book_open.png';
+  static String home = 'assets/images/home.png';
+  static String payment = 'assets/images/payment.png';
   static String jobLogo = 'assets/images/job.png';
   static String flashScreen = 'assets/images/flash_screen.png';
 

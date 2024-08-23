@@ -25,30 +25,6 @@ class EmptyScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(
-                  text: title ?? AppStrings.latestCourses,
-                  style: const TextStyle(
-                    color: CommonColor.greyColor4,
-                    fontSize: 18,
-                    fontFamily: AppStrings.aeonikTRIAL,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const TextSpan(
-                  text: ' ${AppStrings.fromTopExperts}',
-                  style: TextStyle(
-                    color: CommonColor.greyColor4,
-                    fontSize: 18,
-                    fontFamily: AppStrings.aeonikTRIAL,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ],
-            ),
-          ),
           const SizedBox(
             height: 16,
           ),

@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/widgets/empty_screen.dart';
 import 'package:all_in_one/src/features/student_module/mobile/notification/controller/notification_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/notification/widget/notification_builder.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,9 @@ class NotificationViewPage extends StatelessWidget {
             return const Center(
               child: CircularProgressIndicator(),
             );
+          }
+          if (controller.notificationList.isEmpty) {
+            return const EmptyScreen();
           }
           return Padding(
             padding: const EdgeInsets.all(15.0),

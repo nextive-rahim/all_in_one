@@ -45,7 +45,10 @@ class InterviewerPaymentCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.date_range),
+                      const Icon(
+                        Icons.date_range,
+                        color: CommonColor.purpleColor1,
+                      ),
                       const SizedBox(width: 10),
                       Text(getFormattedDate(paymentModel.createdAt)!),
                     ],
@@ -62,7 +65,10 @@ class InterviewerPaymentCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.watch_later_outlined),
+                      const Icon(
+                        Icons.watch_later_outlined,
+                        color: CommonColor.purpleColor1,
+                      ),
                       const SizedBox(width: 10),
                       Text(getFormattedTime(paymentModel.createdAt)!),
                     ],
@@ -79,7 +85,10 @@ class InterviewerPaymentCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.person),
+                      const Icon(
+                        Icons.person,
+                        color: CommonColor.purpleColor1,
+                      ),
                       const SizedBox(width: 10),
                       Text(Get.find<ProfileViewController>().userModel!.name ??
                           '')
