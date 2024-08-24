@@ -8,14 +8,14 @@ class InterViewCard extends StatelessWidget {
     this.isFormRequestsInterviews = false,
     this.isFormConfirmInterviews = false,
     this.isFormCompletedInterviews = false,
-    //this.isExpaired = false,
+    this.isExpaired = false,
   });
   final int index;
   final ViewInterviewResponseData interview;
   final bool isFormRequestsInterviews;
   final bool isFormConfirmInterviews;
   final bool isFormCompletedInterviews;
-  // final bool isExpaired;
+  final bool isExpaired;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,14 +23,13 @@ class InterViewCard extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () async {
-            // if (isExpaired && isFormRequestsInterviews) {
-            //   Util.displayToast(
-            //     context,
-            //     'Acceptance timed out',
-            //     AppColors.red,
-            //   );
-            //   return;
-            // }
+            if (isExpaired && isFormRequestsInterviews) {
+              Util.displayErrorToast(
+                context,
+                'Acceptance timed out',
+              );
+              return;
+            }
             isFormRequestsInterviews
                 ? Get.toNamed(
                     Routes.selecteInterviewFormConfirmation,
@@ -83,6 +82,22 @@ class InterViewCard extends StatelessWidget {
                       ? InterviewLinkButton(interview: interview)
                       : const Offstage(),
                   const SizedBox(height: 5),
+                  isExpaired && isFormRequestsInterviews
+                      ? const Text(
+                          'Expaired',
+                          style: TextStyle(color: CommonColor.redColors),
+                        )
+                      : const Offstage(),
+                  !isExpaired && isFormConfirmInterviews
+                      ? Text(
+                          interview.remainingDayForFormFillUp,
+                          style: TextStyle(
+                              color: interview.remainingDayForFormFillUp ==
+                                      'Available Now'
+                                  ? CommonColor.greenColor1
+                                  : CommonColor.redColors),
+                        )
+                      : const SizedBox()
                 ],
               ),
             ),

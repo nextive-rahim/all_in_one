@@ -76,7 +76,11 @@ class ViewInterviewResponseData {
   });
   bool get isFormFillUpDateExpired {
     int? days = date?.difference(DateTime.now().toLocal()).inDays;
-    if (days == null || days <= 0) {
+
+    if (days == null || days >= 0) {
+      return false;
+    }
+    if (days <= 0) {
       return true;
     }
     return false;
@@ -85,7 +89,7 @@ class ViewInterviewResponseData {
   String get remainingDayForFormFillUp {
     int? days = date?.difference(DateTime.now().toLocal()).inDays;
     if (days == null || days <= 0) {
-      return 'Expired';
+      return 'Available Now';
     }
     return "$days days left";
   }

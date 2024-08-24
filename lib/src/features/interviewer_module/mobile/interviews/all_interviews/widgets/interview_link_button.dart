@@ -11,6 +11,13 @@ class InterviewLinkButton extends GetView<AllInterviewsViewController> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () async {
+        if (interview.remainingDayForFormFillUp != 'Available Now') {
+          Util.displayErrorToast(
+            context,
+            'Interview is not avaiable yet',
+          );
+          return;
+        }
         if (!interview.interviewLink!.contains('https://')) {
           Util.displayErrorToast(
             context,
