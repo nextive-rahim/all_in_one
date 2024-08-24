@@ -13,7 +13,8 @@ class CompanyJobViewController extends GetxController {
 
   get pageState => _pageStateController.value;
   late RegistrationResponseModel signupModel;
-  final RxBool isSavedJob = false.obs;
+
+  
   //late JobResponseModel jobListResponse;
   int? companyJonID;
   UserDetail? user;

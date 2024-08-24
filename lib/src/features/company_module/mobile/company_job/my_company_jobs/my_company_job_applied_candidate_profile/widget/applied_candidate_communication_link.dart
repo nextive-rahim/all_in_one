@@ -1,18 +1,20 @@
 part of '../view/company_job_applied_candidate_profile.dart';
 
-class AppliedCandidateCommunicationLink extends StatelessWidget {
+class AppliedCandidateCommunicationLink
+    extends GetView<UserDetailsViewController> {
   const AppliedCandidateCommunicationLink({
     super.key,
-    required this.user,
+    // required this.user,
   });
-  final UserDetailsResponseModelData user;
+  //final UserDetailsResponseModelData user;
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         InkWell(
           onTap: () {
-            SupportLink.hotlineSupport(user.data!.phone ?? '');
+            SupportLink.hotlineSupport(
+                controller.userDetailsModel?.data!.phone ?? '');
           },
           child: Container(
             width: SizeConfig.screenWidth,
@@ -61,7 +63,8 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
         const SizedBox(height: 12),
         InkWell(
           onTap: () {
-            SupportLink.emailSupport(user.userName ?? '');
+            SupportLink.emailSupport(
+                controller.userDetailsModel?.userName ?? '');
           },
           child: Container(
             width: SizeConfig.screenWidth,

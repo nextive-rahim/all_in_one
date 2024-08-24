@@ -1,8 +1,9 @@
 part of '../view/company_job_applied_candidate_profile.dart';
 
-class _CompanyJobCandidateProfileHeader extends StatelessWidget {
-  const _CompanyJobCandidateProfileHeader({required this.userModel});
-  final UserModel userModel;
+class _CompanyJobCandidateProfileHeader
+    extends GetView<UserDetailsViewController> {
+  const _CompanyJobCandidateProfileHeader();
+  // final UserModel userModel;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -20,7 +21,7 @@ class _CompanyJobCandidateProfileHeader extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(50),
               child: Image.network(
-                userModel.image ?? '',
+                controller.userModel?.image ?? '',
                 cacheHeight: 129,
                 cacheWidth: 199,
                 errorBuilder: (context, error, stackTrace) {
@@ -32,7 +33,7 @@ class _CompanyJobCandidateProfileHeader extends StatelessWidget {
           const SizedBox(height: 15),
           TextWidget(
             textAlign: TextAlign.center,
-            text: userModel.name ?? '',
+            text: controller.userModel?.name ?? '',
             color: CommonColor.blackColor1,
             maxLine: 1,
             fontFamily: AppStrings.aeonikTRIAL,
@@ -41,7 +42,7 @@ class _CompanyJobCandidateProfileHeader extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           TextWidget(
-            text: userModel.phone ?? '',
+            text: controller.userModel?.phone ?? '',
             color: CommonColor.blackColor1,
             maxLine: 1,
             fontFamily: AppStrings.sfProDisplay,

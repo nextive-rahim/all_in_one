@@ -62,9 +62,9 @@ class _SelectedInterviewDetailsPageState
                   user: userDetailsController.userModel,
                 ),
                 CandidateProfileSection(
-                    user: userDetailsController.userDetailsResponseModelData),
+                    user: userDetailsController.userDetailsModel),
                 CandidateCompletedTopicsSection(
-                    user: userDetailsController.userDetailsResponseModelData),
+                    user: userDetailsController.userDetailsModel),
                 const SizedBox(height: 30),
                 InterviewTimeSelectedSection(interview: interview)
               ],

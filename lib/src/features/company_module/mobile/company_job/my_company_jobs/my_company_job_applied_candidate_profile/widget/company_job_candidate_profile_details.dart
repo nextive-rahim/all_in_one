@@ -1,11 +1,12 @@
 part of '../view/company_job_applied_candidate_profile.dart';
 
-class CompanyJobCandidateProfileDetails extends StatelessWidget {
+class CompanyJobCandidateProfileDetails
+    extends GetView<UserDetailsViewController> {
   const CompanyJobCandidateProfileDetails({
     super.key,
-    required this.user,
+    // required this.user,
   });
-  final UserDetailsResponseModelData user;
+  // final UserDetailsResponseModelData user;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,7 +22,7 @@ class CompanyJobCandidateProfileDetails extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextWidget(
-          text: user.data?.description ?? '',
+          text: controller.userDetailsModel!.data?.description ?? '',
           color: CommonColor.greyColor6,
           maxLine: 100,
           fontFamily: AppStrings.sfProDisplay,
@@ -38,14 +39,16 @@ class CompanyJobCandidateProfileDetails extends StatelessWidget {
           fontSize: 18,
         ),
         const SizedBox(height: 15),
-        user.userSkill == null
+        controller.userDetailsModel!.userSkill == null
             ? const Offstage()
             : Wrap(
                 direction: Axis.horizontal,
                 spacing: 3.0,
                 runSpacing: 8.0,
                 children: [
-                  for (int i = 0; i < user.userSkill!.length; i++)
+                  for (int i = 0;
+                      i < controller.userDetailsModel!.userSkill!.length;
+                      i++)
                     Container(
                       height: 40,
                       padding: const EdgeInsets.only(
@@ -71,7 +74,9 @@ class CompanyJobCandidateProfileDetails extends StatelessWidget {
                       ),
                       child: TextWidget(
                         textAlign: TextAlign.center,
-                        text: user.userSkill![i].skill ?? '',
+                        text:
+                            controller.userDetailsModel!.userSkill![i].skill ??
+                                '',
                         color: CommonColor.greyColor11,
                         maxLine: 1,
                         fontFamily: AppStrings.inter,
@@ -108,7 +113,7 @@ class CompanyJobCandidateProfileDetails extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                urlLauncher(user.data?.resume ?? '');
+                urlLauncher(controller.userDetailsModel!.data?.resume ?? '');
               },
               child: Row(
                 children: [
@@ -162,7 +167,7 @@ class CompanyJobCandidateProfileDetails extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextWidget(
-          text: 'Resume of ${user.data?.name}',
+          text: 'Resume of ${controller.userDetailsModel!.data?.name}',
           color: CommonColor.greyColor11,
           maxLine: 2,
           fontFamily: AppStrings.sfProDisplay,

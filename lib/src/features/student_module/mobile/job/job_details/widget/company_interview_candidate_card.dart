@@ -9,6 +9,11 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/vie
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+enum IsCadidateSelect {
+  seleted,
+  notSelected,
+}
+
 class CompanyInterviewCandidateCard extends GetView<UserDetailsViewController> {
   const CompanyInterviewCandidateCard({
     super.key,
@@ -27,9 +32,15 @@ class CompanyInterviewCandidateCard extends GetView<UserDetailsViewController> {
           userId: user.id,
           userType: user.userType,
         );
+        if (user.isSelected == 0) {
+          Get.toNamed(
+            Routes.companyJobAppliedCandidateProfile,
+            arguments: IsCadidateSelect.notSelected.name,
+          );
+        }
         Get.toNamed(
           Routes.companyJobAppliedCandidateProfile,
-          arguments: user,
+          arguments: IsCadidateSelect.seleted.name,
         );
       },
       child: Row(

@@ -15,9 +15,12 @@ class UserDetailsViewController extends GetxController {
   final Rx<PageState> _pageStateController = Rx(PageState.initial);
 
   get pageState => _pageStateController.value;
-  UserDetailsResponseModelData? userDetailsResponseModelData;
+  final RxBool isSelectedCadidate = false.obs;
+  UserDetailsResponseModelData? userDetailsModel;
+  final RxBool isSavedJob = false.obs;
 
   UserModel? userModel;
+  String? isFrom;
 
   Future<void> userDetails({int? userType, int? userId}) async {
     _pageStateController(PageState.loading);
@@ -34,7 +37,7 @@ class UserDetailsViewController extends GetxController {
 
       late UserDetailsResponseModel profileResponseModel =
           UserDetailsResponseModel.fromJson(res);
-      userDetailsResponseModelData = profileResponseModel.data;
+      userDetailsModel = profileResponseModel.data;
       userModel = profileResponseModel.data!.data;
       print(' Name : ${userModel!.name}');
       _pageStateController(PageState.success);
