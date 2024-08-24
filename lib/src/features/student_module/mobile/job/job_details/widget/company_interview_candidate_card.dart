@@ -36,6 +36,8 @@ class CompanyInterviewCandidateCard extends GetView<UserDetailsViewController> {
         children: [
           Image.asset(
             ImageConstant.link2,
+            height: 15,
+            width: 15,
             color: color,
           ),
           const SizedBox(width: 8),

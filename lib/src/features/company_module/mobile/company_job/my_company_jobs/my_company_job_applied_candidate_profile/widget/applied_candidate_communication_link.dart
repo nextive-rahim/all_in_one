@@ -41,6 +41,7 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
                 Image.asset(
                   ImageConstant.send1,
                   height: 20,
+                  color: CommonColor.purpleColor1,
                   width: 20,
                   fit: BoxFit.fill,
                 ),
@@ -87,7 +88,8 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  ImageConstant.send1,
+                  ImageConstant.mail,
+                  color: CommonColor.purpleColor1,
                   height: 20,
                   width: 20,
                   fit: BoxFit.fill,

@@ -171,7 +171,12 @@ class ExamLinkSection extends GetView<ExamLinkViewController> {
                                 )
                               ],
                             ),
-                            child: Image.asset(ImageConstant.link2),
+                            child: Image.asset(
+                              ImageConstant.link2,
+                              height: 15,
+                              width: 15,
+                              color: CommonColor.blueColor1,
+                            ),
                           ),
                         )
                       ],

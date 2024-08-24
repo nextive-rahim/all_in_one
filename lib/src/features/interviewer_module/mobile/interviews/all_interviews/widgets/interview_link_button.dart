@@ -38,6 +38,8 @@ class InterviewLinkButton extends GetView<AllInterviewsViewController> {
             Image.asset(
               ImageConstant.link2,
               color: CommonColor.blueColor1,
+              height: 15,
+              width: 15,
             ),
             const SizedBox(width: 8),
             const TextWidget(

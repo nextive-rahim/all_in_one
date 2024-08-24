@@ -115,6 +115,8 @@ class InterviewDetailsHeader extends StatelessWidget {
                   Image.asset(
                     ImageConstant.link2,
                     color: CommonColor.blueColor1,
+                    height: 15,
+                    width: 15,
                   )
                 ],
               ),

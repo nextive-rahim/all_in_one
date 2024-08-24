@@ -226,7 +226,12 @@ class _AppearTestAndScheduleInterviewEmployeeMobilePageState
                                   )
                                 ],
                               ),
-                              child: Image.asset(ImageConstant.link2),
+                              child: Image.asset(
+                                ImageConstant.link2,
+                                height: 15,
+                                width: 15,
+                                color: CommonColor.purpleColor1,
+                              ),
                             )
                           ],
                         ),

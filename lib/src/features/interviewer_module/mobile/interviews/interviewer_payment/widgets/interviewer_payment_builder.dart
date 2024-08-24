@@ -13,6 +13,7 @@ class InterviewerPaymentBuilder
       return ListView.builder(
         itemCount: controller.allPayments.length,
         shrinkWrap: true,
+        reverse: true,
         physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return InterviewerPaymentCard(

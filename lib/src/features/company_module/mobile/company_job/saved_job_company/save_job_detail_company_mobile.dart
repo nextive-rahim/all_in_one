@@ -682,7 +682,9 @@ class _SaveJobDetailCompanyMobilePageState
                                           children: [
                                             Image.asset(
                                               ImageConstant.link2,
-                                              color: CommonColor.greyColor4,
+                                              color: CommonColor.purpleColor1,
+                                              height: 15,
+                                              width: 15,
                                             ),
                                             const SizedBox(
                                               width: 8,
@@ -730,7 +732,9 @@ class _SaveJobDetailCompanyMobilePageState
                                         children: [
                                           Image.asset(
                                             ImageConstant.link2,
-                                            color: CommonColor.greyColor4,
+                                            color: CommonColor.purpleColor1,
+                                            height: 15,
+                                            width: 15,
                                           ),
                                           const SizedBox(
                                             width: 8,
