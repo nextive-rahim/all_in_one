@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:all_in_one/src/core/theme/colors.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
@@ -43,17 +44,17 @@ class _BottomNavBarEmployeeState extends State<BottomNavBarEmployee> {
                     visible: controller.navBarVisibility,
                     child: Container(
                       height: Platform.isAndroid ? 80 : null,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
                           topRight: Radius.circular(_borderRadius),
                           topLeft: Radius.circular(_borderRadius),
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: AppColors.navBarShadow,
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                              offset: const Offset(0, -3)),
+                              color: CommonColor.purpleColor1,
+                              spreadRadius: 0,
+                              blurRadius: 0,
+                              offset: Offset(0, -1)),
                         ],
                       ),
                       child: ClipRRect(
@@ -65,7 +66,7 @@ class _BottomNavBarEmployeeState extends State<BottomNavBarEmployee> {
                           type: BottomNavigationBarType.fixed,
                           items: <BottomNavigationBarItem>[
                             BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.bookOpenLogo, 0),
+                              icon: _buildIcon(ImageConstant.home, 0),
                               label: 'Home',
                             ),
                             BottomNavigationBarItem(

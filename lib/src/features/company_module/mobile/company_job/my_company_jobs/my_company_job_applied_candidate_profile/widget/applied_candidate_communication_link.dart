@@ -40,7 +40,6 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
               children: [
                 Image.asset(
                   ImageConstant.send1,
-                  color: CommonColor.headingTextColor2,
                   height: 20,
                   width: 20,
                   fit: BoxFit.fill,
@@ -89,7 +88,6 @@ class AppliedCandidateCommunicationLink extends StatelessWidget {
               children: [
                 Image.asset(
                   ImageConstant.send1,
-                  color: CommonColor.headingTextColor2,
                   height: 20,
                   width: 20,
                   fit: BoxFit.fill,

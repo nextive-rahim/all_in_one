@@ -46,8 +46,10 @@ class CompanyJobApplyButton extends GetView<OtherCompanyJobsViewController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    ImageConstant.send1,
-                    color: CommonColor.whiteColor,
+                    ImageConstant.send2,
+                    width: 20,
+                    height: 20,
+                    fit: BoxFit.fill,
                   ),
                   const SizedBox(width: 8),
                   const TextWidget(

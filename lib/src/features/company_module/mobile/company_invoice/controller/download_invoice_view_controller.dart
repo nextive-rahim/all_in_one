@@ -70,7 +70,7 @@ class DownloadInvoiceViewController extends GetxController {
     String fileName = url.split('/').last;
     try {
       print('dddd2');
-      String filePath = '$_localPath/$fileName';
+      String filePath = '$_localPath$fileName';
       File file = File(filePath);
       print('dddd3');
       // if (await file.exists()) {
@@ -91,7 +91,7 @@ class DownloadInvoiceViewController extends GetxController {
       );
       return file;
     } catch (e) {
-      throw Exception('Error opening url file');
+      throw Exception('Error opening url file : $e');
     }
   }
 }

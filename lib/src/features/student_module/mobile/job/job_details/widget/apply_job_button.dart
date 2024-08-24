@@ -52,7 +52,10 @@ class ApplyJobButton extends GetView<JobsViewController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    ImageConstant.send1,
+                    ImageConstant.send2,
+                    width: 20,
+                    height: 20,
+                    fit: BoxFit.fill,
                     color: CommonColor.whiteColor,
                   ),
                   const SizedBox(width: 8),

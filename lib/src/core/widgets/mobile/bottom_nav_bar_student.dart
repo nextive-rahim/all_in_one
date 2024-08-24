@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
@@ -48,17 +49,17 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
                   return Visibility(
                     visible: controller.navBarVisibility,
                     child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
                           topRight: Radius.circular(_borderRadius),
                           topLeft: Radius.circular(_borderRadius),
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: AppColors.navBarShadow,
-                              spreadRadius: 1,
-                              blurRadius: 10,
-                              offset: const Offset(0, -3)),
+                              color: CommonColor.purpleColor1,
+                              spreadRadius: 0,
+                              blurRadius: 0,
+                              offset: Offset(0, -1)),
                         ],
                       ),
                       child: ClipRRect(
@@ -70,11 +71,11 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
                           type: BottomNavigationBarType.fixed,
                           items: <BottomNavigationBarItem>[
                             BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.bookOpenLogo, 0),
+                              icon: _buildIcon(ImageConstant.home, 0),
                               label: 'Home',
                             ),
                             BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.jobLogo, 1),
+                              icon: _buildIcon(ImageConstant.job2, 1),
                               label: 'Jobs',
                             ),
                             BottomNavigationBarItem(

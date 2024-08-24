@@ -62,7 +62,7 @@ class CompanyInvoiceViewPage extends StatelessWidget {
                     if (controller.permissionReady) {
                       await controller.prepareSaveDir();
                       controller.dowmloadInvoice(
-                          'https://www.sldttc.org/allpdf/21583473018.pdf');
+                          'https://pdfobject.com/pdf/sample.pdf');
                     }
                   },
                   icon: controller.dowdloadProgress.value == 0

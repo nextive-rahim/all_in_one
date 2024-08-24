@@ -30,7 +30,7 @@ class JobDetailsPageMobile extends StatefulWidget {
 }
 
 class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
-  final companyjobController = Get.find<CompanyJobViewController>();
+  final companyjobController = Get.put(CompanyJobViewController());
   final JobModel viewJobResponseData = Get.arguments[0];
   final isFromCompanyJob = Get.arguments[1] == JobIsFrom.company ? true : false;
 
