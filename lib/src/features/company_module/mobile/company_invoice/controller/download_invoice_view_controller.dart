@@ -66,13 +66,11 @@ class DownloadInvoiceViewController extends GetxController {
   }
 
   Future<File> dowmloadInvoice(String url) async {
-    print('dddd');
     String fileName = url.split('/').last;
     try {
-      print('dddd2');
-      String filePath = '$_localPath$fileName';
+      String filePath = '$_localPath$fileName${DateTime.now().millisecond}';
       File file = File(filePath);
-      print('dddd3');
+
       // if (await file.exists()) {
       //   return file;
       // }

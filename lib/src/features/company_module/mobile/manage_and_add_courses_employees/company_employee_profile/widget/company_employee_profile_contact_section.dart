@@ -48,6 +48,8 @@ class CompanyEmployeeProfileContactSection extends StatelessWidget {
                 Image.asset(
                   ImageConstant.send1,
                   color: CommonColor.purpleColor1,
+                  width: 25,
+                  height: 25,
                 ),
                 const SizedBox(
                   width: 10,
@@ -94,8 +96,10 @@ class CompanyEmployeeProfileContactSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
-                  ImageConstant.send1,
+                  ImageConstant.mail,
                   color: CommonColor.purpleColor1,
+                  width: 25,
+                  height: 25,
                 ),
                 const SizedBox(
                   width: 10,

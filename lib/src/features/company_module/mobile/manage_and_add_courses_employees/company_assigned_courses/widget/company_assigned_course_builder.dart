@@ -55,6 +55,7 @@ class _CourseBuilder extends StatefulWidget {
 class _CourseBuilderState extends State<_CourseBuilder> {
   final controller = Get.find<CompanyAssignedCouseViewController>();
   final employeeController = Get.find<CompanyEmployeeListViewController>();
+  final couseController = Get.find<StudentHomeViewController>();
   @override
   Widget build(BuildContext context) {
     if (widget.courseList!.isEmpty) {
@@ -73,10 +74,11 @@ class _CourseBuilderState extends State<_CourseBuilder> {
       physics: const BouncingScrollPhysics(),
       itemBuilder: (context, courseIndex) {
         CourseModel course = widget.courseList![courseIndex];
-        // print(employeeController.assignedCouseList.map((v) => v.id));
 
-        final bool alreadyAssinged =
-            employeeController.assignedCouseList.any((v) => v.id == course.id);
+        final bool alreadyAssinged = couseController
+            .employeeModel!.assignCourse!
+            .any((v) => v.id == course.id);
+
         return Container(
             width: 360,
             margin: const EdgeInsets.only(right: 0),

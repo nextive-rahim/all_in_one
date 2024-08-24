@@ -62,7 +62,7 @@ class DeletedCompanyJob extends GetView<CompanyJobViewController> {
             TextButton(
               onPressed: () {
                 controller.deleteCompanyJob(job.id!).then((v) {
-                  controller.companyJobList.removeWhere((v) => v.id == v.id);
+                  controller.companyJobList.removeWhere((v) => v.id == job.id);
                   SnackBarService.showInfoSnackBar(
                     'Successfully delete job.',
                   );

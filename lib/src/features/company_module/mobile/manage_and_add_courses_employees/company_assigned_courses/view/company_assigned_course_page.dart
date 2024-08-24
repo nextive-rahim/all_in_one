@@ -2,7 +2,6 @@ import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/widget/company_assigned_course_builder.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/widget/company_assigned_course_button.dart';
-import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/controller/student_home_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,7 +11,7 @@ class CompanyAssignedCourses extends GetView<StudentHomeViewController> {
 
   @override
   Widget build(BuildContext context) {
-    final EmployeeModel employeeModel = Get.arguments;
+    controller.employeeModel = Get.arguments;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Assigned Courses'),
@@ -53,7 +52,8 @@ class CompanyAssignedCourses extends GetView<StudentHomeViewController> {
           ),
         ),
       ),
-      bottomNavigationBar: CompanyAssignedCourseButton(employee: employeeModel),
+      bottomNavigationBar:
+          CompanyAssignedCourseButton(employee: controller.employeeModel!),
     );
   }
 }

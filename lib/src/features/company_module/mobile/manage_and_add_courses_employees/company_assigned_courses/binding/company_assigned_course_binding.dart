@@ -6,7 +6,8 @@ import 'package:get/get_instance/get_instance.dart';
 class CompanyAssingedCourseBinding extends Bindings {
   @override
   void dependencies() {
+    Get.put(StudentHomeViewController(), permanent: true);
     Get.lazyPut(() => CompanyAssignedCouseViewController(), fenix: true);
-    Get.lazyPut(() => StudentHomeViewController(), fenix: true);
+    // Get.lazyPut(() => StudentHomeViewController(), fenix: true);
   }
 }

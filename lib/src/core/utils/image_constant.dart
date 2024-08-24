@@ -12,6 +12,7 @@ class ImageConstant {
   static String flashScreen = 'assets/images/flash_screen.png';
   static String employees = 'assets/images/employees.png';
   static String job2 = 'assets/images/job2.png';
+  static String mail = 'assets/images/mail.png';
 
   static String thumbnail1 = 'assets/images/thumbnail1.png';
   static String thumbnail2 = 'assets/images/thumbnail2.png';
