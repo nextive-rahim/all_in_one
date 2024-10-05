@@ -14,7 +14,7 @@ class AppliedTab extends GetView<JobsViewController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: RefreshIndicator(
         onRefresh: () async {
           controller.getjobList();

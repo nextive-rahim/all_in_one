@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +49,7 @@ class _CommonTabSectionState extends State<CommonTabSection>
           child: Container(
             height: 50,
             decoration: BoxDecoration(
-              color: CommonColor.purpleColor1,
+              color: AppColors.transparent,
               borderRadius: BorderRadius.circular(4),
             ),
             child: TabBar(
@@ -68,19 +69,21 @@ class _CommonTabSectionState extends State<CommonTabSection>
                 });
               },
               controller: tabController,
+              dividerHeight: 0,
               isScrollable: false,
               indicatorWeight: 0,
               indicatorSize: TabBarIndicatorSize.tab,
-              indicatorPadding: const EdgeInsets.symmetric(
-                vertical: 4,
-                horizontal: 4,
+              indicatorPadding: const EdgeInsets.only(
+                top: 47,
+                left: 20,
+                right: 20,
               ),
               padding: const EdgeInsets.symmetric(
                 horizontal: 00,
                 vertical: 0,
               ),
-              labelColor: CommonColor.blue300,
-              unselectedLabelColor: Colors.white,
+              labelColor: CommonColor.purpleColor1,
+              unselectedLabelColor: Colors.black,
               labelPadding: const EdgeInsets.only(
                 left: 5,
                 right: 5,
@@ -92,12 +95,12 @@ class _CommonTabSectionState extends State<CommonTabSection>
               ),
               labelStyle: const TextStyle(
                 fontWeight: FontWeight.w600,
-                fontSize: 16,
+                fontSize: 20,
                 height: 21 / 16,
                 letterSpacing: 0.2,
               ),
               indicator: BoxDecoration(
-                color: Colors.white,
+                color: CommonColor.purpleColor1,
                 borderRadius: BorderRadius.circular(4),
               ),
               tabs: [

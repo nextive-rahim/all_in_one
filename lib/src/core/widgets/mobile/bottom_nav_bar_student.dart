@@ -28,7 +28,7 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
     ProfilePage(),
   ];
 
-  static const double _borderRadius = 20;
+  static const double _borderRadius = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +50,14 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
                     visible: controller.navBarVisibility,
                     child: Container(
                       decoration: const BoxDecoration(
+                        color: AppColors.white,
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(_borderRadius),
                           topLeft: Radius.circular(_borderRadius),
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: CommonColor.purpleColor1,
+                              color: AppColors.lightBlack10,
                               spreadRadius: 0,
                               blurRadius: 0,
                               offset: Offset(0, -1)),
@@ -68,11 +69,13 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
                           topRight: Radius.circular(_borderRadius),
                         ),
                         child: BottomNavigationBar(
+                          elevation: 10,
+                          backgroundColor: CommonColor.whiteColor,
                           type: BottomNavigationBarType.fixed,
                           items: <BottomNavigationBarItem>[
                             BottomNavigationBarItem(
-                              icon: _buildIcon(ImageConstant.home, 0),
-                              label: 'Home',
+                              icon: _buildIcon(ImageConstant.bookOpenLogo, 0),
+                              label: 'Courses',
                             ),
                             BottomNavigationBarItem(
                               icon: _buildIcon(ImageConstant.job2, 1),
@@ -147,10 +150,10 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
       color: controller.currentIndex == index
           ? AppColors.selectedNavItem
           : AppColors.unselectedNavItem,
-      height: 22,
-      width: 22,
-      cacheHeight: 73,
-      cacheWidth: 73,
+      height: 30,
+      width: 30,
+      // cacheHeight: 73,
+      // cacheWidth: 73,
     );
   }
 }

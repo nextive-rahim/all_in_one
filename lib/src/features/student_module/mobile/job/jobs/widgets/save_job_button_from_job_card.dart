@@ -1,7 +1,5 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
-import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
@@ -51,15 +49,15 @@ class SaveJobButtonFromJobCard extends GetView<JobsViewController> {
                     : CommonColor.blackColor1,
               ),
               const SizedBox(width: 5),
-              const TextWidget(
-                textAlign: TextAlign.start,
-                text: "Save",
-                color: CommonColor.greyColor4,
-                maxLine: 1,
-                fontFamily: AppStrings.sfProDisplay,
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              // const TextWidget(
+              //   textAlign: TextAlign.start,
+              //   text: "Save",
+              //   color: CommonColor.greyColor4,
+              //   maxLine: 1,
+              //   fontFamily: AppStrings.sfProDisplay,
+              //   fontWeight: FontWeight.w400,
+              //   fontSize: 16,
+              // ),
             ],
           );
         },

@@ -12,7 +12,7 @@ class SavedJobsTab extends GetView<JobsViewController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Obx(
         () {
           // if (controller.pageState == PageState.loading) {

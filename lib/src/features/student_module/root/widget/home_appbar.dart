@@ -19,13 +19,11 @@ class HomeAppBar extends AppBar {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                height: 35,
+                height: 30,
                 margin: const EdgeInsets.only(left: 10),
                 child: Image.asset(
                   ImageConstant.aioLogo,
                   fit: BoxFit.contain,
-                  cacheHeight: 105,
-                  cacheWidth: 388,
                 ),
               ),
               const Text(
@@ -41,61 +39,17 @@ class HomeAppBar extends AppBar {
                 children: [
                   GestureDetector(
                     onTap: () => Get.toNamed(Routes.notification),
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: AppColors.grey100,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: AppColors.lightBlack10,
-                          width: 1,
-                        ),
-                      ),
-                      padding: const EdgeInsets.all(8),
-                      child: const Icon(
-                        Icons.notifications_none_outlined,
-                        color: CommonColor.headingTextColor1,
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 10),
+                      child: Image.asset(
+                        ImageConstant.notification,
+                        width: 35,
+                        height: 35,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //    // Get.toNamed(Routes.profileDashboard);
-                  //     // Get.find<DashboardViewController>()
-                  //     //     .updateNavBarVisibility(false);
-                  //     // scaffoldKey.currentState!.openDrawer();
-                  //   },
-                  //   child: Obx(() {
-                  //     return Container(
-                  //       height: 40,
-                  //       width: 40,
-                  //       decoration: BoxDecoration(
-                  //         borderRadius: BorderRadius.circular(8),
-                  //         border: Border.all(
-                  //           color: AppColors.lightBlack10,
-                  //           width: 1,
-                  //         ),
-                  //       ),
-                  //       child: ClipRRect(
-                  //         borderRadius: BorderRadius.circular(8),
-                  //         child: (controller.pageState == PageState.loading)
-                  //             ? const CommonCachedNetworkImage(
-                  //                 imageUrl: noProfileFoundURL,
-                  //                 fit: BoxFit.cover,
-                  //               )
-                  //             : CommonCachedNetworkImage(
-                  //                 imageUrl: controller.userModel.image?.link ??
-                  //                     noProfileFoundURL,
-                  //                 fit: BoxFit.cover,
-                  //                 cachedHeight: 99,
-                  //                 cachedWidth: 99,
-                  //               ),
-                  //       ),
-                  //     );
-                  //   }),
-                  // ),
+                  const SizedBox(width: 0),
                 ],
               ),
             ],

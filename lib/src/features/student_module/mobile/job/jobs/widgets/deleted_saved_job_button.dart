@@ -1,8 +1,6 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
-import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/core/utils/strings.dart';
+import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
-import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
@@ -35,23 +33,24 @@ class DeletedSaveJobButtonFromJobCard extends GetView<JobsViewController> {
       child: ValueListenableBuilder<bool>(
         valueListenable: isSavedJob,
         builder: (BuildContext context, bool value, child) {
-          return const Row(
+          return Row(
             children: [
-              Icon(
-                Icons.delete,
-                size: 20,
-                color: AppColors.red,
+              Image.asset(
+                ImageConstant.trash,
+                width: 18,
+                height: 18,
+                color: AppColors.black,
               ),
-              SizedBox(width: 5),
-              TextWidget(
-                textAlign: TextAlign.start,
-                text: "Delete",
-                color: CommonColor.redColors,
-                maxLine: 1,
-                fontFamily: AppStrings.sfProDisplay,
-                fontWeight: FontWeight.w400,
-                fontSize: 16,
-              ),
+              const SizedBox(width: 5),
+              // TextWidget(
+              //   textAlign: TextAlign.start,
+              //   text: "Delete",
+              //   color: CommonColor.redColors,
+              //   maxLine: 1,
+              //   fontFamily: AppStrings.sfProDisplay,
+              //   fontWeight: FontWeight.w400,
+              //   fontSize: 16,
+              // ),
             ],
           );
         },

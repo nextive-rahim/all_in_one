@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/course_card.dart';
@@ -24,58 +25,58 @@ class CategoryWithCourseBuilder extends StatelessWidget {
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            categories[categoryIndex].name ?? "",
-                            style: AppTextStyle.bold16,
-                          ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          categories[categoryIndex].name ?? "",
+                          style: AppTextStyle.bold16,
                         ),
-                        // RoundedButton(
-                        //   title: TextConstants.seeAll,
-                        //   radius: 6,
-                        //   onPressed: () {
-                        //     onTapped(categoryIndex);
-                        //   },
-                        // ),
-                        GestureDetector(
-                          onTap: () {
-                            //  onTapped(categoryIndex);
-                          },
-                          child: Row(
-                            children: [
-                              InkWell(
-                                onTap: () {
-                                  if (kIsWeb) {
-                                    Get.rootDelegate.toNamed(
-                                        Routes.categoryWiseCourse,
-                                        arguments: categories[categoryIndex]
-                                            .collectinList);
-                                    return;
-                                  }
-                                  Get.toNamed(Routes.categoryWiseCourse,
+                      ),
+                      // RoundedButton(
+                      //   title: TextConstants.seeAll,
+                      //   radius: 6,
+                      //   onPressed: () {
+                      //     onTapped(categoryIndex);
+                      //   },
+                      // ),
+                      GestureDetector(
+                        onTap: () {
+                          //  onTapped(categoryIndex);
+                        },
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                if (kIsWeb) {
+                                  Get.rootDelegate.toNamed(
+                                      Routes.categoryWiseCourse,
                                       arguments: categories[categoryIndex]
                                           .collectinList);
-                                },
-                                child: const Text(
-                                  'seeAll',
-                                  style: AppTextStyle.bold16,
+                                  return;
+                                }
+                                Get.toNamed(Routes.categoryWiseCourse,
+                                    arguments: categories[categoryIndex]
+                                        .collectinList);
+                              },
+                              child: Text(
+                                'See All',
+                                style: AppTextStyle.bold16.copyWith(
+                                  color: AppColors.lightBlack60,
                                 ),
                               ),
-                              const SizedBox(width: 10),
-                              const Icon(
-                                Icons.arrow_forward_ios,
-                                size: 16,
-                              )
-                            ],
-                          ),
+                            ),
+                            const SizedBox(width: 5),
+                            const Icon(
+                              Icons.arrow_forward_ios,
+                              size: 16,
+                              color: AppColors.lightBlack60,
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                   Padding(
                     padding: const EdgeInsets.only(

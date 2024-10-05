@@ -27,7 +27,7 @@ class JobCard extends StatelessWidget {
       decoration: ShapeDecoration(
         color: Colors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(10),
         ),
       ),
       child: Padding(
@@ -55,14 +55,28 @@ class JobCard extends StatelessWidget {
                     fontSize: 18,
                   ),
                   const SizedBox(height: 7),
-                  TextWidget(
-                    textAlign: TextAlign.center,
-                    text: job.workLocation ?? '',
-                    color: CommonColor.greyColor12,
-                    maxLine: 1,
-                    fontFamily: AppStrings.sfProDisplay,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
+                  Row(
+                    children: [
+                      Image.asset(
+                        ImageConstant.location,
+                        height: 20,
+                        width: 20,
+                        fit: BoxFit.fill,
+                        // color: CommonColor.purpleColor1,
+                      ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      TextWidget(
+                        textAlign: TextAlign.center,
+                        text: job.workLocation ?? '',
+                        color: CommonColor.greyColor12,
+                        maxLine: 1,
+                        fontFamily: AppStrings.sfProDisplay,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14,
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 18),
                   Row(
@@ -72,7 +86,7 @@ class JobCard extends StatelessWidget {
                         height: 20,
                         width: 20,
                         fit: BoxFit.fill,
-                        color: CommonColor.purpleColor1,
+                        // color: CommonColor.purpleColor1,
                       ),
                       const SizedBox(
                         width: 15,
