@@ -8,19 +8,19 @@ ThemeData themeData = ThemeData(
   appBarTheme: const AppBarTheme(
       centerTitle: true,
       elevation: 0,
-      backgroundColor: CommonColor.purpleColor1,
+      backgroundColor: CommonColor.whiteColor,
       titleTextStyle: TextStyle(
-        color: AppColors.white,
+        color: CommonColor.purpleColor1,
         fontSize: 20,
         fontFamily: 'NotoSerifBengali',
       ),
-      shape: OutlineInputBorder(
-        borderSide: BorderSide.none,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(10),
-          bottomRight: Radius.circular(10),
-        ),
-      ),
+      // shape: OutlineInputBorder(
+      //   borderSide: BorderSide.none,
+      //   borderRadius: BorderRadius.only(
+      //     bottomLeft: Radius.circular(10),
+      //     bottomRight: Radius.circular(10),
+      //   ),
+      // ),
       iconTheme: IconThemeData(color: AppColors.white)),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

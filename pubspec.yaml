@@ -97,11 +97,11 @@ flutter:
   fonts:
     - family: NotoSerifBengali
       fonts:
-        - asset: assets/fonts/NotoSerifBengali-Regular.ttf
-        - asset: assets/fonts/NotoSerifBengali-Bold.ttf
-        - asset: assets/fonts/NotoSerifBengali-Medium.ttf
-        - asset: assets/fonts/NotoSerifBengali-SemiBold.ttf
-        - asset: assets/fonts/NotoSerifBengali-Thin.ttf
+        - asset: assets/fonts/AeonikTRIAL-Regular.otf
+        - asset: assets/fonts/AeonikTRIAL-Bold.otf
+        - asset: assets/fonts/AeonikTRIAL-Light.otf
+
+      
       
       
   #

@@ -10,19 +10,19 @@ class HomeAppBar extends AppBar {
       : super(
           leadingWidth: 0,
           automaticallyImplyLeading: false,
-          backgroundColor: CommonColor.purpleColor1,
-          elevation: 1.5,
-          shadowColor: AppColors.lightBlack10.withOpacity(0.4),
+          backgroundColor: CommonColor.whiteColor,
+          // elevation: 1.5,
+          // shadowColor: AppColors.lightBlack10.withOpacity(0.4),
           toolbarHeight: 65,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                height: 40,
+                height: 35,
                 margin: const EdgeInsets.only(left: 10),
                 child: Image.asset(
-                  ImageConstant.appLogo,
+                  ImageConstant.aioLogo,
                   fit: BoxFit.contain,
                   cacheHeight: 105,
                   cacheWidth: 388,

@@ -11,6 +11,7 @@ import 'package:all_in_one/src/features/common_features/authentication/registrat
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_completed_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/root/binding/auth_binding.dart';
+import 'package:all_in_one/src/features/common_features/user_details/binding/user_details_binding.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/applied_job_for_multiple_employee/binding/company_applied_job_binding.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/applied_job_for_multiple_employee/view/company_applied_job_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/binding/company_profile_update_binding.dart';
@@ -278,8 +279,8 @@ class AppPages {
     ),
     GetPage(
       name: Routes.companyJobAppliedCandidateProfile,
+      bindings: [CourseDetailsBinding(), UserDetailsBinding()],
       page: () => const CompanyJobAppliedCandidateProfile(),
-      binding: CourseDetailsBinding(),
       transition: Transition.fade,
       curve: Curves.easeInOut,
       transitionDuration: const Duration(milliseconds: 50),
