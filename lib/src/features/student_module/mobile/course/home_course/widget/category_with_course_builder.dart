@@ -31,7 +31,7 @@ class CategoryWithCourseBuilder extends StatelessWidget {
                       Expanded(
                         child: Text(
                           categories[categoryIndex].name ?? "",
-                          style: AppTextStyle.bold16,
+                          style: AppTextStyle.bold18,
                         ),
                       ),
                       // RoundedButton(
@@ -56,9 +56,13 @@ class CategoryWithCourseBuilder extends StatelessWidget {
                                           .collectinList);
                                   return;
                                 }
-                                Get.toNamed(Routes.categoryWiseCourse,
-                                    arguments: categories[categoryIndex]
-                                        .collectinList);
+                                Get.toNamed(
+                                  Routes.categoryWiseCourse,
+                                  arguments: [
+                                    categories[categoryIndex].collectinList,
+                                    categories[categoryIndex].name,
+                                  ],
+                                );
                               },
                               child: Text(
                                 'See All',
@@ -117,7 +121,7 @@ class _CourseBuilder extends StatelessWidget {
       );
     }
     return SizedBox(
-      height: 330,
+      height: 245,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: courseList!.length,
@@ -127,7 +131,7 @@ class _CourseBuilder extends StatelessWidget {
         itemBuilder: (context, courseIndex) {
           CourseModel course = courseList![courseIndex];
           return Container(
-            width: 360,
+            width: 280,
             margin: const EdgeInsets.only(right: 15),
             child: CourseCard(course: course),
           );

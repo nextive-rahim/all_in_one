@@ -18,10 +18,11 @@ class CategoryWiseCoursePage extends StatefulWidget {
 class _CategoryWiseCoursePageState extends State<CategoryWiseCoursePage> {
   final studentDashboardController = Get.find<StudentHomeViewController>();
 //final List<CourseCard> courseList=Get.arguments;
+  final String title = Get.arguments[1];
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      studentDashboardController.categoryWiseCourse.value = Get.arguments;
+      studentDashboardController.categoryWiseCourse.value = Get.arguments[0];
       //studentDashboardController.getStudentHomeData();
     });
     // TODO: implement initState
@@ -32,10 +33,10 @@ class _CategoryWiseCoursePageState extends State<CategoryWiseCoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Course List'),
+        title: Text(title),
       ),
       resizeToAvoidBottomInset: false,
-      backgroundColor: CommonColor.greyColor1,
+      // backgroundColor: CommonColor.greyColor1,
       body: RefreshIndicator(
         onRefresh: () async {
           studentDashboardController.getStudentHomeData();

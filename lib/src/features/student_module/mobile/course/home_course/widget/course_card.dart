@@ -20,43 +20,46 @@ class CourseCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          height: 232,
-          alignment: Alignment.center,
-          decoration: ShapeDecoration(
-            color: Colors.white,
-            shape: const Border(),
-            image: DecorationImage(
-              fit: BoxFit.fill,
-              image: NetworkImage(course.thumbnailImage ?? ''),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: Container(
+            height: 150,
+            alignment: Alignment.center,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: const Border(),
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: NetworkImage(course.thumbnailImage ?? ''),
+              ),
             ),
-          ),
-          child: GestureDetector(
-            onTap: onTap ??
-                () {
-                  if (kIsWeb) {
-                    Get.rootDelegate.toNamed(
+            child: GestureDetector(
+              onTap: onTap ??
+                  () {
+                    if (kIsWeb) {
+                      Get.rootDelegate.toNamed(
+                        Routes.courseDetailMobilePage,
+                        arguments: course,
+                      );
+                      return;
+                    }
+                    Get.toNamed(
                       Routes.courseDetailMobilePage,
                       arguments: course,
                     );
-                    return;
-                  }
-                  Get.toNamed(
-                    Routes.courseDetailMobilePage,
-                    arguments: course,
-                  );
-                },
-            child: Container(
-              width: 76,
-              height: 76,
-              alignment: Alignment.center,
-              decoration: const ShapeDecoration(
-                color: Colors.white,
-                shape: CircleBorder(side: BorderSide.none),
-              ),
-              child: const Icon(
-                Icons.play_arrow_outlined,
-                size: 30,
+                  },
+              child: Container(
+                width: 76,
+                height: 76,
+                alignment: Alignment.center,
+                decoration: const ShapeDecoration(
+                  color: Colors.white,
+                  shape: CircleBorder(side: BorderSide.none),
+                ),
+                child: const Icon(
+                  Icons.play_arrow_outlined,
+                  size: 30,
+                ),
               ),
             ),
           ),
@@ -68,8 +71,8 @@ class CourseCard extends StatelessWidget {
           color: CommonColor.headingTextColor1,
           maxLine: 1,
           fontFamily: AppStrings.sfProDisplay,
-          fontWeight: FontWeight.w400,
-          fontSize: 22,
+          fontWeight: FontWeight.w600,
+          fontSize: 16,
         ),
         TextWidget(
           textAlign: TextAlign.center,
@@ -77,8 +80,8 @@ class CourseCard extends StatelessWidget {
           color: CommonColor.headingTextColor1,
           maxLine: 1,
           fontFamily: AppStrings.sfProDisplay,
-          fontWeight: FontWeight.w400,
-          fontSize: 16,
+          fontWeight: FontWeight.w300,
+          fontSize: 13,
         ),
         const SizedBox(height: 30)
       ],

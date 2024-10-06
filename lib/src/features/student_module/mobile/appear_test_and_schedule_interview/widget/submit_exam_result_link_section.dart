@@ -23,18 +23,19 @@ class SubmitExamResultLinkSection
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const TextWidget(
-            text: AppStrings.pasteYourResultsFromFlipgrid,
-            color: CommonColor.blackColor2,
-            maxLine: 1,
-            fontFamily: AppStrings.sfProDisplay,
-            fontWeight: FontWeight.w400,
-            fontSize: 16),
+          text: AppStrings.pasteYourResultsFromFlipgrid,
+          color: CommonColor.blackColor2,
+          maxLine: 1,
+          fontFamily: AppStrings.sfProDisplay,
+          fontWeight: FontWeight.w400,
+          fontSize: 16,
+        ),
         const SizedBox(height: 12),
         OutlinedInputField(
           controller: controller.submitExamLinkController,
           hintText: AppStrings.pasteYourLinkHere,
           validator: InputFieldValidator.name(),
-          prefix: Image.asset(ImageConstant.link1),
+          prefix: const Icon(Icons.link),
         ),
         const SizedBox(height: 8),
         const TextWidget(

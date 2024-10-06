@@ -66,10 +66,13 @@ class _CourseDetailMobilePageState extends State<CourseDetailMobilePage> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 3),
-          CourseDetailsVideoSection(
-            collectinListData: collectinListData!,
-            registrationController: registrationController,
+          // const SizedBox(height: 3),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: CourseDetailsVideoSection(
+              collectinListData: collectinListData!,
+              registrationController: registrationController,
+            ),
           ),
           // CourseLevelSection(collectinListData: collectinListData!),
           Expanded(

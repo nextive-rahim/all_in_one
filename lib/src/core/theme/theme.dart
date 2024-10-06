@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 ThemeData themeData = ThemeData(
   fontFamily: 'NotoSerifBengali',
-  scaffoldBackgroundColor: AppColors.pageBackgroundColor,
+  scaffoldBackgroundColor: CommonColor.greyColor15,
   appBarTheme: const AppBarTheme(
       centerTitle: true,
       elevation: 0,

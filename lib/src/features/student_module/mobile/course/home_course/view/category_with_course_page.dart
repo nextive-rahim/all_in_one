@@ -33,7 +33,7 @@ class _CategoryWithCoursePageState extends State<CategoryWithCoursePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: CommonColor.greyColor1,
+      // backgroundColor: CommonColor.greyColor1,
       body: RefreshIndicator(
         onRefresh: () async {
           studentDashboardController.getStudentHomeData();
@@ -66,7 +66,7 @@ class _CategoryWithCoursePageState extends State<CategoryWithCoursePage> {
                         text: AppStrings.courses,
                         style: TextStyle(
                           color: CommonColor.greyColor4,
-                          fontSize: 18,
+                          fontSize: 20,
                           fontFamily: AppStrings.aeonikTRIAL,
                           fontWeight: FontWeight.w700,
                         ),

@@ -50,7 +50,7 @@ class _AppearTestAndScheduleInterviewMobilePageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: CommonColor.whiteColor,
+        // backgroundColor: CommonColor.whiteColor,
         appBar: AppBar(
           elevation: 0,
           title: const Text(

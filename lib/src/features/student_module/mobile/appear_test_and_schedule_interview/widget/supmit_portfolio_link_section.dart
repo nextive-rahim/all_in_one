@@ -103,10 +103,7 @@ class _SubmitPortfolioLinkSectionState
           controller: controller.submitExamLinkController,
           hintText: "www.github.io/myportfolio",
           validator: InputFieldValidator.name(),
-          prefix: Image.asset(
-            ImageConstant.link1,
-            color: CommonColor.hintTextColor,
-          ),
+          prefix: const Icon(Icons.link),
           suffix: const Icon(
             Icons.help_outline,
             color: CommonColor.greyColor19,
