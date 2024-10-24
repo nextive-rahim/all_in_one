@@ -1,5 +1,4 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
-import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:flutter/material.dart';

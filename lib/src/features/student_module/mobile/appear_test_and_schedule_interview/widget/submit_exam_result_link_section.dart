@@ -1,5 +1,4 @@
 import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/validators/input_form_validators.dart';
