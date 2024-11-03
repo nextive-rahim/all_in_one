@@ -92,8 +92,9 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  context.pushNamed(Routes.forgetPasswordEmailPage);
-                                //  Get.toNamed(Routes.forgetPasswordEmailPage);
+                                  context.pushNamed(
+                                      Routes.forgetPasswordEmailPage);
+                                  //  Get.toNamed(Routes.forgetPasswordEmailPage);
                                 },
                                 child: const TextWidget(
                                   text: AppStrings.forgotPassword,
@@ -313,29 +314,34 @@ class _LoginPageState extends State<LoginPage> {
         }
         if (controller.loginModel.data?.userType == 1) {
           if (kIsWeb) {
-            Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
-            // Get.offNamed(Routes.bottomNavBarStudent);
+            context.pushNamed(Routes.homeTab);
+            // Get.rootDelegate.toNamed(Routes.homeTab);
+            // Get.offNamed(Routes.homeTab);
           } else {
-            Get.offNamed(Routes.bottomNavBarStudent);
+            Get.offNamed(Routes.homeTab);
           }
         } else if (controller.loginModel.data?.userType == 2) {
           if (kIsWeb) {
-            Get.offNamed(Routes.bottomNavBarEmployee);
+            context.pushNamed(Routes.homeTab);
+            //  Get.offNamed(Routes.bottomNavBarEmployee);
           } else {
             Get.offNamed(Routes.bottomNavBarEmployee);
           }
         } else if (controller.loginModel.data?.userType == 3) {
           if (kIsWeb) {
-            Get.offNamed(Routes.bottomNavBarCompany);
+            context.pushNamed(Routes.bottomNavBarCompany);
+            // Get.offNamed(Routes.bottomNavBarCompany);
           } else {
-            //
-            Get.offNamed(Routes.bottomNavBarCompany);
+            context.pushNamed(Routes.bottomNavBarCompany);
+            //  Get.offNamed(Routes.bottomNavBarCompany);
           }
         } else if (controller.loginModel.data?.userType == 4) {
           if (kIsWeb) {
-            Get.offNamed(Routes.bottomNavBarInterview);
+            context.pushNamed(Routes.bottomNavBarInterview);
+            // Get.offNamed(Routes.bottomNavBarInterview);
           } else {
-            Get.offNamed(Routes.bottomNavBarInterview);
+            context.pushNamed(Routes.bottomNavBarInterview);
+            // Get.offNamed(Routes.bottomNavBarInterview);
           }
         }
       },

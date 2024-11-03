@@ -34,41 +34,39 @@ class _SplashPageState extends State<SplashPage> {
           context.pushNamed(Routes.login);
           // Get.offNamed(Routes.login);
           //  Get.rootDelegate.toNamed(Routes.login);
-        } else {
-          Get.offNamed(Routes.login);
-        }
 
-        return;
+          return;
+        }
       }
       final userType = CacheService.boxAuth.read(CacheKeys.userType);
       print('User Type : $userType');
       if (userType == 1) {
         if (kIsWeb) {
-          context.pushNamed(Routes.login);
-          // Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
-          // Get.offNamed(Routes.bottomNavBarStudent);
+          context.pushNamed(Routes.homeTab);
+          // Get.rootDelegate.toNamed(Routes.homeTab);
+          // Get.offNamed(Routes.homeTab);
         } else {
-          // Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
-          Get.offNamed(Routes.bottomNavBarStudent);
+          // Get.rootDelegate.toNamed(Routes.homeTab);
+          Get.offNamed(Routes.homeTab);
         }
       } else if (userType == 2) {
         if (kIsWeb) {
-          Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
+          context.pushNamed(Routes.homeTab);
           // Get.offNamed(Routes.bottomNavBarEmployee);
         } else {
-          // Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
-          Get.offNamed(Routes.bottomNavBarEmployee);
+          // Get.rootDelegate.toNamed(Routes.homeTab);
+          context.pushNamed(Routes.bottomNavBarEmployee);
         }
       } else if (userType == 3) {
         if (kIsWeb) {
-          Get.offNamed(Routes.bottomNavBarCompany);
+          context.pushNamed(Routes.bottomNavBarCompany);
         } else {
           Get.offNamed(Routes.bottomNavBarCompany);
           // Get.offNamed(Routes.dashboardRegFirstTimeEmployeeWeb);
         }
       } else if (userType == 4) {
         if (kIsWeb) {
-          Get.offNamed(Routes.bottomNavBarInterview);
+          context.pushNamed(Routes.bottomNavBarInterview);
         } else {
           Get.offNamed(Routes.bottomNavBarInterview);
         }
@@ -78,6 +76,7 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
+    log("Auth Token.... : ${CacheService.boxAuth.read(CacheKeys.token)}");
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: CommonColor.whiteColor,

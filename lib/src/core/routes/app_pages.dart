@@ -86,32 +86,32 @@ class AppPages {
     //   curve: Curves.easeInOut,
     //   transitionDuration: const Duration(milliseconds: 50),
     // ),
-    GetPage(
-      name: Routes.responsibileDashboardFirstTime,
-      page: () => const Responsive(
-        desktop: DashboardRegFirstTimeWebLarge(),
-        tablet: DashboardRegFirstTimeWebLarge(),
-        mobile: BottomNavBarStudent(),
-      ),
-      bindings: [
-        StudentModuleBinding(),
-        JobListBinding(),
-      ],
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
-    GetPage(
-      name: Routes.bottomNavBarStudent,
-      page: () => const BottomNavBarStudent(),
-      bindings: [
-        StudentModuleBinding(),
-        JobListBinding(),
-      ],
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.responsibileDashboardFirstTime,
+    //   page: () => const Responsive(
+    //     desktop: DashboardRegFirstTimeWebLarge(),
+    //     tablet: DashboardRegFirstTimeWebLarge(),
+    //     mobile: BottomNavBarStudent(),
+    //   ),
+    //   bindings: [
+    //     StudentModuleBinding(),
+    //     JobListBinding(),
+    //   ],
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
+    // GetPage(
+    //   name: Routes.bottomNavBarStudent,
+    //   page: () => const BottomNavBarStudent(),
+    //   bindings: [
+    //     StudentModuleBinding(),
+    //     JobListBinding(),
+    //   ],
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
     GetPage(
       name: Routes.bottomNavBarEmployee,
       page: () => const BottomNavBarEmployee(),

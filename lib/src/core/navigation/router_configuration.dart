@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_student.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_email_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/otp_verification_view_controller.dart';
@@ -6,7 +7,10 @@ import 'package:all_in_one/src/features/common_features/authentication/login/vie
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/choose_engagement_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_completed_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
+import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
+import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_with_course_page.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/jobs/view/list_and_search_job_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,48 +24,50 @@ final GoRouter router = GoRouter(
   debugLogDiagnostics: true,
   initialLocation: Routes.splash,
   routes: <RouteBase>[
-    // StatefulShellRoute.indexedStack(
-    //   builder: (context, state, navigationShell) {
-    //     // the UI shell
-    //     return const BottomNavBarStudent(); // DashboardPage(navigationShell: navigationShell);
-    //   },
-    //   branches: const [
-    // StatefulShellBranch(
-    //   navigatorKey: _shellNavigatorAKey,
-    //   routes: [
-    //     // top route inside branch
-    //     transitionGoRoute(
-    //       path: Routes.coursesTab,
-    //       name: Routes.coursesTab,
-    //       pageBuilder: (context, state) =>
-    //           const CategoryWithCoursesTabPage(),
-    //     )
-    //   ],
-    // ),
-    // StatefulShellBranch(
-    //   navigatorKey: _shellNavigatorBKey,
-    //   routes: [
-    //     // top route inside branch
-    //     transitionGoRoute(
-    //       path: Routes.homeTab,
-    //       name: Routes.homeTab,
-    //       pageBuilder: (context, state) => const HomePage(),
-    //     )
-    //   ],
-    // ),
-    // StatefulShellBranch(
-    //   navigatorKey: _shellNavigatorCKey,
-    //   routes: [
-    //     // top route inside branch
-    //     transitionGoRoute(
-    //       path: Routes.classRoomTab,
-    //       name: Routes.classRoomTab,
-    //       pageBuilder: (context, state) => const ClassRoomPage(),
-    //     )
-    //   ],
-    // ),
-    // ],
-    // ),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        // the UI shell
+        return BottomNavBarStudent(
+            navigationShell:
+                navigationShell); // DashboardPage(navigationShell: navigationShell);
+      },
+      branches: [
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorAKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.homeTab,
+              name: Routes.homeTab,
+              pageBuilder: (context, state) => const CategoryWithCoursePage(),
+            )
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorBKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.jobTab,
+              name: Routes.jobTab,
+              pageBuilder: (context, state) =>
+                  const ListAndSearchJobStudentMobile(),
+            )
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorCKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.profileTab,
+              name: Routes.profileTab,
+              pageBuilder: (context, state) => ProfilePage(),
+            )
+          ],
+        ),
+      ],
+    ),
     transitionGoRoute(
       path: Routes.splash,
       name: Routes.splash,
