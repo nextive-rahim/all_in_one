@@ -16,6 +16,7 @@ import 'package:all_in_one/src/features/common_features/authentication/login/con
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -25,7 +26,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final controller = Get.find<LoginViewController>();
+  final controller = Get.put(LoginViewController());
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -91,7 +92,8 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               InkWell(
                                 onTap: () {
-                                  Get.toNamed(Routes.forgetPasswordEmailPage);
+                                  context.pushNamed(Routes.forgetPasswordEmailPage);
+                                //  Get.toNamed(Routes.forgetPasswordEmailPage);
                                 },
                                 child: const TextWidget(
                                   text: AppStrings.forgotPassword,
@@ -132,7 +134,14 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(width: 10),
                               GestureDetector(
                                 onTap: () {
-                                  Get.toNamed(Routes.engagement);
+                                  context.pushNamed(Routes.engagement, extra: [
+                                    '1',
+                                    '2',
+                                    '3'
+                                  ], queryParameters: {
+                                    'title': 'Checking data transfer'
+                                  });
+                                  // Get.toNamed(Routes.engagement);
                                 },
                                 child: const TextWidget(
                                   text: AppStrings.registerNow,
@@ -345,7 +354,7 @@ class _LoginPageState extends State<LoginPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                context.pop();
               },
               child: const Text('Cancel'),
             ),
@@ -353,12 +362,11 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () {
                 controller.resentOtpForVerifyMail().then(
                   (value) {
-                       SnackBarService.showInfoSnackBar(
+                    SnackBarService.showInfoSnackBar(
                         controller.loginModel.message.toString());
-                   
                   },
                 );
-                Navigator.of(context).pop();
+                context.pop();
               },
               child: const Text('OK'),
             )

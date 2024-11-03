@@ -6,11 +6,13 @@ import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ChooseEngagementPage extends StatefulWidget {
-  const ChooseEngagementPage({super.key});
-
+  const ChooseEngagementPage(
+      {super.key, required this.title, required this.list});
+  final String title;
+  final List list;
   @override
   State<ChooseEngagementPage> createState() => _ChooseEngagementPageState();
 }
@@ -60,8 +62,11 @@ class _ChooseEngagementPageState extends State<ChooseEngagementPage> {
                 GestureDetector(
                   onTap: () {
                     if (_selectedIndex != null) {
-                      Get.toNamed(Routes.registration,
-                          arguments: (_selectedIndex! + 1).toString());
+                      context.pushNamed(Routes.registration, queryParameters: {
+                        'userType': (_selectedIndex! + 1).toString()
+                      });
+                      // Get.toNamed(Routes.registration,
+                      //     arguments: (_selectedIndex! + 1).toString());
                     } else {
                       Util.displayErrorToast(
                         context,

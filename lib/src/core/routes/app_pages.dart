@@ -7,9 +7,7 @@ import 'package:all_in_one/src/features/common_features/authentication/forget_pa
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/otp_verification_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/authentication/login/view/login_page.dart';
-import 'package:all_in_one/src/features/common_features/authentication/registration/view/choose_engagement_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_completed_page.dart';
-import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/root/binding/auth_binding.dart';
 import 'package:all_in_one/src/features/common_features/user_details/binding/user_details_binding.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/applied_job_for_multiple_employee/binding/company_applied_job_binding.dart';
@@ -81,13 +79,13 @@ class AppPages {
       curve: Curves.easeInOut,
       transitionDuration: const Duration(milliseconds: 50),
     ),
-    GetPage(
-      name: Routes.engagement,
-      page: () => const ChooseEngagementPage(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.engagement,
+    //   page: () => const ChooseEngagementPage(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
     GetPage(
       name: Routes.responsibileDashboardFirstTime,
       page: () => const Responsive(
@@ -186,14 +184,14 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 50),
     ),
 
-    GetPage(
-      name: Routes.registration,
-      page: () => const RegistrationPage(),
-      // binding: SupportBinding(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.registration,
+    //   page: () => const RegistrationPage(),
+    //   // binding: SupportBinding(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
     GetPage(
       name: Routes.registrationCompleted,
       page: () => const RegistrationCompletedPage(),

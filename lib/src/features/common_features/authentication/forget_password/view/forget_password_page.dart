@@ -15,6 +15,7 @@ import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/controller/forget_password_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgetPasswordPage extends StatefulWidget {
   const ForgetPasswordPage({
@@ -26,7 +27,7 @@ class ForgetPasswordPage extends StatefulWidget {
 }
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
-  final controller = Get.find<ForgetPasswordViewController>();
+  final controller = Get.put(ForgetPasswordViewController());
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -171,8 +172,8 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
       } else {
         SnackBarService.showInfoSnackBar(
             controller.loginModel.message.toString());
-
-        Get.offNamed(Routes.login);
+        context.goNamed(Routes.login);
+        // Get.offNamed(Routes.login);
       }
     });
   }

@@ -5,7 +5,7 @@ import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class RegistrationCompletedPage extends StatefulWidget {
   const RegistrationCompletedPage({super.key});
@@ -66,7 +66,8 @@ class _RegistrationCompletedPageState extends State<RegistrationCompletedPage> {
                     const SizedBox(height: 45),
                     GestureDetector(
                       onTap: () {
-                        Get.offNamed(Routes.login);
+                        context.goNamed(Routes.login);
+                        // Get.offNamed(Routes.login);
                       },
                       child: Container(
                         height: 60,

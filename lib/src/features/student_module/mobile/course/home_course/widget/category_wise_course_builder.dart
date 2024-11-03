@@ -9,7 +9,7 @@ class CategoryWiseCourseBuilder extends StatelessWidget {
     super.key,
     required this.courseList,
   });
- final List<CourseModel> courseList;
+  final List<CourseModel> courseList;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +19,17 @@ class CategoryWiseCourseBuilder extends StatelessWidget {
       itemCount: courseList.length,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-          CourseModel course = courseList[index];
+        CourseModel course = courseList[index];
         return CourseCard(
-            onTap: () {
-              Get.toNamed(
-                Routes.courseDetailMobilePage,
-                arguments: course,
-              );
-            },
-            course:course,);
+          key: ValueKey(courseList[index].id),
+          onTap: () {
+            Get.toNamed(
+              Routes.courseDetailMobilePage,
+              arguments: course,
+            );
+          },
+          course: course,
+        );
       },
     );
   }

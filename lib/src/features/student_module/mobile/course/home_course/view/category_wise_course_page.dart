@@ -9,31 +9,40 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CategoryWiseCoursePage extends StatefulWidget {
-  const CategoryWiseCoursePage({super.key});
-
+  const CategoryWiseCoursePage({super.key, this.title});
+  final String? title;
   @override
   State<CategoryWiseCoursePage> createState() => _CategoryWiseCoursePageState();
 }
 
 class _CategoryWiseCoursePageState extends State<CategoryWiseCoursePage> {
-  final studentDashboardController = Get.find<StudentHomeViewController>();
+  final studentDashboardController = Get.put(StudentHomeViewController());
 //final List<CourseCard> courseList=Get.arguments;
-  final String title = Get.arguments[1];
+  String? title;
+  // Map<String, dynamic>? arguments;
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      studentDashboardController.categoryWiseCourse.value = Get.arguments[0];
-      //studentDashboardController.getStudentHomeData();
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    // studentDashboardController.categoryWiseCourse.value = Get.arguments[0];
+    //setState(() {
+    // arguments = Get.arguments;
+    title = widget.title;
+    // });
+
+    //studentDashboardController.getStudentHomeData();
+    // });
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final String id = Get.parameters['title'] ?? 'Unknown ID';
+    print(id);
     return Scaffold(
+      key: UniqueKey(),
       appBar: AppBar(
-        title: Text(title),
+        title: Text(title ?? 'no found'),
       ),
       resizeToAvoidBottomInset: false,
       // backgroundColor: CommonColor.greyColor1,

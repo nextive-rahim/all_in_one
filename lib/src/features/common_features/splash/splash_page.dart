@@ -8,6 +8,7 @@ import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({
@@ -29,16 +30,22 @@ class _SplashPageState extends State<SplashPage> {
     Future.delayed(const Duration(seconds: 2)).then((value) {
       log("Auth Token.... : ${CacheService.boxAuth.read(CacheKeys.token)}");
       if (CacheService.boxAuth.read(CacheKeys.token) == null) {
-        //  Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
-        Get.offNamed(Routes.login);
+        if (kIsWeb) {
+          context.pushNamed(Routes.login);
+          // Get.offNamed(Routes.login);
+          //  Get.rootDelegate.toNamed(Routes.login);
+        } else {
+          Get.offNamed(Routes.login);
+        }
+
         return;
       }
       final userType = CacheService.boxAuth.read(CacheKeys.userType);
       print('User Type : $userType');
       if (userType == 1) {
         if (kIsWeb) {
-          print('object');
-          Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
+          context.pushNamed(Routes.login);
+          // Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);
           // Get.offNamed(Routes.bottomNavBarStudent);
         } else {
           // Get.rootDelegate.toNamed(Routes.bottomNavBarStudent);

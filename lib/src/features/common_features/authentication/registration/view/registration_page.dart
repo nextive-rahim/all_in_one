@@ -18,11 +18,15 @@ import 'package:all_in_one/src/features/common_features/skill/controller/skill_c
 import 'package:all_in_one/src/features/common_features/skill/widget/skill-builder.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 //import 'dart:io' show Platform;
 
 class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({super.key});
-
+  const RegistrationPage({
+    super.key,
+    required this.userTyper,
+  });
+  final String userTyper;
   @override
   State<RegistrationPage> createState() => _RegistrationPageState();
 }
@@ -30,8 +34,8 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   final _formKey = GlobalKey<FormState>();
 
-  final controller = Get.find<RegistrationViewController>();
-  final skillController = Get.find<SkillViewController>();
+  final controller = Get.put(RegistrationViewController());
+  final skillController = Get.put(SkillViewController());
   @override
   void initState() {
     // skillController.getSkills();
@@ -40,7 +44,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   @override
   Widget build(BuildContext context) {
-    print('User Type : ${Get.arguments}');
+    print('User Type : ${widget.userTyper}');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Registration'),
@@ -96,7 +100,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           hintText: AppStrings.phoneNumberHint,
                           keyboardType: TextInputType.phone,
                         ),
-                        Get.arguments == 3
+                        widget.userTyper == '3'
                             ? const Offstage()
                             : InkWell(
                                 onTap: () {
@@ -342,7 +346,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
 
   void onTap() {
-    controller.registration(_formKey, Get.arguments).then((value) {
+    controller.registration(_formKey, widget.userTyper).then((value) {
       if (controller.selectedSkillIdList.isEmpty) {
         SnackBarService.showErrorSnackBar('Please Select Skills');
 
@@ -353,8 +357,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
         SnackBarService.showErrorSnackBar(AppStrings.registrationFailedMessage);
       } else {
         SnackBarService.showInfoSnackBar(AppStrings.registrationFailedMessage);
-
-        Get.offNamed(Routes.registrationCompleted);
+        context.pushNamed(Routes.registrationCompleted);
+        // Get.offNamed(Routes.registrationCompleted);
       }
     });
   }
@@ -369,13 +373,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                context.pop();
               },
               child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
-                Get.back();
+                context.pop();
+                // Get.back();
               },
               child: const Text('Confirm'),
             )

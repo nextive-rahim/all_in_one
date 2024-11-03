@@ -14,6 +14,7 @@ import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/controller/otp_verification_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class OTPverificationPage extends StatefulWidget {
   const OTPverificationPage({super.key});
@@ -23,7 +24,7 @@ class OTPverificationPage extends StatefulWidget {
 }
 
 class OTPverificationPageState extends State<OTPverificationPage> {
-  final controller = Get.find<OtpVerificationViewController>();
+  final controller = Get.put(OtpVerificationViewController());
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -139,8 +140,8 @@ class OTPverificationPageState extends State<OTPverificationPage> {
         } else {
           SnackBarService.showInfoSnackBar(
               controller.loginModel.message.toString());
-
-          Get.toNamed(Routes.forgotPassword);
+          context.pushNamed(Routes.forgotPassword);
+          //   Get.toNamed(Routes.forgotPassword);
         }
       },
     );

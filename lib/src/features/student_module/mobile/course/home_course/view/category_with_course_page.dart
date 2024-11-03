@@ -9,16 +9,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CategoryWithCoursePage extends StatefulWidget {
-  const CategoryWithCoursePage({
-    super.key,
-  });
+  const CategoryWithCoursePage({super.key});
 
   @override
   State<CategoryWithCoursePage> createState() => _CategoryWithCoursePageState();
 }
 
 class _CategoryWithCoursePageState extends State<CategoryWithCoursePage> {
-  final studentDashboardController = Get.find<StudentHomeViewController>();
+  final studentDashboardController = Get.put(StudentHomeViewController());
 
   @override
   void initState() {
@@ -32,6 +30,7 @@ class _CategoryWithCoursePageState extends State<CategoryWithCoursePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: UniqueKey(),
       resizeToAvoidBottomInset: false,
       // backgroundColor: CommonColor.greyColor1,
       body: RefreshIndicator(

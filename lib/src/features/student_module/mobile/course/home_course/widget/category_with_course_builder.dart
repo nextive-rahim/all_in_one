@@ -2,6 +2,7 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
+import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/course_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,14 @@ class CategoryWithCourseBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      key: ValueKey(categories),
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: categories.length,
       itemBuilder: (context, categoryIndex) {
         return categories.isNotEmpty
             ? Column(
+                key: ValueKey(categories[categoryIndex].id),
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Row(
@@ -49,11 +52,30 @@ class CategoryWithCourseBuilder extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {
-                                if (kIsWeb) {
-                                  Get.rootDelegate.toNamed(
-                                      Routes.categoryWiseCourse,
-                                      arguments: categories[categoryIndex]
-                                          .collectinList);
+                                if (!kIsWeb) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CategoryWiseCoursePage(
+                                              title: 'Title',
+                                            )),
+                                  );
+                                  // Get.rootDelegate.toNamed(
+                                  //'/categoryWiseCourse?title=${categories[categoryIndex].name}',
+                                  // parameters: {
+                                  //   //  'courseList': categories[categoryIndex]
+                                  //   //       .collectinList??[],
+                                  //   'title':
+                                  //       categories[categoryIndex].name ??
+                                  //           'hhhhh',
+                                  // }
+
+                                  //  arguments:   [
+                                  //       categories[categoryIndex].collectinList,
+                                  //       categories[categoryIndex].name,
+                                  //     ],
+                                  // );
                                   return;
                                 }
                                 Get.toNamed(

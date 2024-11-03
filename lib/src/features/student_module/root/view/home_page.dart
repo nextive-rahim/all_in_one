@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class HomePage extends StatefulWidget {
   final String? title;
   final Function? onLogout;
-  const HomePage({super.key, required this.title, this.onLogout});
+  const HomePage({super.key, this.title, this.onLogout});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,9 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    //_fetchDummyData();mg100@gmail.com
-    //subhampatra1@opentrash.com
-
     super.initState();
   }
 

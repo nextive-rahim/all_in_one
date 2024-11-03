@@ -14,6 +14,7 @@ import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/controller/forget_password_email_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ForgetPasswordEmailPage extends StatefulWidget {
   const ForgetPasswordEmailPage({
@@ -26,7 +27,7 @@ class ForgetPasswordEmailPage extends StatefulWidget {
 }
 
 class _ForgetPasswordEmailPageState extends State<ForgetPasswordEmailPage> {
-  final controller = Get.find<ForgetPasswordEmailViewController>();
+  final controller = Get.put(ForgetPasswordEmailViewController());
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -149,8 +150,8 @@ class _ForgetPasswordEmailPageState extends State<ForgetPasswordEmailPage> {
       } else {
         SnackBarService.showInfoSnackBar(
             controller.loginModel.message.toString());
-
-        Get.toNamed(Routes.otpVerification);
+        context.pushNamed(Routes.otpVerification);
+        // Get.toNamed(Routes.otpVerification);
       }
     });
   }
