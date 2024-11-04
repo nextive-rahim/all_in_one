@@ -1,10 +1,13 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/widgets/empty_screen.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/job_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class SavedJobsTab extends GetView<JobsViewController> {
   const SavedJobsTab({super.key});
@@ -32,13 +35,23 @@ class SavedJobsTab extends GetView<JobsViewController> {
                     return JobCard(
                       isFromSaveJob: true,
                       onTap: () {
-                        Get.toNamed(
-                          Routes.jobDetails,
-                          arguments: [
-                            controller.savedJobList[index],
-                            JobIsFrom.saved
-                          ],
+                        CacheService.boxAuth.write(
+                          CacheKeys.jobModel,
+                          controller.savedJobList[index],
                         );
+                        context.pushNamed(
+                          Routes.jobDetails,
+                          queryParameters: {
+                            'isFrom': JobIsFrom.saved.name,
+                          },
+                        );
+                        // Get.toNamed(
+                        //   Routes.jobDetails,
+                        //   arguments: [
+                        //     controller.savedJobList[index],
+                        //     JobIsFrom.saved
+                        //   ],
+                        // );
                       },
                       job: controller.savedJobList[index],
                     );

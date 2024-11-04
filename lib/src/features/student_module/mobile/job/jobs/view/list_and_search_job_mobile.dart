@@ -26,8 +26,8 @@ class ListAndSearchJobStudentMobile extends GetView<JobsViewController> {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.only(
-                left: 10,
-                right: 10,
+                left: 60,
+                right: 60,
                 // top: 30,
               ),
               child: Column(

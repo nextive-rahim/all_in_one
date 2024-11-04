@@ -30,7 +30,6 @@ import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_sc
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/binding/course_details_binding.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/binding/student_binding.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/binding/job_list_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/binding/profile_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/change_password_page.dart';
@@ -226,14 +225,14 @@ class AppPages {
       curve: Curves.easeInOut,
       transitionDuration: const Duration(milliseconds: 50),
     ),
-    GetPage(
-      name: Routes.jobDetails,
-      page: () => const JobDetailsPageMobile(),
-      // binding: BlogsBinding(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.jobDetails,
+    //   page: () => const JobDetailsPageMobile(),
+    //   // binding: BlogsBinding(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
 
     GetPage(
       name: Routes.postCompanyNewJob,

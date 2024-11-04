@@ -1,4 +1,6 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/formated_date_time.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
@@ -13,6 +15,7 @@ import 'package:all_in_one/src/features/student_module/mobile/job/job_details/vi
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CompanyJobCard extends StatelessWidget {
   const CompanyJobCard({super.key, required this.job});
@@ -40,10 +43,20 @@ class CompanyJobCard extends StatelessWidget {
             GestureDetector(
               onTap: () {
                 Get.put(CompanyJobViewController()).companyJonID = job.id;
-                Get.toNamed(
-                  Routes.jobDetails,
-                  arguments: [job, JobIsFrom.company],
+                CacheService.boxAuth.write(
+                  CacheKeys.jobModel,
+                  job,
                 );
+                context.pushNamed(
+                  Routes.jobDetails,
+                  queryParameters: {
+                    'isFrom': JobIsFrom.company.name,
+                  },
+                );
+                // Get.toNamed(
+                //   Routes.jobDetails,
+                //   arguments: [job, JobIsFrom.company],
+                // );
               },
               child: SizedBox(
                 width: double.infinity,

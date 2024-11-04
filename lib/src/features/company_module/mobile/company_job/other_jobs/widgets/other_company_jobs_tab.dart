@@ -1,5 +1,7 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/widgets/empty_screen.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/other_jobs/controller/other_company_job_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/other_jobs/widgets/other_company_job_card.dart';
@@ -7,6 +9,7 @@ import 'package:all_in_one/src/features/student_module/mobile/job/job_details/vi
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/job-card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class OtherCompanyJobsTab extends GetView<OtherCompanyJobsViewController> {
   const OtherCompanyJobsTab({super.key});
@@ -35,13 +38,23 @@ class OtherCompanyJobsTab extends GetView<OtherCompanyJobsViewController> {
                   itemBuilder: (context, index) {
                     return OtherCompanyJobCard(
                       onTap: () {
-                        Get.toNamed(
-                          Routes.jobDetails,
-                          arguments: [
-                            controller.otherCompany[index],
-                            JobIsFrom.other
-                          ],
+                        CacheService.boxAuth.write(
+                          CacheKeys.jobModel,
+                          controller.otherCompany[index],
                         );
+                        context.pushNamed(
+                          Routes.jobDetails,
+                          queryParameters: {
+                            'isFrom': JobIsFrom.other.name,
+                          },
+                        );
+                        // Get.toNamed(
+                        //   Routes.jobDetails,
+                        //   arguments: [
+                        //     controller.otherCompany[index],
+                        //     JobIsFrom.other
+                        //   ],
+                        // );
                       },
                       job: controller.otherCompany[index],
                     );

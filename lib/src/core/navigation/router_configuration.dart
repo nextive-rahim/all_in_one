@@ -13,6 +13,7 @@ import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_sc
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/view/course_details_mobile_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_with_course_page.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/view/list_and_search_job_mobile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -173,18 +174,14 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
-    // transitionGoRoute(
-    //   path: Routes.categoryWiseCourses,
-    //   name: Routes.categoryWiseCourses,
-    //   pageBuilder: (context, state) {
-    //     final String slug = state.uri.queryParameters['slug'] ?? '';
-    //     final String title = state.uri.queryParameters['title'] ?? '';
-    //     return CategoryWiseCoursesPage(
-    //       slug: slug,
-    //       title: title,
-    //     );
-    //   },
-    // ),
+    transitionGoRoute(
+      path: Routes.jobDetails,
+      name: Routes.jobDetails,
+      pageBuilder: (context, state) {
+        final String isFrom = state.uri.queryParameters['isFrom'] ?? '';
+        return JobDetailsPageMobile(isFrom: isFrom);
+      },
+    ),
     // transitionGoRoute(
     //   path: Routes.courseSection,
     //   name: Routes.courseSection,

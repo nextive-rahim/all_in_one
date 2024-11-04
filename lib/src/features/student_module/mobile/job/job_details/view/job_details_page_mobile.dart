@@ -1,4 +1,6 @@
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/features/common_features/user_details/controller/user_details_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_list/controller/company_job_view_controller.dart';
@@ -23,21 +25,26 @@ enum JobIsFrom {
 }
 
 class JobDetailsPageMobile extends StatefulWidget {
-  const JobDetailsPageMobile({super.key});
-
+  const JobDetailsPageMobile({
+    super.key,
+    required this.isFrom,
+  });
+  final String isFrom;
   @override
   State<JobDetailsPageMobile> createState() => _JobDetailsPageMobileState();
 }
 
 class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
   final companyjobController = Get.put(CompanyJobViewController());
-  final JobModel viewJobResponseData = Get.arguments[0];
-  final isFromCompanyJob = Get.arguments[1] == JobIsFrom.company ? true : false;
+  late JobModel viewJobResponseData;
+  bool? isFromCompanyJob;
 
-  final bool isFromOtherJob =
-      Get.arguments[1] == JobIsFrom.other ? true : false;
+  bool? isFromOtherJob;
   @override
   void initState() {
+    viewJobResponseData = CacheService.boxAuth.read(CacheKeys.jobModel);
+    isFromCompanyJob = widget.isFrom == JobIsFrom.company.name ? true : false;
+    isFromOtherJob = widget.isFrom == JobIsFrom.other.name ? true : false;
     Get.put(UserDetailsViewController());
     super.initState();
   }
@@ -57,8 +64,8 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(
-                  left: 18,
-                  right: 18,
+                  left: 65,
+                  right: 65,
                   top: 7,
                 ),
                 child: Column(
@@ -67,7 +74,7 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                     JobDetailsHeader(job: viewJobResponseData),
                     JobSummaryCard(job: viewJobResponseData),
 
-                    isFromOtherJob
+                    isFromOtherJob!
                         ? Column(
                             children: [
                               CompanySaveJobButtonFromJobDetails(
@@ -76,7 +83,7 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                               CompanyJobApplyButton(job: viewJobResponseData),
                             ],
                           )
-                        : isFromCompanyJob
+                        : isFromCompanyJob!
                             ? const Offstage()
                             : Column(
                                 children: [
@@ -89,7 +96,7 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
                     20.sh,
                     JobDescription(job: viewJobResponseData),
                     //  const JobShareButton(),
-                    isFromCompanyJob
+                    isFromCompanyJob!
                         ? const CompanyJobInterviewCandidateList(
                             // userDetails: viewJobResponseData.user
                             )

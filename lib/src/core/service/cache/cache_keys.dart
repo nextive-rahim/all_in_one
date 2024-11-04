@@ -7,4 +7,5 @@ class CacheKeys {
   static const interviewApproval = "interviewApproval";
   static const categoryWisecourseList = "categoryWisecourse";
   static const courseModel = "courseModel";
+  static const jobModel = "jobModel";
 }

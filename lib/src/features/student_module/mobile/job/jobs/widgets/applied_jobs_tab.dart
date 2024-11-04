@@ -1,5 +1,7 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/widgets/empty_screen.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
@@ -7,6 +9,7 @@ import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/j
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/widgets/job_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class AppliedTab extends GetView<JobsViewController> {
   const AppliedTab({super.key});
@@ -37,13 +40,23 @@ class AppliedTab extends GetView<JobsViewController> {
                     itemBuilder: (context, index) {
                       return JobCard(
                         onTap: () {
-                          Get.toNamed(
-                            Routes.jobDetails,
-                            arguments: [
-                              controller.appiedJobList[index],
-                              JobIsFrom.applied
-                            ],
+                          CacheService.boxAuth.write(
+                            CacheKeys.jobModel,
+                            controller.appiedJobList[index],
                           );
+                          context.pushNamed(
+                            Routes.jobDetails,
+                            queryParameters: {
+                              'isFrom': JobIsFrom.applied.name,
+                            },
+                          );
+                          // Get.toNamed(
+                          //   Routes.jobDetails,
+                          //   arguments: [
+                          //     controller.appiedJobList[index],
+                          //     JobIsFrom.applied
+                          //   ],
+                          // );
                         },
                         isFromAppliedJob: true,
                         job: controller.appiedJobList[index],
