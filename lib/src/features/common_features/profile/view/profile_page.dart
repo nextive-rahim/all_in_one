@@ -44,8 +44,8 @@ class ProfilePage extends GetView<ProfileViewController> {
                             const SizedBox(height: 21),
                             Padding(
                               padding: const EdgeInsets.only(
-                                left: 5,
-                                right: 5,
+                                left: 65,
+                                right: 65,
                               ),
                               child: Container(
                                 width: SizeConfig.screenWidth,

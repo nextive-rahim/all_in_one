@@ -8,6 +8,7 @@ import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileHeader extends GetView<ProfileViewController> {
   const ProfileHeader({
@@ -19,8 +20,8 @@ class ProfileHeader extends GetView<ProfileViewController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 15,
-        right: 15,
+        left: 65,
+        right: 65,
         top: 15,
       ),
       child: Column(
@@ -152,8 +153,9 @@ class ProfileHeader extends GetView<ProfileViewController> {
                       GestureDetector(
                         onTap: () {
                           isFromcompany == true
-                              ? Get.toNamed(Routes.companyProfileUpdatePage)
-                              : Get.toNamed(Routes.profileUpdatePage);
+                              ? context
+                                  .pushNamed(Routes.companyProfileUpdatePage)
+                              : context.pushNamed(Routes.profileUpdatePage);
                         },
                         child: Container(
                           width: 161,

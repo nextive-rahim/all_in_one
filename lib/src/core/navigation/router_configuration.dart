@@ -8,7 +8,9 @@ import 'package:all_in_one/src/features/common_features/authentication/registrat
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_completed_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
+import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/company_profile_update_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/view/course_details_mobile_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
@@ -182,17 +184,18 @@ final GoRouter router = GoRouter(
         return JobDetailsPageMobile(isFrom: isFrom);
       },
     ),
-    // transitionGoRoute(
-    //   path: Routes.courseSection,
-    //   name: Routes.courseSection,
-    //   pageBuilder: (context, state) {
-    //     final String title = state.uri.queryParameters['title'] ?? '';
-    //     final String slug = state.uri.queryParameters['slug'] ?? '';
-    //     return SectionPage(
-    //       slug: slug,
-    //       title: title,
-    //     );
-    //   },
+    transitionGoRoute(
+        path: Routes.companyProfileUpdatePage,
+        name: Routes.companyProfileUpdatePage,
+        pageBuilder: (context, state) {
+          return const CompanyProfileUpdatePage();
+        }),
+    transitionGoRoute(
+        path: Routes.profileUpdatePage,
+        name: Routes.profileUpdatePage,
+        pageBuilder: (context, state) {
+          return ProfileUpdatePage();
+        }),
     //   routes: [
     //     transitionGoRoute(
     //       path: Routes.content,

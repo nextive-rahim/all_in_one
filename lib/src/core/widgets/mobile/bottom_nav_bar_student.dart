@@ -2,6 +2,7 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_update_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/root/widget/home_appbar.dart';
@@ -33,6 +34,7 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
   final controller = Get.put(DashboardViewController());
   final profileController = Get.put(ProfileViewController());
   final jobontroller = Get.put(JobsViewController());
+  final profileUPdatecontroller = Get.put(UpdateProfileiewController());
 
   // final List<Widget> _children = <Widget>[
   //   const CategoryWithCoursePage(),
