@@ -1,5 +1,3 @@
-import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_company.dart';
-import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_employee.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_interviewer.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_email_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_page.dart';
@@ -29,8 +27,6 @@ import 'package:all_in_one/src/features/common_features/splash/splash_page.dart'
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/binding/appear_test_binding.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/binding/course_details_binding.dart';
-import 'package:all_in_one/src/features/student_module/mobile/course/home_course/binding/student_binding.dart';
-import 'package:all_in_one/src/features/student_module/mobile/job/jobs/binding/job_list_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/binding/profile_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/change_password_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
@@ -168,14 +164,14 @@ class AppPages {
       transition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 50),
     ),
-    GetPage(
-      name: Routes.bottomNavBarCompany,
-      page: () => const BottomNavBarCompany(),
-      binding: JobListBinding(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.bottomNavBarCompany,
+    //   page: () => const BottomNavBarCompany(),
+    //   binding: JobListBinding(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
 
     // GetPage(
     //   name: Routes.registration,

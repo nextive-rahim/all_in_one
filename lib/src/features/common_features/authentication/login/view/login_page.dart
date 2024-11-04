@@ -322,14 +322,14 @@ class _LoginPageState extends State<LoginPage> {
           }
         } else if (controller.loginModel.data?.userType == 2) {
           if (kIsWeb) {
-            context.goNamed(Routes.homeTabCompany);
+            context.goNamed(Routes.homeTabEmployee);
             //  Get.offNamed(Routes.bottomNavBarEmployee);
           } else {
             Get.offNamed(Routes.bottomNavBarEmployee);
           }
         } else if (controller.loginModel.data?.userType == 3) {
           if (kIsWeb) {
-            context.pushNamed(Routes.bottomNavBarCompany);
+              context.goNamed(Routes.homeTabCompany);
             // Get.offNamed(Routes.bottomNavBarCompany);
           } else {
             context.pushNamed(Routes.bottomNavBarCompany);

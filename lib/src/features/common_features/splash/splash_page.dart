@@ -51,7 +51,7 @@ class _SplashPageState extends State<SplashPage> {
         }
       } else if (userType == 2) {
         if (kIsWeb) {
-          context.goNamed(Routes.homeTabCompany);
+          context.goNamed(Routes.homeTabEmployee);
           // Get.offNamed(Routes.bottomNavBarEmployee);
         } else {
           // Get.rootDelegate.toNamed(Routes.homeTab);
@@ -59,7 +59,7 @@ class _SplashPageState extends State<SplashPage> {
         }
       } else if (userType == 3) {
         if (kIsWeb) {
-          context.goNamed(Routes.bottomNavBarCompany);
+          context.goNamed(Routes.homeTabCompany);
         } else {
           Get.offNamed(Routes.bottomNavBarCompany);
           // Get.offNamed(Routes.dashboardRegFirstTimeEmployeeWeb);

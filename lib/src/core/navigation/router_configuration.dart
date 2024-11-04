@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_company.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_employee.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_student.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_email_page.dart';
@@ -12,7 +13,12 @@ import 'package:all_in_one/src/features/common_features/profile/view/change_pass
 import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/view/company_all_jobs_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/comapny_profile_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/company_profile_update_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/view/company_employee_list.dart';
+import 'package:all_in_one/src/features/company_module/mobile/payment/company_payment.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/view/course_details_mobile_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
@@ -28,6 +34,8 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shellA');
 final _shellNavigatorBKey = GlobalKey<NavigatorState>(debugLabel: 'shellB');
 final _shellNavigatorCKey = GlobalKey<NavigatorState>(debugLabel: 'shellC');
+final _shellNavigatorDKey = GlobalKey<NavigatorState>(debugLabel: 'shellD');
+final _shellNavigatorEKey = GlobalKey<NavigatorState>(debugLabel: 'shellE');
 final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   debugLogDiagnostics: true,
@@ -77,6 +85,8 @@ final GoRouter router = GoRouter(
         ),
       ],
     ),
+
+    /// Employee Shell Route
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         // the UI shell
@@ -90,8 +100,8 @@ final GoRouter router = GoRouter(
           routes: [
             // top route inside branch
             transitionGoRoute(
-              path: Routes.homeTabCompany,
-              name: Routes.homeTabCompany,
+              path: Routes.homeTabEmployee,
+              name: Routes.homeTabEmployee,
               pageBuilder: (context, state) => const CategoryWithCoursePage(),
             )
           ],
@@ -104,6 +114,74 @@ final GoRouter router = GoRouter(
               path: Routes.profileTabCompany,
               name: Routes.profileTabCompany,
               pageBuilder: (context, state) => ProfilePage(),
+            )
+          ],
+        ),
+      ],
+    ),
+
+    /// Company Shell Route
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        // the UI shell
+        return BottomNavBarCompany(
+            navigationShell:
+                navigationShell); // DashboardPage(navigationShell: navigationShell);
+      },
+      branches: [
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorAKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.homeTabCompany,
+              name: Routes.homeTabCompany,
+              pageBuilder: (context, state) => const CompanyAllJobsMobilePage(),
+            )
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorBKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.companyEmployeeListTab,
+              name: Routes.companyEmployeeListTab,
+              pageBuilder: (context, state) =>
+                  const CompanyEmployeeListPageMobile(),
+            )
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorCKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.companyPaymentTab,
+              name: Routes.companyPaymentTab,
+              pageBuilder: (context, state) => const CompanyPaymentPageMobile(),
+            )
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorDKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.companyInvoiceTab,
+              name: Routes.companyInvoiceTab,
+              pageBuilder: (context, state) => const GenerateCompanyInvoice(),
+            )
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorEKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.companyProfileTab,
+              name: Routes.companyProfileTab,
+              pageBuilder: (context, state) => const CompanyProfilePage(),
             )
           ],
         ),
