@@ -31,11 +31,11 @@ class ResponsiveLayoutCourseDetailFormRegister extends StatelessWidget {
             collectinListData: Get.arguments!);
       } else if (constraints.minWidth > 650) {
         return const Text('data');
-       // const CourseDetailFormRegisterMediumWebPage();
+        // const CourseDetailFormRegisterMediumWebPage();
       } else {
-        return CourseDetailMobilePage(
-          collectinListData: Get.arguments!,
-        );
+        return const CourseDetailMobilePage(
+            // collectinListData: Get.arguments!,
+            );
       }
     });
   }

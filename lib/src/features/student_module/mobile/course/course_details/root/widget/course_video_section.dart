@@ -52,10 +52,13 @@ class _CourseDetailsVideoSectionState extends State<CourseDetailsVideoSection> {
           },
           child: Obx(
             () {
-              return CommonVideoPlayer(
-                key: ValueKey(videoController.videolink.value),
-                videoLink: videoController.videolink.value,
-                autoPlayVideo: true,
+              return SizedBox(
+                height: 400,
+                child: CommonVideoPlayer(
+                  key: ValueKey(videoController.videolink.value),
+                  videoLink: videoController.videolink.value,
+                  autoPlayVideo: true,
+                ),
               );
             },
           ),

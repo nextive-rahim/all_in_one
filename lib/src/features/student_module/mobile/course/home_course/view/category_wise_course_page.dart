@@ -1,16 +1,24 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/empty_screen.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/controller/student_home_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/category_wise_course_builder.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/course_card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CategoryWiseCoursePage extends StatefulWidget {
-  const CategoryWiseCoursePage({super.key, this.title});
+  const CategoryWiseCoursePage({
+    super.key,
+    required this.title,
+// required this.categoryWiseCourse,
+  });
   final String? title;
+//final List<CourseModel> categoryWiseCourse;
   @override
   State<CategoryWiseCoursePage> createState() => _CategoryWiseCoursePageState();
 }
@@ -23,7 +31,8 @@ class _CategoryWiseCoursePageState extends State<CategoryWiseCoursePage> {
   @override
   void initState() {
     // WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    // studentDashboardController.categoryWiseCourse.value = Get.arguments[0];
+    studentDashboardController.categoryWiseCourse.value =
+        CacheService.boxAuth.read(CacheKeys.categoryWisecourseList);
     //setState(() {
     // arguments = Get.arguments;
     title = widget.title;
@@ -53,8 +62,8 @@ class _CategoryWiseCoursePageState extends State<CategoryWiseCoursePage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 10,
-              right: 10,
+              left: 40,
+              right: 40,
               // top: 30,
               bottom: 50,
             ),

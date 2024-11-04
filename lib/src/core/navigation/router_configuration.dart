@@ -9,6 +9,10 @@ import 'package:all_in_one/src/features/common_features/authentication/registrat
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
+import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
+import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/view/course_details_mobile_page.dart';
+import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
+import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_with_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/view/list_and_search_job_mobile.dart';
 import 'package:flutter/material.dart';
@@ -133,21 +137,41 @@ final GoRouter router = GoRouter(
             ),
           ],
         ),
-        // transitionGoRoute(
-        //   path: Routes.otp,
-        //   name: Routes.otp,
-        //   pageBuilder: (context, state) {
-        //     final String isFrom = state.uri.queryParameters['isFrom'] ?? '';
-        //     return OtpPage(isFrom: isFrom);
-        //   },
-        //   routes: [
-        //     transitionGoRoute(
-        //       path: Routes.setNewPassword,
-        //       name: Routes.setNewPassword,
-        //       pageBuilder: (context, state) => const ResetPasswordPage(),
-        //     ),
-        //   ],
-        // ),
+        transitionGoRoute(
+          path: Routes.categoryWiseCourse,
+          name: Routes.categoryWiseCourse,
+          pageBuilder: (context, state) {
+            final String isFrom = state.uri.queryParameters['title'] ?? '';
+            // final List<CourseModel> categoryWiseCourse =
+            //     state.extra as List<CourseModel>;
+            return CategoryWiseCoursePage(
+              title: isFrom,
+              // categoryWiseCourse: categoryWiseCourse,
+            );
+          },
+          routes: [
+            transitionGoRoute(
+              path: Routes.courseDetailMobilePage,
+              name: Routes.courseDetailMobilePage,
+              pageBuilder: (context, state) {
+                //final CourseModel courseModel = state.extra as CourseModel;
+                return const CourseDetailMobilePage(
+                    // collectinListData: courseModel,
+                    );
+              },
+            ),
+            transitionGoRoute(
+              path: Routes.appearTestAndScheduleInterviewMobilePage,
+              name: Routes.appearTestAndScheduleInterviewMobilePage,
+              pageBuilder: (context, state) {
+                //final CourseModel courseModel = state.extra as CourseModel;
+                return const AppearTestAndScheduleInterviewMobilePage(
+                    // collectinListData: courseModel,
+                    );
+              },
+            ),
+          ],
+        ),
       ],
     ),
     // transitionGoRoute(

@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
@@ -15,11 +16,13 @@ class ExamLinkSection extends GetView<ExamLinkViewController> {
   Widget build(BuildContext context) {
     return Obx(
       () {
+        if (controller.pageState == PageState.loading) {
+          return const CircularProgressIndicator();
+        }
         return Column(
           children: [
             const SizedBox(height: 15),
             Container(
-              width: SizeConfig.screenWidth,
               height: 1,
               color: CommonColor.greyColor18,
             ),
@@ -109,7 +112,6 @@ class ExamLinkSection extends GetView<ExamLinkViewController> {
                 ),
                 const SizedBox(height: 30),
                 Container(
-                  width: SizeConfig.screenWidth,
                   height: 62,
                   decoration: ShapeDecoration(
                     color: CommonColor.greyColor18,
@@ -127,23 +129,17 @@ class ExamLinkSection extends GetView<ExamLinkViewController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        controller.examLinkDataList.isEmpty
-                            ? SizedBox(
-                                width: SizeConfig.screenWidth! * 0.55,
-                              )
-                            : SizedBox(
-                                width: SizeConfig.screenWidth! * 0.55,
-                                child: TextWidget(
-                                  text:
-                                      controller.examLinkDataList[0].url ?? '',
-                                  underline: TextDecoration.underline,
-                                  color: CommonColor.blue300,
-                                  maxLine: 2,
-                                  fontFamily: AppStrings.sfProDisplay,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 14,
-                                ),
-                              ),
+                        SizedBox(
+                          child: TextWidget(
+                            text: controller.examLinkDataList[0].url ?? '',
+                            underline: TextDecoration.underline,
+                            color: CommonColor.blue300,
+                            maxLine: 2,
+                            fontFamily: AppStrings.sfProDisplay,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 14,
+                          ),
+                        ),
                         GestureDetector(
                           onTap: () async {
                             await launch(

@@ -1,4 +1,6 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
@@ -6,6 +8,7 @@ import 'package:all_in_one/src/features/student_module/mobile/course/home_course
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CourseCard extends StatelessWidget {
   const CourseCard({
@@ -37,9 +40,9 @@ class CourseCard extends StatelessWidget {
               onTap: onTap ??
                   () {
                     if (kIsWeb) {
-                      Get.rootDelegate.toNamed(
+                      CacheService.boxAuth.write(CacheKeys.courseModel, course);
+                      context.pushNamed(
                         Routes.courseDetailMobilePage,
-                        arguments: course,
                       );
                       return;
                     }

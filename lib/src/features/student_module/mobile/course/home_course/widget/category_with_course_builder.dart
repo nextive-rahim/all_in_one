@@ -1,12 +1,14 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
-import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/course_card.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoryWithCourseBuilder extends StatelessWidget {
   const CategoryWithCourseBuilder({
@@ -52,15 +54,17 @@ class CategoryWithCourseBuilder extends StatelessWidget {
                           children: [
                             InkWell(
                               onTap: () {
-                                if (!kIsWeb) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CategoryWiseCoursePage(
-                                              title: 'Title',
-                                            )),
-                                  );
+                                if (kIsWeb) {
+                                  CacheService.boxAuth.write(
+                                      CacheKeys.categoryWisecourseList,
+                                      categories[categoryIndex].collectinList ??
+                                          []);
+                                  context.pushNamed(Routes.categoryWiseCourse,
+                                      queryParameters: {
+                                        'title': categories[categoryIndex].name
+                                      },
+                                      extra: categories[categoryIndex]
+                                          .collectinList);
                                   // Get.rootDelegate.toNamed(
                                   //'/categoryWiseCourse?title=${categories[categoryIndex].name}',
                                   // parameters: {
@@ -78,13 +82,13 @@ class CategoryWithCourseBuilder extends StatelessWidget {
                                   // );
                                   return;
                                 }
-                                Get.toNamed(
-                                  Routes.categoryWiseCourse,
-                                  arguments: [
-                                    categories[categoryIndex].collectinList,
-                                    categories[categoryIndex].name,
-                                  ],
-                                );
+                                // Get.toNamed(
+                                //   Routes.categoryWiseCourse,
+                                //   arguments: [
+                                //     categories[categoryIndex].collectinList,
+                                //     categories[categoryIndex].name,
+                                //   ],
+                                // );
                               },
                               child: Text(
                                 'See All',

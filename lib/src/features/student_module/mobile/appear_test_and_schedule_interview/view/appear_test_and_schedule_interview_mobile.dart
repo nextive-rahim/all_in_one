@@ -1,3 +1,6 @@
+import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/formated_date_time.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
@@ -5,6 +8,9 @@ import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/controller/exam_link_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/controller/student_interview_request_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/controller/submit_portfolio_link_view_controller.dart';
+import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/controller/sunmit_result_link_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/widget/exam_link_section.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/widget/interview_request_section.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/widget/submit_exam_result_link_section.dart';
@@ -25,8 +31,7 @@ class AppearTestAndScheduleInterviewMobilePage extends StatefulWidget {
 
 class _AppearTestAndScheduleInterviewMobilePageState
     extends State<AppearTestAndScheduleInterviewMobilePage> {
-  final CourseModel collectinListData = Get.arguments[0];
-  final Function onLogout = Get.arguments[1];
+  CourseModel? collectinListData;
 
   final _timeSlotAController = TextEditingController();
   final _timeSlotBController = TextEditingController();
@@ -38,17 +43,24 @@ class _AppearTestAndScheduleInterviewMobilePageState
 
   // YoutubePlayerController? _controller;
   String dropdownValue = AppStrings.courseLevelDropdown.first;
-  final examController = Get.find<ExamLinkViewController>();
+
   @override
   void initState() {
+    collectinListData = CacheService.boxAuth.read(CacheKeys.courseModel);
+    final examController = Get.put(ExamLinkViewController());
+    Get.put(SubmitResultLinkViewController());
+    Get.put(SubmitPortfolioLinkSubmitViewController());
+    Get.put(StudentInterviewRequestViewController());
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      examController.getExam(collectinListData.id.toString());
+      examController.getExam(collectinListData!.id.toString());
     });
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print(CacheService.boxAuth.read(CacheKeys.courseModel));
     return Scaffold(
         // backgroundColor: CommonColor.whiteColor,
         appBar: AppBar(
@@ -61,8 +73,8 @@ class _AppearTestAndScheduleInterviewMobilePageState
           child: Padding(
             padding: const EdgeInsets.only(
               top: 0,
-              right: 17,
-              left: 20,
+              right: 60,
+              left: 60,
               bottom: 0,
             ),
             child: Column(
@@ -70,11 +82,11 @@ class _AppearTestAndScheduleInterviewMobilePageState
               children: [
                 const ExamLinkSection(),
                 const SizedBox(height: 40),
-                SubmitExamResultLinkSection(course: collectinListData),
+                SubmitExamResultLinkSection(course: collectinListData!),
                 const SizedBox(height: 40),
                 const SubmitPortfolioLinkSection(),
                 const SizedBox(height: 40),
-                InterviewRequestSection(course: collectinListData),
+                InterviewRequestSection(course: collectinListData!),
                 const SizedBox(height: 70),
               ],
             ),

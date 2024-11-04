@@ -1,3 +1,4 @@
+import 'package:all_in_one/src/core/navigation/router_configuration.dart';
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
@@ -15,6 +16,7 @@ import 'package:all_in_one/src/features/student_module/mobile/course/course_deta
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CourseRegistrationSection
     extends GetView<CourseRegistrationViewController> {
@@ -62,13 +64,15 @@ class CourseRegistrationSection
                         SnackBarService.showErrorSnackBar(
                             "Please watch the all videos first");
                       } else {
-                        Get.toNamed(
-                          Routes.appearTestAndScheduleInterviewMobilePage,
-                          arguments: [
-                            collectinListData,
-                            () {},
-                          ],
-                        );
+                        context.pushNamed(
+                            Routes.appearTestAndScheduleInterviewMobilePage);
+                        // Get.toNamed(
+                        //   Routes.appearTestAndScheduleInterviewMobilePage,
+                        //   arguments: [
+                        //     collectinListData,
+                        //     () {},
+                        //   ],
+                        // );
                       }
                     },
                     child: Container(
@@ -131,7 +135,7 @@ class CourseRegistrationSection
                                   .coursePriceReponseData[0].courseReteId
                                   .toString())
                           .then((value) {
-                        Get.find<ProfileViewController>().getUser();
+                        Get.put(ProfileViewController()).getUser();
                         controller.appearInTest.value = true;
                         controller.courseRegistered.value = true;
                         courseRegistrationSuccessfulBottomSheet(
@@ -249,7 +253,7 @@ class CourseRegistrationSection
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.pop(context, true);
+                                  context.pop();
                                 },
                                 child: Container(
                                   width: 36,

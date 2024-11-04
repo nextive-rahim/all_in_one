@@ -42,7 +42,7 @@ class _SplashPageState extends State<SplashPage> {
       print('User Type : $userType');
       if (userType == 1) {
         if (kIsWeb) {
-          context.pushNamed(Routes.homeTab);
+          context.goNamed(Routes.homeTab);
           // Get.rootDelegate.toNamed(Routes.homeTab);
           // Get.offNamed(Routes.homeTab);
         } else {
@@ -51,22 +51,22 @@ class _SplashPageState extends State<SplashPage> {
         }
       } else if (userType == 2) {
         if (kIsWeb) {
-          context.pushNamed(Routes.homeTab);
+          context.goNamed(Routes.homeTab);
           // Get.offNamed(Routes.bottomNavBarEmployee);
         } else {
           // Get.rootDelegate.toNamed(Routes.homeTab);
-          context.pushNamed(Routes.bottomNavBarEmployee);
+          context.goNamed(Routes.bottomNavBarEmployee);
         }
       } else if (userType == 3) {
         if (kIsWeb) {
-          context.pushNamed(Routes.bottomNavBarCompany);
+          context.goNamed(Routes.bottomNavBarCompany);
         } else {
           Get.offNamed(Routes.bottomNavBarCompany);
           // Get.offNamed(Routes.dashboardRegFirstTimeEmployeeWeb);
         }
       } else if (userType == 4) {
         if (kIsWeb) {
-          context.pushNamed(Routes.bottomNavBarInterview);
+          context.goNamed(Routes.bottomNavBarInterview);
         } else {
           Get.offNamed(Routes.bottomNavBarInterview);
         }

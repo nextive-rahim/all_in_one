@@ -1,8 +1,12 @@
+import 'package:all_in_one/src/core/navigation/router_configuration.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/course_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoryWiseCourseBuilder extends StatelessWidget {
   const CategoryWiseCourseBuilder({
@@ -23,10 +27,14 @@ class CategoryWiseCourseBuilder extends StatelessWidget {
         return CourseCard(
           key: ValueKey(courseList[index].id),
           onTap: () {
-            Get.toNamed(
+            CacheService.boxAuth.write(CacheKeys.courseModel, course);
+            context.pushNamed(
               Routes.courseDetailMobilePage,
-              arguments: course,
             );
+            // Get.toNamed(
+            //   Routes.courseDetailMobilePage,
+            //   arguments: course,
+            // );
           },
           course: course,
         );
