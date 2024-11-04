@@ -18,6 +18,7 @@ import 'package:all_in_one/src/features/student_module/mobile/course/home_course
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_with_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/view/list_and_search_job_mobile.dart';
+import 'package:all_in_one/src/features/student_module/mobile/notification/view/notification_view_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -227,11 +228,11 @@ final GoRouter router = GoRouter(
         // ),
       ],
     ),
-    // transitionGoRoute(
-    //   path: Routes.congratulation,
-    //   name: Routes.congratulation,
-    //   pageBuilder: (context, state) => const CongratulationPage(),
-    // ),
+    transitionGoRoute(
+      path: Routes.notification,
+      name: Routes.notification,
+      pageBuilder: (context, state) => NotificationViewPage(),
+    ),
     // transitionGoRoute(
     //   path: Routes.noticeBoard,
     //   name: Routes.noticeBoard,

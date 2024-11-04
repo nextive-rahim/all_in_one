@@ -28,7 +28,9 @@ class _BottomNavBarEmployeeState extends State<BottomNavBarEmployee> {
   Widget build(BuildContext context) {
     //bool value;
     return Scaffold(
-      appBar: HomeAppBar(),
+      appBar: HomeAppBar(
+        context: context,
+      ),
       body: Obx(
         () {
           return WillPopScope(

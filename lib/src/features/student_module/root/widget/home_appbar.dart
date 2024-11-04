@@ -2,10 +2,10 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeAppBar extends AppBar {
-  HomeAppBar({super.key})
+  HomeAppBar({super.key, required BuildContext context})
       : super(
           leadingWidth: 0,
           automaticallyImplyLeading: false,
@@ -37,7 +37,7 @@ class HomeAppBar extends AppBar {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   GestureDetector(
-                    onTap: () => Get.toNamed(Routes.notification),
+                    onTap: () => context.pushNamed(Routes.notification),
                     child: Padding(
                       padding: const EdgeInsets.only(bottom: 10),
                       child: Image.asset(

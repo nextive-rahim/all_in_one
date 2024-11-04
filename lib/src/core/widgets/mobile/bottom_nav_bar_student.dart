@@ -52,7 +52,7 @@ class _BottomNavBarStudentState extends State<BottomNavBarStudent> {
       body: WillPopScope(
         onWillPop: _onWillPop,
         child: Scaffold(
-          appBar: HomeAppBar(),
+          appBar: HomeAppBar(context: context,),
           body: widget.navigationShell,
           bottomNavigationBar: ValueListenableBuilder<int>(
             valueListenable: _currentIndex,

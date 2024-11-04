@@ -43,7 +43,9 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
     SizeConfig().init(context);
     //bool value;
     return Scaffold(
-      appBar: HomeAppBar(),
+      appBar: HomeAppBar(
+        context: context,
+      ),
       body: Obx(
         () {
           if (profilecontroller.pageState == PageState.loading) {
