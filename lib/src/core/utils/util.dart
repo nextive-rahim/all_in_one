@@ -4,7 +4,7 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 enum UrlType { image, video, unknown }
 
@@ -131,7 +131,7 @@ class Util {
 
   static void logout(BuildContext context) async {
     CacheService().dispose();
-
-    Get.offAllNamed(Routes.login);
+    context.goNamed(Routes.login);
+    // Get.offAllNamed(Routes.login);
   }
 }

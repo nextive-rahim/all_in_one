@@ -65,7 +65,6 @@ class ProfileBodySection extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Container(
-          width: SizeConfig.screenWidth,
           height: 1,
           color: CommonColor.greyColor18,
         ),

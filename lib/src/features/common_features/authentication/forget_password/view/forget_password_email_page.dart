@@ -33,13 +33,13 @@ class _ForgetPasswordEmailPageState extends State<ForgetPasswordEmailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Verify Mail'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Verify Mail'),
+      // ),
       backgroundColor: CommonColor.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 265),
           child: Form(
             key: _formKey,
             child: Column(

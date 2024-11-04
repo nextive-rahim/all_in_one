@@ -3,7 +3,6 @@ import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
-import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:all_in_one/src/core/widgets/primary_button.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
@@ -49,7 +48,6 @@ class ProfilePage extends GetView<ProfileViewController> {
                                 right: 65,
                               ),
                               child: Container(
-                                width: SizeConfig.screenWidth,
                                 decoration: ShapeDecoration(
                                   color: Colors.white,
                                   shape: RoundedRectangleBorder(

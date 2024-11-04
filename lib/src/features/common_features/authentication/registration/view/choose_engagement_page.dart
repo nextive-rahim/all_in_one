@@ -28,15 +28,15 @@ class _ChooseEngagementPageState extends State<ChooseEngagementPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CommonColor.whiteColor,
-      appBar: AppBar(
-        title: const Text('Choose Engagement'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Choose Engagement'),
+      // ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 24,
-              right: 18,
+              left: 265,
+              right: 265,
               top: 16,
               bottom: 16,
             ),

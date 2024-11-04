@@ -30,15 +30,16 @@ class OTPverificationPageState extends State<OTPverificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Verify OTP'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Verify OTP'),
+      // ),
       backgroundColor: CommonColor.whiteColor,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 265),
               child: Form(
                 key: _formKey,
                 child: Column(

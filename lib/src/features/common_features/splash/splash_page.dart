@@ -31,7 +31,7 @@ class _SplashPageState extends State<SplashPage> {
       log("Auth Token.... : ${CacheService.boxAuth.read(CacheKeys.token)}");
       if (CacheService.boxAuth.read(CacheKeys.token) == null) {
         if (kIsWeb) {
-          context.pushNamed(Routes.login);
+          context.goNamed(Routes.login);
           // Get.offNamed(Routes.login);
           //  Get.rootDelegate.toNamed(Routes.login);
 
