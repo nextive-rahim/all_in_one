@@ -18,6 +18,7 @@ import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_sc
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class AppearTestAndScheduleInterviewMobilePage extends StatefulWidget {
   const AppearTestAndScheduleInterviewMobilePage({
@@ -238,7 +239,7 @@ class _AppearTestAndScheduleInterviewMobilePageState
                             const SizedBox(height: 70),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pop(context);
+                                context.pop();
                               },
                               child: Container(
                                 width: SizeConfig.screenWidth,

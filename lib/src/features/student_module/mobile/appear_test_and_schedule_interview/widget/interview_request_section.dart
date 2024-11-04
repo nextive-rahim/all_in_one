@@ -10,6 +10,7 @@ import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_sc
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class InterviewRequestSection extends StatefulWidget {
   const InterviewRequestSection({
@@ -374,7 +375,7 @@ class _InterviewRequestSectionState extends State<InterviewRequestSection> {
                                       SnackBarService.showInfoSnackBar(
                                           'Successfully submitted interview request');
 
-                                      Navigator.pop(context, false);
+                                      context.pop();
                                     },
                                   );
                                 }
@@ -414,7 +415,7 @@ class _InterviewRequestSectionState extends State<InterviewRequestSection> {
                             const SizedBox(height: 8),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pop(context, false);
+                                context.pop();
                               },
                               child: Container(
                                 width: SizeConfig.screenWidth,

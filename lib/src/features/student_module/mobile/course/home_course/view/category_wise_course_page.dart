@@ -5,7 +5,6 @@ import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/empty_screen.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/controller/student_home_view_controller.dart';
-import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/category_wise_course_builder.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/widget/course_card_loading.dart';
 import 'package:flutter/material.dart';

@@ -1,8 +1,6 @@
-import 'package:all_in_one/main.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_company.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_employee.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_interviewer.dart';
-import 'package:all_in_one/src/core/widgets/video_player_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_email_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/otp_verification_view_controller.dart';
@@ -31,18 +29,14 @@ import 'package:all_in_one/src/features/common_features/splash/splash_page.dart'
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/binding/appear_test_binding.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/binding/course_details_binding.dart';
-import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/view/course_details_mobile_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/binding/student_binding.dart';
-import 'package:all_in_one/src/features/student_module/mobile/course/home_course/view/category_wise_course_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/view/job_details_page_mobile.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/binding/job_list_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/binding/profile_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/change_password_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
-import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_student.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/resume_view_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/notification/view/notification_view_page.dart';
-import 'package:all_in_one/src/features/student_module/web/register/dashboard_reg_fist_time_web_large.dart';
 import 'package:all_in_one/src/features/student_module/web/root/view/responsive_layout_course_detail_form_reg.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
