@@ -11,6 +11,7 @@ import 'package:all_in_one/src/features/common_features/profile/widgets/profile_
 import 'package:all_in_one/src/features/common_features/profile/widgets/profile_header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfilePage extends GetView<ProfileViewController> {
   ProfilePage({super.key}) {
@@ -91,9 +92,11 @@ class ProfilePage extends GetView<ProfileViewController> {
                                       // const SizedBox(height: 10),
                                       PrimaryButton(
                                         onTap: () {
-                                          Get.toNamed(
-                                            Routes.changePassword,
-                                          );
+                                          context
+                                              .pushNamed(Routes.changePassword);
+                                          // Get.toNamed(
+                                          //   Routes.changePassword,
+                                          // );
                                         },
                                         widget: Text(
                                           'Change Password',

@@ -7,6 +7,7 @@ import 'package:all_in_one/src/features/common_features/authentication/login/vie
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/choose_engagement_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_completed_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/registration/view/registration_page.dart';
+import 'package:all_in_one/src/features/common_features/profile/view/change_password_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
@@ -196,55 +197,36 @@ final GoRouter router = GoRouter(
         pageBuilder: (context, state) {
           return ProfileUpdatePage();
         }),
-    //   routes: [
-    //     transitionGoRoute(
-    //       path: Routes.content,
-    //       name: Routes.content,
-    //       pageBuilder: (context, state) {
-    //         final String slug = state.uri.queryParameters['slug']!;
-    //         final String title = state.uri.queryParameters['title']!;
-    //         return ContentPage(
-    //           slug: slug,
-    //           title: title,
-    //         );
-    //       },
-    //     ),
-    //   ],
-    // ),
-    // transitionGoRoute(
-    //   path: Routes.courseDetails,
-    //   name: Routes.courseDetails,
-    //   pageBuilder: (context, state) {
-    //     final String slug = state.uri.queryParameters['slug'] ?? '';
-    //     final String title = state.uri.queryParameters['title'] ?? '';
-    //     return CourseDetailsPage(
-    //       slug: slug,
-    //       title: title,
-    //     );
-    //   },
-    //   routes: [
-    //     transitionGoRoute(
-    //       path: Routes.payment,
-    //       name: Routes.payment,
-    //       pageBuilder: (context, state) {
-    //         final String courseModel = state.uri.queryParameters['id'] ?? '';
-    //         return CheckOutPage(id: courseModel);
-    //       },
-    //     ),
-    //     transitionGoRoute(
-    //       path: Routes.routine,
-    //       name: Routes.routine,
-    //       pageBuilder: (context, state) {
-    //         final String link = state.uri.queryParameters['link'] ?? '';
-    //         final String title = state.uri.queryParameters['title'] ?? '';
-    //         return CourseRoutinePage(
-    //           title: title,
-    //           link: link,
-    //         );
-    //       },
-    //     ),
-    //   ],
-    // ),
+
+    transitionGoRoute(
+      path: Routes.changePassword,
+      name: Routes.changePassword,
+      pageBuilder: (context, state) {
+        return const ChangePasswordPage();
+      },
+      routes: [
+        // transitionGoRoute(
+        //   path: Routes.payment,
+        //   name: Routes.payment,
+        //   pageBuilder: (context, state) {
+        //     final String courseModel = state.uri.queryParameters['id'] ?? '';
+        //     return CheckOutPage(id: courseModel);
+        //   },
+        // ),
+        // transitionGoRoute(
+        //   path: Routes.routine,
+        //   name: Routes.routine,
+        //   pageBuilder: (context, state) {
+        //     final String link = state.uri.queryParameters['link'] ?? '';
+        //     final String title = state.uri.queryParameters['title'] ?? '';
+        //     return CourseRoutinePage(
+        //       title: title,
+        //       link: link,
+        //     );
+        //   },
+        // ),
+      ],
+    ),
     // transitionGoRoute(
     //   path: Routes.congratulation,
     //   name: Routes.congratulation,

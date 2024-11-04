@@ -14,6 +14,7 @@ import 'package:all_in_one/src/core/widgets/text_widget.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/change_password_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ChangePasswordPage extends StatefulWidget {
   const ChangePasswordPage({
@@ -25,7 +26,7 @@ class ChangePasswordPage extends StatefulWidget {
 }
 
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
-  final controller = Get.find<ChangePasswordViewController>();
+  final controller = Get.put(ChangePasswordViewController());
   final _formKey = GlobalKey<FormState>();
 
   bool hintUsernameHelperText = false, hintPasswordHelperText = false;
@@ -42,7 +43,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       appBar: AppBar(title: const Text('Change Password')),
       body: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 265),
         child: Form(
           key: _formKey,
           child: Column(
@@ -151,7 +152,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     }
     controller.changePassword(_formKey).then((response) {
       if (controller.loginModel.message == 'Password Change Successfully.') {
-        Get.back();
+        context.pop();
         SnackBarService.showInfoSnackBar(
             controller.loginModel.message.toString());
 
