@@ -105,17 +105,17 @@ class AppPages {
     //   curve: Curves.easeInOut,
     //   transitionDuration: const Duration(milliseconds: 50),
     // ),
-    GetPage(
-      name: Routes.bottomNavBarEmployee,
-      page: () => const BottomNavBarEmployee(),
-      bindings: [
-        StudentModuleBinding(),
-        JobListBinding(),
-      ],
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.bottomNavBarEmployee,
+    //   page: () => const BottomNavBarEmployee(),
+    //   bindings: [
+    //     StudentModuleBinding(),
+    //     JobListBinding(),
+    //   ],
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
     // GetPage(
     //   name: Routes.responsiveLayoutDashboardInterview,
     //   page: () => const ResponsiveLayoutDashboardInterview(
@@ -148,13 +148,13 @@ class AppPages {
       transitionDuration: const Duration(milliseconds: 50),
     ),
 
-    GetPage(
-      name: Routes.bottomNavBarEmployee,
-      page: () => const BottomNavBarEmployee(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.bottomNavBarEmployee,
+    //   page: () => const BottomNavBarEmployee(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
     GetPage(
       name: Routes.myCompanyJobListPageWeb,
       page: () => const MyCompanyJobListPageWeb(),

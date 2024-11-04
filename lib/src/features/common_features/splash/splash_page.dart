@@ -51,7 +51,7 @@ class _SplashPageState extends State<SplashPage> {
         }
       } else if (userType == 2) {
         if (kIsWeb) {
-          context.goNamed(Routes.homeTab);
+          context.goNamed(Routes.homeTabCompany);
           // Get.offNamed(Routes.bottomNavBarEmployee);
         } else {
           // Get.rootDelegate.toNamed(Routes.homeTab);

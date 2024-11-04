@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_employee.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_student.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_email_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_page.dart';
@@ -70,6 +71,38 @@ final GoRouter router = GoRouter(
             transitionGoRoute(
               path: Routes.profileTab,
               name: Routes.profileTab,
+              pageBuilder: (context, state) => ProfilePage(),
+            )
+          ],
+        ),
+      ],
+    ),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        // the UI shell
+        return BottomNavBarEmployee(
+            navigationShell:
+                navigationShell); // DashboardPage(navigationShell: navigationShell);
+      },
+      branches: [
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorAKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.homeTabCompany,
+              name: Routes.homeTabCompany,
+              pageBuilder: (context, state) => const CategoryWithCoursePage(),
+            )
+          ],
+        ),
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorCKey,
+          routes: [
+            // top route inside branch
+            transitionGoRoute(
+              path: Routes.profileTabCompany,
+              name: Routes.profileTabCompany,
               pageBuilder: (context, state) => ProfilePage(),
             )
           ],

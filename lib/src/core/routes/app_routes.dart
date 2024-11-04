@@ -18,8 +18,10 @@ abstract class Routes {
   static const otpVerification = '/otpVerification';
 
   static const String homeTab = '/homeTab';
+  static const String homeTabCompany = '/homeTabCompany';
   static const String jobTab = '/jobTab';
   static const String profileTab = '/profileTab';
+  static const String profileTabCompany = '/profileTabCompany';
 
   /// Dashboard
   static const responsibileDashboardFirstTime =

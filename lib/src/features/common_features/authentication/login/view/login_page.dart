@@ -322,7 +322,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         } else if (controller.loginModel.data?.userType == 2) {
           if (kIsWeb) {
-            context.goNamed(Routes.homeTab);
+            context.goNamed(Routes.homeTabCompany);
             //  Get.offNamed(Routes.bottomNavBarEmployee);
           } else {
             Get.offNamed(Routes.bottomNavBarEmployee);
