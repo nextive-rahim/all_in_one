@@ -19,6 +19,9 @@ import 'package:all_in_one/src/features/company_module/mobile/company_job/post_n
 import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/view/company_all_jobs_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/comapny_profile_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/company_profile_update_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/view/company_add_employee.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/view/company_assigned_course_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_employee_profile/view/company_employee_profile_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/view/company_employee_list.dart';
 import 'package:all_in_one/src/features/company_module/mobile/payment/company_payment.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
@@ -371,23 +374,21 @@ final GoRouter router = GoRouter(
             isSelected: isSelectedCanditate);
       },
     ),
-    // transitionGoRoute(
-    //   path: Routes.privacyPolicy,
-    //   name: Routes.privacyPolicy,
-    //   pageBuilder: (context, state) => const PrivacyPolicyPage(),
-    // ),
-    // transitionGoRoute(
-    //   path: Routes.support,
-    //   name: Routes.support,
-    //   pageBuilder: (context, state) => const SupportPage(),
-    // ),
-    // transitionGoRoute(
-    //   path: Routes.faq,
-    //   name: Routes.faq,
-    //   pageBuilder: (context, state) => FaqPage(
-    //     faqEntity: state.extra as List<FaqEntity>,
-    //   ),
-    // ),
+    transitionGoRoute(
+      path: Routes.companyAddEmployeePageMobile,
+      name: Routes.companyAddEmployeePageMobile,
+      pageBuilder: (context, state) => const CompanyAddEmployeePageMobile(),
+    ),
+    transitionGoRoute(
+      path: Routes.companyEmployeeProfilePage,
+      name: Routes.companyEmployeeProfilePage,
+      pageBuilder: (context, state) => const CompanyEmployeeProfilePage(),
+    ),
+    transitionGoRoute(
+      path: Routes.companyAssignedCourses,
+      name: Routes.companyAssignedCourses,
+      pageBuilder: (context, state) => const CompanyAssignedCourses(),
+    ),
     // transitionGoRoute(
     //   path: Routes.profileUpdated,
     //   name: Routes.profileUpdated,

@@ -1,5 +1,7 @@
 import 'package:all_in_one/src/core/gobal_function.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
@@ -7,7 +9,7 @@ import 'package:all_in_one/src/core/utils/string.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/model/employee_model.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/widget/delete_employee_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class EmployeeCard extends StatelessWidget {
   const EmployeeCard({
@@ -20,10 +22,12 @@ class EmployeeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.toNamed(
-          Routes.companyEmployeeProfilePage,
-          arguments: employee,
-        );
+        CacheService.boxAuth.write(CacheKeys.employeeModel, employee);
+        context.pushNamed(Routes.companyEmployeeProfilePage);
+        // Get.toNamed(
+        //   Routes.companyEmployeeProfilePage,
+        //   arguments: employee,
+        // );
       },
       child: Container(
         width: SizeConfig.screenWidth,
@@ -39,10 +43,12 @@ class EmployeeCard extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Get.toNamed(
-                    Routes.companyEmployeeProfilePage,
-                    arguments: employee,
-                  );
+                  CacheService.boxAuth.write(CacheKeys.employeeModel, employee);
+                  context.pushNamed(Routes.companyEmployeeProfilePage);
+                  // Get.toNamed(
+                  //   Routes.companyEmployeeProfilePage,
+                  //   arguments: employee,
+                  // );
                 },
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -166,10 +172,13 @@ class EmployeeCard extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(
-                        Routes.companyAssignedCourses,
-                        arguments: employee,
-                      );
+                      CacheService.boxAuth
+                          .write(CacheKeys.employeeModel, employee);
+                      context.pushNamed(Routes.companyAssignedCourses);
+                      // Get.toNamed(
+                      //   Routes.companyAssignedCourses,
+                      //   arguments: employee,
+                      // );
                     },
                     child: Container(
                       decoration: BoxDecoration(

@@ -8,4 +8,5 @@ class CacheKeys {
   static const categoryWisecourseList = "categoryWisecourse";
   static const courseModel = "courseModel";
   static const jobModel = "jobModel";
+  static const employeeModel = "employeeModel";
 }

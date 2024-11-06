@@ -1,4 +1,3 @@
-import 'package:all_in_one/src/core/navigation/router_configuration.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/core/utils/util.dart';

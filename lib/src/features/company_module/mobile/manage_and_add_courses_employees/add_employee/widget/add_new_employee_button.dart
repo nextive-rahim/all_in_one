@@ -7,6 +7,7 @@ import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_cou
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
   const AddedNewEmployeeButton({super.key});
@@ -14,7 +15,10 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(
+        vertical: 20,
+        horizontal: 200,
+      ),
       child: Obx(
         () => PrimaryButton(
           isLoading: controller.pageState == PageState.loading,
@@ -37,7 +41,8 @@ class AddedNewEmployeeButton extends GetView<AddedNewEmployeeViewController> {
                 return;
               }
               if (value.success == true) {
-                Get.back();
+                context.pop();
+                // Get.back();
                 SnackBarService.showInfoSnackBar(
                     value.message ?? 'Employee Added Successfully');
 

@@ -1,3 +1,5 @@
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/widgets/text_widget.dart';
@@ -24,13 +26,14 @@ class _CompanyEmployeeProfilePageState
     extends State<CompanyEmployeeProfilePage> {
   final companyEmployeeController =
       Get.put(CompanyEmployeeListViewController());
-  final EmployeeModel employee = Get.arguments;
+  EmployeeModel? employee;
   bool jobAppliedStatus = false;
 
   @override
   void initState() {
+    employee = CacheService.boxAuth.read(CacheKeys.employeeModel);
     companyEmployeeController.employeeModel = Get.arguments;
-    companyEmployeeController.assignedCouseList.value = employee.assignCourse!;
+    companyEmployeeController.assignedCouseList.value = employee!.assignCourse!;
     super.initState();
   }
 
@@ -43,7 +46,7 @@ class _CompanyEmployeeProfilePageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(employee.name ?? ''),
+        title: Text(employee!.name ?? ''),
       ),
       backgroundColor: CommonColor.greyColor1,
       body: RefreshIndicator(
@@ -57,27 +60,27 @@ class _CompanyEmployeeProfilePageState
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
+                        left: 100,
+                        right: 100,
                         top: 10,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CompanyEmployeeProfileHeader(employee: employee),
+                          CompanyEmployeeProfileHeader(employee: employee!),
                           const SizedBox(height: 10),
                           CompanyEmployeeProfileContactSection(
-                              employee: employee),
+                              employee: employee!),
                           const SizedBox(height: 30),
                           CompanyEmployeeProfileDescriptionSection(
-                              employee: employee),
+                              employee: employee!),
                           const SizedBox(height: 30),
                           CompanyEmployeeSkillSection(user: employee),
                           const SizedBox(height: 30),
                           const CompanyEmployeeCompletedCourseSection(),
                           const SizedBox(height: 30),
                           CompanyEmployeeProfileEvaluationSection(
-                              employee: employee)
+                              employee: employee!)
                         ],
                       ),
                     ),

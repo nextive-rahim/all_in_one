@@ -38,7 +38,7 @@ class _CompanyAddEmployeePageMobileState
             // ),
 
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 200),
               child: Text(
                 'Added New Employee :',
                 style: AppTextStyle.bold20,
@@ -48,7 +48,7 @@ class _CompanyAddEmployeePageMobileState
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 200),
                   child: Column(
                     children: [
                       AddedEployeeImageByCompany(),
