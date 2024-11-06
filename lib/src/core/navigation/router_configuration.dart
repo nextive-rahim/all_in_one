@@ -14,6 +14,7 @@ import 'package:all_in_one/src/features/common_features/profile/view/profile_pag
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/invoice_view_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_applied_candidate_profile/view/company_job_applied_candidate_profile.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/view/post_company_new_job_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/view/company_all_jobs_page.dart';
@@ -389,11 +390,14 @@ final GoRouter router = GoRouter(
       name: Routes.companyAssignedCourses,
       pageBuilder: (context, state) => const CompanyAssignedCourses(),
     ),
-    // transitionGoRoute(
-    //   path: Routes.profileUpdated,
-    //   name: Routes.profileUpdated,
-    //   pageBuilder: (context, state) => const ProfileUpdatedPage(),
-    // ),
+    transitionGoRoute(
+      path: Routes.companyInvoicePage,
+      name: Routes.companyInvoicePage,
+      pageBuilder: (context, state) {
+        final String title = state.uri.queryParameters['invoiceUrl']!;
+        return CompanyInvoiceViewPage(invoiceUrl: title);
+      },
+    ),
     // transitionGoRoute(
     //   path: Routes.video,
     //   name: Routes.video,

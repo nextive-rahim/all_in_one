@@ -1,9 +1,6 @@
-import 'dart:io';
 import 'package:all_in_one/src/core/theme/colors.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class CommonPDFViewer extends StatefulWidget {
@@ -32,30 +29,30 @@ class _CommonPDFViewerState extends State<CommonPDFViewer> {
   String title = '';
   PDFViewController? _pdfViewController;
   final textEditingController = TextEditingController();
-  Future<File> getFileFromUrl(String url) async {
-    String fileName = url.split('/').last;
-    try {
-      Directory dir = await getApplicationDocumentsDirectory();
-      String filePath = '${dir.path}/$fileName';
-      File file = File(filePath);
+  // Future<File> getFileFromUrl(String url) async {
+  //   String fileName = url.split('/').last;
+  //   try {
+  //     Directory dir = await getApplicationDocumentsDirectory();
+  //     String filePath = '${dir.path}/$fileName';
+  //     File file = File(filePath);
 
-      if (await file.exists()) {
-        return file;
-      }
+  //     if (await file.exists()) {
+  //       return file;
+  //     }
 
-      await Dio().download(
-        url,
-        filePath,
-        onReceiveProgress: (count, total) {
-          _loadingProgress.value =
-              '${(count / total * 100).toStringAsFixed(0)}%';
-        },
-      );
-      return file;
-    } catch (e) {
-      throw Exception('Error opening url file');
-    }
-  }
+  //     await Dio().download(
+  //       url,
+  //       filePath,
+  //       onReceiveProgress: (count, total) {
+  //         _loadingProgress.value =
+  //             '${(count / total * 100).toStringAsFixed(0)}%';
+  //       },
+  //     );
+  //     return file;
+  //   } catch (e) {
+  //     throw Exception('Error opening url file');
+  //   }
+  // }
 
   void requestPermission() async {
     await Permission.storage.request();
@@ -65,13 +62,13 @@ class _CommonPDFViewerState extends State<CommonPDFViewer> {
   void initState() {
     requestPermission();
 
-    getFileFromUrl(widget.pdfLink).then(
-      (value) => {
-        _urlPDFPath.value = value.path,
-        _loaded.value = true,
-        _exists.value = true,
-      },
-    );
+    // getFileFromUrl(widget.pdfLink).then(
+    //   (value) => {
+    //     _urlPDFPath.value = value.path,
+    //     _loaded.value = true,
+    //     _exists.value = true,
+    //   },
+    // );
 
     super.initState();
   }
@@ -101,7 +98,7 @@ class _CommonPDFViewerState extends State<CommonPDFViewer> {
                   valueListenable: _loaded,
                   builder: (BuildContext context, bool value, child) {
                     return PDFView(
-                      filePath: _urlPDFPath.value,
+                      filePath: widget.pdfLink,
                       enableSwipe: true,
                       swipeHorizontal: false,
                       autoSpacing: false,

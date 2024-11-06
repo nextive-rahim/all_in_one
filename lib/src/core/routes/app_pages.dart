@@ -24,7 +24,6 @@ import 'package:all_in_one/src/features/common_features/user_details/view/select
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/binding/appear_test_binding.dart';
 import 'package:all_in_one/src/features/student_module/mobile/appear_test_and_schedule_interview/view/appear_test_and_schedule_interview_mobile.dart';
-import 'package:all_in_one/src/features/student_module/mobile/course/course_details/root/binding/course_details_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/binding/profile_binding.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/change_password_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
@@ -35,7 +34,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
 
-import '../../features/company_module/mobile/company_invoice/view/invoice_view_page.dart';
 
 part './app_routes.dart';
 
@@ -270,14 +268,14 @@ class AppPages {
     //   curve: Curves.easeInOut,
     //   transitionDuration: const Duration(milliseconds: 50),
     // ),
-    GetPage(
-      name: Routes.companyInvoicePage,
-      page: () => const CompanyInvoiceViewPage(),
-      binding: CourseDetailsBinding(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.companyInvoicePage,
+    //   page: () => const CompanyInvoiceViewPage(),
+    //   binding: CourseDetailsBinding(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
 
     GetPage(
       name: Routes.companyEmployeeProfilePage,

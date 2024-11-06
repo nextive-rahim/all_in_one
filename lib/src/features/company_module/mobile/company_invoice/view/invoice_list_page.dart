@@ -5,6 +5,7 @@ import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/company_invoice_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class InvoiceListPage extends GetView<CompanyInvoiceViewController> {
   const InvoiceListPage({super.key});
@@ -27,7 +28,11 @@ class InvoiceListPage extends GetView<CompanyInvoiceViewController> {
                   controller
                       .invoiceLink(controller.invoice[index].id!)
                       .then((v) async {
-                    Get.toNamed(Routes.companyInvoicePage, arguments: v.url);
+                    context.pushNamed(
+                      Routes.companyInvoicePage,
+                      queryParameters: {'invoiceUrl': v.url},
+                    );
+                    // Get.toNamed(Routes.companyInvoicePage, arguments: v.url);
                   });
                 },
                 title: Text(controller.invoice[index].name ?? ''),

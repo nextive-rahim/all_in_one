@@ -4,8 +4,10 @@ import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/widgets/logout_button.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
 import 'package:all_in_one/src/features/common_features/profile/controller/profile_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/company_invoice_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/controller/added_new_employee_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/company_assigned_courses/controller/company_assigned_%20course_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/employee_list/controller/employee_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/controller/student_home_view_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,6 +39,8 @@ class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
   final addEmployeeController = Get.put(AddedNewEmployeeViewController());
   final studentontroller = Get.put(StudentHomeViewController());
   final assignedController = Get.put(CompanyAssignedCouseViewController());
+  final employeeListController = Get.put(CompanyEmployeeListViewController());
+  final invoiceController = Get.put(CompanyInvoiceViewController());
   // final List<Widget> _children = <Widget>[
   //   const CompanyAllJobsMobilePage(),
   //   const CompanyEmployeeListPageMobile(),
