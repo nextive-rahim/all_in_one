@@ -25,9 +25,20 @@ class CompanyInvoiceViewController extends GetxController {
 
   @override
   void onInit() async {
+    hourController.addListener(addInputs);
+    daysController.addListener(addInputs);
     await fetchInvoices();
 
     super.onInit();
+  }
+
+  void addInputs() {
+    // Parse input values; use 0.0 if parsing fails
+    final num1 = double.tryParse(hourController.text) ?? 0.0;
+    final num2 = double.tryParse(daysController.text) ?? 0.0;
+    final sum = num1 * num2;
+    // Update resultController with the sum
+    amountController.text = sum.toString();
   }
 
   Future<void> fetchInvoices() async {
@@ -129,5 +140,14 @@ class CompanyInvoiceViewController extends GetxController {
     daysController.dispose();
     amountController.dispose();
     super.dispose();
+  }
+
+  @override
+  void onClose() {
+    // Dispose controllers to free up resources
+    hourController.dispose();
+    daysController.dispose();
+    amountController.dispose();
+    super.onClose();
   }
 }

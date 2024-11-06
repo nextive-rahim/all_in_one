@@ -42,20 +42,30 @@ class GenerateInvoice extends GetView<CompanyInvoiceViewController> {
               OutlinedInputField(
                 labelText: 'Hours',
                 controller: controller.hourController,
-                hintText: 'No. of working hours',
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+                hintText: 'Enter working hours',
                 validator: InputFieldValidator.name(),
                 keyboardType: TextInputType.number,
               ),
               OutlinedInputField(
-                labelText: 'Days',
+                labelText: 'Rates',
                 controller: controller.daysController,
-                hintText: 'No. of working days',
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
+                hintText: 'Enter working Rates',
                 validator: InputFieldValidator.name(),
                 keyboardType: TextInputType.number,
               ),
               OutlinedInputField(
+                readOnly: true,
                 labelText: 'Amount',
                 controller: controller.amountController,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
                 hintText: 'Total amount',
                 validator: InputFieldValidator.name(),
                 keyboardType: TextInputType.number,
