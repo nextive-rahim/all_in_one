@@ -9,4 +9,5 @@ class CacheKeys {
   static const courseModel = "courseModel";
   static const jobModel = "jobModel";
   static const employeeModel = "employeeModel";
+  static const interviewModel = "interviewModel";
 }

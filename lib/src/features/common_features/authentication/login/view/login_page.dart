@@ -329,7 +329,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         } else if (controller.loginModel.data?.userType == 3) {
           if (kIsWeb) {
-              context.goNamed(Routes.homeTabCompany);
+            context.goNamed(Routes.homeTabCompany);
             // Get.offNamed(Routes.bottomNavBarCompany);
           } else {
             context.pushNamed(Routes.bottomNavBarCompany);
@@ -337,7 +337,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         } else if (controller.loginModel.data?.userType == 4) {
           if (kIsWeb) {
-            context.pushNamed(Routes.bottomNavBarInterview);
+            context.goNamed(Routes.bottomNavBarInterview);
             // Get.offNamed(Routes.bottomNavBarInterview);
           } else {
             context.pushNamed(Routes.bottomNavBarInterview);

@@ -1,4 +1,6 @@
 import 'package:all_in_one/src/core/page_state/state.dart';
+import 'package:all_in_one/src/core/service/cache/cache_keys.dart';
+import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/features/common_features/user_details/controller/user_details_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/model/all_interviews_model.dart';
@@ -19,12 +21,13 @@ class SelectedInterviewDetailsPage extends StatefulWidget {
 
 class _SelectedInterviewDetailsPageState
     extends State<SelectedInterviewDetailsPage> {
-  ViewInterviewResponseData interview = Get.arguments;
+  ViewInterviewResponseData? interview;
   final userDetailsController = Get.put(UserDetailsViewController());
   @override
   void initState() {
+    interview = CacheService.boxAuth.read(CacheKeys.interviewModel);
     userDetailsController.userDetails(
-        userId: interview.userId, userType: interview.userType);
+        userId: interview?.userId, userType: interview?.userType);
     // TODO: implement initState
     super.initState();
   }
@@ -58,7 +61,7 @@ class _SelectedInterviewDetailsPageState
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 InterviewDetailsHeader(
-                  interview: interview,
+                  interview: interview!,
                   user: userDetailsController.userModel,
                 ),
                 CandidateProfileSection(
@@ -66,7 +69,7 @@ class _SelectedInterviewDetailsPageState
                 CandidateCompletedTopicsSection(
                     user: userDetailsController.userDetailsModel),
                 const SizedBox(height: 30),
-                InterviewTimeSelectedSection(interview: interview)
+                InterviewTimeSelectedSection(interview: interview!)
               ],
             ),
           );

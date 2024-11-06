@@ -30,10 +30,10 @@ class InterViewCard extends StatelessWidget {
               );
               return;
             }
+            CacheService.boxAuth.write(CacheKeys.interviewModel, interview);
             isFormRequestsInterviews
-                ? Get.toNamed(
+                ? context.pushNamed(
                     Routes.selecteInterviewFormConfirmation,
-                    arguments: interview,
                   )
                 : null;
           },

@@ -1,6 +1,7 @@
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_company.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_employee.dart';
+import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_interviewer.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_student.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_email_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_page.dart';
@@ -13,6 +14,7 @@ import 'package:all_in_one/src/features/common_features/profile/view/change_pass
 import 'package:all_in_one/src/features/common_features/profile/view/profile_page.dart';
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
+import 'package:all_in_one/src/features/common_features/user_details/view/selected_interview_details_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/invoice_view_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_applied_candidate_profile/view/company_job_applied_candidate_profile.dart';
@@ -427,18 +429,20 @@ final GoRouter router = GoRouter(
     //     );
     //   },
     // ),
-    // transitionGoRoute(
-    //   path: Routes.ranking,
-    //   name: Routes.ranking,
-    //   pageBuilder: (context, state) {
-    //     final String title = state.uri.queryParameters['title']!;
-    //     final String id = state.uri.queryParameters['id']!;
-    //     return Ranking(
-    //       title: title,
-    //       id: id,
-    //     );
-    //   },
-    // ),
+    transitionGoRoute(
+      path: Routes.bottomNavBarInterview,
+      name: Routes.bottomNavBarInterview,
+      pageBuilder: (context, state) {
+        return const BottomNavBarInterviewer();
+      },
+    ),
+    transitionGoRoute(
+      path: Routes.selecteInterviewFormConfirmation,
+      name: Routes.selecteInterviewFormConfirmation,
+      pageBuilder: (context, state) {
+        return const SelectedInterviewDetailsPage();
+      },
+    ),
   ],
 );
 

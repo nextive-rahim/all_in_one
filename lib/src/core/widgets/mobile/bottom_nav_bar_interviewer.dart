@@ -1,10 +1,11 @@
-import 'dart:io';
 import 'package:all_in_one/src/core/page_state/state.dart';
 import 'package:all_in_one/src/core/theme/colors.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
+import 'package:all_in_one/src/features/common_features/profile/controller/profile_update_view_controller.dart';
+import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/controller/submit_interview_feedback_view_controller.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/all_interviews/widgets/interview_card_loading.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_payment/view/interviewer_payment_home_page_mobile.dart';
 import 'package:all_in_one/src/features/interviewer_module/mobile/interviews/interviewer_test_request/view/interviewer_home_page_mobile.dart';
@@ -24,6 +25,8 @@ class BottomNavBarInterviewer extends StatefulWidget {
 
 class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
   final controller = Get.put(DashboardViewController());
+  final submitcontroller = Get.put(SubmittedInterviewFeedbackViewController());
+  final profileUpdateController = Get.put(UpdateProfileiewController());
 
   final List<Widget> _isApprovedchildren = <Widget>[
     const InterviewerHomePageMobile(),
@@ -78,7 +81,7 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                   return Visibility(
                     visible: controller.navBarVisibility,
                     child: Container(
-                      height: Platform.isAndroid ? 80 : null,
+                      height: 80,
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(_borderRadius),
