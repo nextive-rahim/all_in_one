@@ -147,9 +147,9 @@ class CompanyHomeAppBar extends AppBar {
       : super(
           leadingWidth: 0,
           automaticallyImplyLeading: false,
-          backgroundColor: CommonColor.purpleColor1,
-          elevation: 1.5,
-          shadowColor: AppColors.lightBlack10.withOpacity(0.4),
+          backgroundColor: CommonColor.whiteColor,
+          // elevation: 1.5,
+          // shadowColor: AppColors.lightBlack10.withOpacity(0.4),
           toolbarHeight: 65,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

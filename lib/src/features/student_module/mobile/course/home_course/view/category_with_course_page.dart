@@ -40,8 +40,8 @@ class _CategoryWithCoursePageState extends State<CategoryWithCoursePage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 265,
-              right: 265,
+              left: 65,
+              right: 65,
               // top: 30,
               bottom: 50,
             ),

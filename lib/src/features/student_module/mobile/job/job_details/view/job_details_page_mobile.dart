@@ -12,6 +12,7 @@ import 'package:all_in_one/src/features/student_module/mobile/job/job_details/wi
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/job_details_header.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/job_summary_card.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/job_details/widget/save_job_button_from_job_details.dart';
+import 'package:all_in_one/src/features/student_module/mobile/job/jobs/controller/job_view_controller.dart';
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,6 +37,7 @@ class JobDetailsPageMobile extends StatefulWidget {
 
 class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
   final companyjobController = Get.put(CompanyJobViewController());
+  final jobController = Get.put(JobsViewController());
   late JobModel viewJobResponseData;
   bool? isFromCompanyJob;
 

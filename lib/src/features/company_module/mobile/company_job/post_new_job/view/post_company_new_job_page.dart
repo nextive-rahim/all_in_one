@@ -27,15 +27,15 @@ class PostCompanyNewJobPage extends GetView<PostCompanyNewJobViewController> {
             children: [
               SizedBox(height: 20),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 190),
                 child: Text('Post a job', style: AppTextStyle.bold20),
               ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
                       padding: EdgeInsets.only(
-                        right: 20,
-                        left: 20,
+                        right: 200,
+                        left: 200,
                         bottom: 70,
                       ),
                       child: CompanyNewJobPostFormField()),

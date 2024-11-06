@@ -14,6 +14,7 @@ import 'package:all_in_one/src/features/common_features/profile/view/profile_pag
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/view/post_company_new_job_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/view/company_all_jobs_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/comapny_profile_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/company_profile_update_page.dart';
@@ -344,21 +345,21 @@ final GoRouter router = GoRouter(
       name: Routes.notification,
       pageBuilder: (context, state) => NotificationViewPage(),
     ),
-    // transitionGoRoute(
-    //   path: Routes.noticeBoard,
-    //   name: Routes.noticeBoard,
-    //   pageBuilder: (context, state) => const NoticeBoardPage(),
-    //   routes: [
-    //     transitionGoRoute(
-    //       path: Routes.noticeDetailsPage,
-    //       name: Routes.noticeDetailsPage,
-    //       pageBuilder: (context, state) {
-    //         final String slug = state.uri.queryParameters['slug']!;
-    //         return NoticeDetailsPage(slug: slug);
-    //       },
-    //     ),
-    //   ],
-    // ),
+    transitionGoRoute(
+      path: Routes.postCompanyNewJob,
+      name: Routes.postCompanyNewJob,
+      pageBuilder: (context, state) => const PostCompanyNewJobPage(),
+      routes: [
+        // transitionGoRoute(
+        //   path: Routes.noticeDetailsPage,
+        //   name: Routes.noticeDetailsPage,
+        //   pageBuilder: (context, state) {
+        //     final String slug = state.uri.queryParameters['slug']!;
+        //     return NoticeDetailsPage(slug: slug);
+        //   },
+        // ),
+      ],
+    ),
     // transitionGoRoute(
     //   path: Routes.passwordChange,
     //   name: Routes.passwordChange,

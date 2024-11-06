@@ -21,7 +21,7 @@ ThemeData themeData = ThemeData(
       //     bottomRight: Radius.circular(10),
       //   ),
       // ),
-      iconTheme: IconThemeData(color: AppColors.white)),
+      iconTheme: IconThemeData(color: AppColors.black)),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0, backgroundColor: AppColors.transparent,

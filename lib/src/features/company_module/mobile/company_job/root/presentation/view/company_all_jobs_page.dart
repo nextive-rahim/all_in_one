@@ -39,8 +39,8 @@ class CompanyAllJobsMobilePage extends StatelessWidget {
                     color: CommonColor.greyColor15,
                     child: const Padding(
                       padding: EdgeInsets.only(
-                        left: 265,
-                        right: 265,
+                        left: 65,
+                        right: 65,
                         top: 10,
                         bottom: 60,
                       ),

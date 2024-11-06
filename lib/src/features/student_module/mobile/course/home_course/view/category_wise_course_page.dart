@@ -61,8 +61,8 @@ class _CategoryWiseCoursePageState extends State<CategoryWiseCoursePage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 40,
-              right: 40,
+              left: 65,
+              right: 65,
               // top: 30,
               bottom: 50,
             ),

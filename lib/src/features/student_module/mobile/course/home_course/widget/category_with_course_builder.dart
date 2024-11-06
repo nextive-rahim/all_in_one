@@ -153,7 +153,7 @@ class _CourseBuilder extends StatelessWidget {
         itemCount: courseList!.length,
         primary: false,
         shrinkWrap: true,
-        physics: const BouncingScrollPhysics(),
+        physics: const AlwaysScrollableScrollPhysics(),
         itemBuilder: (context, courseIndex) {
           CourseModel course = courseList![courseIndex];
           return Container(
