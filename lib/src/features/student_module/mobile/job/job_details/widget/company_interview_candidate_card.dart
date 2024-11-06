@@ -8,6 +8,7 @@ import 'package:all_in_one/src/features/company_module/mobile/company_job/my_com
 import 'package:all_in_one/src/features/student_module/mobile/job/jobs/model/view_job_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 enum IsCadidateSelect {
   seleted,
@@ -33,15 +34,14 @@ class CompanyInterviewCandidateCard extends GetView<UserDetailsViewController> {
           userType: user.userType,
         );
         if (user.isSelected == 0) {
-          Get.toNamed(
-            Routes.companyJobAppliedCandidateProfile,
-            arguments: IsCadidateSelect.notSelected.name,
-          );
+          context.pushNamed(Routes.companyJobAppliedCandidateProfile,
+              queryParameters: {
+                'isSelected': IsCadidateSelect.notSelected.name
+              });
+        } else {
+          context.pushNamed(Routes.companyJobAppliedCandidateProfile,
+              queryParameters: {'isSelected': IsCadidateSelect.seleted.name});
         }
-        Get.toNamed(
-          Routes.companyJobAppliedCandidateProfile,
-          arguments: IsCadidateSelect.seleted.name,
-        );
       },
       child: Row(
         children: [

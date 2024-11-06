@@ -264,14 +264,14 @@ class AppPages {
       curve: Curves.easeInOut,
       transitionDuration: const Duration(milliseconds: 50),
     ),
-    GetPage(
-      name: Routes.companyJobAppliedCandidateProfile,
-      bindings: [CourseDetailsBinding(), UserDetailsBinding()],
-      page: () => const CompanyJobAppliedCandidateProfile(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.companyJobAppliedCandidateProfile,
+    //   bindings: [CourseDetailsBinding(), UserDetailsBinding()],
+    //   page: () => const CompanyJobAppliedCandidateProfile(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
     GetPage(
       name: Routes.companyInvoicePage,
       page: () => const CompanyInvoiceViewPage(),

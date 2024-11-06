@@ -14,6 +14,7 @@ import 'package:all_in_one/src/features/common_features/profile/view/profile_pag
 import 'package:all_in_one/src/features/common_features/profile/view/profile_update_page.dart';
 import 'package:all_in_one/src/features/common_features/splash/splash_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_job/my_company_jobs/my_company_job_applied_candidate_profile/view/company_job_applied_candidate_profile.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/post_new_job/view/post_company_new_job_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/view/company_all_jobs_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/comapny_profile_page.dart';
@@ -360,11 +361,16 @@ final GoRouter router = GoRouter(
         // ),
       ],
     ),
-    // transitionGoRoute(
-    //   path: Routes.passwordChange,
-    //   name: Routes.passwordChange,
-    //   pageBuilder: (context, state) => const PassWordChangePage(),
-    // ),
+    transitionGoRoute(
+      path: Routes.companyJobAppliedCandidateProfile,
+      name: Routes.companyJobAppliedCandidateProfile,
+      pageBuilder: (context, state) {
+        final String isSelectedCanditate =
+            state.uri.queryParameters['isSelected'] ?? '';
+        return CompanyJobAppliedCandidateProfile(
+            isSelected: isSelectedCanditate);
+      },
+    ),
     // transitionGoRoute(
     //   path: Routes.privacyPolicy,
     //   name: Routes.privacyPolicy,

@@ -22,11 +22,14 @@ bool jobAppliedStatus = false;
 
 class CompanyJobAppliedCandidateProfile
     extends GetView<UserDetailsViewController> {
-  const CompanyJobAppliedCandidateProfile({super.key});
-
+  const CompanyJobAppliedCandidateProfile({
+    super.key,
+    required this.isSelected,
+  });
+  final String isSelected;
   @override
   Widget build(BuildContext context) {
-    controller.isFrom = Get.arguments;
+    controller.isFrom = isSelected;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Candidate Profile'),
