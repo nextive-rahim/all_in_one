@@ -6,6 +6,7 @@ import 'package:all_in_one/src/features/common_features/profile/controller/profi
 import 'package:all_in_one/src/features/common_features/profile/widgets/profile_header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class CompanyProfilePage extends GetView<ProfileViewController> {
   const CompanyProfilePage({super.key});
@@ -15,7 +16,7 @@ class CompanyProfilePage extends GetView<ProfileViewController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 10),
           child: Obx(
             () {
               if (controller.pageState == PageState.loading) {
@@ -75,7 +76,8 @@ class CompanyProfilePage extends GetView<ProfileViewController> {
                   const SizedBox(height: 50),
                   GestureDetector(
                     onTap: () {
-                      Get.toNamed(Routes.changePassword);
+                      context.pushNamed(Routes.changePassword);
+                      // Get.toNamed(Routes.changePassword);
                     },
                     child: Container(
                       decoration: BoxDecoration(

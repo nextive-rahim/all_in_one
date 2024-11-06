@@ -19,7 +19,7 @@ class CompanyProfileUpdatePage
       body: const SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(20.0),
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 200),
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -33,10 +33,7 @@ class CompanyProfileUpdatePage
           ),
         ),
       ),
-      bottomNavigationBar: const Padding(
-        padding: EdgeInsets.all(0.0),
-        child: CompanyProfileUpdateButton(),
-      ),
+      bottomNavigationBar: const CompanyProfileUpdateButton(),
     );
   }
 }
