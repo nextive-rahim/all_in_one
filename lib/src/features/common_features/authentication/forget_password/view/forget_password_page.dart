@@ -48,7 +48,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
           child: SingleChildScrollView(
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 20, horizontal: 265),
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 20,),
               child: Form(
                 key: _formKey,
                 child: Column(

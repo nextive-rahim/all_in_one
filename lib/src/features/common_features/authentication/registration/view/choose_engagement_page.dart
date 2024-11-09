@@ -35,8 +35,8 @@ class _ChooseEngagementPageState extends State<ChooseEngagementPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.only(
-              left: 265,
-              right: 265,
+              left: 20,
+              right: 20,
               top: 16,
               bottom: 16,
             ),

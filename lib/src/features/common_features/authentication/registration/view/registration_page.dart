@@ -52,7 +52,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
       backgroundColor: CommonColor.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 265),
+          padding: const EdgeInsets.symmetric(
+            vertical: 20,
+            horizontal: 20,
+          ),
           child: Form(
             key: _formKey,
             child: Column(

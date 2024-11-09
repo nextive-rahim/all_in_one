@@ -118,7 +118,7 @@ class _CompanyPaymentPageMobileState extends State<CompanyPaymentPageMobile> {
                               ),
                               const SizedBox(height: 20),
                               const SizedBox(
-                                width: 265,
+                                width: 20,
                                 child: Text(
                                   'Requested to pay within first week of this month.',
                                   style: TextStyle(

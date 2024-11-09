@@ -43,7 +43,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
       appBar: AppBar(title: const Text('Change Password')),
       body: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 265),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: Form(
           key: _formKey,
           child: Column(

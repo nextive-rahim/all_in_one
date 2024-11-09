@@ -32,10 +32,8 @@ class _SplashPageState extends State<SplashPage> {
       if (CacheService.boxAuth.read(CacheKeys.token) == null) {
         if (kIsWeb) {
           context.goNamed(Routes.login);
-          // Get.offNamed(Routes.login);
-          //  Get.rootDelegate.toNamed(Routes.login);
-
-          return;
+        } else {
+          context.goNamed(Routes.login);
         }
       }
       final userType = CacheService.boxAuth.read(CacheKeys.userType);
@@ -47,7 +45,7 @@ class _SplashPageState extends State<SplashPage> {
           // Get.offNamed(Routes.homeTab);
         } else {
           // Get.rootDelegate.toNamed(Routes.homeTab);
-          Get.offNamed(Routes.homeTab);
+          context.goNamed(Routes.homeTab);
         }
       } else if (userType == 2) {
         if (kIsWeb) {
@@ -61,14 +59,14 @@ class _SplashPageState extends State<SplashPage> {
         if (kIsWeb) {
           context.goNamed(Routes.homeTabCompany);
         } else {
-          Get.offNamed(Routes.bottomNavBarCompany);
+          context.goNamed(Routes.homeTabCompany);
           // Get.offNamed(Routes.dashboardRegFirstTimeEmployeeWeb);
         }
       } else if (userType == 4) {
         if (kIsWeb) {
           context.goNamed(Routes.bottomNavBarInterview);
         } else {
-          Get.offNamed(Routes.bottomNavBarInterview);
+          context.goNamed(Routes.bottomNavBarInterview);
         }
       }
     });
