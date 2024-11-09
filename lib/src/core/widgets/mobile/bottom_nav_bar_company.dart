@@ -3,6 +3,7 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:all_in_one/src/core/widgets/logout_button.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_view_controller.dart';
+import 'package:all_in_one/src/features/company_module/mobile/company_invoice/controller/company_invoice_view_controller.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_invoice/view/generate_invoice_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_profile/view/comapny_profile_page.dart';
 import 'package:all_in_one/src/features/company_module/mobile/company_job/root/presentation/view/company_all_jobs_page.dart';
@@ -21,6 +22,7 @@ class BottomNavBarCompany extends StatefulWidget {
 
 class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
   final controller = Get.put(DashboardViewController());
+  final invoiceController = Get.put(CompanyInvoiceViewController());
   final List<Widget> _children = <Widget>[
     const CompanyAllJobsMobilePage(),
     const CompanyEmployeeListPageMobile(),
@@ -29,7 +31,7 @@ class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
     const CompanyProfilePage()
   ];
 
-  static const double _borderRadius = 20;
+  static const double _borderRadius = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: CommonColor.purpleColor1,
+                              color: AppColors.lightBlack10,
                               spreadRadius: 0,
                               blurRadius: 0,
                               offset: Offset(0, -1)),
@@ -125,8 +127,8 @@ class _BottomNavBarCompanyState extends State<BottomNavBarCompany> {
       color: controller.currentIndex == index
           ? AppColors.selectedNavItem
           : AppColors.unselectedNavItem,
-      height: 28,
-      width: 28,
+      height: 23,
+      width: 23,
       fit: BoxFit.fill,
       cacheHeight: 73,
       cacheWidth: 73,
@@ -139,9 +141,9 @@ class CompanyHomeAppBar extends AppBar {
       : super(
           leadingWidth: 0,
           automaticallyImplyLeading: false,
-          backgroundColor: CommonColor.purpleColor1,
-          elevation: 1.5,
-          shadowColor: AppColors.lightBlack10.withOpacity(0.4),
+          backgroundColor: CommonColor.whiteColor,
+          elevation: 0,
+          // shadowColor: AppColors.lightBlack10.withOpacity(0.4),
           toolbarHeight: 65,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -151,7 +153,7 @@ class CompanyHomeAppBar extends AppBar {
                 height: 40,
                 margin: const EdgeInsets.only(left: 10),
                 child: Image.asset(
-                  ImageConstant.appLogo,
+                  ImageConstant.aioLogo,
                   fit: BoxFit.contain,
                   cacheHeight: 105,
                   cacheWidth: 388,

@@ -63,6 +63,7 @@ class _InterviewFeedbackCardState extends State<InterviewFeedbackCard> {
                     Icon(
                       Icons.mode_edit_outline_outlined,
                       color: CommonColor.blueColor1,
+                      size: 18,
                     ),
                     SizedBox(width: 8),
                     TextWidget(
@@ -71,7 +72,7 @@ class _InterviewFeedbackCardState extends State<InterviewFeedbackCard> {
                       maxLine: 1,
                       fontFamily: AppStrings.sfProDisplay,
                       fontWeight: FontWeight.w400,
-                      fontSize: 15,
+                      fontSize: 14,
                     ),
                   ],
                 ),

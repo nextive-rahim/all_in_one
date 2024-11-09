@@ -38,8 +38,8 @@ class InterviewLinkButton extends GetView<AllInterviewsViewController> {
             Image.asset(
               ImageConstant.link2,
               color: CommonColor.blueColor1,
-              height: 15,
-              width: 15,
+              height: 12,
+              width: 12,
             ),
             const SizedBox(width: 8),
             const TextWidget(
@@ -48,7 +48,7 @@ class InterviewLinkButton extends GetView<AllInterviewsViewController> {
               maxLine: 1,
               fontFamily: AppStrings.sfProDisplay,
               fontWeight: FontWeight.w400,
-              fontSize: 15,
+              fontSize: 14,
             ),
           ],
         ),

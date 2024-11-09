@@ -1,4 +1,5 @@
 import 'package:all_in_one/src/core/theme/colors.dart';
+import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class CompanyJobCommonTabSection extends StatefulWidget {
@@ -51,9 +52,9 @@ class _CompanyJobCommonTabSectionState extends State<CompanyJobCommonTabSection>
             bottom: 15,
           ),
           child: Container(
-            height: 50,
+            height: 60,
             decoration: BoxDecoration(
-              color: AppColors.primary,
+              color: AppColors.transparent,
               borderRadius: BorderRadius.circular(4),
             ),
             child: TabBar(
@@ -72,37 +73,35 @@ class _CompanyJobCommonTabSectionState extends State<CompanyJobCommonTabSection>
                   tabController?.animateTo(index);
                 });
               },
-              controller: tabController,
-              isScrollable: false,
-              indicatorWeight: 0,
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicatorPadding: const EdgeInsets.symmetric(
-                vertical: 4,
-                horizontal: 4,
+              controller: tabController, tabAlignment: TabAlignment.start,
+              isScrollable: true,
+              // indicatorWeight: 100,
+              indicatorSize: TabBarIndicatorSize.tab, padding: EdgeInsets.zero,
+              indicatorPadding: const EdgeInsets.only(
+                top: 45,
+                left: 0,
+                right: 20,
               ),
-              padding: const EdgeInsets.symmetric(
-                horizontal: 00,
-                vertical: 0,
-              ),
-              labelColor: AppColors.black,
-              unselectedLabelColor: Colors.white,
+
+              labelColor: CommonColor.purpleColor1,
+              unselectedLabelColor: Colors.black,
               labelPadding: const EdgeInsets.only(
-                left: 5,
-                right: 5,
+                left: 0,
+                right: 35,
               ),
               unselectedLabelStyle: const TextStyle(
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w600,
                 fontSize: 16,
                 height: 18 / 16,
               ),
               labelStyle: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                height: 21 / 16,
+                fontWeight: FontWeight.w800,
+                fontSize: 28,
+                // height: 21 / 16,
                 letterSpacing: 0.2,
               ),
               indicator: BoxDecoration(
-                color: Colors.white,
+                color: CommonColor.purpleColor1,
                 borderRadius: BorderRadius.circular(4),
               ),
               tabs: [

@@ -4,8 +4,8 @@ import 'package:all_in_one/src/core/widgets/logger.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:pod_player/pod_player.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class CommonVideoPlayer extends StatefulWidget {
   const CommonVideoPlayer({
@@ -23,19 +23,20 @@ class CommonVideoPlayer extends StatefulWidget {
 }
 
 class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
-  PodPlayerController? podPlayerController;
-  PodPlayerController? _liveCheckingPodController;
+  YoutubePlayerController? podPlayerController;
+
   final Rx<bool> _isVideoLoading = false.obs;
-  String _youTubeVideoLink = '';
-  bool _isLiveVideo = false;
+  String youTubeVideoLink = '';
+  bool isLiveVideo = false;
 
   @override
   void initState() {
     super.initState();
-    if (podPlayerController?.isInitialised == true) {
-      podPlayerController?.pause();
-      log('was initialized on init state, now paused');
-    }
+    // if (podPlayerController?.isInitialised == true) {
+    //   podPlayerController?.pause();
+    //   log('was initialized on init state, now paused');
+    // }
+
     _getVideo(widget.videoLink);
   }
 
@@ -47,7 +48,7 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
         final visiblePercentage = visibilityInfo.visibleFraction * 100;
         log('visiblePercentage $visiblePercentage');
         if (visiblePercentage < 50) {
-          podPlayerController?.pause();
+          podPlayerController?.pauseVideo();
         }
       },
       child: ClipRRect(
@@ -66,8 +67,7 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
                   ),
                 );
               } else {
-                return PodVideoPlayer(
-                  matchVideoAspectRatioToFrame: true,
+                return YoutubePlayer(
                   controller: podPlayerController!,
                 );
               }
@@ -82,23 +82,23 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
   void dispose() {
     super.dispose();
 
-    if (podPlayerController?.isVideoPlaying ?? false) {
-      log('dispose called');
-      podPlayerController?.dispose();
-    }
+    // if (podPlayerController?.isVideoPlaying ?? false) {
+    //   log('dispose called');
+    //   podPlayerController?.dispose();
+    // }
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     log('didChangeDependencies called');
-    if (podPlayerController?.isInitialised == true) {
-      podPlayerController?.pause();
-      log('was initialized when didChangeDependencies called, now paused');
-      setState(() {
-        _getVideo(widget.videoLink);
-      });
-    }
+    // if (podPlayerController?.isInitialised == true) {
+    podPlayerController?.pauseVideo();
+    log('was initialized when didChangeDependencies called, now paused');
+    setState(() {
+      _getVideo(widget.videoLink);
+    });
+    // }
   }
 
   @override
@@ -108,14 +108,14 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
     log('widget.videoLink ${widget.videoLink}');
     if (oldWidget.videoLink != widget.videoLink) {
       log('oldWidget.videoLink != widget.videoLink');
-      podPlayerController?.pause();
+      podPlayerController?.pauseVideo();
       _getVideo(widget.videoLink);
     }
     super.didUpdateWidget(oldWidget);
   }
 
   void _getVideo(String videoLink) async {
-    _youTubeVideoLink = videoLink;
+    youTubeVideoLink = videoLink;
     await _getYouTubeVideo();
   }
 
@@ -131,42 +131,28 @@ class _CommonVideoPlayerState extends State<CommonVideoPlayer> {
   }
 
   Future<void> _checkIfTheVideoIsLive() async {
-    _isLiveVideo = widget.isLive;
+    isLiveVideo = widget.isLive;
 
     await _initializeVideoPlayerController();
   }
 
   Future<void> _initializeVideoPlayerController() async {
-    if (podPlayerController != null && podPlayerController!.isInitialised) {
-      await podPlayerController?.changeVideo(
-        playVideoFrom: PlayVideoFrom.youtube(
-          _youTubeVideoLink,
-          live: _isLiveVideo,
-        ),
-        playerConfig: _getPodPlayerConfig(),
-      );
-    } else {
-      podPlayerController = PodPlayerController(
-        playVideoFrom: PlayVideoFrom.youtube(
-          _youTubeVideoLink,
-          live: _isLiveVideo,
-        ),
-        podPlayerConfig: _getPodPlayerConfig(),
-      )..initialise();
-    }
-
-    if (_liveCheckingPodController != null &&
-        _liveCheckingPodController!.isInitialised) {
-      _liveCheckingPodController?.dispose();
-    }
-  }
-
-  PodPlayerConfig _getPodPlayerConfig() {
-    return PodPlayerConfig(
-      autoPlay: widget.autoPlayVideo,
-      isLooping: false,
-      videoQualityPriority: [144, 240, 360, 480],
-      wakelockEnabled: true,
+    // if (podPlayerController != null && podPlayerController!.isInitialised) {
+    //   await podPlayerController?.changeVideo(
+    //     playVideoFrom: PlayVideoFrom.youtube(
+    //       _youTubeVideoLink,
+    //       live: _isLiveVideo,
+    //     ),
+    //     playerConfig: _getPodPlayerConfig(),
+    //   );
+    // } else {
+    podPlayerController = YoutubePlayerController.fromVideoId(
+      videoId: widget.videoLink.substring(widget.videoLink.length - 11),
+      params: const YoutubePlayerParams(
+        showControls: true,
+        showFullscreenButton: true,
+      ),
     );
+    // }
   }
 }

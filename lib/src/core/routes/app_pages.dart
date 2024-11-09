@@ -310,13 +310,13 @@ class AppPages {
       binding: ProfileBinding(),
       transitionDuration: const Duration(milliseconds: 50),
     ),
-    GetPage(
-      name: Routes.courseVideo,
-      page: () => const VideoPlayerPage(),
-      transition: Transition.fade,
-      curve: Curves.easeInOut,
-      transitionDuration: const Duration(milliseconds: 50),
-    ),
+    // GetPage(
+    //   name: Routes.courseVideo,
+    //   page: () => const VideoPlayerPage(),
+    //   transition: Transition.fade,
+    //   curve: Curves.easeInOut,
+    //   transitionDuration: const Duration(milliseconds: 50),
+    // ),
     GetPage(
       name: Routes.forgotPassword,
       page: () => const ForgetPasswordPage(),

@@ -8,22 +8,24 @@ class CompletedInterviewsBuilder extends GetView<AllInterviewsViewController> {
   //final List<ViewInterviewResponseData> interviews;
   @override
   Widget build(BuildContext context) {
-    return Obx(() => ListView.separated(
-          itemCount: controller.completedInterviewList.length,
-          shrinkWrap: true,
-          // reverse: true,
-          physics: const NeverScrollableScrollPhysics(),
-          separatorBuilder: (context, ind) {
-            return const SizedBox(height: 10);
-          },
-          itemBuilder: (context, index) {
-            final interview = controller.completedInterviewList[index];
-            return InterViewCard(
-              index: index,
-              interview: interview,
-              isFormCompletedInterviews: true,
-            );
-          },
-        ));
+    return Obx(
+      () => ListView.separated(
+        itemCount: controller.completedInterviewList.length,
+        shrinkWrap: true,
+        // reverse: true,
+        physics: const NeverScrollableScrollPhysics(),
+        separatorBuilder: (context, ind) {
+          return const SizedBox(height: 10);
+        },
+        itemBuilder: (context, index) {
+          final interview = controller.completedInterviewList[index];
+          return InterViewCard(
+            index: index,
+            interview: interview,
+            isFormCompletedInterviews: true,
+          );
+        },
+      ),
+    );
   }
 }

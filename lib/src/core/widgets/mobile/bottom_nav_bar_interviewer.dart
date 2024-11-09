@@ -35,7 +35,7 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
     ProfilePage()
   ];
 
-  static const double _borderRadius = 20;
+  static const double _borderRadius = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +84,7 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                              color: CommonColor.purpleColor1,
+                              color: AppColors.lightBlack10,
                               spreadRadius: 0,
                               blurRadius: 0,
                               offset: Offset(0, -1)),
