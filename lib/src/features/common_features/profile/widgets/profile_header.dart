@@ -20,8 +20,8 @@ class ProfileHeader extends GetView<ProfileViewController> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 65,
-        right: 65,
+        left: 20,
+        right: 20,
         top: 15,
       ),
       child: Column(

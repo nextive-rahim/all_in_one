@@ -66,8 +66,8 @@ class _JobDetailsPageMobileState extends State<JobDetailsPageMobile> {
             child: SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.only(
-                  left: 65,
-                  right: 65,
+                  left: 20,
+                  right: 20,
                   top: 7,
                 ),
                 child: Column(

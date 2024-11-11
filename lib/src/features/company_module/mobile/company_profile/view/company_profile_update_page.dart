@@ -19,7 +19,7 @@ class CompanyProfileUpdatePage
       body: const SafeArea(
         child: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 200),
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,

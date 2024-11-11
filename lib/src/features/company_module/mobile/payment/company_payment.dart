@@ -47,7 +47,7 @@ class _CompanyPaymentPageMobileState extends State<CompanyPaymentPageMobile> {
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(160, 20, 160, 60),
+                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 60),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

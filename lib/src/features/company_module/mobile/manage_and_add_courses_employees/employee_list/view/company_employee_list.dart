@@ -37,8 +37,8 @@ class CompanyEmployeeListPageMobile extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(
-                          left: 100,
-                          right: 100,
+                          left: 10,
+                          right: 10,
                           top: 5,
                         ),
                         child: Column(

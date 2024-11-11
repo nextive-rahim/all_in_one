@@ -43,7 +43,7 @@ class GenerateCompanyInvoice extends GetView<CompanyInvoiceViewController> {
               // ),
               15.sh,
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 160, vertical: 0),
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

@@ -36,7 +36,7 @@ class ProfileUpdatePage extends GetView<UpdateProfileiewController> {
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 65),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
                       UpdateProfileImageSecton(),

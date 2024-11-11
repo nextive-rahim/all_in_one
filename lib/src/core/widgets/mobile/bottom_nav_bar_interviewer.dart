@@ -56,8 +56,8 @@ class _BottomNavBarInterviewerState extends State<BottomNavBarInterviewer> {
                 child: Padding(
               padding: EdgeInsets.only(
                 top: 0,
-                left: 15,
-                right: 15,
+                // left: 15,
+                // right: 15,
                 bottom: 80,
               ),
               child: InterviewCardLoading(),

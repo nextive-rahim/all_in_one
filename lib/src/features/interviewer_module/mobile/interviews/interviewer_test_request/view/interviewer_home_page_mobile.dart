@@ -39,7 +39,10 @@ class _InterviewerHomePageMobileState extends State<InterviewerHomePageMobile> {
           }
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+          padding: const EdgeInsets.symmetric(
+            vertical: 10,
+            horizontal: 10,
+          ),
           child: SingleChildScrollView(
             physics: const AlwaysScrollableScrollPhysics(),
             child: Obx(() {

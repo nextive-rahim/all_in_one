@@ -73,8 +73,8 @@ class _AppearTestAndScheduleInterviewMobilePageState
           child: Padding(
             padding: const EdgeInsets.only(
               top: 0,
-              right: 60,
-              left: 60,
+              right: 20,
+              left: 20,
               bottom: 0,
             ),
             child: Column(

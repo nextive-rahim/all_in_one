@@ -64,6 +64,7 @@ class _CourseDetailMobilePageState extends State<CourseDetailMobilePage> {
 
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.width < 650);
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
@@ -72,44 +73,83 @@ class _CourseDetailMobilePageState extends State<CourseDetailMobilePage> {
           collectinListData!.title ?? "",
         ),
       ),
-      body: Row(
-        children: [
-          // const SizedBox(height: 3),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Column(
+      body: MediaQuery.of(context).size.width < 650
+          ? Column(
               children: [
-                CourseDetailsVideoSection(
-                  collectinListData: collectinListData!,
-                  registrationController: registrationController,
+                // const SizedBox(height: 3),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    children: [
+                      CourseDetailsVideoSection(
+                        collectinListData: collectinListData!,
+                        registrationController: registrationController,
+                      ),
+                    ],
+                  ),
+                ),
+                // CourseLevelSection(collectinListData: collectinListData!),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        right: 10,
+                        left: 10,
+                        bottom: 60,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // CourseShareSection(collectinListData: collectinListData!),
+
+                          const CourseContent(),
+                          CommentSection(collectinListData: collectinListData!),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                // const SizedBox(height: 3),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    children: [
+                      CourseDetailsVideoSection(
+                        collectinListData: collectinListData!,
+                        registrationController: registrationController,
+                      ),
+                    ],
+                  ),
+                ),
+                // CourseLevelSection(collectinListData: collectinListData!),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        right: 10,
+                        left: 10,
+                        bottom: 60,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // CourseShareSection(collectinListData: collectinListData!),
+
+                          const CourseContent(),
+                          CommentSection(collectinListData: collectinListData!),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
-          ),
-          // CourseLevelSection(collectinListData: collectinListData!),
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  top: 10,
-                  right: 10,
-                  left: 10,
-                  bottom: 60,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // CourseShareSection(collectinListData: collectinListData!),
-
-                    const CourseContent(),
-                    CommentSection(collectinListData: collectinListData!),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
       bottomNavigationBar: SizedBox(
         height: 60,
         child: Padding(

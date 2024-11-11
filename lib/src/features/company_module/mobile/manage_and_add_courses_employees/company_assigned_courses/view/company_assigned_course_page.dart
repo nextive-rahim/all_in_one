@@ -39,7 +39,7 @@ class CompanyAssignedCourses extends GetView<StudentHomeViewController> {
               const SizedBox(height: 20),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 160),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Obx(() {
                     if (controller.pageState == PageState.loading) {
                       return const Center(child: CircularProgressIndicator());

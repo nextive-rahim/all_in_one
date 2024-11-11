@@ -16,7 +16,7 @@ class CompanyProfilePage extends GetView<ProfileViewController> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 200, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Obx(
             () {
               if (controller.pageState == PageState.loading) {

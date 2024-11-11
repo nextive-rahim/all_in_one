@@ -53,7 +53,7 @@ class _CourseDetailsVideoSectionState extends State<CourseDetailsVideoSection> {
           child: Obx(
             () {
               return SizedBox(
-                height: 400,
+                height: MediaQuery.of(context).size.width < 650 ? 200 : 400,
                 child: CommonVideoPlayer(
                   key: ValueKey(videoController.videolink.value),
                   videoLink: videoController.videolink.value,

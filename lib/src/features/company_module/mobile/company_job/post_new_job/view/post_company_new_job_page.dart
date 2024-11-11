@@ -34,8 +34,8 @@ class PostCompanyNewJobPage extends GetView<PostCompanyNewJobViewController> {
                 child: SingleChildScrollView(
                   child: Padding(
                       padding: EdgeInsets.only(
-                        right: 200,
-                        left: 200,
+                        right: 10,
+                        left: 10,
                         bottom: 70,
                       ),
                       child: CompanyNewJobPostFormField()),
