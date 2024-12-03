@@ -204,62 +204,56 @@ final GoRouter router = GoRouter(
       path: Routes.login,
       name: Routes.login,
       pageBuilder: (context, state) => const LoginPage(),
+    ),
+    transitionGoRoute(
+      path: Routes.engagement,
+      name: Routes.engagement,
+      pageBuilder: (context, state) {
+        final String isFrom = state.uri.queryParameters['title'] ?? 'Null';
+
+        return ChooseEngagementPage(
+          title: isFrom,
+        );
+      },
+    ),
+    transitionGoRoute(
+      path: Routes.registration,
+      name: Routes.registration,
+      pageBuilder: (context, state) {
+        final String userType = state.uri.queryParameters['userType'] ?? 'Null';
+        return RegistrationPage(userTyper: userType);
+      },
+    ),
+    transitionGoRoute(
+      path: Routes.registrationCompleted,
+      name: Routes.registrationCompleted,
+      pageBuilder: (context, state) {
+        return const RegistrationCompletedPage();
+      },
+    ),
+    transitionGoRoute(
+      path: Routes.forgetPasswordEmailPage,
+      name: Routes.forgetPasswordEmailPage,
+      pageBuilder: (context, state) {
+        return const ForgetPasswordEmailPage();
+      },
       routes: [
         transitionGoRoute(
-          path: Routes.engagement,
-          name: Routes.engagement,
-          pageBuilder: (context, state) {
-            final String isFrom = state.uri.queryParameters['title'] ?? 'Null';
-            final List listData = state.extra as List;
-            return ChooseEngagementPage(title: isFrom, list: listData);
-          },
-          routes: [
-            transitionGoRoute(
-              path: Routes.registration,
-              name: Routes.registration,
-              pageBuilder: (context, state) {
-                final String userType =
-                    state.uri.queryParameters['userType'] ?? 'Null';
-                return RegistrationPage(userTyper: userType);
-              },
-              routes: [
-                transitionGoRoute(
-                  path: Routes.registrationCompleted,
-                  name: Routes.registrationCompleted,
-                  pageBuilder: (context, state) {
-                    return const RegistrationCompletedPage();
-                  },
-                ),
-              ],
-            ),
-            transitionGoRoute(
-              path: Routes.forgetPasswordEmailPage,
-              name: Routes.forgetPasswordEmailPage,
-              pageBuilder: (context, state) {
-                return const ForgetPasswordEmailPage();
-              },
-              routes: [
-                transitionGoRoute(
-                  path: Routes.otpVerification,
-                  name: Routes.otpVerification,
-                  pageBuilder: (context, state) {
-                    return const OTPverificationPage();
-                  },
-                  routes: [
-                    transitionGoRoute(
-                      path: Routes.forgotPassword,
-                      name: Routes.forgotPassword,
-                      pageBuilder: (context, state) {
-                        return const ForgetPasswordPage();
-                      },
-                      routes: [],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
+            path: Routes.otpVerification,
+            name: Routes.otpVerification,
+            pageBuilder: (context, state) {
+              return const OTPverificationPage();
+            },
+            routes: [
+              transitionGoRoute(
+                path: Routes.forgotPassword,
+                name: Routes.forgotPassword,
+                pageBuilder: (context, state) {
+                  return const ForgetPasswordPage();
+                },
+                routes: [],
+              ),
+            ]),
         transitionGoRoute(
           path: Routes.categoryWiseCourse,
           name: Routes.categoryWiseCourse,

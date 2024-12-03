@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:all_in_one/main.dart';
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/extension/text_extension.dart';
 import 'package:all_in_one/src/core/page_state/state.dart';
@@ -17,6 +20,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
+import 'dart:js' as js;
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -138,13 +142,8 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(width: 10),
                               GestureDetector(
                                 onTap: () {
-                                  context.pushNamed(Routes.engagement, extra: [
-                                    '1',
-                                    '2',
-                                    '3'
-                                  ], queryParameters: {
-                                    'title': 'Checking data transfer'
-                                  });
+                                  context.replaceNamed(Routes.engagement);
+                                  // replaceBrowserHistory({}, Routes.engagement);
                                   // Get.toNamed(Routes.engagement);
                                 },
                                 child: const TextWidget(

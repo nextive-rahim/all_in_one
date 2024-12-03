@@ -6,7 +6,14 @@ import 'package:all_in_one/src/core/theme/theme.dart';
 import 'package:all_in_one/src/core/utils/strings.dart';
 import 'package:all_in_one/src/core/utils/util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:go_router/go_router.dart';
+import 'dart:html' as html;
+
+void replaceBrowserHistory(dynamic data, String path) {
+  html.window.history.replaceState(data, '', path);
+}
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -18,6 +25,8 @@ class MyHttpOverrides extends HttpOverrides {
 }
 
 Future<void> main() async {
+  usePathUrlStrategy();
+  GoRouter.optionURLReflectsImperativeAPIs = true;
   WidgetsFlutterBinding.ensureInitialized();
 
   await CacheService().initialize();
@@ -34,6 +43,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // debugInvertOversizedImages = true;
     return GetMaterialApp.router(
+      navigatorObservers: [RouteObserver<ModalRoute<void>>()],
       key: UniqueKey(),
       scaffoldMessengerKey: SnackBarService.scaffoldKey,
       debugShowCheckedModeBanner: false,

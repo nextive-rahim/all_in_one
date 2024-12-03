@@ -1,3 +1,4 @@
+import 'package:all_in_one/main.dart';
 import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/utils/colors.dart';
 import 'package:all_in_one/src/core/utils/image_constant.dart';
@@ -9,10 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class ChooseEngagementPage extends StatefulWidget {
-  const ChooseEngagementPage(
-      {super.key, required this.title, required this.list});
+  const ChooseEngagementPage({
+    super.key,
+    required this.title,
+  });
   final String title;
-  final List list;
+
   @override
   State<ChooseEngagementPage> createState() => _ChooseEngagementPageState();
 }
@@ -62,9 +65,11 @@ class _ChooseEngagementPageState extends State<ChooseEngagementPage> {
                 GestureDetector(
                   onTap: () {
                     if (_selectedIndex != null) {
-                      context.pushNamed(Routes.registration, queryParameters: {
-                        'userType': (_selectedIndex! + 1).toString()
-                      });
+                      replaceBrowserHistory({}, Routes.registration);
+                      context.replaceNamed(Routes.registration,
+                          queryParameters: {
+                            'userType': (_selectedIndex! + 1).toString()
+                          });
                       // Get.toNamed(Routes.registration,
                       //     arguments: (_selectedIndex! + 1).toString());
                     } else {
