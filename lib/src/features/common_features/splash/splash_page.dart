@@ -7,8 +7,9 @@ import 'package:all_in_one/src/core/utils/image_constant.dart';
 import 'package:all_in_one/src/core/utils/size_config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:go_router/go_router.dart';
+import 'dart:html' as html;
 
 class SplashPage extends StatefulWidget {
   const SplashPage({
@@ -31,16 +32,20 @@ class _SplashPageState extends State<SplashPage> {
       log("Auth Token.... : ${CacheService.boxAuth.read(CacheKeys.token)}");
       if (CacheService.boxAuth.read(CacheKeys.token) == null) {
         if (kIsWeb) {
-          context.goNamed(Routes.login);
+          html.window.history.replaceState(null, '', Routes.login);
+          context.replaceNamed(Routes.login);
         } else {
-          context.goNamed(Routes.login);
+          html.window.history.replaceState(null, '', Routes.login);
+          context.replaceNamed(Routes.login);
         }
       }
       final userType = CacheService.boxAuth.read(CacheKeys.userType);
       print('User Type : $userType');
       if (userType == 1) {
         if (kIsWeb) {
-          context.goNamed(Routes.homeTab);
+          html.window.history.replaceState(null, '', Routes.homeTab);
+          context.replaceNamed(Routes.homeTab);
+
           // Get.rootDelegate.toNamed(Routes.homeTab);
           // Get.offNamed(Routes.homeTab);
         } else {
@@ -49,7 +54,9 @@ class _SplashPageState extends State<SplashPage> {
         }
       } else if (userType == 2) {
         if (kIsWeb) {
-          context.goNamed(Routes.homeTabEmployee);
+          html.window.history.replaceState(null, '', Routes.homeTabEmployee);
+          context.replaceNamed(Routes.homeTabEmployee);
+
           // Get.offNamed(Routes.bottomNavBarEmployee);
         } else {
           // Get.rootDelegate.toNamed(Routes.homeTab);
@@ -57,7 +64,8 @@ class _SplashPageState extends State<SplashPage> {
         }
       } else if (userType == 3) {
         if (kIsWeb) {
-          context.goNamed(Routes.homeTabCompany);
+          html.window.history.replaceState(null, '', Routes.homeTabCompany);
+          context.replaceNamed(Routes.homeTabCompany);
         } else {
           context.goNamed(Routes.homeTabCompany);
           // Get.offNamed(Routes.dashboardRegFirstTimeEmployeeWeb);

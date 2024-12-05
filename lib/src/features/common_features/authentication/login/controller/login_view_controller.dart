@@ -23,8 +23,8 @@ class LoginViewController extends GetxController {
   get pageState => _pageStateController.value;
 
   late LoginResponseModel loginModel;
-
-  Future<void> login(GlobalKey<FormState> formKey) async {
+  final formKey = GlobalKey<FormState>();
+  Future<void> login() async {
     if (!formKey.currentState!.validate()) {
       return;
     }

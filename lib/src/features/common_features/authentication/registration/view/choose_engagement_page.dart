@@ -66,10 +66,11 @@ class _ChooseEngagementPageState extends State<ChooseEngagementPage> {
                   onTap: () {
                     if (_selectedIndex != null) {
                       replaceBrowserHistory({}, Routes.registration);
-                      context.replaceNamed(Routes.registration,
-                          queryParameters: {
-                            'userType': (_selectedIndex! + 1).toString()
-                          });
+                      context.goNamed(Routes.registration, queryParameters: {
+                        'userType': (_selectedIndex! + 1).toString()
+                      });
+                      // Navigator.pushReplacementNamed(
+                      //     context, Routes.registration);
                       // Get.toNamed(Routes.registration,
                       //     arguments: (_selectedIndex! + 1).toString());
                     } else {

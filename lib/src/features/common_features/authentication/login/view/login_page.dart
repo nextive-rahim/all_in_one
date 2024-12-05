@@ -20,7 +20,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
-import 'dart:js' as js;
+import 'dart:html' as html;
+part '../widgets/login_button.dart';
+part '../widgets/login_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -31,7 +33,6 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final controller = Get.put(LoginViewController());
-  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -53,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
               horizontal: 20,
             ),
             child: Form(
-              key: _formKey,
+              key: controller.formKey,
               child: Column(
                 children: [
                   _headerNotMounted(),
@@ -116,17 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                           ),
                           const SizedBox(height: 30),
-                          Obx(
-                            () => PrimaryButton(
-                              isLoading:
-                                  controller.pageState == PageState.loading,
-                              onTap: onTap,
-                              widget: const Text(AppStrings.loginToMyAccount)
-                                  .fontSize(16)
-                                  .bold(FontWeight.w600)
-                                  .color(AppColors.white),
-                            ),
-                          ),
+                          _LoginButon(),
                           const SizedBox(height: 30),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -289,98 +280,6 @@ class _LoginPageState extends State<LoginPage> {
           fontSize: 18,
         ),
       ],
-    );
-  }
-
-  void onTap() {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
-    controller.login(_formKey).then(
-      (response) {
-        if (controller.loginModel.success == false &&
-            controller.loginModel.message ==
-                'User is not active. Please check your email to verify your account.') {
-          _showDailogBox(
-            'please check your email and verify your account',
-            title: 'Do you want to verify account?',
-          );
-
-          return;
-        }
-        if (controller.loginModel.success == false) {
-          SnackBarService.showErrorSnackBar(
-              controller.loginModel.message.toString());
-
-          return;
-        }
-        if (controller.loginModel.data?.userType == 1) {
-          if (kIsWeb) {
-            context.goNamed(Routes.homeTab);
-            // Get.rootDelegate.toNamed(Routes.homeTab);
-            // Get.offNamed(Routes.homeTab);
-          } else {
-            Get.offNamed(Routes.homeTab);
-          }
-        } else if (controller.loginModel.data?.userType == 2) {
-          if (kIsWeb) {
-            context.goNamed(Routes.homeTabEmployee);
-            //  Get.offNamed(Routes.bottomNavBarEmployee);
-          } else {
-            Get.offNamed(Routes.bottomNavBarEmployee);
-          }
-        } else if (controller.loginModel.data?.userType == 3) {
-          if (kIsWeb) {
-            context.goNamed(Routes.homeTabCompany);
-            // Get.offNamed(Routes.bottomNavBarCompany);
-          } else {
-            context.pushNamed(Routes.bottomNavBarCompany);
-            //  Get.offNamed(Routes.bottomNavBarCompany);
-          }
-        } else if (controller.loginModel.data?.userType == 4) {
-          if (kIsWeb) {
-            context.goNamed(Routes.bottomNavBarInterview);
-            // Get.offNamed(Routes.bottomNavBarInterview);
-          } else {
-            context.pushNamed(Routes.bottomNavBarInterview);
-            // Get.offNamed(Routes.bottomNavBarInterview);
-          }
-        }
-      },
-    );
-  }
-
-  void _showDailogBox(String message, {String? title}) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(title ?? 'Something went wrong'),
-          content: SingleChildScrollView(
-            child: SelectableText(message),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                context.pop();
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                controller.resentOtpForVerifyMail().then(
-                  (value) {
-                    SnackBarService.showInfoSnackBar(
-                        controller.loginModel.message.toString());
-                  },
-                );
-                context.pop();
-              },
-              child: const Text('OK'),
-            )
-          ],
-        );
-      },
     );
   }
 }
