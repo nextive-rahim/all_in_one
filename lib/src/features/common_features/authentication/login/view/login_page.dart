@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:all_in_one/main.dart';
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
@@ -133,8 +132,9 @@ class _LoginPageState extends State<LoginPage> {
                               const SizedBox(width: 10),
                               GestureDetector(
                                 onTap: () {
-                                  context.replaceNamed(Routes.engagement);
-                                  // replaceBrowserHistory({}, Routes.engagement);
+                                      
+                                  context.goNamed(Routes.engagement);
+                             
                                   // Get.toNamed(Routes.engagement);
                                 },
                                 child: const TextWidget(
