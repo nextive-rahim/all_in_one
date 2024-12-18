@@ -2,7 +2,6 @@ import 'package:all_in_one/main.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_company.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_employee.dart';
 import 'package:all_in_one/src/core/widgets/mobile/bottom_nav_bar_interviewer.dart';
-import 'package:all_in_one/src/core/widgets/video_player_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_email_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/forget_password_page.dart';
 import 'package:all_in_one/src/features/common_features/authentication/forget_password/view/otp_verification_view_controller.dart';
