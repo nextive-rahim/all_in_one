@@ -24,6 +24,7 @@
         android:label="All In One"
         android:name="${applicationName}"
         android:requestLegacyExternalStorage="true"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
