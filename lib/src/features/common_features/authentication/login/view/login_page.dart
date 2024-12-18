@@ -1,5 +1,4 @@
 
-import 'package:all_in_one/main.dart';
 import 'package:all_in_one/src/core/extension/sizebox_extension.dart';
 import 'package:all_in_one/src/core/extension/text_extension.dart';
 import 'package:all_in_one/src/core/page_state/state.dart';

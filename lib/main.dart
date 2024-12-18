@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:all_in_one/src/core/navigation/router_configuration.dart';
 import 'package:all_in_one/src/core/service/cache/cache_service.dart';
@@ -15,14 +14,7 @@ void replaceBrowserHistory(dynamic data, String path) {
   html.window.history.replaceState(data, '', path);
 }
 
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
-}
+
 
 Future<void> main() async {
   usePathUrlStrategy();

@@ -1,7 +1,7 @@
 part of '../view/login_page.dart';
 
 class _LoginButon extends StatefulWidget {
-  const _LoginButon({super.key});
+  const _LoginButon();
 
   @override
   State<_LoginButon> createState() => _LoginButonState();
