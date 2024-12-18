@@ -38,7 +38,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _shellNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorAKey = GlobalKey<NavigatorState>(debugLabel: 'shellA');
 final _shellNavigatorBKey = GlobalKey<NavigatorState>(debugLabel: 'shellB');
 final _shellNavigatorCKey = GlobalKey<NavigatorState>(debugLabel: 'shellC');

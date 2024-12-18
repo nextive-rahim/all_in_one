@@ -38,7 +38,7 @@ class _CourseDetailFormRegisterLargeWebPageState
   final ScrollController _scrollController1 = ScrollController(),
       _scrollController2 = ScrollController();
 
-  final List<List<String>> _selectedValues = [[], [], []];
+  
 
   final contentController = Get.put(StudentCourseContentViewController());
   final commentController = Get.put(ViewCommentViewController());
@@ -64,15 +64,7 @@ class _CourseDetailFormRegisterLargeWebPageState
     super.initState();
   }
 
-  void _onItemCheckedChange(String itemValue, bool checked, int index1) {
-    setState(() {
-      if (checked) {
-        _selectedValues[index1].add(itemValue);
-      } else {
-        _selectedValues[index1].remove(itemValue);
-      }
-    });
-  }
+  
 
   bool jobDropdownOpen = false;
   @override

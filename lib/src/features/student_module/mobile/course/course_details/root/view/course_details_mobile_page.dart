@@ -16,7 +16,6 @@ import 'package:all_in_one/src/features/student_module/mobile/course/course_deta
 import 'package:all_in_one/src/features/student_module/mobile/course/home_course/model/student_home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:share_plus/share_plus.dart';
 
 class CourseDetailMobilePage extends StatefulWidget {
   const CourseDetailMobilePage({super.key});
@@ -165,7 +164,5 @@ class _CourseDetailMobilePageState extends State<CourseDetailMobilePage> {
     );
   }
 
-  Future<void> _shareLink() async {
-    await Share.shareUri(Uri.parse('www.google.com'));
-  }
+  
 }

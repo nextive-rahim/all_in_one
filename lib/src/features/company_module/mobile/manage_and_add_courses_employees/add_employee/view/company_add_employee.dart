@@ -1,10 +1,8 @@
-import 'package:all_in_one/src/core/routes/app_pages.dart';
 import 'package:all_in_one/src/core/theme/text_style.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/widget/add_employee_form.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/widget/add_new_employee_button.dart';
 import 'package:all_in_one/src/features/company_module/mobile/manage_and_add_courses_employees/add_employee/widget/added_employee_image_by_company.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CompanyAddEmployeePageMobile extends StatefulWidget {
   const CompanyAddEmployeePageMobile({super.key});
@@ -68,42 +66,4 @@ class _CompanyAddEmployeePageMobileState
   }
 }
 
-class _AddedCoursesForEmployee extends StatelessWidget {
-  const _AddedCoursesForEmployee();
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 20,
-        bottom: 30,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text('Assigned Courses'),
-          GestureDetector(
-            onTap: () {
-              Get.toNamed(Routes.companyAssignedCourses);
-            },
-            child: Container(
-              decoration: BoxDecoration(border: Border.all()),
-              child: const Padding(
-                padding: EdgeInsets.all(3.0),
-                child: Row(
-                  children: [
-                    Icon(Icons.add),
-                    Text(
-                      'Assing courses',
-                      style: AppTextStyle.bold12,
-                    )
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}

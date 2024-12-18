@@ -1,4 +1,3 @@
-
 import 'package:all_in_one/src/core/navigation/router_configuration.dart';
 import 'package:all_in_one/src/core/service/cache/cache_service.dart';
 import 'package:all_in_one/src/core/theme/theme.dart';
@@ -13,8 +12,6 @@ import 'dart:html' as html;
 void replaceBrowserHistory(dynamic data, String path) {
   html.window.history.replaceState(data, '', path);
 }
-
-
 
 Future<void> main() async {
   usePathUrlStrategy();
@@ -105,6 +102,3 @@ class Responsive extends StatelessWidget {
 
 ///...... Interviwer........
 ///rahimsr983@gmail.com type :4
-
-
-
